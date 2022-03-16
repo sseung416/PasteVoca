@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="vm"
+            type="kr.co.dgsw.pastvoca.viewmodel.activity.AddVocabularyViewModel" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".view.activity.AddVocabularyActivity">
+
+        <include
+            android:id="@+id/layout_add_vocabulary"
+            layout="@layout/layout_add"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:hintData="@{vm.etHint}" />
+    </LinearLayout>
+</layout>

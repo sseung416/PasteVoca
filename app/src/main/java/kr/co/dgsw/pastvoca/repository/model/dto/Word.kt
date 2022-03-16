@@ -18,5 +18,11 @@ data class Word(
     @ColumnInfo(name = "voca_id") val vocabularyId: Int,
     val word: String,
     val meaning: String,
-    val type: Int
-)
+    val type: Int = EASY
+) {
+    companion object {
+        const val DIFFICULT = 1
+        const val MIDDLE = 2
+        const val EASY = 3
+    }
+}

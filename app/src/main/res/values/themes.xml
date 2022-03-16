@@ -21,6 +21,11 @@
         <item name="android:textStyle">bold</item>
     </style>
 
+    <style name="BigTextView" parent="Widget.AppCompat.TextView">
+        <item name="android:textColor">@color/black</item>
+        <item name="android:textSize">16sp</item>
+    </style>
+
     <style name="RegularTextView" parent="Widget.AppCompat.TextView">
         <item name="android:textColor">@color/black</item>
         <item name="android:textSize">14sp</item>
@@ -34,5 +39,15 @@
     <style name="SmallTextView.Gray" parent="Widget.AppCompat.TextView">
         <item name="android:textColor">@color/gray3</item>
         <item name="android:textSize">12sp</item>
+    </style>
+
+    <style name="AddEditText" parent="Widget.AppCompat.EditText">
+        <item name="android:textColor">@color/black</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:backgroundTint">@color/gray2</item>
+        <item name="hintTextColor">@color/gray3</item>
+        <item name="android:includeFontPadding">true</item>
+        <item name="android:paddingBottom">16dp</item>
+        <item name="android:paddingHorizontal" tools:targetApi="o">16dp</item>
     </style>
 </resources>
