@@ -4,13 +4,21 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="app/src/main/res/drawable/ic_arrow_bottom.xml" value="0.1465" />
+        <entry key="app/src/main/res/drawable/ic_rectangle_circle.xml" value="0.1605" />
+        <entry key="app/src/main/res/drawable/ic_rectangle_close.xml" value="0.1605" />
+        <entry key="app/src/main/res/drawable/ic_rectangle_correct.xml" value="0.1605" />
+        <entry key="app/src/main/res/drawable/ic_rectangle_incorrect.xml" value="0.1605" />
         <entry key="app/src/main/res/drawable/selector_btn_sound.xml" value="0.221" />
         <entry key="app/src/main/res/drawable/selector_spinner_icon.xml" value="0.1465" />
         <entry key="app/src/main/res/layout-v26/layout_add.xml" value="0.14270833333333333" />
         <entry key="app/src/main/res/layout/activity_add_vocabulary.xml" value="0.22871376811594202" />
         <entry key="app/src/main/res/layout/activity_add_word.xml" value="0.42801175318315376" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.3097579956054687" />
+        <entry key="app/src/main/res/layout/activity_word_check.xml" value="0.2276843467011643" />
+        <entry key="app/src/main/res/layout/content_word_check.xml" value="0.22871376811594202" />
+        <entry key="app/src/main/res/layout/fragment_second.xml" value="0.22871376811594202" />
         <entry key="app/src/main/res/layout/layout_add.xml" value="0.32392425537109376" />
+        <entry key="app/src/main/res/layout/layout_card.xml" value="0.22871376811594202" />
         <entry key="app/src/main/res/layout/layout_word.xml" value="0.1914260864257812" />
       </map>
     </option>

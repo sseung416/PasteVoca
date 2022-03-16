@@ -11,6 +11,11 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.PastVoca">
         <activity
+            android:name=".view.activity.WordCheckActivity"
+            android:exported="false"
+            android:label="@string/title_activity_word_check"
+            android:theme="@style/Theme.PastVoca.NoActionBar" />
+        <activity
             android:name=".view.activity.AddVocabularyActivity"
             android:exported="false" />
         <activity
