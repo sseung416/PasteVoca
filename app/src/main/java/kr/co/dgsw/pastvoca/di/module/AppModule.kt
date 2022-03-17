@@ -3,10 +3,7 @@ package kr.co.dgsw.pastvoca.di.module
 import kr.co.dgsw.pastvoca.repository.model.AppDatabase
 import kr.co.dgsw.pastvoca.repository.model.repository.VocabularyRepository
 import kr.co.dgsw.pastvoca.repository.model.repository.WordRepository
-import kr.co.dgsw.pastvoca.viewmodel.activity.AddVocabularyViewModel
-import kr.co.dgsw.pastvoca.viewmodel.activity.AddWordViewModel
-import kr.co.dgsw.pastvoca.viewmodel.activity.MainViewModel
-import kr.co.dgsw.pastvoca.viewmodel.activity.WordCheckViewModel
+import kr.co.dgsw.pastvoca.viewmodel.activity.*
 import org.koin.android.ext.koin.androidContext
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
@@ -27,4 +24,5 @@ val viewModelModule = module {
     viewModel { AddWordViewModel(get()) }
     viewModel { AddVocabularyViewModel(get()) }
     viewModel { WordCheckViewModel() }
+    viewModel { VocabularyViewModel(get()) }
 }
