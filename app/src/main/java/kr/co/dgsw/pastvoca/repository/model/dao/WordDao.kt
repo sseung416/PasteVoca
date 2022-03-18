@@ -9,4 +9,7 @@ import kr.co.dgsw.pastvoca.repository.model.dto.Word
 interface WordDao : BaseDao<Word> {
     @Query("SELECT * FROM word")
     suspend fun getAllWords(): List<Word>
+
+    @Query("SELECT * FROM word WHERE voca_id = :vocabularyId")
+    suspend fun getWordsByVocabulary(vocabularyId: Int): List<Word>
 }

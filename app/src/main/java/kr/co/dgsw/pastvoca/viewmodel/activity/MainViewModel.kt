@@ -28,7 +28,17 @@ class MainViewModel(
         }
     }
 
+    fun getWordsByVocabulary(vocabularyId: Int) {
+        viewModelScope.launch {
+            wordRepository.getWordsByVocabulary(vocabularyId)
+        }
+    }
+
     fun updateWord(word: Word) {
 
+    }
+
+    companion object {
+        private const val TAG = "MainViewModel"
     }
 }

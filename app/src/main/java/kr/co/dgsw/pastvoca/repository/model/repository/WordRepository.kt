@@ -7,6 +7,8 @@ import kr.co.dgsw.pastvoca.repository.model.dto.Word
 class WordRepository(override val dao: WordDao) : BaseRepository<WordDao, Word>() {
     suspend fun getAllWords() = dao.getAllWords()
 
+    suspend fun getWordsByVocabulary(vocabularyId: Int) = dao.getWordsByVocabulary(vocabularyId)
+
     override suspend fun insert(obj: Word) = dao.insert(obj)
 
     override suspend fun update(obj: Word) = dao.update(obj)
