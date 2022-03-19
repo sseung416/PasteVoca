@@ -19,6 +19,6 @@
             layout="@layout/layout_add"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            app:hintData="@{vm.etHint}" />
+            app:addData="@{vm.addData}" />
     </LinearLayout>
 </layout>

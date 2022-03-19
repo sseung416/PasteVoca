@@ -11,7 +11,7 @@ import kr.co.dgsw.pastvoca.view.data.LayoutAdd
 class AddWordViewModel(
     private val wordRepository: WordRepository
 ) : BaseViewModel() {
-    val etHint = LayoutAdd("단어", "뜻 (직접 입력)", "단어장 선택")
+    val addData = LayoutAdd("댠어 추가", "단어", "뜻 (직접 입력)", "단어장 선택", true)
     val word = MutableLiveData<String>()
     val meaning = MutableLiveData<String?>()
 
