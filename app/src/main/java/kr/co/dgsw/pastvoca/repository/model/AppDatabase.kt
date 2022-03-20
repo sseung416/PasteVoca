@@ -31,7 +31,8 @@ abstract class AppDatabase : RoomDatabase() {
                             Executors.newSingleThreadExecutor().execute {
                                 runBlocking {
                                     getInstance(context).apply {
-                                        vocabularyDao().insert(Vocabulary(name = "전체"))
+                                        vocabularyDao().insert(Vocabulary(name = "미정"))
+                                        wordDao().insert(Word(vocabularyId = 1, word = "Click This!", meaning = "단어가 나와요."))
                                     }
                                 }
                             }
