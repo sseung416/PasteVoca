@@ -6,10 +6,11 @@ import androidx.recyclerview.widget.RecyclerView
 import kr.co.dgsw.pastvoca.databinding.LayoutVocabularyBinding
 import kr.co.dgsw.pastvoca.repository.model.dto.VocabularyName
 
-class VocabularyAdapter : RecyclerView.Adapter<VocabularyAdapter.ViewHolder>() {
+class VocabularyAdapter(
+    private var selectedPosition: Int
+) : RecyclerView.Adapter<VocabularyAdapter.ViewHolder>() {
     private val list = arrayListOf<VocabularyName>()
-
-    private var selectedPosition = 0
+    private var isInit = false
 
     inner class ViewHolder(
         private val binding: LayoutVocabularyBinding
@@ -19,13 +20,20 @@ class VocabularyAdapter : RecyclerView.Adapter<VocabularyAdapter.ViewHolder>() {
                 text = list[position].name
 
                 setOnClickListener {
-                    binding.radioButton.isSelected = true
-                    notifyItemChanged(selectedPosition)
-                    selectedPosition = position
+                    if (selectedPosition != position) {
+                        binding.radioButton.isChecked = true
+                        notifyItemChanged(selectedPosition)
+                        selectedPosition = position
+                    }
                 }
 
-                isSelected = false
+                if (!isInit && position == selectedPosition) initFirstItem() else isChecked = false
             }
+        }
+
+        private fun initFirstItem() {
+            binding.radioButton.isChecked = true
+            isInit = true
         }
     }
 
@@ -44,4 +52,6 @@ class VocabularyAdapter : RecyclerView.Adapter<VocabularyAdapter.ViewHolder>() {
         this.list.addAll(list)
         notifyDataSetChanged()
     }
+
+    fun getSelectedVocabulary() = list[selectedPosition]
 }

@@ -1,5 +1,6 @@
 package kr.co.dgsw.pastvoca.view.activity
 
+import android.content.Intent
 import kr.co.dgsw.pastvoca.base.BaseActivity
 import kr.co.dgsw.pastvoca.databinding.ActivityVocabularyBinding
 import kr.co.dgsw.pastvoca.viewmodel.activity.VocabularyViewModel
@@ -11,7 +12,7 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 class VocabularyActivity : BaseActivity<ActivityVocabularyBinding, VocabularyViewModel>() {
     override val viewModel by viewModel<VocabularyViewModel>()
 
-    private val adapter = VocabularyAdapter()
+    private lateinit var adapter: VocabularyAdapter
 
     override fun onRestart() {
         super.onRestart()
@@ -20,6 +21,7 @@ class VocabularyActivity : BaseActivity<ActivityVocabularyBinding, VocabularyVie
 
     override fun init() {
         viewModel.getVocabularyNames()
+        adapter = VocabularyAdapter(getSelectedPosition())
 
         binding.rvVoca.adapter = adapter
 
@@ -28,6 +30,7 @@ class VocabularyActivity : BaseActivity<ActivityVocabularyBinding, VocabularyVie
         }
 
         binding.btnBackVoca.setOnClickListener {
+            setResult(RESULT_OK, Intent().putExtra("vocabulary", adapter.getSelectedVocabulary()))
             finish()
         }
     }
@@ -39,4 +42,6 @@ class VocabularyActivity : BaseActivity<ActivityVocabularyBinding, VocabularyVie
             })
         }
     }
+
+    private fun getSelectedPosition() = intent.getIntExtra("id", 1) - 1
 }
