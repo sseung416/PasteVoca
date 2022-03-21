@@ -25,6 +25,5 @@ fun RecyclerView.setDivider(dividerHeight: Float?, @ColorInt dividerColor: Int?)
 @BindingAdapter("isVisibleSearchDrawable")
 fun EditText.setVisibleSearchDrawable(isVisible: Boolean) {
     val drawable = if (isVisible) context.getDrawable(R.drawable.ic_search) else null
-    Log.e("TAG", "setVisibleSearchDrawable: $drawable", )
     setCompoundDrawablesRelativeWithIntrinsicBounds(null, null, drawable, null)
 }

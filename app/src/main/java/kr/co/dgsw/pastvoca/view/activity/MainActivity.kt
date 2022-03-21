@@ -23,6 +23,11 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>() {
 
     private var clicked = false
 
+    override fun onRestart() {
+        super.onRestart()
+        viewModel.getAllWords()
+    }
+
     override fun init() {
         viewModel.getVocabularyNames()
         viewModel.getAllWords()
