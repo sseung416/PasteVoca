@@ -4,6 +4,7 @@ import kr.co.dgsw.pastvoca.base.BaseActivity
 import kr.co.dgsw.pastvoca.databinding.ActivityAddWordBinding
 import kr.co.dgsw.pastvoca.viewmodel.activity.AddWordViewModel
 import kr.co.dgsw.pastvoca.widget.extension.startActivityWithFinish
+import kr.co.dgsw.pastvoca.widget.extension.startActivity
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class AddWordActivity : BaseActivity<ActivityAddWordBinding, AddWordViewModel>() {
@@ -17,6 +18,11 @@ class AddWordActivity : BaseActivity<ActivityAddWordBinding, AddWordViewModel>()
 
             btnConfirm.setOnClickListener {
                 viewModel.insertWord()
+                finish()
+            }
+
+            et3Add.setOnClickListener {
+                startActivity(VocabularyActivity::class.java)
             }
         }
     }

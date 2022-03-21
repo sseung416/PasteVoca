@@ -1,9 +1,12 @@
 package kr.co.dgsw.pastvoca.widget
 
 import android.graphics.Color
+import android.util.Log
+import android.widget.EditText
 import androidx.annotation.ColorInt
 import androidx.databinding.BindingAdapter
 import androidx.recyclerview.widget.RecyclerView
+import kr.co.dgsw.pastvoca.R
 import kr.co.dgsw.pastvoca.widget.recyclerview.decoration.CustomDecoration
 
 @BindingAdapter(
@@ -17,4 +20,11 @@ fun RecyclerView.setDivider(dividerHeight: Float?, @ColorInt dividerColor: Int?)
     ).apply {
         addItemDecoration(this)
     }
+}
+
+@BindingAdapter("isVisibleSearchDrawable")
+fun EditText.setVisibleSearchDrawable(isVisible: Boolean) {
+    val drawable = if (isVisible) context.getDrawable(R.drawable.ic_search) else null
+    Log.e("TAG", "setVisibleSearchDrawable: $drawable", )
+    setCompoundDrawablesRelativeWithIntrinsicBounds(null, null, drawable, null)
 }
