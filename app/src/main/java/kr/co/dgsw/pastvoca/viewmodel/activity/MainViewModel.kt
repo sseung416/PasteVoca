@@ -16,13 +16,14 @@ class MainViewModel(
     private val wordRepository: WordRepository
 ) : BaseViewModel() {
     val vocabularyNames = MutableLiveData<Event<List<VocabularyName>>>()
-    val words = MutableLiveData<Event<List<Word>>>()
+    val allWords = MutableLiveData<Event<List<Word>>>()
+    val wordsByVoca = MutableLiveData<Event<List<Word>>>()
 
     fun getVocabularyNames() {
         viewModelScope.launch {
             vocabularyRepository.getVocabularyNames().apply {
+                Log.d(TAG, "getVocabularyNames: $this")
                 vocabularyNames.postValue(Event(this))
-                Log.e(TAG, "getVocabularyNames: $this")
             }
         }
     }
@@ -30,15 +31,18 @@ class MainViewModel(
     fun getAllWords() {
         viewModelScope.launch {
             wordRepository.getAllWords().apply {
-                words.postValue(Event(this))
-                Log.e(TAG, "getAllWords: $this")
+                Log.d(TAG, "getAllWords: $this")
+                allWords.postValue(Event(this))
             }
         }
     }
 
     fun getWordsByVocabulary(vocabularyId: Int) {
         viewModelScope.launch {
-            wordRepository.getWordsByVocabulary(vocabularyId)
+            wordRepository.getWordsByVocabulary(vocabularyId).apply {
+                Log.d(TAG, "getWordsByVocabulary: $this")
+                wordsByVoca.postValue(Event(this))
+            }
         }
     }
 

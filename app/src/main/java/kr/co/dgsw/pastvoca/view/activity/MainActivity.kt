@@ -56,12 +56,12 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>() {
         }
 
         binding.btnMenuMain.setOnClickListener {
-            if (clicked) {
+            clicked = if (clicked) {
                 showOutFab(binding.btnSortMain, binding.btnVocaMain, binding.btnWordCheckMain)
-                clicked = false
+                false
             } else {
                 showInFab(binding.btnWordCheckMain, binding.btnVocaMain, binding.btnSortMain)
-                clicked = true
+                true
             }
         }
         
@@ -84,7 +84,11 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>() {
                 spinnerAdapter.addAll(it)
             })
 
-            words.observe(this@MainActivity, EventObserver {
+            allWords.observe(this@MainActivity, EventObserver {
+                wordAdapter.setList(it)
+            })
+
+            wordsByVoca.observe(this@MainActivity, EventObserver {
                 wordAdapter.setList(it)
             })
         }

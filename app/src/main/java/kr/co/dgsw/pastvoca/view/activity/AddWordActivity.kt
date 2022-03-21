@@ -27,7 +27,7 @@ class AddWordActivity : BaseActivity<ActivityAddWordBinding, AddWordViewModel>()
 
         binding.layoutAddWord.apply {
             btnBack.setOnClickListener {
-                this@AddWordActivity.startActivityWithFinish(MainActivity::class.java)
+                finish()
             }
 
             btnConfirm.setOnClickListener {
