@@ -5,10 +5,11 @@ import android.animation.AnimatorListenerAdapter
 import android.view.View
 import android.view.View.GONE
 import android.view.View.VISIBLE
-import android.widget.ArrayAdapter
+import android.widget.AdapterView
 import kr.co.dgsw.pastvoca.base.BaseActivity
 import kr.co.dgsw.pastvoca.databinding.ActivityMainBinding
 import kr.co.dgsw.pastvoca.viewmodel.activity.MainViewModel
+import kr.co.dgsw.pastvoca.widget.SpinnerAdapter
 import kr.co.dgsw.pastvoca.widget.extension.startActivity
 import kr.co.dgsw.pastvoca.widget.livedata.EventObserver
 import kr.co.dgsw.pastvoca.widget.recyclerview.adapter.WordAdapter
@@ -18,7 +19,7 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>() {
     override val viewModel by viewModel<MainViewModel>()
 
     private val wordAdapter = WordAdapter()
-    private lateinit var spinnerAdapter: ArrayAdapter<String>
+    private lateinit var spinnerAdapter: SpinnerAdapter
 
     private var clicked = false
 
@@ -26,12 +27,24 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>() {
         viewModel.getVocabularyNames()
         viewModel.getAllWords()
 
-        spinnerAdapter = ArrayAdapter(this, android.R.layout.simple_spinner_dropdown_item, arrayListOf("전체"))
+        spinnerAdapter = SpinnerAdapter(this, android.R.layout.simple_spinner_dropdown_item)
 
         wordAdapter.setList(listOf())
 
         binding.rvMain.adapter = wordAdapter
-        binding.spinner.adapter = spinnerAdapter
+        binding.spinner.apply {
+            adapter = spinnerAdapter
+            onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+                override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
+                    when (val id = spinnerAdapter.getVocabularyId(position)) {
+                        null -> viewModel.getAllWords()
+                        else -> viewModel.getWordsByVocabulary(id)
+                    }
+                }
+
+                override fun onNothingSelected(p0: AdapterView<*>?) {}
+            }
+        }
 
         binding.btnAdd.setOnClickListener {
             startActivity(AddWordActivity::class.java)
@@ -63,9 +76,7 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>() {
         viewModel.apply {
             vocabularyNames.observe(this@MainActivity, EventObserver {
                 spinnerAdapter.clear()
-                spinnerAdapter.notifyDataSetChanged()
                 spinnerAdapter.addAll(it)
-                spinnerAdapter.notifyDataSetChanged()
             })
 
             words.observe(this@MainActivity, EventObserver {
