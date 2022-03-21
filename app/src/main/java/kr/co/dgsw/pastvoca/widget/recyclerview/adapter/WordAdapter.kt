@@ -19,7 +19,13 @@ class WordAdapter : RecyclerView.Adapter<WordAdapter.ViewHolder>() {
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder =
-        ViewHolder(LayoutWordBinding.inflate(LayoutInflater.from(parent.context)))
+        with(LayoutWordBinding.inflate(LayoutInflater.from(parent.context), parent, false)) {
+            this.root.layoutParams = RecyclerView.LayoutParams(
+                ViewGroup.LayoutParams.MATCH_PARENT,
+                ViewGroup.LayoutParams.WRAP_CONTENT
+            )
+            ViewHolder(this)
+        }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.bind(list[position])
