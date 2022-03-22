@@ -1,4 +1,4 @@
-package kr.co.dgsw.pastvoca.di.module
+package kr.co.dgsw.pastvoca.di
 
 import kr.co.dgsw.pastvoca.repository.model.AppDatabase
 import kr.co.dgsw.pastvoca.repository.model.repository.VocabularyRepository
