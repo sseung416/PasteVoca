@@ -11,6 +11,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.PastVoca">
         <activity
+            android:name=".view.activity.ClipboardActivity"
+            android:exported="false" />
+        <activity
             android:name=".view.activity.VocabularyActivity"
             android:exported="false" />
         <activity
