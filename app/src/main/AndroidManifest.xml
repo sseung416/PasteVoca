@@ -2,6 +2,9 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="kr.co.dgsw.pastvoca">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
+
     <application
         android:name=".di.App"
         android:allowBackup="true"
@@ -10,6 +13,31 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.PastVoca">
+        <activity
+            android:name=".view.activity.PermissionActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <service
+            android:name=".service.FloatingService"
+            android:enabled="true"
+            android:exported="true" />
+
+        <activity
+            android:name=".view.dialog.ClipboardDialog"
+            android:exported="false"
+            android:theme="@android:style/Theme.Material.Light.Dialog.NoActionBar" />
+
+        <service
+            android:name=".service.ClipboardService"
+            android:enabled="true"
+            android:exported="true" />
+
         <activity
             android:name=".view.activity.ClipboardActivity"
             android:exported="false" />
@@ -30,11 +58,7 @@
         <activity
             android:name=".view.activity.MainActivity"
             android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
     </application>
 

@@ -2,12 +2,14 @@ package kr.co.dgsw.pastvoca.view.activity
 
 import android.animation.Animator
 import android.animation.AnimatorListenerAdapter
+import android.content.Intent
 import android.view.View
 import android.view.View.GONE
 import android.view.View.VISIBLE
 import android.widget.AdapterView
 import kr.co.dgsw.pastvoca.base.BaseActivity
 import kr.co.dgsw.pastvoca.databinding.ActivityMainBinding
+import kr.co.dgsw.pastvoca.service.FloatingService
 import kr.co.dgsw.pastvoca.viewmodel.activity.MainViewModel
 import kr.co.dgsw.pastvoca.widget.SpinnerAdapter
 import kr.co.dgsw.pastvoca.widget.extension.startActivity
@@ -64,7 +66,7 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>() {
                 true
             }
         }
-        
+
         binding.btnWordCheckMain.setOnClickListener {
         }
 
@@ -135,5 +137,9 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>() {
 
             delay += 100L
         }
+    }
+
+    private fun onStartService() {
+        startService(Intent(this, FloatingService::class.java))
     }
 }

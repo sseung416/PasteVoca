@@ -15,14 +15,17 @@
         <entry key="app/src/main/res/layout-v26/layout_add.xml" value="0.14270833333333333" />
         <entry key="app/src/main/res/layout/activity_add_vocabulary.xml" value="0.22871376811594202" />
         <entry key="app/src/main/res/layout/activity_add_word.xml" value="0.41291108404384896" />
-        <entry key="app/src/main/res/layout/activity_clipboard_dialog.xml" value="0.19114583333333332" />
+        <entry key="app/src/main/res/layout/activity_clipboard_dialog.xml" value="0.27103142371544464" />
+        <entry key="app/src/main/res/layout/activity_floating.xml" value="0.22146739130434784" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.31360757468752054" />
+        <entry key="app/src/main/res/layout/activity_permission.xml" value="0.20885416666666667" />
         <entry key="app/src/main/res/layout/activity_vocabulary.xml" value="0.22029177900673688" />
         <entry key="app/src/main/res/layout/activity_word_check.xml" value="0.2276843467011643" />
         <entry key="app/src/main/res/layout/content_word_check.xml" value="0.22871376811594202" />
         <entry key="app/src/main/res/layout/fragment_second.xml" value="0.22871376811594202" />
         <entry key="app/src/main/res/layout/layout_add.xml" value="0.32392425537109376" />
         <entry key="app/src/main/res/layout/layout_card.xml" value="0.22871376811594202" />
+        <entry key="app/src/main/res/layout/layout_floating.xml" value="0.21614583333333334" />
         <entry key="app/src/main/res/layout/layout_vocabulary.xml" value="0.3807532047879869" />
         <entry key="app/src/main/res/layout/layout_word.xml" value="0.1914260864257812" />
       </map>
