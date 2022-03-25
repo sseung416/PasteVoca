@@ -17,7 +17,7 @@ class SettingFragment : BaseFragment<FragmentSettingBinding, SettingViewModel>()
 
     private val result =
         registerForActivityResult(ActivityResultContracts.StartActivityForResult()) {
-            if (it.resultCode == 1) {
+            if (checkedOverlayPermission()) {
                 startFloatingService()
             } else {
                 binding.switchSetting.isSelected = false

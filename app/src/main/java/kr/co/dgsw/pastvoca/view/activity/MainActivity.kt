@@ -15,6 +15,8 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        changeFragment(HomeFragment())
+
         findViewById<BottomNavigationView>(R.id.bottom_main).apply {
             setOnItemSelectedListener {
                 when (it.itemId) {
@@ -22,7 +24,7 @@ class MainActivity : AppCompatActivity() {
                     R.id.menu_test -> changeFragment(WordTestFragment())
                     R.id.menu_setting -> changeFragment(SettingFragment())
                 }
-                false
+                true
             }
         }
     }
