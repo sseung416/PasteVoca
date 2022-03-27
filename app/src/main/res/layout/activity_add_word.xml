@@ -6,7 +6,7 @@
     <data>
         <variable
             name="vm"
-            type="kr.co.dgsw.pastvoca.viewmodel.activity.AddWordViewModel" />
+            type="co.kr.dgsw.searchvoca.viewmodel.activity.AddWordViewModel" />
     </data>
 
     <LinearLayout

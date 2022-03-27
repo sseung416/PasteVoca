@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
-        <import type="kr.co.dgsw.pastvoca.view.data.LayoutAdd"/>
+        <import type="co.kr.dgsw.searchvoca.view.data.LayoutAdd"/>
         <variable
             name="addData"
             type="LayoutAdd" />

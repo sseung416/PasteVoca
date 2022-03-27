@@ -6,7 +6,7 @@
     <data>
         <variable
             name="data"
-            type="kr.co.dgsw.pastvoca.repository.model.dto.Word" />
+            type="co.kr.dgsw.searchvoca.repository.model.dto.Word" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
