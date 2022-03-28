@@ -6,15 +6,19 @@
     <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
 
     <application
-        android:name="co.kr.dgsw.searchvoca.di.App"
+        android:name=".di.App"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.PastVoca">
+        android:theme="@style/Theme.PastVoca"
+        android:usesCleartextTraffic="true">
         <activity
-            android:name="co.kr.dgsw.searchvoca.view.activity.PermissionActivity"
+            android:name=".view.dialog.SearchResultDialog"
+            android:exported="false" />
+        <activity
+            android:name=".view.activity.PermissionActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -24,42 +28,40 @@
         </activity>
 
         <service
-            android:name="co.kr.dgsw.searchvoca.service.FloatingService"
+            android:name="co.kr.dgsw.searchvoca.view.service.FloatingService"
             android:enabled="true"
             android:exported="true" />
 
         <activity
-            android:name="co.kr.dgsw.searchvoca.view.dialog.ClipboardDialog"
+            android:name=".view.dialog.ClipboardDialog"
             android:exported="false"
             android:theme="@android:style/Theme.Material.Light.Dialog.NoActionBar" />
 
         <service
-            android:name="co.kr.dgsw.searchvoca.service.ClipboardService"
+            android:name="co.kr.dgsw.searchvoca.view.service.ClipboardService"
             android:enabled="true"
             android:exported="true" />
 
         <activity
-            android:name="co.kr.dgsw.searchvoca.view.activity.ClipboardActivity"
+            android:name=".view.activity.ClipboardActivity"
             android:exported="false" />
         <activity
-            android:name="co.kr.dgsw.searchvoca.view.activity.VocabularyActivity"
+            android:name=".view.activity.VocabularyActivity"
             android:exported="false" />
         <activity
-            android:name="co.kr.dgsw.searchvoca.view.activity.WordCheckActivity"
+            android:name=".view.activity.WordCheckActivity"
             android:exported="false"
             android:label="@string/title_activity_word_check"
             android:theme="@style/Theme.PastVoca.NoActionBar" />
         <activity
-            android:name="co.kr.dgsw.searchvoca.view.activity.AddVocabularyActivity"
+            android:name=".view.activity.AddVocabularyActivity"
             android:exported="false" />
         <activity
-            android:name="co.kr.dgsw.searchvoca.view.activity.AddWordActivity"
+            android:name=".view.activity.AddWordActivity"
             android:exported="false" />
         <activity
-            android:name="co.kr.dgsw.searchvoca.view.activity.MainActivity"
-            android:exported="true">
-
-        </activity>
+            android:name=".view.activity.MainActivity"
+            android:exported="true"></activity>
     </application>
 
 </manifest>

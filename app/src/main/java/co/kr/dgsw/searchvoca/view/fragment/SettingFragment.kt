@@ -8,7 +8,7 @@ import android.provider.Settings
 import androidx.activity.result.contract.ActivityResultContracts
 import co.kr.dgsw.searchvoca.base.BaseFragment
 import co.kr.dgsw.searchvoca.databinding.FragmentSettingBinding
-import co.kr.dgsw.searchvoca.service.FloatingService
+import co.kr.dgsw.searchvoca.view.service.FloatingService
 import co.kr.dgsw.searchvoca.viewmodel.fragment.SettingViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 

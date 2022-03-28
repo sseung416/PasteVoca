@@ -15,6 +15,7 @@ import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.constraintlayout.widget.ConstraintSet
 import co.kr.dgsw.searchvoca.view.dialog.ClipboardDialog
 import co.kr.dgsw.searchvoca.R
+import co.kr.dgsw.searchvoca.view.dialog.SearchResultDialog
 
 class FloatingService : Service() {
     private lateinit var windowManager: WindowManager
@@ -52,7 +53,7 @@ class FloatingService : Service() {
                 val screenWidth = getScreenWidth()
 
                 if (etSearch.visibility == VISIBLE) {
-                    val intent = Intent(this@FloatingService, ClipboardDialog::class.java)
+                    val intent = Intent(this@FloatingService, SearchResultDialog::class.java)
                         .putExtra("keyword", etSearch.text)
                     PendingIntent.getActivity(this@FloatingService, 0, intent, PendingIntent.FLAG_ONE_SHOT)
                     // todo 사전 검색
