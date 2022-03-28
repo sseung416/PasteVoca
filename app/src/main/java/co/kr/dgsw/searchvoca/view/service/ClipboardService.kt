@@ -1,4 +1,4 @@
-package co.kr.dgsw.searchvoca.service
+package co.kr.dgsw.searchvoca.view.service
 
 import android.app.PendingIntent
 import android.app.Service
