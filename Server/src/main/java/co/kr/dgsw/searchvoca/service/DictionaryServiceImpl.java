@@ -5,7 +5,6 @@ import co.kr.dgsw.searchvoca.service.dto.DictionaryDto;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
@@ -21,17 +20,16 @@ import org.springframework.web.util.UriComponents;
 import org.springframework.web.util.UriComponentsBuilder;
 
 import java.util.List;
-import java.util.Map;
 
 @Service
-public class DictionaryService {
+public class DictionaryServiceImpl {
     private final RestTemplate restTemplate;
 
-    public DictionaryService(RestTemplateBuilder restTemplateBuilder) {
+    public DictionaryServiceImpl(RestTemplateBuilder restTemplateBuilder) {
         this.restTemplate = restTemplateBuilder.build();
     }
 
-    @GetMapping("/search.do")
+    @GetMapping("/")
     public List<DictionaryDto> getSearchResult(String word) {
         List<DictionaryDto> result = null;
 
@@ -46,7 +44,7 @@ public class DictionaryService {
             HttpEntity<?> entity = new HttpEntity<>(header);
 
             ResponseEntity<String> responseEntity = restTemplate.exchange(uri.toString(), HttpMethod.GET, entity, String.class);
-            System.out.println("DictionaryService-getSearchResult: " + responseEntity.getStatusCode() + ", " + responseEntity.getStatusCodeValue());
+            System.out.println("DictionaryService-getSearchResult: " + responseEntity.getStatusCode());
 
             result = this.parse(responseEntity.getBody());
         } catch (ParseException | JsonProcessingException e) {

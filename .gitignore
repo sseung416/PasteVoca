@@ -14,3 +14,4 @@
 .cxx
 local.properties
 app/src/main/java/co/kr/dgsw/searchvoca/Key.kt
+Server/target/classes/co/kr/dgsw/searchvoca/Key.class
