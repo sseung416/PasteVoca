@@ -9,6 +9,5 @@ import lombok.ToString;
 @ToString
 public class DictionaryDto {
     public String word;
-    public String pos;
     public Sense sense;
 }

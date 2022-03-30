@@ -14,11 +14,6 @@ public class SearchWordController {
     @Autowired
     private PapagoServiceImpl papagoService;
 
-    @GetMapping("/dict/{word}")
-    public String getSearchResult(@PathVariable("word") String word) {
-        return dictionaryService.getSearchResult(word);
-    }
-
     @GetMapping("/{word}")
     public String getLanguage(@PathVariable("word") String word) {
         String langCode = papagoService.postLanguage(word);

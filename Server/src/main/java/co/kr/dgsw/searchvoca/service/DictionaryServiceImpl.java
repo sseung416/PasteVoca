@@ -1,11 +1,10 @@
 package co.kr.dgsw.searchvoca.service;
 
 import co.kr.dgsw.searchvoca.Key;
-import co.kr.dgsw.searchvoca.service.dto.DictionaryDto;
+import co.kr.dgsw.searchvoca.service.dto.Response;
+import co.kr.dgsw.searchvoca.service.dto.WordDto;
 import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.core.type.TypeReference;
-import com.fasterxml.jackson.databind.DeserializationFeature;
-import com.fasterxml.jackson.databind.ObjectMapper;
+import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
@@ -15,12 +14,9 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.util.UriComponents;
 import org.springframework.web.util.UriComponentsBuilder;
-
-import java.util.List;
 
 @Service
 public class DictionaryServiceImpl {
@@ -30,10 +26,7 @@ public class DictionaryServiceImpl {
         this.restTemplate = restTemplateBuilder.build();
     }
 
-    @GetMapping("/")
     public String getSearchResult(String word) {
-        List<DictionaryDto> result = null;
-
         try {
             UriComponents uri = UriComponentsBuilder.fromHttpUrl(Key.DICTIONARY_BASE_URL)
                     .queryParam("key", Key.DICTIONARY_AUTH)
@@ -47,37 +40,30 @@ public class DictionaryServiceImpl {
             ResponseEntity<String> responseEntity = restTemplate.exchange(uri.toString(), HttpMethod.GET, entity, String.class);
             System.out.println("DictionaryService-getSearchResult: " + responseEntity.getStatusCode());
 
-            result = this.parse(responseEntity.getBody());
+            return new Response(200, "대충 잘 왔다는 뜻", getJsonArray(responseEntity.getBody())).toString();
         } catch (ParseException | JsonProcessingException e) {
             e.printStackTrace();
         }
-
-        return toJson(result);
+        return null;
     }
 
-    private List<DictionaryDto> parse(String body) throws ParseException, JsonProcessingException {
+    private JSONArray getJsonArray(String body) throws ParseException, JsonProcessingException {
         JSONParser jsonParser = new JSONParser();
         JSONObject jsonObject = (JSONObject) jsonParser.parse(body);
         JSONObject channelBody = (JSONObject) jsonObject.get("channel");
 
-        return convertDictionaryDto(channelBody.get("item"));
-    }
-
-    private List<DictionaryDto> convertDictionaryDto(Object data) throws JsonProcessingException {
-        ObjectMapper mapper = new ObjectMapper()
-                .configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
-        String jsonStr = mapper.writeValueAsString(data);
-
-        return mapper.readValue(jsonStr, new TypeReference<>() {});
-    }
-
-    private String toJson(Object dto) {
-        try {
-            ObjectMapper mapper = new ObjectMapper();
-            return mapper.writeValueAsString(dto);
-        } catch (JsonProcessingException e) {
-            e.printStackTrace();
+        JSONArray itemArray = (JSONArray) channelBody.get("item");
+        JSONArray result = new JSONArray();
+        for (Object item : itemArray) {
+            result.add(convertWordDto((JSONObject) item));
         }
-        return null;
+
+        return result;
+    }
+
+    private JSONObject convertWordDto(JSONObject data) {
+        String word = data.get("word").toString();
+        String definition = ((JSONObject) data.get("sense")).get("definition").toString();
+        return new WordDto(word, definition).toJson();
     }
 }

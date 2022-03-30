@@ -1,7 +1,10 @@
 package co.kr.dgsw.searchvoca.service;
 
 import co.kr.dgsw.searchvoca.Key;
-import co.kr.dgsw.searchvoca.service.dto.TranslateDto;
+import co.kr.dgsw.searchvoca.domain.Word;
+import co.kr.dgsw.searchvoca.service.dto.Response;
+import co.kr.dgsw.searchvoca.service.dto.WordDto;
+import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
@@ -12,6 +15,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.util.UriComponents;
 import org.springframework.web.util.UriComponentsBuilder;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Service
 public class PapagoServiceImpl implements PapagoService {
@@ -63,7 +69,10 @@ public class PapagoServiceImpl implements PapagoService {
             JSONObject jsonBody = (JSONObject) jsonParser.parse(responseEntity.getBody());
             JSONObject resultBody = (JSONObject) ((JSONObject) jsonBody.get("message")).get("result");
 
-            return new TranslateDto(resultBody.get("translatedText").toString()).toString();
+            JSONArray jsonArray = new JSONArray();
+            jsonArray.add(new WordDto(text, resultBody.get("translatedText").toString()).toJson());
+
+            return new Response(200, "응애 나는 애기 개발자", jsonArray).toString();
         } catch (ParseException e) {
             e.printStackTrace();
         }
