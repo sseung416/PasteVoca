@@ -3,6 +3,7 @@ package co.kr.dgsw.searchvoca.service;
 import co.kr.dgsw.searchvoca.Key;
 import co.kr.dgsw.searchvoca.service.dto.DictionaryDto;
 import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.json.simple.JSONObject;
@@ -30,7 +31,7 @@ public class DictionaryServiceImpl {
     }
 
     @GetMapping("/")
-    public List<DictionaryDto> getSearchResult(String word) {
+    public String getSearchResult(String word) {
         List<DictionaryDto> result = null;
 
         try {
@@ -51,23 +52,32 @@ public class DictionaryServiceImpl {
             e.printStackTrace();
         }
 
-        return result;
+        return toJson(result);
     }
 
     private List<DictionaryDto> parse(String body) throws ParseException, JsonProcessingException {
         JSONParser jsonParser = new JSONParser();
         JSONObject jsonObject = (JSONObject) jsonParser.parse(body);
-
         JSONObject channelBody = (JSONObject) jsonObject.get("channel");
 
-       return convertDictionaryDto(channelBody.get("item"));
+        return convertDictionaryDto(channelBody.get("item"));
     }
 
     private List<DictionaryDto> convertDictionaryDto(Object data) throws JsonProcessingException {
-        ObjectMapper mapper = new ObjectMapper();
-        mapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
+        ObjectMapper mapper = new ObjectMapper()
+                .configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
         String jsonStr = mapper.writeValueAsString(data);
 
-        return mapper.readValue(jsonStr, List.class);
+        return mapper.readValue(jsonStr, new TypeReference<>() {});
+    }
+
+    private String toJson(Object dto) {
+        try {
+            ObjectMapper mapper = new ObjectMapper();
+            return mapper.writeValueAsString(dto);
+        } catch (JsonProcessingException e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 }

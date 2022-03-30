@@ -2,12 +2,13 @@ package co.kr.dgsw.searchvoca.service.dto;
 
 import lombok.Getter;
 import lombok.Setter;
+import lombok.ToString;
 
 @Getter
 @Setter
+@ToString
 public class DictionaryDto {
-    public int sup_no;
-    public String target_code;
-    public Sense sense;
+    public String word;
     public String pos;
+    public Sense sense;
 }
