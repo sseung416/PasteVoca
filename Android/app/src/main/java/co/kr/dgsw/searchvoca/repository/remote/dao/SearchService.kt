@@ -1,13 +1,13 @@
 package co.kr.dgsw.searchvoca.repository.remote.dao
 
-import co.kr.dgsw.searchvoca.repository.remote.dto.SearchData
-import retrofit2.http.FormUrlEncoded
+import co.kr.dgsw.searchvoca.repository.remote.dto.Res
+import co.kr.dgsw.searchvoca.repository.remote.dto.SearchWord
 import retrofit2.http.GET
-import retrofit2.http.Query
+import retrofit2.http.Path
 
 interface SearchService {
-    @GET("v1/search/encyc.json")
+    @GET("/{word}")
     suspend fun getSearchResult(
-        @Query("query") query: String
-    ): SearchData
+        @Path("word") word: String
+    ): Res<List<SearchWord>>
 }

@@ -11,7 +11,7 @@ class SearchResultViewModel(
 ) : BaseViewModel() {
     fun getSearchResult(keyword: String) {
         viewModelScope.launch {
-            Log.e("TAG", "getSearchResult: ${searchRepository.getSearchData(keyword).items[0].description}", )
+            Log.e("TAG", "getSearchResult: ${searchRepository.getSearchData(keyword)}", )
         }
     }
 }
