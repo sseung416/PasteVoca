@@ -16,6 +16,7 @@
         android:usesCleartextTraffic="true">
         <activity
             android:name=".view.dialog.SearchResultDialog"
+            android:theme="@android:style/Theme.Holo.Dialog.NoActionBar"
             android:exported="false" />
         <activity
             android:name=".view.activity.PermissionActivity"
@@ -36,11 +37,6 @@
             android:name=".view.dialog.ClipboardDialog"
             android:exported="false"
             android:theme="@android:style/Theme.Material.Light.Dialog.NoActionBar" />
-
-        <service
-            android:name="co.kr.dgsw.searchvoca.view.service.ClipboardService"
-            android:enabled="true"
-            android:exported="true" />
 
         <activity
             android:name=".view.activity.ClipboardActivity"

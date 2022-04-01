@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">PastVoca</string>
+    <string name="app_name">SearchVoca</string>
     <string name="confirm">확인</string>
     <string name="title_activity_word_check">WordCheckActivity</string>
     <!-- Strings used for fragments for navigation -->
