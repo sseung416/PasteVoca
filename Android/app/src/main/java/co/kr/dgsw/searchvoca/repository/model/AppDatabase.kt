@@ -31,7 +31,8 @@ abstract class AppDatabase : RoomDatabase() {
                                 runBlocking {
                                     getInstance(context).apply {
                                         vocabularyDao().insert(Vocabulary(name = "미정"))
-                                        wordDao().insert(Word(vocabularyId = 1, word = "Click This!", meaning = "단어가 나와요."))
+                                        wordDao().insert(Word(1, "Click This!", "클릭하면 뜻이 나와요!"))
+                                        wordDao().insert(Word(1, "Long Click This ~", "길게 눌러보세요!"))
                                     }
                                 }
                             }
