@@ -14,11 +14,11 @@ import androidx.room.PrimaryKey
     )]
 )
 data class Word(
-    @PrimaryKey(autoGenerate = true) val id: Int? = null,
     @ColumnInfo(name = "voca_id") val vocabularyId: Int,
     val word: String,
     val meaning: String,
-    val type: Int = EASY
+    val type: Int = EASY,
+    @PrimaryKey(autoGenerate = true) val id: Int? = null
 ) {
     companion object {
         const val DIFFICULT = 1

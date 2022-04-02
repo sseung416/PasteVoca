@@ -35,11 +35,7 @@ class AddWordActivity : BaseActivity<ActivityAddWordBinding, AddWordViewModel>()
                     Toast.makeText(this@AddWordActivity, msg, Toast.LENGTH_SHORT).show()
                 } else {
                     viewModel.insertWord(
-                        Word(
-                            vocabularyId = vocabulary?.id ?: 1,
-                            word = et1Add.text.toString(),
-                            meaning = et2Add.text.toString()
-                        )
+                        Word(vocabulary?.id ?: 1, et1Add.text.toString(), et2Add.text.toString())
                     )
                     finish()
                 }
