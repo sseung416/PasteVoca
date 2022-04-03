@@ -24,9 +24,14 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>() {
 
         spinnerAdapter = SpinnerAdapter(requireContext(), android.R.layout.simple_spinner_dropdown_item)
 
-        wordAdapter.setList(listOf())
+        wordAdapter.apply {
+            binding.rvHome.adapter = wordAdapter
+            onLongClickWordListener = listener@{
+                // todo 삭제, 수정 다이얼로그
+                return@listener true
+            }
+        }
 
-        binding.rvHome.adapter = wordAdapter
         binding.spinnerHome.apply {
             adapter = spinnerAdapter
             onItemSelectedListener = object : AdapterView.OnItemSelectedListener {

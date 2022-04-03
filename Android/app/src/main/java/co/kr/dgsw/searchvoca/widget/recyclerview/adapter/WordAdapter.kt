@@ -1,18 +1,32 @@
 package co.kr.dgsw.searchvoca.widget.recyclerview.adapter
 
 import android.view.LayoutInflater
+import android.view.View.INVISIBLE
+import android.view.View.VISIBLE
 import android.view.ViewGroup
+import androidx.core.view.isInvisible
 import androidx.recyclerview.widget.RecyclerView
 import co.kr.dgsw.searchvoca.databinding.LayoutWordBinding
 import co.kr.dgsw.searchvoca.repository.model.dto.Word
 
 class WordAdapter : RecyclerView.Adapter<WordAdapter.ViewHolder>() {
     private val list = arrayListOf<Word>()
+    var onLongClickWordListener: (() -> Boolean)? = null
 
     inner class ViewHolder(
         private val binding: LayoutWordBinding
     ) : RecyclerView.ViewHolder(binding.root) {
         fun bind(item: Word) {
+            binding.tvWord.setOnClickListener {
+                binding.tvMeaning.apply {
+                    visibility = if (isInvisible) VISIBLE else INVISIBLE
+                }
+            }
+
+            binding.tvWord.setOnLongClickListener {
+                onLongClickWordListener?.invoke()!!
+            }
+
             binding.data = item
             binding.executePendingBindings()
         }
