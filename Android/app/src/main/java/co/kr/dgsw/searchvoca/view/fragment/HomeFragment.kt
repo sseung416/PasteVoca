@@ -2,6 +2,7 @@ package co.kr.dgsw.searchvoca.view.fragment
 
 import android.view.View
 import android.widget.AdapterView
+import co.kr.dgsw.searchvoca.R
 import co.kr.dgsw.searchvoca.base.BaseFragment
 import co.kr.dgsw.searchvoca.databinding.FragmentHomeBinding
 import co.kr.dgsw.searchvoca.view.activity.AddWordActivity
@@ -10,6 +11,7 @@ import co.kr.dgsw.searchvoca.widget.SpinnerAdapter
 import co.kr.dgsw.searchvoca.widget.extension.startActivity
 import co.kr.dgsw.searchvoca.widget.livedata.EventObserver
 import co.kr.dgsw.searchvoca.widget.recyclerview.adapter.WordAdapter
+import co.kr.dgsw.searchvoca.widget.recyclerview.decoration.CustomDecoration
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>() {
@@ -22,14 +24,17 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>() {
         viewModel.getVocabularyNames()
         viewModel.getAllWords()
 
-        spinnerAdapter = SpinnerAdapter(requireContext(), android.R.layout.simple_spinner_dropdown_item)
+        spinnerAdapter =
+            SpinnerAdapter(requireContext(), android.R.layout.simple_spinner_dropdown_item)
 
-        wordAdapter.apply {
-            binding.rvHome.adapter = wordAdapter
-            onLongClickWordListener = listener@{
-                // todo 삭제, 수정 다이얼로그
-                return@listener true
-            }
+        wordAdapter.onLongClickWordListener = listener@{
+            // todo 삭제, 수정 다이얼로그
+            return@listener true
+        }
+
+        binding.rvHome.apply {
+            addItemDecoration(CustomDecoration(1.0f, requireContext().getColor(R.color.gray3)))
+            adapter = wordAdapter
         }
 
         binding.spinnerHome.apply {
@@ -66,5 +71,10 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>() {
                 wordAdapter.setList(it)
             })
         }
+    }
+
+    override fun onStart() {
+        super.onStart()
+        viewModel.getAllWords()
     }
 }

@@ -16,8 +16,8 @@
         android:usesCleartextTraffic="true">
         <activity
             android:name=".view.dialog.SearchResultDialog"
-            android:theme="@android:style/Theme.Holo.Dialog.NoActionBar"
-            android:exported="false" />
+            android:exported="false"
+            android:theme="@android:style/Theme.Holo.Dialog.NoActionBar" />
         <activity
             android:name=".view.activity.PermissionActivity"
             android:exported="true">
@@ -57,7 +57,7 @@
             android:exported="false" />
         <activity
             android:name=".view.activity.MainActivity"
-            android:exported="true"></activity>
+            android:exported="true" />
     </application>
 
 </manifest>

@@ -30,7 +30,7 @@ val repositoryModule = module {
 
 val viewModelModule = module {
     viewModel { MainViewModel(get(), get()) }
-    viewModel { AddWordViewModel(get()) }
+    viewModel { AddWordViewModel(get(), get()) }
     viewModel { AddVocabularyViewModel(get()) }
     viewModel { WordCheckViewModel() }
     viewModel { VocabularyViewModel(get()) }

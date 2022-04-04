@@ -1,3 +1,7 @@
 <resources>
     <dimen name="fab_margin">16dp</dimen>
+    <dimen name="floating_search_result_height">120dp</dimen>
+
+    <dimen name="search_dialog_width">300dp</dimen>
+    <dimen name="search_dialog_height">400dp</dimen>
 </resources>
