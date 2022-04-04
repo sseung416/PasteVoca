@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    tools:context=".view.dialog.WordBottomSheetDialog">
+
+    <TextView
+        android:id="@+id/tv_edit"
+        style="@style/BigTextView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:clickable="true"
+        android:drawableStart="@drawable/ic_edit"
+        android:drawablePadding="16dp"
+        android:gravity="center_vertical"
+        android:minHeight="48dp"
+        android:text="편집" />
+
+    <TextView
+        android:id="@+id/tv_delete"
+        style="@style/BigTextView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:clickable="true"
+        android:drawableStart="@drawable/ic_delete"
+        android:drawablePadding="16dp"
+        android:gravity="center_vertical"
+        android:minHeight="48dp"
+        android:text="삭제" />
+</LinearLayout>

@@ -8,6 +8,7 @@ import co.kr.dgsw.searchvoca.repository.remote.repository.SearchRepository
 import co.kr.dgsw.searchvoca.viewmodel.activity.*
 import co.kr.dgsw.searchvoca.viewmodel.fragment.HomeViewModel
 import co.kr.dgsw.searchvoca.viewmodel.fragment.SettingViewModel
+import co.kr.dgsw.searchvoca.viewmodel.fragment.WordBottomSheetViewModel
 import org.koin.android.ext.koin.androidContext
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
@@ -37,4 +38,5 @@ val viewModelModule = module {
     viewModel { HomeViewModel(get(), get()) }
     viewModel { SettingViewModel() }
     viewModel { SearchResultViewModel(get()) }
+    viewModel { WordBottomSheetViewModel(get()) }
 }

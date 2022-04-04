@@ -1,21 +1,24 @@
 package co.kr.dgsw.searchvoca.view.fragment
 
+import android.util.Log
 import android.view.View
 import android.widget.AdapterView
-import co.kr.dgsw.searchvoca.R
 import co.kr.dgsw.searchvoca.base.BaseFragment
 import co.kr.dgsw.searchvoca.databinding.FragmentHomeBinding
 import co.kr.dgsw.searchvoca.view.activity.AddWordActivity
+import co.kr.dgsw.searchvoca.view.dialog.WordBottomSheetDialog
 import co.kr.dgsw.searchvoca.viewmodel.fragment.HomeViewModel
+import co.kr.dgsw.searchvoca.viewmodel.fragment.WordBottomSheetViewModel
 import co.kr.dgsw.searchvoca.widget.SpinnerAdapter
 import co.kr.dgsw.searchvoca.widget.extension.startActivity
 import co.kr.dgsw.searchvoca.widget.livedata.EventObserver
 import co.kr.dgsw.searchvoca.widget.recyclerview.adapter.WordAdapter
-import co.kr.dgsw.searchvoca.widget.recyclerview.decoration.CustomDecoration
+import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>() {
     override val viewModel by viewModel<HomeViewModel>()
+    private val wordBottomSheetViewModel by sharedViewModel<WordBottomSheetViewModel>()
 
     private val wordAdapter = WordAdapter()
     private lateinit var spinnerAdapter: SpinnerAdapter
@@ -28,14 +31,11 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>() {
             SpinnerAdapter(requireContext(), android.R.layout.simple_spinner_dropdown_item)
 
         wordAdapter.onLongClickWordListener = listener@{
-            // todo 삭제, 수정 다이얼로그
+            WordBottomSheetDialog(it).show(parentFragmentManager, WordBottomSheetDialog.TAG)
             return@listener true
         }
 
-        binding.rvHome.apply {
-            addItemDecoration(CustomDecoration(1.0f, requireContext().getColor(R.color.gray3)))
-            adapter = wordAdapter
-        }
+        binding.rvHome.adapter = wordAdapter
 
         binding.spinnerHome.apply {
             adapter = spinnerAdapter
@@ -70,6 +70,10 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>() {
             wordsByVoca.observe(this@HomeFragment, EventObserver {
                 wordAdapter.setList(it)
             })
+        }
+
+        wordBottomSheetViewModel.deleteEvent.observe(this) {
+            viewModel.getAllWords()
         }
     }
 

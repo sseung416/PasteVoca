@@ -4,6 +4,7 @@ import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.ForeignKey
 import androidx.room.PrimaryKey
+import java.io.Serializable
 
 @Entity(
     tableName = "word",
@@ -18,8 +19,8 @@ data class Word(
     val word: String,
     val meaning: String,
     val type: Int = EASY,
-    @PrimaryKey(autoGenerate = true) val id: Int? = null
-) {
+    @PrimaryKey(autoGenerate = true) var id: Int? = null
+) : Serializable {
     companion object {
         const val DIFFICULT = 1
         const val MIDDLE = 2
