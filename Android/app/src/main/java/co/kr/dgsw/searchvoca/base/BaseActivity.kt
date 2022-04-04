@@ -37,6 +37,11 @@ abstract class BaseActivity<B: ViewDataBinding, VM: ViewModel> : AppCompatActivi
         binding.executePendingBindings()
     }
 
+    override fun finish() {
+        super.finish()
+        overridePendingTransition(0, 0)
+    }
+
     @LayoutRes
     private fun getLayoutRes(): Int {
         val split = ((Objects.requireNonNull(javaClass.genericSuperclass) as ParameterizedType).actualTypeArguments[0] as Class<*>)
