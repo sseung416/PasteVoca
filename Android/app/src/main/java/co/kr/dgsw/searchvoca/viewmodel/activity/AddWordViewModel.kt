@@ -24,6 +24,12 @@ class AddWordViewModel(
         }
     }
 
+    fun updateWord(word: Word) {
+        viewModelScope.launch {
+            wordRepository.update(word)
+        }
+    }
+
     fun getSearchData(keyword: String) {
         viewModelScope.launch {
             val response = searchRepository.getSearchData(keyword).res

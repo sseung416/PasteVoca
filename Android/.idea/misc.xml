@@ -3,11 +3,13 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="app/src/main/res/drawable/background_bottomsheet.xml" value="0.194" />
         <entry key="app/src/main/res/drawable/ic_search.xml" value="0.2095" />
         <entry key="app/src/main/res/layout/activity_add_word.xml" value="0.2028985507246377" />
         <entry key="app/src/main/res/layout/activity_clipboard_dialog.xml" value="0.47433166503906254" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.2028985507246377" />
         <entry key="app/src/main/res/layout/activity_search_result_dialog.xml" value="0.192481884057971" />
+        <entry key="app/src/main/res/layout/dialog_bottom_sheet_word.xml" value="0.20892424652541897" />
         <entry key="app/src/main/res/layout/fragment_home.xml" value="0.1" />
         <entry key="app/src/main/res/layout/fragment_search_result_dialog2.xml" value="0.2028985507246377" />
         <entry key="app/src/main/res/layout/fragment_setting.xml" value="0.2028985507246377" />

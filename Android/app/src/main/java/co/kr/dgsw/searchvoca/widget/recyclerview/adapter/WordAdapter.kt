@@ -11,7 +11,7 @@ import co.kr.dgsw.searchvoca.repository.model.dto.Word
 
 class WordAdapter : RecyclerView.Adapter<WordAdapter.ViewHolder>() {
     private val list = arrayListOf<Word>()
-    var onLongClickWordListener: (() -> Boolean)? = null
+    var onLongClickWordListener: ((Word) -> Boolean)? = null
 
     inner class ViewHolder(
         private val binding: LayoutWordBinding
@@ -24,7 +24,7 @@ class WordAdapter : RecyclerView.Adapter<WordAdapter.ViewHolder>() {
             }
 
             binding.tvWord.setOnLongClickListener {
-                onLongClickWordListener?.invoke()!!
+                onLongClickWordListener?.invoke(item)!!
             }
 
             binding.data = item

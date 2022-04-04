@@ -16,13 +16,17 @@ import co.kr.dgsw.searchvoca.viewmodel.activity.AddWordViewModel
 import co.kr.dgsw.searchvoca.widget.livedata.EventObserver
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-class AddWordActivity : BaseActivity<ActivityAddWordBinding, AddWordViewModel>(), SearchResultDialog2.OnWordSelectedListener {
+class AddWordActivity : BaseActivity<ActivityAddWordBinding, AddWordViewModel>(),
+    SearchResultDialog2.OnWordSelectedListener {
     override val viewModel by viewModel<AddWordViewModel>()
 
     private var vocabulary: VocabularyName? = null
 
     @SuppressLint("ClickableViewAccessibility")
     override fun init() {
+        val intentData = intent.getSerializableExtra("word") as? Word
+        initWordData(intentData)
+
         val getResult =
             registerForActivityResult(ActivityResultContracts.StartActivityForResult()) {
                 if (it.resultCode == RESULT_OK) {
@@ -41,9 +45,13 @@ class AddWordActivity : BaseActivity<ActivityAddWordBinding, AddWordViewModel>()
                 if (msg != null) {
                     Toast.makeText(this@AddWordActivity, msg, Toast.LENGTH_SHORT).show()
                 } else {
-                    viewModel.insertWord(
-                        Word(vocabulary?.id ?: 1, et1Add.text.toString(), et2Add.text.toString())
-                    )
+                    val word = Word(vocabulary?.id ?: 1, et1Add.text.toString(), et2Add.text.toString())
+                    if (isInsertType()) {
+                        viewModel.insertWord(word)
+                    } else {
+                        word.id = intentData!!.id
+                        viewModel.updateWord(word)
+                    }
                     finish()
                 }
             }
@@ -98,6 +106,18 @@ class AddWordActivity : BaseActivity<ActivityAddWordBinding, AddWordViewModel>()
             }
         }
 
+    private fun isInsertType(): Boolean = intent.getSerializableExtra("word") == null
+
+    private fun initWordData(word: Word?) {
+        if (word != null) {
+            binding.layoutAddWord.apply {
+                et1Add.setText(word.word)
+                et2Add.setText(word.meaning)
+
+            }
+        }
+    }
+
     override fun onAttachFragment(fragment: Fragment) {
         if (fragment is SearchResultDialog2) {
             fragment.setOnWordSelectedListener(this)
@@ -107,4 +127,6 @@ class AddWordActivity : BaseActivity<ActivityAddWordBinding, AddWordViewModel>()
     override fun onWordSelected(definition: String) {
         binding.layoutAddWord.et2Add.setText(definition)
     }
+
+
 }
