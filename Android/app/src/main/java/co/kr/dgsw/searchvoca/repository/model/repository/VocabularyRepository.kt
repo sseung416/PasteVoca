@@ -1,6 +1,5 @@
 package co.kr.dgsw.searchvoca.repository.model.repository
 
-import co.kr.dgsw.searchvoca.base.BaseRepository
 import co.kr.dgsw.searchvoca.repository.model.dao.VocabularyDao
 import co.kr.dgsw.searchvoca.repository.model.dto.Vocabulary
 
