@@ -1,4 +1,4 @@
-package co.kr.dgsw.searchvoca.widget
+package co.kr.dgsw.searchvoca.widget.view.adapter
 
 import android.content.Context
 import android.widget.ArrayAdapter

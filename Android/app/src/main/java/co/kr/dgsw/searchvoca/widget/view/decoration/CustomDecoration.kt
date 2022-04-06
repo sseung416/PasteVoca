@@ -1,4 +1,4 @@
-package co.kr.dgsw.searchvoca.widget.recyclerview.decoration
+package co.kr.dgsw.searchvoca.widget.view.decoration
 
 import android.graphics.Canvas
 import android.graphics.Paint

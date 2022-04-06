@@ -1,4 +1,4 @@
-package co.kr.dgsw.searchvoca.widget.recyclerview.adapter
+package co.kr.dgsw.searchvoca.widget.view.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup

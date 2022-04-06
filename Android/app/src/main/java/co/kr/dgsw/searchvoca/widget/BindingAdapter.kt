@@ -6,7 +6,7 @@ import androidx.annotation.ColorInt
 import androidx.databinding.BindingAdapter
 import androidx.recyclerview.widget.RecyclerView
 import co.kr.dgsw.searchvoca.R
-import co.kr.dgsw.searchvoca.widget.recyclerview.decoration.CustomDecoration
+import co.kr.dgsw.searchvoca.widget.view.decoration.CustomDecoration
 
 @BindingAdapter(
     value = ["dividerHeight", "dividerColor"],
