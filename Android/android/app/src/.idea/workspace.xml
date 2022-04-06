@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="NONE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="038bdf76-ab7c-4016-9f98-175f901aa692" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/../../../.idea/libraries/Gradle__com_google_android_material_material_1_6_0_beta01_aar.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../.idea/compiler.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../.idea/jarRepositories.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../app/src/main/java/co/kr/dgsw/searchvoca/view/activity/ChooseLanguageActivity.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../app/src/main/java/co/kr/dgsw/searchvoca/viewmodel/activity/ChooseLanguageViewModel.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../app/src/main/java/co/kr/dgsw/searchvoca/widget/cardstackview/CardStackLayoutManager.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../app/src/main/java/co/kr/dgsw/searchvoca/widget/cardstackview/CardStackListener.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../app/src/main/java/co/kr/dgsw/searchvoca/widget/cardstackview/CardStackView.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../app/src/main/java/co/kr/dgsw/searchvoca/widget/recyclerview/adapter/WordCardAdapter.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../app/src/main/java/co/kr/dgsw/searchvoca/widget/recyclerview/decoration/StackTransformer.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../app/src/main/res/layout/activity_choose_language.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../.idea/libraries/Gradle__com_google_android_material_material_1_5_0_aar.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/../build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../settings.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/../../settings.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/../../../app/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../../app/src/main/AndroidManifest.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../app/src/main/java/co/kr/dgsw/searchvoca/di/AppModule.kt" beforeDir="false" afterPath="$PROJECT_DIR$/../../../app/src/main/java/co/kr/dgsw/searchvoca/di/AppModule.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../app/src/main/java/co/kr/dgsw/searchvoca/view/activity/AddVocabularyActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/../../../app/src/main/java/co/kr/dgsw/searchvoca/view/activity/AddVocabularyActivity.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../app/src/main/java/co/kr/dgsw/searchvoca/view/activity/WordCheckActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/../../../app/src/main/java/co/kr/dgsw/searchvoca/view/activity/WordCheckActivity.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../app/src/main/java/co/kr/dgsw/searchvoca/view/dialog/ClipboardDialog.kt" beforeDir="false" afterPath="$PROJECT_DIR$/../../../app/src/main/java/co/kr/dgsw/searchvoca/view/dialog/SearchWordDialog.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../app/src/main/java/co/kr/dgsw/searchvoca/view/fragment/SettingFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/../../../app/src/main/java/co/kr/dgsw/searchvoca/view/fragment/SettingFragment.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../app/src/main/java/co/kr/dgsw/searchvoca/view/fragment/WordTestFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/../../../app/src/main/java/co/kr/dgsw/searchvoca/view/fragment/WordTestFragment.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../app/src/main/java/co/kr/dgsw/searchvoca/view/service/FloatingSearchButtonService.kt" beforeDir="false" afterPath="$PROJECT_DIR$/../../../app/src/main/java/co/kr/dgsw/searchvoca/view/service/FloatingSearchButtonService.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../app/src/main/java/co/kr/dgsw/searchvoca/view/service/FloatingSearchResultService.kt" beforeDir="false" afterPath="$PROJECT_DIR$/../../../app/src/main/java/co/kr/dgsw/searchvoca/view/service/FloatingSearchResultService.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../app/src/main/java/co/kr/dgsw/searchvoca/view/service/FloatingService.kt" beforeDir="false" afterPath="$PROJECT_DIR$/../../../app/src/main/java/co/kr/dgsw/searchvoca/view/service/FloatingService.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../app/src/main/java/co/kr/dgsw/searchvoca/view/widget/WidgetProvider.kt" beforeDir="false" afterPath="$PROJECT_DIR$/../../../app/src/main/java/co/kr/dgsw/searchvoca/view/widget/WidgetProvider.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../app/src/main/java/co/kr/dgsw/searchvoca/viewmodel/fragment/WordTestViewModel.kt" beforeDir="false" afterPath="$PROJECT_DIR$/../../../app/src/main/java/co/kr/dgsw/searchvoca/viewmodel/fragment/WordTestViewModel.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../app/src/main/res/layout/activity_clipboard_dialog.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../../app/src/main/res/layout/activity_clipboard_dialog.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../app/src/main/res/layout/activity_word_check.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../../app/src/main/res/layout/activity_word_check.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../app/src/main/res/layout/fragment_word_test.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../../app/src/main/res/layout/fragment_word_test.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../app/src/main/res/layout/layout_card.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../../app/src/main/res/layout/layout_word_card.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../app/src/main/res/layout/layout_floating_search.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../../app/src/main/res/layout/layout_floating_search.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../app/src/main/res/layout/layout_floating_search_result.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../../app/src/main/res/layout/layout_floating_search_result.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../app/src/main/res/layout/layout_widget.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../../app/src/main/res/layout/layout_widget.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../Server/src/main/java/co/kr/dgsw/searchvoca/service/PapagoServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../../../Server/src/main/java/co/kr/dgsw/searchvoca/service/PapagoServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../Server/target/classes/co/kr/dgsw/searchvoca/service/DictionaryServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../../../Server/target/classes/co/kr/dgsw/searchvoca/service/DictionaryServiceImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../Server/target/classes/co/kr/dgsw/searchvoca/service/PapagoServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../../../Server/target/classes/co/kr/dgsw/searchvoca/service/PapagoServiceImpl.class" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../../../.." />
+  </component>
+  <component name="ProjectId" id="27PPriDVg0lvpRH8cxE22MHoCNE" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="RunOnceActivity.cidr.known.project.marker" value="true" />
+    <property name="cidr.known.project.marker" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="settings.editor.selected.configurable" value="Errors" />
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="038bdf76-ab7c-4016-9f98-175f901aa692" name="Default Changelist" comment="" />
+      <created>1649218949058</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1649218949058</updated>
+    </task>
+    <servers />
+  </component>
+</project>
