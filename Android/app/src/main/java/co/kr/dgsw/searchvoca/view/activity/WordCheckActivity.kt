@@ -1,27 +1,33 @@
 package co.kr.dgsw.searchvoca.view.activity
 
+import android.view.View
 import android.view.animation.AccelerateInterpolator
+import android.widget.Toast
 import co.kr.dgsw.searchvoca.base.BaseActivity
 import co.kr.dgsw.searchvoca.databinding.ActivityWordCheckBinding
 import co.kr.dgsw.searchvoca.repository.model.dto.VocabularyName
+import co.kr.dgsw.searchvoca.repository.model.dto.Word
 import co.kr.dgsw.searchvoca.viewmodel.activity.WordCheckViewModel
 import co.kr.dgsw.searchvoca.widget.livedata.EventObserver
 import co.kr.dgsw.searchvoca.widget.view.CardStackAdapter
 import co.kr.dgsw.searchvoca.widget.view.adapter.WordCardStackAdapter
-import kr.co.dgsw.cardstackview.CardStackLayoutManager
-import kr.co.dgsw.cardstackview.Direction
-import kr.co.dgsw.cardstackview.Duration
-import kr.co.dgsw.cardstackview.SwipeAnimationSetting
+import kr.co.dgsw.cardstackview.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class WordCheckActivity : BaseActivity<ActivityWordCheckBinding, WordCheckViewModel>(), CardStackAdapter {
     override val viewModel by viewModel<WordCheckViewModel>()
+
     private var vocabulary: VocabularyName? = null
+    private lateinit var words: List<Word>
+
     private val adapter = WordCardStackAdapter()
-    private val manager = CardStackLayoutManager(this)
+    private val manager = CardStackLayoutManager(this, this)
+
+    private var adapterPosition = 0
 
     override fun init() {
         setupButton()
+        setupCardStackView()
 
         vocabulary = intent.getSerializableExtra("vocabulary") as? VocabularyName
         viewModel.getWordsByVocabulary(vocabulary?.id ?: 1)
@@ -36,12 +42,23 @@ class WordCheckActivity : BaseActivity<ActivityWordCheckBinding, WordCheckViewMo
 
     override fun observeViewModel() {
         viewModel.words.observe(this, EventObserver {
+            words = it
             adapter.setList(it)
         })
     }
 
     override fun onCardSwiped(direction: Direction?) {
-        // 대충 뭘할까
+        words[adapterPosition].isCorrect = direction == Direction.Left
+    }
+
+    override fun onCardAppeared(view: View?, position: Int) {
+        adapterPosition = position
+    }
+
+    override fun onCardDisappeared(view: View?, position: Int) {
+        if (adapter.itemCount - 1 == position) {
+            Toast.makeText(this, "끝!", Toast.LENGTH_SHORT).show()
+        }
     }
 
     private fun setupButton() {
@@ -56,6 +73,10 @@ class WordCheckActivity : BaseActivity<ActivityWordCheckBinding, WordCheckViewMo
         binding.btnIncorrectWordCheck.setOnClickListener {
             swipe(Direction.Right)
         }
+    }
+
+    private fun setupCardStackView() {
+        manager.setSwipeableMethod(SwipeableMethod.AutomaticAndManual)
     }
 
     private fun swipe(direction: Direction) {

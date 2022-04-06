@@ -4,4 +4,5 @@
 
     <dimen name="search_dialog_width">300dp</dimen>
     <dimen name="search_dialog_height">400dp</dimen>
+    <dimen name="word_test_cardview_size">180dp</dimen>
 </resources>

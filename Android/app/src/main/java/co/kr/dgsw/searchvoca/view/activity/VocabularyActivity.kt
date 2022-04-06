@@ -6,7 +6,7 @@ import co.kr.dgsw.searchvoca.databinding.ActivityVocabularyBinding
 import co.kr.dgsw.searchvoca.viewmodel.activity.VocabularyViewModel
 import co.kr.dgsw.searchvoca.widget.extension.startActivity
 import co.kr.dgsw.searchvoca.widget.livedata.EventObserver
-import co.kr.dgsw.searchvoca.widget.recyclerview.adapter.VocabularyAdapter
+import co.kr.dgsw.searchvoca.widget.view.adapter.VocabularyAdapter
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class VocabularyActivity : BaseActivity<ActivityVocabularyBinding, VocabularyViewModel>() {

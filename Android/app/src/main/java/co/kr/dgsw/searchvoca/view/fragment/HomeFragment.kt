@@ -1,6 +1,6 @@
 package co.kr.dgsw.searchvoca.view.fragment
 
-import android.util.Log
+import android.R
 import android.view.View
 import android.widget.AdapterView
 import co.kr.dgsw.searchvoca.base.BaseFragment
@@ -9,10 +9,10 @@ import co.kr.dgsw.searchvoca.view.activity.AddWordActivity
 import co.kr.dgsw.searchvoca.view.dialog.WordBottomSheetDialog
 import co.kr.dgsw.searchvoca.viewmodel.fragment.HomeViewModel
 import co.kr.dgsw.searchvoca.viewmodel.fragment.WordBottomSheetViewModel
-import co.kr.dgsw.searchvoca.widget.SpinnerAdapter
+import co.kr.dgsw.searchvoca.widget.view.adapter.SpinnerAdapter
 import co.kr.dgsw.searchvoca.widget.extension.startActivity
 import co.kr.dgsw.searchvoca.widget.livedata.EventObserver
-import co.kr.dgsw.searchvoca.widget.recyclerview.adapter.WordAdapter
+import co.kr.dgsw.searchvoca.widget.view.adapter.WordAdapter
 import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -28,7 +28,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>() {
         viewModel.getAllWords()
 
         spinnerAdapter =
-            SpinnerAdapter(requireContext(), android.R.layout.simple_spinner_dropdown_item)
+            SpinnerAdapter(requireContext(), R.layout.simple_spinner_dropdown_item)
 
         wordAdapter.onLongClickWordListener = listener@{
             WordBottomSheetDialog(it).show(parentFragmentManager, WordBottomSheetDialog.TAG)

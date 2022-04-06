@@ -52,12 +52,11 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/constraintLayout" />
 
-
         <LinearLayout
             android:id="@+id/linearLayout2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="54dp"
+            android:layout_marginBottom="24dp"
             android:orientation="horizontal"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -69,6 +68,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="36dp"
                 android:background="@android:color/transparent"
+                android:elevation="10dp"
                 app:srcCompat="@drawable/ic_rectangle_correct" />
 
             <ImageButton
@@ -77,6 +77,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="36dp"
                 android:background="@android:color/transparent"
+                android:elevation="10dp"
                 app:srcCompat="@drawable/ic_rectangle_incorrect" />
         </LinearLayout>
 
@@ -84,6 +85,8 @@
             android:id="@+id/stack_word_check"
             android:layout_width="0dp"
             android:layout_height="0dp"
+            android:clipToPadding="false"
+            android:padding="20dp"
             app:layout_constraintBottom_toTopOf="@+id/linearLayout2"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
