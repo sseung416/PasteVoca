@@ -6,7 +6,7 @@ import android.view.View.VISIBLE
 import android.view.ViewGroup
 import androidx.core.view.isInvisible
 import androidx.recyclerview.widget.RecyclerView
-import co.kr.dgsw.searchvoca.databinding.LayoutWordBinding
+import co.kr.dgsw.searchvoca.databinding.ItemWordBinding
 import co.kr.dgsw.searchvoca.repository.model.dto.Word
 
 class WordAdapter : RecyclerView.Adapter<WordAdapter.ViewHolder>() {
@@ -14,7 +14,7 @@ class WordAdapter : RecyclerView.Adapter<WordAdapter.ViewHolder>() {
     var onLongClickWordListener: ((Word) -> Boolean)? = null
 
     inner class ViewHolder(
-        private val binding: LayoutWordBinding
+        private val binding: ItemWordBinding
     ) : RecyclerView.ViewHolder(binding.root) {
         fun bind(item: Word) {
             binding.tvWord.setOnClickListener {
@@ -33,7 +33,7 @@ class WordAdapter : RecyclerView.Adapter<WordAdapter.ViewHolder>() {
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder =
-        with(LayoutWordBinding.inflate(LayoutInflater.from(parent.context), parent, false)) {
+        with(ItemWordBinding.inflate(LayoutInflater.from(parent.context), parent, false)) {
             this.root.layoutParams = RecyclerView.LayoutParams(
                 ViewGroup.LayoutParams.MATCH_PARENT,
                 ViewGroup.LayoutParams.WRAP_CONTENT

@@ -2,31 +2,28 @@ package co.kr.dgsw.searchvoca.widget.view.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import android.view.ViewGroup.LayoutParams.MATCH_PARENT
 import androidx.recyclerview.widget.RecyclerView
-import co.kr.dgsw.searchvoca.databinding.LayoutWordCardBinding
+import co.kr.dgsw.searchvoca.databinding.ItemWordCardBinding
 import co.kr.dgsw.searchvoca.repository.model.dto.Word
 
 class WordCardStackAdapter : RecyclerView.Adapter<WordCardStackAdapter.ViewHolder>() {
     private val list = arrayListOf<Word>()
 
-    class ViewHolder(
-        private val binding: LayoutWordCardBinding
+    inner class ViewHolder(
+        private val binding: ItemWordCardBinding
     ) : RecyclerView.ViewHolder(binding.root) {
-        fun bind(word: Word) {
-            binding.data = word
+        fun bind(position: Int) {
+            binding.tvCount.text = "${position + 1}/${list.size}"
+            binding.data = list[position]
             binding.executePendingBindings()
         }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder =
-        with (LayoutWordCardBinding.inflate(LayoutInflater.from(parent.context))) {
-            root.layoutParams = ViewGroup.LayoutParams(MATCH_PARENT, MATCH_PARENT)
-            ViewHolder(this)
-        }
+        ViewHolder(ItemWordCardBinding.inflate(LayoutInflater.from(parent.context)))
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.bind(list[position])
+        holder.bind(position)
     }
 
     override fun getItemCount(): Int = list.size

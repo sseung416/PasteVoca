@@ -3,7 +3,7 @@ package co.kr.dgsw.searchvoca.widget.view.adapter
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import co.kr.dgsw.searchvoca.databinding.LayoutSearchResultBinding
+import co.kr.dgsw.searchvoca.databinding.ItemSearchResultBinding
 
 class SearchWordAdapter(
     private val list: List<String>
@@ -11,7 +11,7 @@ class SearchWordAdapter(
     var onClickMeaningListener: ((String) -> Unit)? = null
 
     inner class ViewHolder(
-        private val binding: LayoutSearchResultBinding
+        private val binding: ItemSearchResultBinding
     ) : RecyclerView.ViewHolder(binding.root) {
         fun bind(meaning: String) {
             binding.tvMeaning.apply {
@@ -24,7 +24,7 @@ class SearchWordAdapter(
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder =
-        ViewHolder(LayoutSearchResultBinding.inflate(LayoutInflater.from(parent.context)))
+        ViewHolder(ItemSearchResultBinding.inflate(LayoutInflater.from(parent.context)))
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.bind(list[position])
