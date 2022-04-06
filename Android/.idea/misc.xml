@@ -4,6 +4,10 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="app/src/main/res/drawable/background_bottomsheet.xml" value="0.194" />
+        <entry key="app/src/main/res/drawable/ic_card.xml" value="0.1975" />
+        <entry key="app/src/main/res/drawable/ic_note.xml" value="0.1975" />
+        <entry key="app/src/main/res/drawable/ic_rectangle_correct.xml" value="0.138" />
+        <entry key="app/src/main/res/drawable/ic_rectangle_incorrect.xml" value="0.138" />
         <entry key="app/src/main/res/drawable/ic_search.xml" value="0.2095" />
         <entry key="app/src/main/res/layout/activity_add_vocabulary.xml" value="0.2028985507246377" />
         <entry key="app/src/main/res/layout/activity_add_word.xml" value="0.2028985507246377" />
@@ -15,8 +19,9 @@
         <entry key="app/src/main/res/layout/dialog_bottom_sheet_word.xml" value="0.20892424652541897" />
         <entry key="app/src/main/res/layout/fragment_home.xml" value="0.1" />
         <entry key="app/src/main/res/layout/fragment_search_result_dialog2.xml" value="0.2028985507246377" />
+        <entry key="app/src/main/res/layout/fragment_select_word.xml" value="0.2105978260869565" />
         <entry key="app/src/main/res/layout/fragment_setting.xml" value="0.2028985507246377" />
-        <entry key="app/src/main/res/layout/fragment_word_test.xml" value="0.2028985507246377" />
+        <entry key="app/src/main/res/layout/fragment_word_test.xml" value="0.3246963500976563" />
         <entry key="app/src/main/res/layout/layout_add.xml" value="0.5307702548262002" />
         <entry key="app/src/main/res/layout/layout_floating.xml" value="0.15070921985815602" />
         <entry key="app/src/main/res/layout/layout_floating_button.xml" value="0.2028985507246377" />
@@ -27,6 +32,8 @@
         <entry key="app/src/main/res/layout/layout_widget.xml" value="0.2028985507246377" />
         <entry key="app/src/main/res/layout/layout_word.xml" value="0.23217951554143715" />
         <entry key="app/src/main/res/layout/layout_word_card.xml" value="0.327850341796875" />
+        <entry key="app/src/main/res/layout/layout_word_test.xml" value="0.4327093373174253" />
+        <entry key="app/src/main/res/layout/layout_word_test_setting_dialog.xml" value="0.2105978260869565" />
       </map>
     </option>
   </component>
