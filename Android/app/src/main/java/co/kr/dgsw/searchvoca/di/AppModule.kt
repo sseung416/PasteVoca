@@ -9,6 +9,7 @@ import co.kr.dgsw.searchvoca.viewmodel.activity.*
 import co.kr.dgsw.searchvoca.viewmodel.fragment.HomeViewModel
 import co.kr.dgsw.searchvoca.viewmodel.fragment.SettingViewModel
 import co.kr.dgsw.searchvoca.viewmodel.fragment.WordBottomSheetViewModel
+import co.kr.dgsw.searchvoca.viewmodel.fragment.WordTestViewModel
 import org.koin.android.ext.koin.androidContext
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
@@ -30,13 +31,19 @@ val repositoryModule = module {
 }
 
 val viewModelModule = module {
+    // activity
     viewModel { MainViewModel(get(), get()) }
     viewModel { AddWordViewModel(get(), get()) }
     viewModel { AddVocabularyViewModel(get()) }
-    viewModel { WordCheckViewModel() }
+    viewModel { WordCheckViewModel(get()) }
     viewModel { VocabularyViewModel(get()) }
+
+    // fragment
     viewModel { HomeViewModel(get(), get()) }
     viewModel { SettingViewModel() }
+    viewModel { WordTestViewModel() }
+
+    // dialog
     viewModel { SearchResultViewModel(get()) }
     viewModel { WordBottomSheetViewModel(get()) }
 }

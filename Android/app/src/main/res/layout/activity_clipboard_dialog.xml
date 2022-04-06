@@ -5,7 +5,7 @@
     android:layout_gravity="bottom"
     android:layout_width="300dp"
     android:layout_height="100dp"
-    tools:context=".view.dialog.ClipboardDialog" >
+    tools:context=".view.dialog.SearchWordDialog" >
 
     <EditText
         android:id="@+id/editTextTextPersonName"
