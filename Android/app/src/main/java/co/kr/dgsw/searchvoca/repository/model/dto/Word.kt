@@ -18,9 +18,11 @@ data class Word(
     @ColumnInfo(name = "voca_id") val vocabularyId: Int,
     val word: String,
     val meaning: String,
-    val type: Int = EASY,
+    var type: Int = EASY,
     @PrimaryKey(autoGenerate = true) var id: Int? = null
 ) : Serializable {
+    var isCorrect = true
+
     companion object {
         const val DIFFICULT = 1
         const val MIDDLE = 2

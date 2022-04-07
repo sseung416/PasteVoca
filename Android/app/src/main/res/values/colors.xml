@@ -11,6 +11,8 @@
     <color name="gray1">#F4F4F4</color>
     <color name="gray2">#F0F0F0</color>
     <color name="gray3">#BBBBBB</color>
+    <color name="type_difficult">#DE937A</color>
+    <color name="type_middle">#F6EF97</color>
 
     <color name="white_alpha50">#8CFFFFFF</color>
 </resources>

@@ -1,22 +1,28 @@
 package co.kr.dgsw.searchvoca.widget.view.adapter
 
+import android.content.Context
 import android.view.LayoutInflater
 import android.view.View.INVISIBLE
 import android.view.View.VISIBLE
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat
 import androidx.core.view.isInvisible
 import androidx.recyclerview.widget.RecyclerView
+import co.kr.dgsw.searchvoca.R
 import co.kr.dgsw.searchvoca.databinding.ItemWordBinding
 import co.kr.dgsw.searchvoca.repository.model.dto.Word
 
 class WordAdapter : RecyclerView.Adapter<WordAdapter.ViewHolder>() {
     private val list = arrayListOf<Word>()
     var onLongClickWordListener: ((Word) -> Boolean)? = null
+    var onClickTypeListener: ((Word) -> Unit)? = null
 
     inner class ViewHolder(
         private val binding: ItemWordBinding
     ) : RecyclerView.ViewHolder(binding.root) {
         fun bind(item: Word) {
+            init(item, binding.root.context)
+
             binding.tvWord.setOnClickListener {
                 binding.tvMeaning.apply {
                     visibility = if (isInvisible) VISIBLE else INVISIBLE
@@ -27,9 +33,49 @@ class WordAdapter : RecyclerView.Adapter<WordAdapter.ViewHolder>() {
                 onLongClickWordListener?.invoke(item)!!
             }
 
+            var selectedType = Word.EASY
+            binding.btnType.setOnClickListener {
+                val (type, resource, color) = when (selectedType) {
+                    Word.EASY -> getMiddleTypeData()
+                    Word.MIDDLE -> getDifficultTypeData()
+                    Word.DIFFICULT -> getEasyTypeData()
+                    else -> getEasyTypeData()
+                }
+
+                selectedType = type
+                item.type = selectedType
+
+                setDifficultyView(it.context, resource, color)
+                onClickTypeListener?.invoke(item)
+            }
+        }
+
+        private fun init(item: Word, context: Context) {
+            val (_, resource, color) = when (item.type) {
+                Word.EASY -> getEasyTypeData()
+                Word.MIDDLE -> getMiddleTypeData()
+                Word.DIFFICULT -> getDifficultTypeData()
+                else -> getEasyTypeData()
+            }
+
+            setDifficultyView(context, resource, color)
             binding.data = item
             binding.executePendingBindings()
         }
+
+        private fun setDifficultyView(context: Context, resource: Int, color: Int) {
+            binding.btnType.setImageResource(resource)
+            binding.viewDifficulty.setBackgroundColor(ContextCompat.getColor(context, color))
+        }
+
+        private fun getEasyTypeData() =
+            Triple(Word.EASY, R.drawable.ic_type_easy, android.R.color.transparent)
+
+        private fun getMiddleTypeData() =
+            Triple(Word.MIDDLE, R.drawable.ic_type_middle, R.color.type_middle)
+
+        private fun getDifficultTypeData() =
+            Triple(Word.DIFFICULT, R.drawable.ic_type_difficult, R.color.type_difficult)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder =

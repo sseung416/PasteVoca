@@ -10,6 +10,7 @@ import co.kr.dgsw.searchvoca.repository.model.dto.Word
 import co.kr.dgsw.searchvoca.repository.model.repository.VocabularyRepository
 import co.kr.dgsw.searchvoca.repository.model.repository.WordRepository
 import co.kr.dgsw.searchvoca.widget.livedata.Event
+import co.kr.dgsw.searchvoca.widget.livedata.SingleLiveEvent
 
 class HomeViewModel(
     private val vocabularyRepository: VocabularyRepository,
@@ -18,6 +19,7 @@ class HomeViewModel(
     val vocabularyNames = MutableLiveData<Event<List<VocabularyName>>>()
     val allWords = MutableLiveData<Event<List<Word>>>()
     val wordsByVoca = MutableLiveData<Event<List<Word>>>()
+    val updateWord = SingleLiveEvent<Unit>()
 
     fun getVocabularyNames() {
         viewModelScope.launch {
@@ -47,7 +49,10 @@ class HomeViewModel(
     }
 
     fun updateWord(word: Word) {
-
+        viewModelScope.launch {
+            wordRepository.update(word)
+            updateWord.call()
+        }
     }
 
     companion object {

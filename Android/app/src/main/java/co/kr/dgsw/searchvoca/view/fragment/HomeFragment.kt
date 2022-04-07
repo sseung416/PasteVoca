@@ -30,12 +30,16 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>() {
         spinnerAdapter =
             SpinnerAdapter(requireContext(), R.layout.simple_spinner_dropdown_item)
 
-        wordAdapter.onLongClickWordListener = listener@{
-            WordBottomSheetDialog(it).show(parentFragmentManager, WordBottomSheetDialog.TAG)
-            return@listener true
-        }
+        binding.rvHome.adapter = wordAdapter.apply {
+            onLongClickWordListener = listener@{
+                WordBottomSheetDialog(it).show(parentFragmentManager, WordBottomSheetDialog.TAG)
+                return@listener true
+            }
 
-        binding.rvHome.adapter = wordAdapter
+            onClickTypeListener = {
+                viewModel.updateWord(it)
+            }
+        }
 
         binding.spinnerHome.apply {
             adapter = spinnerAdapter
