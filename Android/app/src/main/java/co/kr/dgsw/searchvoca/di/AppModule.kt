@@ -10,6 +10,7 @@ import co.kr.dgsw.searchvoca.viewmodel.fragment.HomeViewModel
 import co.kr.dgsw.searchvoca.viewmodel.fragment.SettingViewModel
 import co.kr.dgsw.searchvoca.viewmodel.fragment.WordBottomSheetViewModel
 import co.kr.dgsw.searchvoca.viewmodel.fragment.WordTestViewModel
+import co.kr.dgsw.searchvoca.widget.coroutine.DispatcherProviderImpl
 import org.koin.android.ext.koin.androidContext
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
@@ -30,20 +31,24 @@ val repositoryModule = module {
     single { SearchRepository(get()) }
 }
 
+val dispatcherModule = module {
+    single { DispatcherProviderImpl() }
+}
+
 val viewModelModule = module {
     // activity
-    viewModel { MainViewModel(get(), get()) }
-    viewModel { AddWordViewModel(get(), get()) }
-    viewModel { AddVocabularyViewModel(get()) }
-    viewModel { WordCheckViewModel(get()) }
-    viewModel { VocabularyViewModel(get()) }
+    viewModel { MainViewModel() }
+    viewModel { AddWordViewModel(get(), get(), get()) }
+    viewModel { AddVocabularyViewModel(get(), get()) }
+    viewModel { WordCheckViewModel(get(), get()) }
+    viewModel { VocabularyViewModel(get(), get()) }
 
     // fragment
-    viewModel { HomeViewModel(get(), get()) }
+    viewModel { HomeViewModel(get(), get(), get()) }
     viewModel { SettingViewModel() }
     viewModel { WordTestViewModel() }
 
     // dialog
-    viewModel { SearchResultViewModel(get()) }
-    viewModel { WordBottomSheetViewModel(get()) }
+    viewModel { SearchResultViewModel(get(), get()) }
+    viewModel { WordBottomSheetViewModel(get(), get()) }
 }

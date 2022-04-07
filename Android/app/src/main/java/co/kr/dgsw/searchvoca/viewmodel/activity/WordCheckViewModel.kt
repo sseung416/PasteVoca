@@ -1,22 +1,20 @@
 package co.kr.dgsw.searchvoca.viewmodel.activity
 
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.viewModelScope
 import co.kr.dgsw.searchvoca.base.BaseViewModel
 import co.kr.dgsw.searchvoca.datasource.model.dto.Word
 import co.kr.dgsw.searchvoca.datasource.model.repository.WordRepository
+import co.kr.dgsw.searchvoca.widget.coroutine.DispatcherProviderImpl
 import co.kr.dgsw.searchvoca.widget.livedata.Event
-import kotlinx.coroutines.launch
 
 class WordCheckViewModel(
+    dispatcherProvider: DispatcherProviderImpl,
     private val wordRepository: WordRepository
-) : BaseViewModel() {
+) : BaseViewModel(dispatcherProvider) {
     val words = MutableLiveData<Event<List<Word>>>()
 
-    fun getWordsByVocabulary(vocaId: Int) {
-        viewModelScope.launch {
-            val res = wordRepository.getWordsByVocabulary(vocaId)
-            words.postValue(Event(res))
-        }
+    fun getWordsByVocabulary(vocaId: Int) = onIO {
+        val res = wordRepository.getWordsByVocabulary(vocaId)
+        words.postValue(Event(res))
     }
 }

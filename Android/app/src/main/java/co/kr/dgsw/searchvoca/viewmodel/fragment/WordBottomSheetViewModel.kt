@@ -1,21 +1,19 @@
 package co.kr.dgsw.searchvoca.viewmodel.fragment
 
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.viewModelScope
+import co.kr.dgsw.searchvoca.base.BaseViewModel
 import co.kr.dgsw.searchvoca.datasource.model.dto.Word
 import co.kr.dgsw.searchvoca.datasource.model.repository.WordRepository
+import co.kr.dgsw.searchvoca.widget.coroutine.DispatcherProviderImpl
 import co.kr.dgsw.searchvoca.widget.livedata.SingleLiveEvent
-import kotlinx.coroutines.launch
 
 class WordBottomSheetViewModel(
+    dispatcherProvider: DispatcherProviderImpl,
     private val wordRepository: WordRepository
-) : ViewModel() {
+) : BaseViewModel(dispatcherProvider) {
     val deleteEvent = SingleLiveEvent<Unit>()
 
-    fun deleteWord(word: Word) {
-        viewModelScope.launch {
-            wordRepository.delete(word)
-        }
+    fun deleteWord(word: Word) = onIO {
+        wordRepository.delete(word)
         deleteEvent.call()
     }
 }

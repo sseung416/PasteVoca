@@ -2,25 +2,22 @@ package co.kr.dgsw.searchvoca.viewmodel.activity
 
 import android.util.Log
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.viewModelScope
-import kotlinx.coroutines.launch
 import co.kr.dgsw.searchvoca.base.BaseViewModel
 import co.kr.dgsw.searchvoca.datasource.model.dto.VocabularyName
 import co.kr.dgsw.searchvoca.datasource.model.repository.VocabularyRepository
+import co.kr.dgsw.searchvoca.widget.coroutine.DispatcherProviderImpl
 import co.kr.dgsw.searchvoca.widget.livedata.Event
 
 class VocabularyViewModel(
+    dispatcherProvider: DispatcherProviderImpl,
     private val vocabularyRepository: VocabularyRepository
-) : BaseViewModel() {
+) : BaseViewModel(dispatcherProvider) {
     val vocabularyNames = MutableLiveData<Event<List<VocabularyName>>>()
 
-    fun getVocabularyNames() {
-        viewModelScope.launch {
-            vocabularyRepository.getVocabularyNames().apply {
-                Log.e(TAG, "getVocabularyNames: $this", )
-                vocabularyNames.postValue(Event(this))
-            }
-        }
+    fun getVocabularyNames() = onIO {
+        val res = vocabularyRepository.getVocabularyNames()
+        Log.e(TAG, "getVocabularyNames: $res")
+        vocabularyNames.postValue(Event(res))
     }
 
     companion object {
