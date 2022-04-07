@@ -7,7 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import co.kr.dgsw.searchvoca.R
 import co.kr.dgsw.searchvoca.databinding.DialogBottomSheetWordBinding
-import co.kr.dgsw.searchvoca.repository.model.dto.Word
+import co.kr.dgsw.searchvoca.datasource.model.dto.Word
 import co.kr.dgsw.searchvoca.view.activity.AddWordActivity
 import co.kr.dgsw.searchvoca.viewmodel.fragment.WordBottomSheetViewModel
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment

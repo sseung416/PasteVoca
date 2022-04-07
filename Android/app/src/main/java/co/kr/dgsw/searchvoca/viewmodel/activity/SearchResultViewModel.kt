@@ -3,7 +3,7 @@ package co.kr.dgsw.searchvoca.viewmodel.activity
 import android.util.Log
 import androidx.lifecycle.viewModelScope
 import co.kr.dgsw.searchvoca.base.BaseViewModel
-import co.kr.dgsw.searchvoca.repository.remote.repository.SearchRepository
+import co.kr.dgsw.searchvoca.datasource.remote.repository.SearchRepository
 import kotlinx.coroutines.launch
 
 class SearchResultViewModel(

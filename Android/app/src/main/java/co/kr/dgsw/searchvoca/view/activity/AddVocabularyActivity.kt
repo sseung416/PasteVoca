@@ -3,7 +3,7 @@ package co.kr.dgsw.searchvoca.view.activity
 import android.widget.Toast
 import co.kr.dgsw.searchvoca.base.BaseActivity
 import co.kr.dgsw.searchvoca.databinding.ActivityAddVocabularyBinding
-import co.kr.dgsw.searchvoca.repository.model.dto.Vocabulary
+import co.kr.dgsw.searchvoca.datasource.model.dto.Vocabulary
 import co.kr.dgsw.searchvoca.viewmodel.activity.AddVocabularyViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 

@@ -1,4 +1,4 @@
-package co.kr.dgsw.searchvoca.repository.model
+package co.kr.dgsw.searchvoca.datasource.model
 
 import android.content.Context
 import androidx.room.Database
@@ -6,10 +6,10 @@ import androidx.room.Room
 import androidx.room.RoomDatabase
 import androidx.sqlite.db.SupportSQLiteDatabase
 import kotlinx.coroutines.runBlocking
-import co.kr.dgsw.searchvoca.repository.model.dao.VocabularyDao
-import co.kr.dgsw.searchvoca.repository.model.dao.WordDao
-import co.kr.dgsw.searchvoca.repository.model.dto.Vocabulary
-import co.kr.dgsw.searchvoca.repository.model.dto.Word
+import co.kr.dgsw.searchvoca.datasource.model.dao.VocabularyDao
+import co.kr.dgsw.searchvoca.datasource.model.dao.WordDao
+import co.kr.dgsw.searchvoca.datasource.model.dto.Vocabulary
+import co.kr.dgsw.searchvoca.datasource.model.dto.Word
 import java.util.concurrent.Executors
 
 @Database(entities = [Word::class, Vocabulary::class], version = 1, exportSchema = false)

@@ -5,8 +5,8 @@ import android.view.animation.AccelerateInterpolator
 import android.widget.Toast
 import co.kr.dgsw.searchvoca.base.BaseActivity
 import co.kr.dgsw.searchvoca.databinding.ActivityWordCheckBinding
-import co.kr.dgsw.searchvoca.repository.model.dto.VocabularyName
-import co.kr.dgsw.searchvoca.repository.model.dto.Word
+import co.kr.dgsw.searchvoca.datasource.model.dto.VocabularyName
+import co.kr.dgsw.searchvoca.datasource.model.dto.Word
 import co.kr.dgsw.searchvoca.viewmodel.activity.WordCheckViewModel
 import co.kr.dgsw.searchvoca.widget.livedata.EventObserver
 import co.kr.dgsw.searchvoca.widget.view.CardStackAdapter

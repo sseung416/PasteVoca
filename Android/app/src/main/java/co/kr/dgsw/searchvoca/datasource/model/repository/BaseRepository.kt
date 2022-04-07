@@ -1,4 +1,4 @@
-package co.kr.dgsw.searchvoca.repository.model.repository
+package co.kr.dgsw.searchvoca.datasource.model.repository
 
 abstract class BaseRepository<D, E> {
     protected abstract val dao: D

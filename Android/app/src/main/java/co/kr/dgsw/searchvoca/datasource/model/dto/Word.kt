@@ -1,4 +1,4 @@
-package co.kr.dgsw.searchvoca.repository.model.dto
+package co.kr.dgsw.searchvoca.datasource.model.dto
 
 import androidx.room.ColumnInfo
 import androidx.room.Entity

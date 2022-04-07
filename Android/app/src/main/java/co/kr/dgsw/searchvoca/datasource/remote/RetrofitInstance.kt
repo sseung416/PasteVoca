@@ -1,6 +1,6 @@
-package co.kr.dgsw.searchvoca.repository.remote
+package co.kr.dgsw.searchvoca.datasource.remote
 
-import co.kr.dgsw.searchvoca.repository.remote.dao.SearchService
+import co.kr.dgsw.searchvoca.datasource.remote.dao.SearchService
 import com.google.gson.Gson
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor

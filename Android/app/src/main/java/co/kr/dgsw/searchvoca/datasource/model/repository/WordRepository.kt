@@ -1,7 +1,7 @@
-package co.kr.dgsw.searchvoca.repository.model.repository
+package co.kr.dgsw.searchvoca.datasource.model.repository
 
-import co.kr.dgsw.searchvoca.repository.model.dao.WordDao
-import co.kr.dgsw.searchvoca.repository.model.dto.Word
+import co.kr.dgsw.searchvoca.datasource.model.dao.WordDao
+import co.kr.dgsw.searchvoca.datasource.model.dto.Word
 
 class WordRepository(override val dao: WordDao) : BaseRepository<WordDao, Word>() {
     suspend fun getAllWords() = dao.getAllWords()

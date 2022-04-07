@@ -10,7 +10,7 @@ import androidx.core.view.isInvisible
 import androidx.recyclerview.widget.RecyclerView
 import co.kr.dgsw.searchvoca.R
 import co.kr.dgsw.searchvoca.databinding.ItemWordBinding
-import co.kr.dgsw.searchvoca.repository.model.dto.Word
+import co.kr.dgsw.searchvoca.datasource.model.dto.Word
 
 class WordAdapter : RecyclerView.Adapter<WordAdapter.ViewHolder>() {
     private val list = arrayListOf<Word>()

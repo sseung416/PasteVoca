@@ -1,9 +1,9 @@
-package co.kr.dgsw.searchvoca.repository.model.dao
+package co.kr.dgsw.searchvoca.datasource.model.dao
 
 import androidx.room.Dao
 import androidx.room.Query
 import co.kr.dgsw.searchvoca.base.BaseDao
-import co.kr.dgsw.searchvoca.repository.model.dto.Word
+import co.kr.dgsw.searchvoca.datasource.model.dto.Word
 
 @Dao
 interface WordDao : BaseDao<Word> {

@@ -10,7 +10,7 @@ import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.fragment.app.DialogFragment
 import co.kr.dgsw.searchvoca.databinding.DialogWordTestSettingBinding
-import co.kr.dgsw.searchvoca.repository.model.dto.VocabularyName
+import co.kr.dgsw.searchvoca.datasource.model.dto.VocabularyName
 import co.kr.dgsw.searchvoca.view.activity.VocabularyActivity
 import co.kr.dgsw.searchvoca.view.activity.WordCheckActivity
 

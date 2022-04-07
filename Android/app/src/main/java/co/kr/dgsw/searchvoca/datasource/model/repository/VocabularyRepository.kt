@@ -1,7 +1,7 @@
-package co.kr.dgsw.searchvoca.repository.model.repository
+package co.kr.dgsw.searchvoca.datasource.model.repository
 
-import co.kr.dgsw.searchvoca.repository.model.dao.VocabularyDao
-import co.kr.dgsw.searchvoca.repository.model.dto.Vocabulary
+import co.kr.dgsw.searchvoca.datasource.model.dao.VocabularyDao
+import co.kr.dgsw.searchvoca.datasource.model.dto.Vocabulary
 
 class VocabularyRepository(override val dao: VocabularyDao) : BaseRepository<VocabularyDao, Vocabulary>() {
     suspend fun getVocabularies() = dao.getVocabularies()

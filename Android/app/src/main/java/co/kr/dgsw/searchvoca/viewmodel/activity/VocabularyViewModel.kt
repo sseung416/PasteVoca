@@ -5,8 +5,8 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.launch
 import co.kr.dgsw.searchvoca.base.BaseViewModel
-import co.kr.dgsw.searchvoca.repository.model.dto.VocabularyName
-import co.kr.dgsw.searchvoca.repository.model.repository.VocabularyRepository
+import co.kr.dgsw.searchvoca.datasource.model.dto.VocabularyName
+import co.kr.dgsw.searchvoca.datasource.model.repository.VocabularyRepository
 import co.kr.dgsw.searchvoca.widget.livedata.Event
 
 class VocabularyViewModel(

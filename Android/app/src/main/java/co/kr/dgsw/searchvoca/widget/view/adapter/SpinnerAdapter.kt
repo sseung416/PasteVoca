@@ -2,7 +2,7 @@ package co.kr.dgsw.searchvoca.widget.view.adapter
 
 import android.content.Context
 import android.widget.ArrayAdapter
-import co.kr.dgsw.searchvoca.repository.model.dto.VocabularyName
+import co.kr.dgsw.searchvoca.datasource.model.dto.VocabularyName
 
 class SpinnerAdapter(context: Context, resource: Int, objects: MutableList<String> = arrayListOf())
     : ArrayAdapter<String>(context, resource, objects) {

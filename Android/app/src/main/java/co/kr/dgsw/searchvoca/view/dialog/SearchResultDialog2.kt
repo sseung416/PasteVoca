@@ -7,7 +7,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.DialogFragment
 import co.kr.dgsw.searchvoca.R
 import co.kr.dgsw.searchvoca.databinding.FragmentSearchResultDialog2Binding
-import co.kr.dgsw.searchvoca.widget.recyclerview.adapter.SearchWordAdapter
+import co.kr.dgsw.searchvoca.widget.view.adapter.SearchWordAdapter
 
 class SearchResultDialog2(definitionList: List<String>) : DialogFragment() {
     private lateinit var binding: FragmentSearchResultDialog2Binding

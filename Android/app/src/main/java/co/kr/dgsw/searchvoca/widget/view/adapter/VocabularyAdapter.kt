@@ -4,7 +4,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import co.kr.dgsw.searchvoca.databinding.ItemVocabularyBinding
-import co.kr.dgsw.searchvoca.repository.model.dto.VocabularyName
+import co.kr.dgsw.searchvoca.datasource.model.dto.VocabularyName
 
 class VocabularyAdapter(
     private var selectedPosition: Int

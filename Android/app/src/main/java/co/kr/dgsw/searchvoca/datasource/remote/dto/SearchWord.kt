@@ -1,4 +1,4 @@
-package co.kr.dgsw.searchvoca.repository.remote.dto
+package co.kr.dgsw.searchvoca.datasource.remote.dto
 
 data class SearchWord(
     val word: String,

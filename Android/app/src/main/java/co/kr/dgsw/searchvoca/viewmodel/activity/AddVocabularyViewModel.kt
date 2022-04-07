@@ -3,8 +3,8 @@ package co.kr.dgsw.searchvoca.viewmodel.activity
 import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.launch
 import co.kr.dgsw.searchvoca.base.BaseViewModel
-import co.kr.dgsw.searchvoca.repository.model.dto.Vocabulary
-import co.kr.dgsw.searchvoca.repository.model.repository.VocabularyRepository
+import co.kr.dgsw.searchvoca.datasource.model.dto.Vocabulary
+import co.kr.dgsw.searchvoca.datasource.model.repository.VocabularyRepository
 import co.kr.dgsw.searchvoca.view.data.LayoutAdd
 
 class AddVocabularyViewModel(

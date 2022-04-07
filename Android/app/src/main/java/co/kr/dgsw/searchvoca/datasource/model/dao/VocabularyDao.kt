@@ -1,10 +1,10 @@
-package co.kr.dgsw.searchvoca.repository.model.dao
+package co.kr.dgsw.searchvoca.datasource.model.dao
 
 import androidx.room.Dao
 import androidx.room.Query
 import co.kr.dgsw.searchvoca.base.BaseDao
-import co.kr.dgsw.searchvoca.repository.model.dto.Vocabulary
-import co.kr.dgsw.searchvoca.repository.model.dto.VocabularyName
+import co.kr.dgsw.searchvoca.datasource.model.dto.Vocabulary
+import co.kr.dgsw.searchvoca.datasource.model.dto.VocabularyName
 
 @Dao
 interface VocabularyDao : BaseDao<Vocabulary> {

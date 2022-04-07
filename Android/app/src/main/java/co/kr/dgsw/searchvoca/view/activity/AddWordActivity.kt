@@ -9,8 +9,8 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.fragment.app.Fragment
 import co.kr.dgsw.searchvoca.base.BaseActivity
 import co.kr.dgsw.searchvoca.databinding.ActivityAddWordBinding
-import co.kr.dgsw.searchvoca.repository.model.dto.VocabularyName
-import co.kr.dgsw.searchvoca.repository.model.dto.Word
+import co.kr.dgsw.searchvoca.datasource.model.dto.VocabularyName
+import co.kr.dgsw.searchvoca.datasource.model.dto.Word
 import co.kr.dgsw.searchvoca.view.dialog.SearchResultDialog2
 import co.kr.dgsw.searchvoca.viewmodel.activity.AddWordViewModel
 import co.kr.dgsw.searchvoca.widget.livedata.EventObserver

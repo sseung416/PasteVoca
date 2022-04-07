@@ -1,10 +1,10 @@
 package co.kr.dgsw.searchvoca.di
 
-import co.kr.dgsw.searchvoca.repository.model.AppDatabase
-import co.kr.dgsw.searchvoca.repository.model.repository.VocabularyRepository
-import co.kr.dgsw.searchvoca.repository.model.repository.WordRepository
-import co.kr.dgsw.searchvoca.repository.remote.RetrofitInstance
-import co.kr.dgsw.searchvoca.repository.remote.repository.SearchRepository
+import co.kr.dgsw.searchvoca.datasource.model.AppDatabase
+import co.kr.dgsw.searchvoca.datasource.model.repository.VocabularyRepository
+import co.kr.dgsw.searchvoca.datasource.model.repository.WordRepository
+import co.kr.dgsw.searchvoca.datasource.remote.RetrofitInstance
+import co.kr.dgsw.searchvoca.datasource.remote.repository.SearchRepository
 import co.kr.dgsw.searchvoca.viewmodel.activity.*
 import co.kr.dgsw.searchvoca.viewmodel.fragment.HomeViewModel
 import co.kr.dgsw.searchvoca.viewmodel.fragment.SettingViewModel

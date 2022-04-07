@@ -4,10 +4,10 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.launch
 import co.kr.dgsw.searchvoca.base.BaseViewModel
-import co.kr.dgsw.searchvoca.repository.model.dto.Word
-import co.kr.dgsw.searchvoca.repository.model.repository.WordRepository
-import co.kr.dgsw.searchvoca.repository.remote.dto.SearchWord
-import co.kr.dgsw.searchvoca.repository.remote.repository.SearchRepository
+import co.kr.dgsw.searchvoca.datasource.model.dto.Word
+import co.kr.dgsw.searchvoca.datasource.model.repository.WordRepository
+import co.kr.dgsw.searchvoca.datasource.remote.dto.SearchWord
+import co.kr.dgsw.searchvoca.datasource.remote.repository.SearchRepository
 import co.kr.dgsw.searchvoca.view.data.LayoutAdd
 import co.kr.dgsw.searchvoca.widget.livedata.Event
 
