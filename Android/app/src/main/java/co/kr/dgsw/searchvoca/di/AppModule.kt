@@ -5,6 +5,7 @@ import co.kr.dgsw.searchvoca.datasource.model.repository.VocabularyRepository
 import co.kr.dgsw.searchvoca.datasource.model.repository.WordRepository
 import co.kr.dgsw.searchvoca.datasource.remote.RetrofitInstance
 import co.kr.dgsw.searchvoca.datasource.remote.repository.SearchRepository
+import co.kr.dgsw.searchvoca.view.service.FloatingSearchResultService
 import co.kr.dgsw.searchvoca.viewmodel.activity.*
 import co.kr.dgsw.searchvoca.viewmodel.fragment.HomeViewModel
 import co.kr.dgsw.searchvoca.viewmodel.fragment.SettingViewModel
@@ -21,7 +22,7 @@ val databaseModule = module {
     single { get<AppDatabase>().wordDao() }
 }
 
-val serviceModule = module {
+val apiModule = module {
     single { RetrofitInstance.searchService }
 }
 

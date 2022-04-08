@@ -10,8 +10,8 @@ class App : Application() {
         startKoin {
             androidContext(applicationContext)
             modules(
+                apiModule,
                 databaseModule,
-                serviceModule,
                 dispatcherModule,
                 repositoryModule,
                 viewModelModule

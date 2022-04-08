@@ -25,7 +25,7 @@ class SettingFragment : BaseFragment<FragmentSettingBinding, SettingViewModel>()
         }
 
     override fun init() {
-        binding.switchSetting.setOnCheckedChangeListener { compoundButton, isChecked ->
+        binding.switchSetting.setOnCheckedChangeListener { _, isChecked ->
             if (isChecked) {
                 if (checkedOverlayPermission()) {
                     showDialog()
@@ -41,12 +41,11 @@ class SettingFragment : BaseFragment<FragmentSettingBinding, SettingViewModel>()
     override fun observeViewModel() {}
 
     private fun startFloatingService() {
-        requireActivity().startService(Intent(requireContext(), FloatingService::class.java))
+        requireActivity().startService(Intent(requireContext(), FloatingSearchButtonService::class.java))
     }
 
     private fun stopFloatingService() {
-        //todo 이렇게 멈추는 거 맞는지 확인~
-        requireActivity().stopService(Intent(requireContext(), FloatingService::class.java))
+        requireActivity().stopService(Intent(requireContext(), FloatingSearchButtonService::class.java))
     }
 
     private fun showDialog() {

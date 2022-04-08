@@ -32,13 +32,10 @@ class FloatingSearchService : FloatingService() {
             setOnEditorActionListener { _, actionId, _ ->
                 if (actionId == EditorInfo.IME_ACTION_SEARCH) {
                     if (text.trim().isNotBlank()) {
-                        Intent(
-                            this@FloatingSearchService,
-                            FloatingSearchResultService::class.java
-                        ).apply {
-                            putExtra("word", text.toString());
-                            startService(this)
-                        }
+                        val intent = Intent(this@FloatingSearchService, FloatingSearchResultService::class.java)
+                            .putExtra("word", text.toString())
+                        startService(intent)
+                        stopService()
                     }
                 }
                 return@setOnEditorActionListener true
@@ -46,8 +43,7 @@ class FloatingSearchService : FloatingService() {
         }
 
         btnClose.setOnClickListener {
-            stopSelf()
-            removeView()
+            stopService()
         }
     }
 
@@ -55,10 +51,4 @@ class FloatingSearchService : FloatingService() {
         etSearch = viewGroup.findViewById(R.id.et_word_floating_search)
         btnClose = viewGroup.findViewById(R.id.btn_close_floating_search)
     }
-
-//        btnClose.setOnClickListener {
-//            floatWindowLayoutParams2.flags = WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE
-//            windowManager.removeView(floatView2)
-//        }
-
 }
