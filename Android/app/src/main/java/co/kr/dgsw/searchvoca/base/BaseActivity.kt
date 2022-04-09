@@ -1,5 +1,6 @@
 package co.kr.dgsw.searchvoca.base
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.annotation.LayoutRes
 import androidx.appcompat.app.AppCompatActivity
@@ -40,6 +41,11 @@ abstract class BaseActivity<B: ViewDataBinding, VM: ViewModel> : AppCompatActivi
     override fun finish() {
         super.finish()
         overridePendingTransition(0, 0)
+    }
+
+    override fun startActivity(intent: Intent?) {
+        intent?.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION)
+        super.startActivity(intent)
     }
 
     @LayoutRes
