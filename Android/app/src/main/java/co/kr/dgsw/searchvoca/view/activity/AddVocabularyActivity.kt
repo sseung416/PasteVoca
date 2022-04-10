@@ -26,6 +26,11 @@ class AddVocabularyActivity : BaseActivity<ActivityAddVocabularyBinding, AddVoca
                     finish()
                 }
             }
+
+            et3Add.setOnTouchListener { _, _ ->
+
+                return@setOnTouchListener true
+            }
         }
     }
 

@@ -13,4 +13,8 @@
     <string name="title_activity_flaoting">FlaotingActivity</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="correct">정답</string>
+    <string name="wrong">오답</string>
+    <string name="all">전체</string>
+    <string name="retry">다시하기</string>
 </resources>

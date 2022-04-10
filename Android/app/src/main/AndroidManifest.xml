@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="co.kr.dgsw.searchvoca" >
+    package="co.kr.dgsw.searchvoca">
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
@@ -13,7 +13,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.PastVoca"
-        android:usesCleartextTraffic="true" >
+        android:usesCleartextTraffic="true">
+        <activity
+            android:name=".view.activity.CorrectionsActivity"
+            android:exported="false" />
         <activity
             android:name=".view.activity.ChooseLanguageActivity"
             android:exported="false" />
@@ -33,7 +36,7 @@
 
         <activity
             android:name=".view.activity.PermissionActivity"
-            android:exported="true" >
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -63,9 +66,7 @@
             android:exported="false" />
         <activity
             android:name=".view.activity.MainActivity"
-            android:exported="true">
-
-        </activity>
+            android:exported="true"></activity>
     </application>
 
 </manifest>

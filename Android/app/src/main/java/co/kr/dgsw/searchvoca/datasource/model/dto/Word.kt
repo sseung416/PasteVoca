@@ -21,7 +21,7 @@ data class Word(
     var type: Int = EASY,
     @PrimaryKey(autoGenerate = true) var id: Int? = null
 ) : Serializable {
-    var isCorrect = true
+    var isCorrect: Boolean = false
 
     companion object {
         const val DIFFICULT = 1

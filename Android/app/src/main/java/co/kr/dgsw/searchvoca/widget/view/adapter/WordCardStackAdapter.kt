@@ -8,6 +8,7 @@ import co.kr.dgsw.searchvoca.datasource.model.dto.Word
 
 class WordCardStackAdapter : RecyclerView.Adapter<WordCardStackAdapter.ViewHolder>() {
     private val list = arrayListOf<Word>()
+    private var adapterPosition = -1
 
     inner class ViewHolder(
         private val binding: ItemWordCardBinding
@@ -33,4 +34,12 @@ class WordCardStackAdapter : RecyclerView.Adapter<WordCardStackAdapter.ViewHolde
         this.list.addAll(list)
         notifyDataSetChanged()
     }
+
+    fun getList() = list
+
+    fun setCorrect(boolean: Boolean) {
+        list[getAdapterPosition()].isCorrect = boolean
+    }
+
+    private fun getAdapterPosition() = ++adapterPosition
 }

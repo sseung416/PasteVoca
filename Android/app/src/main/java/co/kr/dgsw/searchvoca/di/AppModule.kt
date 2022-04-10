@@ -43,6 +43,7 @@ val viewModelModule = module {
     viewModel { AddVocabularyViewModel(get(), get()) }
     viewModel { WordCheckViewModel(get(), get()) }
     viewModel { VocabularyViewModel(get(), get()) }
+    viewModel { CorrectionsViewModel(get()) }
 
     // fragment
     viewModel { HomeViewModel(get(), get(), get()) }
