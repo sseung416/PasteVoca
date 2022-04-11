@@ -5,7 +5,9 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.ViewGroup.LayoutParams.WRAP_CONTENT
 import androidx.fragment.app.DialogFragment
+import co.kr.dgsw.searchvoca.R
 import co.kr.dgsw.searchvoca.databinding.DialogWordTestBinding
 import co.kr.dgsw.searchvoca.view.activity.WordCheckActivity
 import co.kr.dgsw.searchvoca.viewmodel.activity.CorrectionsViewModel
@@ -35,6 +37,13 @@ class WordTestDialog : DialogFragment() {
                 .addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION)
                 .putExtra("list", list)
             requireActivity().startActivity(intent)
+            dismiss()
         }
+    }
+
+    override fun onResume() {
+        super.onResume()
+        val width = resources.getDimensionPixelSize(R.dimen.dialog_word_test_width)
+        dialog?.window?.setLayout(width, WRAP_CONTENT)
     }
 }

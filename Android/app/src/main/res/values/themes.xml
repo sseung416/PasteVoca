@@ -15,6 +15,7 @@
         <!-- Customize your theme here. -->
     </style>
 
+    <!--  TextView  -->
     <style name="BoldTextView" parent="Widget.AppCompat.TextView">
         <item name="android:textColor">@color/black</item>
         <item name="android:textSize">16sp</item>
@@ -41,6 +42,7 @@
         <item name="android:textSize">12sp</item>
     </style>
 
+    <!--  EditText  -->
     <style name="AddEditText" parent="Widget.AppCompat.EditText">
         <item name="android:textColor">@color/black</item>
         <item name="android:textSize">14sp</item>
@@ -49,6 +51,18 @@
         <item name="android:includeFontPadding">true</item>
         <item name="android:paddingBottom">16dp</item>
         <item name="android:paddingHorizontal" tools:targetApi="o">16dp</item>
+    </style>
+
+    <style name="WordTestSettingEditText" parent="Widget.AppCompat.EditText">
+        <item name="android:textSize">16sp</item>
+        <item name="android:focusable">true</item>
+        <item name="android:clickable">true</item>
+        <item name="android:drawableEnd">@drawable/ic_arrow_right</item>
+        <item name="android:drawablePadding">16dp</item>
+        <item name="android:minHeight">48dp</item>
+        <item name="android:minWidth">48dp</item>
+        <item name="android:background">@null</item>
+        <item name="android:layout_marginEnd">16dp</item>
     </style>
 
     <style name="Theme.PastVoca.NoActionBar">
@@ -70,5 +84,5 @@
         <item name="bottomSheetStyle">@style/BottomSheet</item>
     </style>
 
-    <style name="BottomSheetDialogTheme" parent="BaseBottomSheetDialog"/>
+    <style name="BottomSheetDialogTheme" parent="BaseBottomSheetDialog" />
 </resources>
