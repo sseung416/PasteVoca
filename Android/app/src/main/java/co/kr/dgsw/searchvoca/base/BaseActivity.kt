@@ -2,23 +2,14 @@ package co.kr.dgsw.searchvoca.base
 
 import android.content.Intent
 import android.os.Bundle
-import androidx.annotation.LayoutRes
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import androidx.lifecycle.ViewModel
 import co.kr.dgsw.searchvoca.BR
-import co.kr.dgsw.searchvoca.R
-import java.lang.StringBuilder
-import java.lang.reflect.ParameterizedType
-import java.util.*
 
-abstract class BaseActivity<B: ViewDataBinding, VM: ViewModel> : AppCompatActivity() {
-    protected lateinit var binding: B
-    abstract val viewModel: VM
-
-    protected abstract fun init()
-    protected abstract fun observeViewModel()
+abstract class BaseActivity<B: ViewDataBinding, VM: ViewModel> : AppCompatActivity(), Base<B, VM> {
+    override lateinit var binding: B
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -32,12 +23,6 @@ abstract class BaseActivity<B: ViewDataBinding, VM: ViewModel> : AppCompatActivi
         binding.unbind()
     }
 
-    private fun performDataBinding() {
-        binding = DataBindingUtil.setContentView(this, getLayoutRes())
-        binding.setVariable(BR.vm, viewModel)
-        binding.executePendingBindings()
-    }
-
     override fun finish() {
         super.finish()
         overridePendingTransition(0, 0)
@@ -48,20 +33,13 @@ abstract class BaseActivity<B: ViewDataBinding, VM: ViewModel> : AppCompatActivi
         super.startActivity(intent)
     }
 
-    @LayoutRes
-    private fun getLayoutRes(): Int {
-        val split = ((Objects.requireNonNull(javaClass.genericSuperclass) as ParameterizedType).actualTypeArguments[0] as Class<*>)
-            .simpleName.replace("Binding$".toRegex(), "")
-            .split("(?<=.)(?=\\p{Upper})".toRegex())
-            .dropLastWhile { it.isEmpty() }.toTypedArray()
+    override fun observeViewModel() {}
 
-        return with (StringBuilder()) {
-            for (i in split.indices) {
-                append(split[i].lowercase(Locale.ROOT))
-                if (i != split.lastIndex) append("_")
-            }
-
-            R.layout::class.java.getField(this.toString()).getInt(R.layout::class.java)
+    private fun performDataBinding() {
+        binding = DataBindingUtil.setContentView<B>(this, getLayoutRes()).apply {
+            lifecycleOwner = this@BaseActivity
+            setVariable(BR.vm, viewModel)
+            executePendingBindings()
         }
     }
 }
