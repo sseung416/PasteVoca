@@ -1,27 +1,23 @@
 package co.kr.dgsw.searchvoca.view.fragment
 
-import android.R
-import android.view.View
-import android.widget.AdapterView
 import co.kr.dgsw.searchvoca.base.BaseFragment
 import co.kr.dgsw.searchvoca.databinding.FragmentHomeBinding
+import co.kr.dgsw.searchvoca.datasource.model.dto.VocabularyName
 import co.kr.dgsw.searchvoca.view.activity.AddWordActivity
+import co.kr.dgsw.searchvoca.view.dialog.VocabularyBottomSheetDialog
 import co.kr.dgsw.searchvoca.view.dialog.WordBottomSheetDialog
 import co.kr.dgsw.searchvoca.viewmodel.fragment.HomeViewModel
 import co.kr.dgsw.searchvoca.viewmodel.fragment.WordBottomSheetViewModel
-import co.kr.dgsw.searchvoca.widget.view.adapter.SpinnerAdapter
 import co.kr.dgsw.searchvoca.widget.extension.startActivity
 import co.kr.dgsw.searchvoca.widget.livedata.EventObserver
 import co.kr.dgsw.searchvoca.widget.view.adapter.WordAdapter
 import org.koin.androidx.viewmodel.ext.android.sharedViewModel
-import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>() {
-    override val viewModel by viewModel<HomeViewModel>()
+    override val viewModel by sharedViewModel<HomeViewModel>()
     private val wordBottomSheetViewModel by sharedViewModel<WordBottomSheetViewModel>()
 
     private val wordAdapter = WordAdapter()
-    private lateinit var spinnerAdapter: SpinnerAdapter
 
     override fun init() {
         viewModel.getVocabularyNames()
@@ -29,27 +25,13 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>() {
 
         setupRecyclerView()
         setupButton()
-
-        binding.spinnerHome.apply {
-            adapter = spinnerAdapter
-            onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
-                override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
-                    when (val id = spinnerAdapter.getVocabularyId(position)) {
-                        null -> viewModel.getAllWords()
-                        else -> viewModel.getWordsByVocabulary(id)
-                    }
-                }
-
-                override fun onNothingSelected(p0: AdapterView<*>?) {}
-            }
-        }
     }
 
     override fun observeViewModel() {
         viewModel.apply {
-            vocabularyNames.observe(this@HomeFragment, EventObserver {
-                spinnerAdapter.clear()
-                spinnerAdapter.addAll(it)
+            vocabularyId.observe(this@HomeFragment, EventObserver {
+                if (it == null) getAllWords()
+                else getWordsByVocabulary(it)
             })
 
             allWords.observe(this@HomeFragment, EventObserver {
@@ -72,9 +54,6 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>() {
     }
 
     private fun setupRecyclerView() {
-        spinnerAdapter =
-            SpinnerAdapter(requireContext(), R.layout.simple_spinner_dropdown_item)
-
         binding.rvHome.adapter = wordAdapter.apply {
             onLongClickWordListener = listener@{
                 WordBottomSheetDialog(it).show(parentFragmentManager, WordBottomSheetDialog.TAG)
@@ -90,6 +69,15 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>() {
     private fun setupButton() {
         binding.btnAddWordHome.setOnClickListener {
             requireActivity().startActivity(AddWordActivity::class.java)
+        }
+
+        binding.layoutSpinner.setOnClickListener {
+            val list = arrayListOf<VocabularyName>()
+            val vocabularyNames = viewModel.vocabularyNames.value?.peekContent() ?: listOf()
+
+            list.add(VocabularyName(null, "전체"))
+            list.addAll(vocabularyNames)
+            VocabularyBottomSheetDialog(list).show(parentFragmentManager, "")
         }
     }
 }

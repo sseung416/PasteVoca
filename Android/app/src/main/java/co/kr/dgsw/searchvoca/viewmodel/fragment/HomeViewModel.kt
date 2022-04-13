@@ -18,6 +18,8 @@ class HomeViewModel(
     val allWords = MutableLiveData<Event<List<Word>>>()
     val wordsByVoca = MutableLiveData<Event<List<Word>>>()
 
+    val vocabularyId = MutableLiveData<Event<Int?>>()
+
     fun getVocabularyNames() = onIO {
         val res = vocabularyRepository.getVocabularyNames()
         vocabularyNames.postValue(Event(res))

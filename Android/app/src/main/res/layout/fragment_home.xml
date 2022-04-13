@@ -19,13 +19,29 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 
-            <Spinner
-                android:id="@+id/spinner_home"
+            <LinearLayout
+                android:id="@+id/layout_spinner"
+                android:clickable="true"
+                android:focusable="true"
+                android:minHeight="48dp"
+                android:minWidth="48dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background="@drawable/selector_spinner_icon"
-                android:minHeight="48dp"
-                android:spinnerMode="dropdown" />
+                android:gravity="center">
+
+                <TextView
+                    android:id="@+id/tv_voca"
+                    style="@style/BigTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/all" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:src="@drawable/ic_arrow_bottom" />
+            </LinearLayout>
 
             <Space
                 android:layout_width="0dp"
