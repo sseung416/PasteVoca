@@ -1,36 +1,33 @@
 package co.kr.dgsw.searchvoca.view.dialog
 
 import android.content.Intent
-import android.os.Bundle
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
 import co.kr.dgsw.searchvoca.R
+import co.kr.dgsw.searchvoca.base.BaseDialog
 import co.kr.dgsw.searchvoca.databinding.DialogBottomSheetWordBinding
 import co.kr.dgsw.searchvoca.datasource.model.dto.Word
 import co.kr.dgsw.searchvoca.view.activity.AddWordActivity
 import co.kr.dgsw.searchvoca.viewmodel.fragment.WordBottomSheetViewModel
-import com.google.android.material.bottomsheet.BottomSheetDialogFragment
-import org.koin.androidx.viewmodel.ext.android.sharedViewModel
+import org.koin.android.ext.android.inject
 
 class WordBottomSheetDialog(
     private val word: Word
-) : BottomSheetDialogFragment() {
-    private val viewModel by sharedViewModel<WordBottomSheetViewModel>()
-    private lateinit var binding: DialogBottomSheetWordBinding
+) : BaseDialog<DialogBottomSheetWordBinding>() {
+    override val viewModel by inject<WordBottomSheetViewModel>()
 
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        binding = DialogBottomSheetWordBinding.inflate(inflater)
-        return binding.root
+    override fun init() {
+        setupButton()
     }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
+    override fun getViewBinding(
+        inflater: LayoutInflater,
+        container: ViewGroup?
+    ): DialogBottomSheetWordBinding = DialogBottomSheetWordBinding.inflate(inflater)
 
+    override fun getTheme(): Int = R.style.BottomSheetDialogTheme
+
+    private fun setupButton() {
         binding.tvEdit.setOnClickListener {
             val intent = Intent(requireActivity(), AddWordActivity::class.java)
                 .putExtra("word", word)
@@ -44,9 +41,5 @@ class WordBottomSheetDialog(
         }
     }
 
-    override fun getTheme(): Int = R.style.BottomSheetDialogTheme
-
-    companion object {
-        const val TAG = "WordBottomSheetDialog"
-    }
+    companion object { const val TAG = "WordBottomSheetDialog" }
 }

@@ -27,19 +27,8 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>() {
         viewModel.getVocabularyNames()
         viewModel.getAllWords()
 
-        spinnerAdapter =
-            SpinnerAdapter(requireContext(), R.layout.simple_spinner_dropdown_item)
-
-        binding.rvHome.adapter = wordAdapter.apply {
-            onLongClickWordListener = listener@{
-                WordBottomSheetDialog(it).show(parentFragmentManager, WordBottomSheetDialog.TAG)
-                return@listener true
-            }
-
-            onClickTypeListener = {
-                viewModel.updateWord(it)
-            }
-        }
+        setupRecyclerView()
+        setupButton()
 
         binding.spinnerHome.apply {
             adapter = spinnerAdapter
@@ -53,10 +42,6 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>() {
 
                 override fun onNothingSelected(p0: AdapterView<*>?) {}
             }
-        }
-
-        binding.btnAddWordHome.setOnClickListener {
-            requireActivity().startActivity(AddWordActivity::class.java)
         }
     }
 
@@ -84,5 +69,27 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>() {
     override fun onStart() {
         super.onStart()
         viewModel.getAllWords()
+    }
+
+    private fun setupRecyclerView() {
+        spinnerAdapter =
+            SpinnerAdapter(requireContext(), R.layout.simple_spinner_dropdown_item)
+
+        binding.rvHome.adapter = wordAdapter.apply {
+            onLongClickWordListener = listener@{
+                WordBottomSheetDialog(it).show(parentFragmentManager, WordBottomSheetDialog.TAG)
+                return@listener true
+            }
+
+            onClickTypeListener = {
+                viewModel.updateWord(it)
+            }
+        }
+    }
+
+    private fun setupButton() {
+        binding.btnAddWordHome.setOnClickListener {
+            requireActivity().startActivity(AddWordActivity::class.java)
+        }
     }
 }

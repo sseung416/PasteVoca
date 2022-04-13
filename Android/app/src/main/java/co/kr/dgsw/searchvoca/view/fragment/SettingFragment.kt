@@ -38,8 +38,6 @@ class SettingFragment : BaseFragment<FragmentSettingBinding, SettingViewModel>()
         }
     }
 
-    override fun observeViewModel() {}
-
     private fun startFloatingService() {
         requireActivity().startService(Intent(requireContext(), FloatingSearchButtonService::class.java))
     }
@@ -62,5 +60,4 @@ class SettingFragment : BaseFragment<FragmentSettingBinding, SettingViewModel>()
     private fun checkedOverlayPermission() =
         if (Build.VERSION.SDK_INT > Build.VERSION_CODES.M) !Settings.canDrawOverlays(requireContext())
         else false
-
 }

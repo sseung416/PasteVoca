@@ -22,18 +22,13 @@ class WordCheckActivity : BaseActivity<ActivityWordCheckBinding, WordCheckViewMo
     private val manager = CardStackLayoutManager(this, this)
 
     override fun init() {
-        setupButton()
-        setupCardStackView()
-
         vocabulary = intent.getSerializableExtra("vocabulary") as? VocabularyName
         viewModel.getWordsByVocabulary(vocabulary?.id ?: 1)
 
-        binding.tvTitleWordCheck.text = vocabulary?.name
+        setupButton()
+        setupCardStackView()
 
-        binding.stackWordCheck.apply {
-            adapter = this@WordCheckActivity.adapter
-            layoutManager = manager
-        }
+        binding.tvTitleWordCheck.text = vocabulary?.name
     }
 
     override fun observeViewModel() {
@@ -81,5 +76,10 @@ class WordCheckActivity : BaseActivity<ActivityWordCheckBinding, WordCheckViewMo
 
     private fun setupCardStackView() {
         manager.setSwipeableMethod(SwipeableMethod.AutomaticAndManual)
+
+        binding.stackWordCheck.apply {
+            adapter = this@WordCheckActivity.adapter
+            layoutManager = manager
+        }
     }
 }

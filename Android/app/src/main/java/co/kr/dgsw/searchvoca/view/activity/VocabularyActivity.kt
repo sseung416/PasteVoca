@@ -11,7 +11,6 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class VocabularyActivity : BaseActivity<ActivityVocabularyBinding, VocabularyViewModel>() {
     override val viewModel by viewModel<VocabularyViewModel>()
-
     private lateinit var adapter: VocabularyAdapter
 
     override fun onRestart() {
@@ -21,10 +20,19 @@ class VocabularyActivity : BaseActivity<ActivityVocabularyBinding, VocabularyVie
 
     override fun init() {
         viewModel.getVocabularyNames()
-        adapter = VocabularyAdapter(getSelectedPosition())
+        setupButton()
+        setupRecyclerView()
+    }
 
-        binding.rvVoca.adapter = adapter
+    override fun observeViewModel() {
+        viewModel.apply {
+            vocabularyNames.observe(this@VocabularyActivity, EventObserver {
+                adapter.setList(it)
+            })
+        }
+    }
 
+    private fun setupButton() {
         binding.btnAddVoca.setOnClickListener {
             startActivity(AddVocabularyActivity::class.java)
         }
@@ -35,12 +43,9 @@ class VocabularyActivity : BaseActivity<ActivityVocabularyBinding, VocabularyVie
         }
     }
 
-    override fun observeViewModel() {
-        viewModel.apply {
-            vocabularyNames.observe(this@VocabularyActivity, EventObserver {
-                adapter.setList(it)
-            })
-        }
+    private fun setupRecyclerView(){
+        adapter = VocabularyAdapter(getSelectedPosition())
+        binding.rvVoca.adapter = adapter
     }
 
     private fun getSelectedPosition() = intent.getIntExtra("id", 1) - 1

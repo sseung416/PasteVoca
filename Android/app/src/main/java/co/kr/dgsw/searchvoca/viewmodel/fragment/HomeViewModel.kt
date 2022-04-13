@@ -14,7 +14,6 @@ class HomeViewModel(
     private val vocabularyRepository: VocabularyRepository,
     private val wordRepository: WordRepository
 ) : BaseViewModel(dispatcherProvider) {
-
     val vocabularyNames = MutableLiveData<Event<List<VocabularyName>>>()
     val allWords = MutableLiveData<Event<List<Word>>>()
     val wordsByVoca = MutableLiveData<Event<List<Word>>>()
@@ -37,6 +36,4 @@ class HomeViewModel(
     fun updateWord(word: Word) = onIO {
         wordRepository.update(word)
     }
-
-    companion object { private const val TAG = "HomeViewModel" }
 }

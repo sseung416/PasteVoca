@@ -13,8 +13,6 @@ class WordTestFragment : BaseFragment<FragmentWordTestBinding, WordTestViewModel
         setupButton()
     }
 
-    override fun observeViewModel() {}
-
     private fun setupButton() {
         binding.cvWordCard.setOnClickListener {
             WordTestSettingDialog().show(parentFragmentManager, "")

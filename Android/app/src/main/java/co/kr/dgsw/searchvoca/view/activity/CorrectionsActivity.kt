@@ -19,8 +19,6 @@ class CorrectionsActivity : BaseActivity<ActivityCorrectionsBinding, Corrections
         setupButton()
     }
 
-    override fun observeViewModel() {}
-
     private fun setupButton() {
         binding.btnClose.setOnClickListener {
             startActivityWithFinish(MainActivity::class.java)

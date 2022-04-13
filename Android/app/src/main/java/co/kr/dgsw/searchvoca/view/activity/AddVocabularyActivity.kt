@@ -11,6 +11,10 @@ class AddVocabularyActivity : BaseActivity<ActivityAddVocabularyBinding, AddVoca
     override val viewModel by viewModel<AddVocabularyViewModel>()
 
     override fun init() {
+        setupView()
+    }
+
+    private fun setupView() {
         binding.layoutAddVocabulary.apply {
             btnBack.setOnClickListener {
                 finish()
@@ -28,13 +32,10 @@ class AddVocabularyActivity : BaseActivity<ActivityAddVocabularyBinding, AddVoca
             }
 
             et3Add.setOnTouchListener { _, _ ->
-
                 return@setOnTouchListener true
             }
         }
     }
-
-    override fun observeViewModel() {}
 
     private fun getBlankMessage() =
         with (binding.layoutAddVocabulary) {
