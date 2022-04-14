@@ -1,7 +1,7 @@
-package co.kr.dgsw.searchvoca.service;
+package co.kr.dgsw.searchvoca.service.impl;
 
 import co.kr.dgsw.searchvoca.Key;
-import co.kr.dgsw.searchvoca.domain.Word;
+import co.kr.dgsw.searchvoca.service.PapagoService;
 import co.kr.dgsw.searchvoca.service.dto.Response;
 import co.kr.dgsw.searchvoca.service.dto.WordDto;
 import org.json.simple.JSONArray;
@@ -15,9 +15,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.util.UriComponents;
 import org.springframework.web.util.UriComponentsBuilder;
-
-import java.util.ArrayList;
-import java.util.List;
 
 @Service
 public class PapagoServiceImpl implements PapagoService {

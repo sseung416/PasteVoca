@@ -1,6 +1,7 @@
-package co.kr.dgsw.searchvoca.service;
+package co.kr.dgsw.searchvoca.service.impl;
 
 import co.kr.dgsw.searchvoca.Key;
+import co.kr.dgsw.searchvoca.service.DictionaryService;
 import co.kr.dgsw.searchvoca.service.dto.Response;
 import co.kr.dgsw.searchvoca.service.dto.WordDto;
 import com.fasterxml.jackson.core.JsonProcessingException;
@@ -19,13 +20,14 @@ import org.springframework.web.util.UriComponents;
 import org.springframework.web.util.UriComponentsBuilder;
 
 @Service
-public class DictionaryServiceImpl {
+public class DictionaryServiceImpl implements DictionaryService {
     private final RestTemplate restTemplate;
 
     public DictionaryServiceImpl(RestTemplateBuilder restTemplateBuilder) {
         this.restTemplate = restTemplateBuilder.build();
     }
 
+    @Override
     public String getSearchResult(String word) {
         try {
             UriComponents uri = UriComponentsBuilder.fromHttpUrl(Key.DICTIONARY_BASE_URL)
