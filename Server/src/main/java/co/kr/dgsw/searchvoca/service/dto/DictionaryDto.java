@@ -8,6 +8,7 @@ import lombok.ToString;
 @Setter
 @ToString
 public class DictionaryDto {
-    public String word;
-    public Sense sense;
+    private String word;
+
+    private Sense sense;
 }

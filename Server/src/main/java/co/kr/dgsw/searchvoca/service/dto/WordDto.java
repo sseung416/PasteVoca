@@ -10,8 +10,8 @@ import java.util.Map;
 
 @AllArgsConstructor
 public class WordDto {
-    public String word;
-    public String definition;
+    private String word;
+    private String definition;
 
     @Override
     public String toString() {

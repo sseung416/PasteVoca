@@ -8,7 +8,7 @@ import lombok.ToString;
 @Setter
 @ToString
 public class Sense {
-    public String link;
-    public String definition;
-    public String type;
+    private String link;
+    private String definition;
+    private String type;
 }

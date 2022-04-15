@@ -9,9 +9,9 @@ import java.util.Map;
 
 @AllArgsConstructor
 public class Response<T> {
-    public int status;
-    public String message;
-    public T res;
+    private int status;
+    private String message;
+    private T res;
 
     @Override
     public String toString() {

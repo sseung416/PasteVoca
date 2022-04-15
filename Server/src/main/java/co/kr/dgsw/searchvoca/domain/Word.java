@@ -14,13 +14,13 @@ public class Word {
     private static int TYPE_MIDDLE = 2;
     private static int TYPE_EASY = 3;
 
-    public int id;
+    private int id;
 
-    public int vocabularyId;
+    private int vocabularyId;
 
-    public String word;
+    private String word;
 
-    public String meaning;
+    private String meaning;
 
-    public int type = TYPE_EASY;
+    private int type;
 }

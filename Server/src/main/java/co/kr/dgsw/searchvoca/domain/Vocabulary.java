@@ -10,11 +10,11 @@ import lombok.Setter;
 @Getter
 @Setter
 public class Vocabulary {
-    public int id;
+    private int id;
 
-    public String name;
+    private String name;
 
-    public String explanation;
+    private String explanation;
 
-    public String language;
+    private String language;
 }
