@@ -18,3 +18,4 @@ Server/target/classes/co/kr/dgsw/searchvoca/Key.class
 Server/src/main/java/co/kr/dgsw/searchvoca/Key.java
 .idea/*.xml
 .idea/libraries/*.xml
+Server/.idea/libraries/*.xml
