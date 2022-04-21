@@ -8,6 +8,10 @@ class WordRepository(override val dao: WordDao) : BaseRepository<WordDao, Word>(
 
     suspend fun getWordsByVocabulary(vocabularyId: Int) = dao.getWordsByVocabulary(vocabularyId)
 
+    suspend fun updateWordVocabulary(ids: List<Int>, vocabularyId: Int) = dao.updateWordVocabulary(ids, vocabularyId)
+
+    suspend fun delete(ids: List<Int>) = dao.delete(ids)
+
     override suspend fun insert(obj: Word) = dao.insert(obj)
 
     override suspend fun update(obj: Word) = dao.update(obj)

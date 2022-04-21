@@ -12,4 +12,10 @@ interface WordDao : BaseDao<Word> {
 
     @Query("SELECT * FROM word WHERE voca_id = :vocabularyId")
     suspend fun getWordsByVocabulary(vocabularyId: Int): List<Word>
+
+    @Query("UPDATE word SET voca_id = :vocabularyId WHERE id IN(:ids)")
+    suspend fun updateWordVocabulary(ids: List<Int>, vocabularyId: Int)
+
+    @Query("DELETE FROM word WHERE id IN (:ids)")
+    suspend fun delete(ids: List<Int>)
 }
