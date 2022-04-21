@@ -30,9 +30,7 @@ abstract class AppDatabase : RoomDatabase() {
                             Executors.newSingleThreadExecutor().execute {
                                 runBlocking {
                                     getInstance(context).apply {
-                                        vocabularyDao().insert(Vocabulary(name = "미정"))
-                                        wordDao().insert(Word(1, "Click This!", "클릭하면 뜻이 나와요!"))
-                                        wordDao().insert(Word(1, "Long Click This ~", "길게 눌러보세요!"))
+                                        initDatabase(this)
                                     }
                                 }
                             }
@@ -44,6 +42,17 @@ abstract class AppDatabase : RoomDatabase() {
 
         fun destroyInstance() {
             INSTANCE = null
+        }
+
+        private suspend fun initDatabase(appDatabase: AppDatabase) = appDatabase.apply {
+            vocabularyDao().apply {
+                insert(Vocabulary("검색한 단어", Vocabulary.VOCABULARY_ID_SEARCH))
+                insert(Vocabulary("미정", Vocabulary.VOCABULARY_ID_NO_NAMED))
+            }
+            wordDao().apply {
+                insert(Word(Vocabulary.VOCABULARY_ID_NO_NAMED, "Click This!", "클릭하면 뜻이 나와요!"))
+                insert(Word(Vocabulary.VOCABULARY_ID_NO_NAMED, "Long Click This ~", "길게 눌러보세요!"))
+            }
         }
     }
 }

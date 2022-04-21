@@ -3,6 +3,7 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.2165" />
         <entry key="app/src/main/res/drawable/background_bottom_sheet.xml" value="0.139" />
         <entry key="app/src/main/res/drawable/background_bottomsheet.xml" value="0.194" />
         <entry key="app/src/main/res/drawable/background_dialog.xml" value="0.22" />
@@ -11,6 +12,9 @@
         <entry key="app/src/main/res/drawable/ic_arrow_bottom.xml" value="0.2345" />
         <entry key="app/src/main/res/drawable/ic_arrow_left.xml" value="0.22" />
         <entry key="app/src/main/res/drawable/ic_card.xml" value="0.1975" />
+        <entry key="app/src/main/res/drawable/ic_circle_sort.xml" value="0.2165" />
+        <entry key="app/src/main/res/drawable/ic_indicator.xml" value="0.135" />
+        <entry key="app/src/main/res/drawable/ic_launcher_background.xml" value="0.2165" />
         <entry key="app/src/main/res/drawable/ic_note.xml" value="0.1975" />
         <entry key="app/src/main/res/drawable/ic_rectangle_correct.xml" value="0.138" />
         <entry key="app/src/main/res/drawable/ic_rectangle_incorrect.xml" value="0.138" />
@@ -25,22 +29,28 @@
         <entry key="app/src/main/res/layout/activity_corrections.xml" value="0.25279083251953127" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.2028985507246377" />
         <entry key="app/src/main/res/layout/activity_search_result_dialog.xml" value="0.10234821706578356" />
+        <entry key="app/src/main/res/layout/activity_search_word.xml" value="0.21467391304347827" />
+        <entry key="app/src/main/res/layout/activity_vocabulary.xml" value="0.21467391304347827" />
         <entry key="app/src/main/res/layout/activity_word_check.xml" value="0.2028985507246377" />
         <entry key="app/src/main/res/layout/dialog_bottom_sheet_vocabulary.xml" value="0.18115942028985507" />
         <entry key="app/src/main/res/layout/dialog_bottom_sheet_word.xml" value="0.20892424652541897" />
         <entry key="app/src/main/res/layout/dialog_word_test.xml" value="0.438829128984092" />
         <entry key="app/src/main/res/layout/dialog_word_test_setting.xml" value="0.27221434220023777" />
         <entry key="app/src/main/res/layout/fragment_corrections.xml" value="0.1" />
-        <entry key="app/src/main/res/layout/fragment_home.xml" value="0.3229003906250001" />
+        <entry key="app/src/main/res/layout/fragment_home.xml" value="0.2772460937500001" />
         <entry key="app/src/main/res/layout/fragment_search_result_dialog2.xml" value="0.2028985507246377" />
         <entry key="app/src/main/res/layout/fragment_select_word.xml" value="0.2105978260869565" />
         <entry key="app/src/main/res/layout/fragment_setting.xml" value="0.2028985507246377" />
         <entry key="app/src/main/res/layout/fragment_word_test.xml" value="0.3608847497089639" />
         <entry key="app/src/main/res/layout/item_corrections_view.xml" value="0.10536980749746708" />
+        <entry key="app/src/main/res/layout/item_search_result.xml" value="0.21467391304347827" />
+        <entry key="app/src/main/res/layout/item_spinner_vocabulary.xml" value="0.17617753623188406" />
         <entry key="app/src/main/res/layout/item_vocabulary.xml" value="0.18115942028985507" />
         <entry key="app/src/main/res/layout/item_vocabulary_text.xml" value="0.3332285120867301" />
-        <entry key="app/src/main/res/layout/item_word.xml" value="0.6080501665755429" />
+        <entry key="app/src/main/res/layout/item_widget_word.xml" value="0.21467391304347827" />
+        <entry key="app/src/main/res/layout/item_word.xml" value="0.30248528620444914" />
         <entry key="app/src/main/res/layout/item_word_card.xml" value="0.18115942028985507" />
+        <entry key="app/src/main/res/layout/item_word_search.xml" value="0.4260600214419158" />
         <entry key="app/src/main/res/layout/layout_add.xml" value="0.40162271805273836" />
         <entry key="app/src/main/res/layout/layout_floating.xml" value="0.15070921985815602" />
         <entry key="app/src/main/res/layout/layout_floating_button.xml" value="0.2028985507246377" />
@@ -53,6 +63,7 @@
         <entry key="app/src/main/res/layout/layout_word_card.xml" value="0.327850341796875" />
         <entry key="app/src/main/res/layout/layout_word_test.xml" value="0.4327093373174253" />
         <entry key="app/src/main/res/layout/layout_word_test_setting_dialog.xml" value="0.2105978260869565" />
+        <entry key="app/src/main/res/xml/widget_provider.xml" value="0.21467391304347827" />
       </map>
     </option>
   </component>
