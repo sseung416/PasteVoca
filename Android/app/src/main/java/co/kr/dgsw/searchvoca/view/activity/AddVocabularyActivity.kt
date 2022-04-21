@@ -26,7 +26,7 @@ class AddVocabularyActivity : BaseActivity<ActivityAddVocabularyBinding, AddVoca
                 if (msg != null) {
                     Toast.makeText(this@AddVocabularyActivity, msg, Toast.LENGTH_SHORT).show()
                 } else {
-                    viewModel.insertVocabulary(Vocabulary(name = et1Add.text.toString()))
+                    viewModel.insertVocabulary(Vocabulary(et1Add.text.toString()))
                     finish()
                 }
             }

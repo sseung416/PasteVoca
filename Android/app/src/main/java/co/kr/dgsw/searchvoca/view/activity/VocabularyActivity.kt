@@ -38,7 +38,8 @@ class VocabularyActivity : BaseActivity<ActivityVocabularyBinding, VocabularyVie
         }
 
         binding.btnBackVoca.setOnClickListener {
-            setResult(RESULT_OK, Intent().putExtra("vocabulary", adapter.getSelectedVocabulary()))
+            val intent = Intent().putExtra("vocabulary", adapter.getSelectedVocabulary())
+            setResult(RESULT_OK, intent)
             finish()
         }
     }
