@@ -3,6 +3,8 @@ package co.kr.dgsw.searchvoca.view.service
 import android.content.Context
 import android.content.Intent
 import android.view.Gravity
+import android.view.View.GONE
+import android.view.View.VISIBLE
 import android.view.WindowManager
 import co.kr.dgsw.searchvoca.R
 import org.koin.android.ext.android.inject
@@ -17,6 +19,8 @@ import co.kr.dgsw.searchvoca.datasource.remote.dto.SearchWord
 import co.kr.dgsw.searchvoca.datasource.remote.repository.SearchRepository
 import co.kr.dgsw.searchvoca.widget.coroutine.DispatcherProvider
 import co.kr.dgsw.searchvoca.widget.coroutine.DispatcherProviderImpl
+import com.airbnb.lottie.Lottie
+import com.airbnb.lottie.LottieAnimationView
 import kotlinx.coroutines.*
 import java.lang.StringBuilder
 import kotlin.coroutines.CoroutineContext
@@ -32,6 +36,7 @@ class FloatingSearchResultService : FloatingService(), CoroutineScope, Dispatche
     private lateinit var tvWord: TextView
     private lateinit var tvMeaning: TextView
     private lateinit var btnClose: ImageButton
+    private lateinit var lottieLoading: LottieAnimationView
 
     private lateinit var searchData: List<SearchWord>
 
@@ -56,10 +61,11 @@ class FloatingSearchResultService : FloatingService(), CoroutineScope, Dispatche
     override fun onStartCommand(intent: Intent?, flags: Int, startId: Int): Int {
         val keyword = intent?.getStringExtra("word") ?: "대충 인텐트 데이터 값이 제대로 안 왔다는 뜻"
         tvWord.text = keyword
-        // todo 로딩 화면 만들기
+        lottieLoading.visibility = VISIBLE
         CoroutineScope(coroutineContext).launch(main) {
             getSearchData(keyword)
             tvMeaning.text = format(searchData)
+            lottieLoading.visibility = GONE
             insertSearchData(keyword, format(searchData))
         }
         return super.onStartCommand(intent, flags, startId)
@@ -70,10 +76,11 @@ class FloatingSearchResultService : FloatingService(), CoroutineScope, Dispatche
         job.cancel()
     }
 
-    private fun setupView() {
-        tvWord = viewGroup.findViewById(R.id.tv_word_floating)
-        tvMeaning = viewGroup.findViewById(R.id.tv_meaning_floating)
-        btnClose = viewGroup.findViewById(R.id.btn_close)
+    private fun setupView() = viewGroup.apply {
+        tvWord = findViewById(R.id.tv_word_floating)
+        tvMeaning = findViewById(R.id.tv_meaning_floating)
+        btnClose = findViewById(R.id.btn_close)
+        lottieLoading = findViewById(R.id.lottie_loading)
     }
 
     private suspend fun getSearchData(keyword: String) =

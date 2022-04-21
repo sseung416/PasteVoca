@@ -61,6 +61,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>() {
     override fun onStart() {
         super.onStart()
         viewModel.getAllWords()
+        viewModel.getSearchWords()
     }
 
     private fun setupRecyclerView() {
