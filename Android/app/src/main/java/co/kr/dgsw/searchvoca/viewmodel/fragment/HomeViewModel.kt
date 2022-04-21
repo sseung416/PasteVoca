@@ -2,6 +2,7 @@ package co.kr.dgsw.searchvoca.viewmodel.fragment
 
 import androidx.lifecycle.MutableLiveData
 import co.kr.dgsw.searchvoca.base.BaseViewModel
+import co.kr.dgsw.searchvoca.datasource.model.dto.Vocabulary
 import co.kr.dgsw.searchvoca.datasource.model.dto.VocabularyName
 import co.kr.dgsw.searchvoca.datasource.model.dto.Word
 import co.kr.dgsw.searchvoca.datasource.model.repository.VocabularyRepository
@@ -17,6 +18,7 @@ class HomeViewModel(
     val vocabularyNames = MutableLiveData<Event<List<VocabularyName>>>()
     val allWords = MutableLiveData<Event<List<Word>>>()
     val wordsByVoca = MutableLiveData<Event<List<Word>>>()
+    val searchWords = MutableLiveData<Event<List<Word>>>()
 
     val vocabularyId = MutableLiveData<Event<Int?>>()
 
@@ -33,6 +35,11 @@ class HomeViewModel(
     fun getWordsByVocabulary(vocabularyId: Int) = onIO {
         val res = wordRepository.getWordsByVocabulary(vocabularyId)
         wordsByVoca.postValue(Event(res))
+    }
+
+    fun getSearchWords() = onIO {
+        val res = wordRepository.getWordsByVocabulary(Vocabulary.VOCABULARY_ID_SEARCH)
+        searchWords.postValue(Event(res))
     }
 
     fun updateWord(word: Word) = onIO {

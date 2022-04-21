@@ -3,7 +3,7 @@ package co.kr.dgsw.searchvoca.widget.view.adapter
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import co.kr.dgsw.searchvoca.databinding.ItemVocabularyTextBinding
+import co.kr.dgsw.searchvoca.databinding.ItemSpinnerVocabularyBinding
 import co.kr.dgsw.searchvoca.datasource.model.dto.VocabularyName
 
 class VocabularySpinnerAdapter(
@@ -12,7 +12,7 @@ class VocabularySpinnerAdapter(
     var onClickItem: ((Int) -> Unit)? = null
 
     inner class ViewHolder(
-        private val binding: ItemVocabularyTextBinding
+        private val binding: ItemSpinnerVocabularyBinding
     ) : RecyclerView.ViewHolder(binding.root) {
         fun bind(item: VocabularyName) {
             binding.tvVoca.apply {
@@ -25,7 +25,7 @@ class VocabularySpinnerAdapter(
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder =
-        ViewHolder(ItemVocabularyTextBinding.inflate(LayoutInflater.from(parent.context)))
+        ViewHolder(ItemSpinnerVocabularyBinding.inflate(LayoutInflater.from(parent.context)))
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.bind(list[position])

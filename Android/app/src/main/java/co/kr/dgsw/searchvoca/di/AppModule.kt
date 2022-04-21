@@ -5,7 +5,6 @@ import co.kr.dgsw.searchvoca.datasource.model.repository.VocabularyRepository
 import co.kr.dgsw.searchvoca.datasource.model.repository.WordRepository
 import co.kr.dgsw.searchvoca.datasource.remote.RetrofitInstance
 import co.kr.dgsw.searchvoca.datasource.remote.repository.SearchRepository
-import co.kr.dgsw.searchvoca.view.service.FloatingSearchResultService
 import co.kr.dgsw.searchvoca.viewmodel.activity.*
 import co.kr.dgsw.searchvoca.viewmodel.fragment.HomeViewModel
 import co.kr.dgsw.searchvoca.viewmodel.fragment.SettingViewModel
@@ -53,4 +52,5 @@ val viewModelModule = module {
     // dialog
     viewModel { SearchResultViewModel(get(), get()) }
     viewModel { WordBottomSheetViewModel(get(), get()) }
+    viewModel { SearchWordViewModel(get(), get()) }
 }

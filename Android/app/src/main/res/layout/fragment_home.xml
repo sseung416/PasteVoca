@@ -21,13 +21,13 @@
 
             <LinearLayout
                 android:id="@+id/layout_spinner"
-                android:clickable="true"
-                android:focusable="true"
-                android:minHeight="48dp"
-                android:minWidth="48dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:gravity="center">
+                android:clickable="true"
+                android:focusable="true"
+                android:gravity="center"
+                android:minWidth="48dp"
+                android:minHeight="48dp">
 
                 <TextView
                     android:id="@+id/tv_voca"
@@ -72,7 +72,7 @@
                 android:orientation="vertical">
 
                 <androidx.cardview.widget.CardView
-                    android:id="@+id/cardView"
+                    android:id="@+id/cv_word"
                     android:layout_width="match_parent"
                     android:layout_height="120dp"
                     android:layout_alignParentTop="true"
@@ -81,6 +81,7 @@
                     android:layout_marginTop="16dp"
                     android:clickable="true"
                     android:elevation="0dp"
+                    android:visibility="gone"
                     app:cardBackgroundColor="@color/gray1"
                     app:cardCornerRadius="25dp"
                     app:cardElevation="0dp"
@@ -94,14 +95,14 @@
 
                         <ImageView
                             android:id="@+id/imageView"
-                            android:layout_width="50dp"
-                            android:layout_height="50dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toTopOf="parent"
-                            tools:src="@tools:sample/avatars" />
+                            android:src="@drawable/ic_circle_search"/>
 
-                        <androidx.appcompat.widget.LinearLayoutCompat
+                        <LinearLayout
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="11dp"
@@ -111,11 +112,11 @@
                             app:layout_constraintTop_toTopOf="parent">
 
                             <TextView
-                                android:id="@+id/textView2"
+                                android:id="@+id/tv_search_title"
                                 style="@style/BoldTextView"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="복사된 단어가 20개가 있어요!" />
+                                android:text="검색한 단어가 20개가 있어요!" />
 
                             <TextView
                                 android:id="@+id/textView3"
@@ -124,7 +125,7 @@
                                 android:layout_height="wrap_content"
                                 android:text="단어를 분류하고 빠르게 암기해봐요." />
 
-                        </androidx.appcompat.widget.LinearLayoutCompat>
+                        </LinearLayout>
                     </androidx.constraintlayout.widget.ConstraintLayout>
                 </androidx.cardview.widget.CardView>
 
@@ -134,7 +135,7 @@
                     dividerHeight="@{1f}"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_below="@+id/cardView"
+                    android:layout_below="@+id/cv_word"
                     android:layout_centerInParent="true"
                     android:layout_marginHorizontal="16dp"
                     android:orientation="vertical"

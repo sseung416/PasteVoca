@@ -1,5 +1,6 @@
 package co.kr.dgsw.searchvoca.view.fragment
 
+import android.view.View.VISIBLE
 import co.kr.dgsw.searchvoca.base.BaseFragment
 import co.kr.dgsw.searchvoca.databinding.FragmentHomeBinding
 import co.kr.dgsw.searchvoca.datasource.model.dto.VocabularyName
@@ -22,6 +23,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>() {
     override fun init() {
         viewModel.getVocabularyNames()
         viewModel.getAllWords()
+        viewModel.getSearchWords()
 
         setupRecyclerView()
         setupButton()
@@ -40,6 +42,13 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>() {
 
             wordsByVoca.observe(this@HomeFragment, EventObserver {
                 wordAdapter.setList(it)
+            })
+
+            searchWords.observe(this@HomeFragment, EventObserver {
+                if (it.isNotEmpty()) {
+                    binding.cvWord.visibility = VISIBLE
+                    binding.tvSearchTitle.text = "검색한 단어가 ${it.size}개가 있어요!"
+                }
             })
         }
 
