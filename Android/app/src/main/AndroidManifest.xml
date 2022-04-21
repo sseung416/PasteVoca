@@ -15,11 +15,20 @@
         android:theme="@style/Theme.PastVoca"
         android:usesCleartextTraffic="true">
         <activity
-            android:name=".view.activity.CorrectionsActivity"
+            android:name=".view.activity.SearchWordActivity"
             android:exported="false" />
-        <activity
-            android:name=".view.activity.ChooseLanguageActivity"
-            android:exported="false" />
+
+        <receiver
+            android:name=".view.widget.WordWidgetProvider"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+            </intent-filter>
+
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/widget_provider" />
+        </receiver>
 
         <service
             android:name=".view.service.FloatingSearchButtonService"
@@ -33,7 +42,18 @@
             android:name=".view.service.FloatingSearchService"
             android:enabled="true"
             android:exported="true" />
+        <service
+            android:name=".view.widget.WordWidgetAdapter"
+            android:enabled="true"
+            android:exported="false"
+            android:permission="android.permission.BIND_REMOTEVIEWS" />
 
+        <activity
+            android:name=".view.activity.CorrectionsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".view.activity.ChooseLanguageActivity"
+            android:exported="false" />
         <activity
             android:name=".view.activity.PermissionActivity"
             android:exported="true">
@@ -59,7 +79,7 @@
             android:exported="false" />
         <activity
             android:name=".view.activity.MainActivity"
-            android:exported="true"/>
+            android:exported="true" />
     </application>
 
 </manifest>
