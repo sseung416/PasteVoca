@@ -51,5 +51,13 @@
             android:text="추가"
             app:layout_constraintStart_toEndOf="@+id/btn_delete"
             app:layout_constraintTop_toTopOf="parent" />
+
+        <Button
+            android:id="@+id/btn_close_search_word"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="close"
+            app:layout_constraintStart_toEndOf="@+id/btn_insert"
+            app:layout_constraintTop_toTopOf="@+id/btn_insert" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

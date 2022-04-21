@@ -1,6 +1,5 @@
 package co.kr.dgsw.searchvoca.view.activity
 
-import android.widget.Toast
 import co.kr.dgsw.searchvoca.base.BaseActivity
 import co.kr.dgsw.searchvoca.databinding.ActivitySearchWordBinding
 import co.kr.dgsw.searchvoca.datasource.model.dto.Vocabulary
@@ -35,8 +34,10 @@ class SearchWordActivity : BaseActivity<ActivitySearchWordBinding, SearchWordVie
 
     private fun setupButton() {
         binding.btnSelectAll.setOnClickListener {
-//            adapter.itemCount.
-//            binding.rvWord.findViewHolderForAdapterPosition()
+            for (i in 0 until adapter.itemCount) {
+                val holder = binding.rvWord.findViewHolderForAdapterPosition(i) as WordSearchAdapter.ViewHolder
+                holder.setCheckedButton(i)
+            }
         }
 
         binding.btnInsert.setOnClickListener {
@@ -46,6 +47,10 @@ class SearchWordActivity : BaseActivity<ActivitySearchWordBinding, SearchWordVie
 
         binding.btnDelete.setOnClickListener {
             viewModel.delete(adapter.getCheckedWordId())
+        }
+
+        binding.btnCloseSearchWord.setOnClickListener {
+            finish()
         }
     }
 }

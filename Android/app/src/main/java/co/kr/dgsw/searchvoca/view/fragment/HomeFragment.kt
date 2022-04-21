@@ -5,6 +5,7 @@ import co.kr.dgsw.searchvoca.base.BaseFragment
 import co.kr.dgsw.searchvoca.databinding.FragmentHomeBinding
 import co.kr.dgsw.searchvoca.datasource.model.dto.VocabularyName
 import co.kr.dgsw.searchvoca.view.activity.AddWordActivity
+import co.kr.dgsw.searchvoca.view.activity.SearchWordActivity
 import co.kr.dgsw.searchvoca.view.dialog.VocabularyBottomSheetDialog
 import co.kr.dgsw.searchvoca.view.dialog.WordBottomSheetDialog
 import co.kr.dgsw.searchvoca.viewmodel.fragment.HomeViewModel
@@ -87,6 +88,10 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>() {
             list.add(VocabularyName(null, "전체"))
             list.addAll(vocabularyNames)
             VocabularyBottomSheetDialog(list).show(parentFragmentManager, "")
+        }
+
+        binding.cvWord.setOnClickListener {
+            requireActivity().startActivity(SearchWordActivity::class.java)
         }
     }
 }

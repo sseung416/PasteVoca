@@ -10,20 +10,24 @@ import android.view.WindowManager.LayoutParams.MATCH_PARENT
 import android.view.WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE
 import android.widget.ImageButton
 import android.widget.TextView
+import co.kr.dgsw.searchvoca.datasource.model.dto.Vocabulary
+import co.kr.dgsw.searchvoca.datasource.model.dto.Word
+import co.kr.dgsw.searchvoca.datasource.model.repository.WordRepository
 import co.kr.dgsw.searchvoca.datasource.remote.dto.SearchWord
 import co.kr.dgsw.searchvoca.datasource.remote.repository.SearchRepository
+import co.kr.dgsw.searchvoca.widget.coroutine.DispatcherProvider
 import co.kr.dgsw.searchvoca.widget.coroutine.DispatcherProviderImpl
 import kotlinx.coroutines.*
 import java.lang.StringBuilder
 import kotlin.coroutines.CoroutineContext
 
-class FloatingSearchResultService : FloatingService(), CoroutineScope {
-    private val dispatcherProvider by inject<DispatcherProviderImpl>()
-    private val repository by inject<SearchRepository>()
+class FloatingSearchResultService : FloatingService(), CoroutineScope, DispatcherProvider by DispatcherProviderImpl() {
+    private val searchRepository by inject<SearchRepository>()
+    private val wordRepository by inject<WordRepository>()
     private val context by inject<Context>()
 
     private val job: Job by lazy { Job() }
-    override val coroutineContext: CoroutineContext by lazy { dispatcherProvider.io + job }
+    override val coroutineContext: CoroutineContext by lazy { io + job }
 
     private lateinit var tvWord: TextView
     private lateinit var tvMeaning: TextView
@@ -53,9 +57,10 @@ class FloatingSearchResultService : FloatingService(), CoroutineScope {
         val keyword = intent?.getStringExtra("word") ?: "대충 인텐트 데이터 값이 제대로 안 왔다는 뜻"
         tvWord.text = keyword
         // todo 로딩 화면 만들기
-        CoroutineScope(coroutineContext).launch(Dispatchers.Main) {
+        CoroutineScope(coroutineContext).launch(main) {
             getSearchData(keyword)
             tvMeaning.text = format(searchData)
+            insertSearchData(keyword, format(searchData))
         }
         return super.onStartCommand(intent, flags, startId)
     }
@@ -73,7 +78,12 @@ class FloatingSearchResultService : FloatingService(), CoroutineScope {
 
     private suspend fun getSearchData(keyword: String) =
         withContext(coroutineContext) {
-            searchData = repository.getSearchData(keyword).res!!
+            searchData = searchRepository.getSearchData(keyword).res!!
+        }
+
+    private suspend fun insertSearchData(keyword: String, meaning: String) =
+        withContext(coroutineContext) {
+            wordRepository.insert(Word(Vocabulary.VOCABULARY_ID_SEARCH, keyword, meaning))
         }
 
     private fun format(res: List<SearchWord>) = with (StringBuilder()) {

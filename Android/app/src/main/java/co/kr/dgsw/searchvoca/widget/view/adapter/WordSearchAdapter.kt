@@ -16,8 +16,14 @@ class WordSearchAdapter : RecyclerView.Adapter<WordSearchAdapter.ViewHolder>() {
             tvWord.text = item.word
             tvMeaning.text = item.meaning
             layoutWord.setOnClickListener {
-                radio.isChecked = !radio.isChecked
-                list[position].isChecked = !radio.isChecked
+                setCheckedButton(position)
+            }
+        }
+
+        fun setCheckedButton(position: Int) {
+            binding.radio.apply {
+                list[position].isChecked = !isChecked
+                isChecked = !isChecked
             }
         }
     }
@@ -41,6 +47,7 @@ class WordSearchAdapter : RecyclerView.Adapter<WordSearchAdapter.ViewHolder>() {
 
     fun removeCheckedItems() {
         list.removeIf { it.isChecked }
+        notifyDataSetChanged()
     }
 }
 

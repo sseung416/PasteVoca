@@ -15,7 +15,7 @@ object RetrofitInstance {
     private val gson = Gson().newBuilder().setLenient().create()
 
     private val retrofit = Retrofit.Builder()
-        .baseUrl("http://192.168.0.17:8080/")
+        .baseUrl("http://10.80.161.9:8080/")
         .addConverterFactory(GsonConverterFactory.create(gson))
         .client(okHttpClient)
         .build()

@@ -8,9 +8,9 @@ import co.kr.dgsw.searchvoca.datasource.model.dto.VocabularyName
 
 @Dao
 interface VocabularyDao : BaseDao<Vocabulary> {
-    @Query("SELECT * FROM vocabulary")
+    @Query("SELECT * FROM vocabulary WHERE id <> ${Vocabulary.VOCABULARY_ID_SEARCH}")
     suspend fun getVocabularies(): List<Vocabulary>
 
-    @Query("SELECT id, name FROM vocabulary")
+    @Query("SELECT id, name FROM vocabulary WHERE id <> ${Vocabulary.VOCABULARY_ID_SEARCH}")
     suspend fun getVocabularyNames(): List<VocabularyName>
 }
