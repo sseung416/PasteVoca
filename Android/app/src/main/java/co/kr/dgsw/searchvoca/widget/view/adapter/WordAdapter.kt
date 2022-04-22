@@ -98,4 +98,19 @@ class WordAdapter : RecyclerView.Adapter<WordAdapter.ViewHolder>() {
         this.list.addAll(list)
         notifyDataSetChanged()
     }
+
+    fun sort(type: Int) {
+        when (type) {
+            SHUFFLE -> list.shuffle()
+            SORT_DIFFICULT -> list.sortWith(compareBy { type })
+            SORT_EASY -> list.sortWith(compareByDescending { type })
+        }
+        notifyDataSetChanged()
+    }
+
+    companion object {
+        const val SHUFFLE = 0
+        const val SORT_DIFFICULT = -1
+        const val SORT_EASY = -2
+    }
 }

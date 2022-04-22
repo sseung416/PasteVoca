@@ -4,5 +4,5 @@ import java.io.Serializable
 
 data class VocabularyName(
     val id: Int?,
-    val name: String
+    val name: String? = null
 ) : Serializable

@@ -6,9 +6,10 @@ import co.kr.dgsw.searchvoca.datasource.model.repository.WordRepository
 import co.kr.dgsw.searchvoca.datasource.remote.RetrofitInstance
 import co.kr.dgsw.searchvoca.datasource.remote.repository.SearchRepository
 import co.kr.dgsw.searchvoca.viewmodel.activity.*
+import co.kr.dgsw.searchvoca.viewmodel.dialog.TextBottomSheetDialog
 import co.kr.dgsw.searchvoca.viewmodel.fragment.HomeViewModel
 import co.kr.dgsw.searchvoca.viewmodel.fragment.SettingViewModel
-import co.kr.dgsw.searchvoca.viewmodel.fragment.WordBottomSheetViewModel
+import co.kr.dgsw.searchvoca.viewmodel.dialog.WordBottomSheetViewModel
 import co.kr.dgsw.searchvoca.viewmodel.fragment.WordTestViewModel
 import co.kr.dgsw.searchvoca.widget.coroutine.DispatcherProviderImpl
 import org.koin.android.ext.koin.androidContext
@@ -53,4 +54,5 @@ val viewModelModule = module {
     viewModel { SearchResultViewModel(get(), get()) }
     viewModel { WordBottomSheetViewModel(get(), get()) }
     viewModel { SearchWordViewModel(get(), get()) }
+    viewModel { TextBottomSheetDialog() }
 }

@@ -39,5 +39,10 @@ abstract class BaseFragment<B : ViewDataBinding, VM : ViewModel> : Fragment(), B
             executePendingBindings()
         }
     }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        binding.unbind()
+    }
 }
 

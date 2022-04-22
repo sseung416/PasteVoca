@@ -1,4 +1,4 @@
-package co.kr.dgsw.searchvoca.viewmodel.fragment
+package co.kr.dgsw.searchvoca.viewmodel.dialog
 
 import co.kr.dgsw.searchvoca.base.BaseViewModel
 import co.kr.dgsw.searchvoca.datasource.model.dto.Word

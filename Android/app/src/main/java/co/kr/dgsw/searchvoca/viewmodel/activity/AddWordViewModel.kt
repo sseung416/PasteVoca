@@ -1,5 +1,6 @@
 package co.kr.dgsw.searchvoca.viewmodel.activity
 
+import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import co.kr.dgsw.searchvoca.base.BaseViewModel
 import co.kr.dgsw.searchvoca.datasource.model.dto.Word
@@ -20,6 +21,7 @@ class AddWordViewModel(
 
     fun insertWord(word: Word) = onIO {
         wordRepository.insert(word)
+        Log.e("", "insertWord: ", )
     }
 
     fun updateWord(word: Word) = onIO {

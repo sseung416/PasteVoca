@@ -7,7 +7,7 @@ import co.kr.dgsw.searchvoca.base.BaseBottomSheetDialog
 import co.kr.dgsw.searchvoca.databinding.DialogBottomSheetWordBinding
 import co.kr.dgsw.searchvoca.datasource.model.dto.Word
 import co.kr.dgsw.searchvoca.view.activity.AddWordActivity
-import co.kr.dgsw.searchvoca.viewmodel.fragment.WordBottomSheetViewModel
+import co.kr.dgsw.searchvoca.viewmodel.dialog.WordBottomSheetViewModel
 import org.koin.android.ext.android.inject
 
 class WordBottomSheetDialog(

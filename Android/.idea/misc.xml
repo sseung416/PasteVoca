@@ -32,7 +32,7 @@
         <entry key="app/src/main/res/layout/activity_search_word.xml" value="0.21467391304347827" />
         <entry key="app/src/main/res/layout/activity_vocabulary.xml" value="0.21467391304347827" />
         <entry key="app/src/main/res/layout/activity_word_check.xml" value="0.2028985507246377" />
-        <entry key="app/src/main/res/layout/dialog_bottom_sheet_vocabulary.xml" value="0.18115942028985507" />
+        <entry key="app/src/main/res/layout/dialog_bottom_sheet_vocabulary.xml" value="0.16923076923076924" />
         <entry key="app/src/main/res/layout/dialog_bottom_sheet_word.xml" value="0.20892424652541897" />
         <entry key="app/src/main/res/layout/dialog_word_test.xml" value="0.438829128984092" />
         <entry key="app/src/main/res/layout/dialog_word_test_setting.xml" value="0.27221434220023777" />
@@ -63,6 +63,7 @@
         <entry key="app/src/main/res/layout/layout_word_card.xml" value="0.327850341796875" />
         <entry key="app/src/main/res/layout/layout_word_test.xml" value="0.4327093373174253" />
         <entry key="app/src/main/res/layout/layout_word_test_setting_dialog.xml" value="0.2105978260869565" />
+        <entry key="app/src/main/res/menu/menu_bottom_nav.xml" value="0.2234375" />
         <entry key="app/src/main/res/xml/widget_provider.xml" value="0.21467391304347827" />
       </map>
     </option>

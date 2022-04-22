@@ -1,23 +1,28 @@
 package co.kr.dgsw.searchvoca.view.fragment
 
 import android.view.View.VISIBLE
+import androidx.fragment.app.Fragment
 import co.kr.dgsw.searchvoca.base.BaseFragment
 import co.kr.dgsw.searchvoca.databinding.FragmentHomeBinding
 import co.kr.dgsw.searchvoca.datasource.model.dto.VocabularyName
+import co.kr.dgsw.searchvoca.datasource.model.dto.Word
 import co.kr.dgsw.searchvoca.view.activity.AddWordActivity
 import co.kr.dgsw.searchvoca.view.activity.SearchWordActivity
 import co.kr.dgsw.searchvoca.view.dialog.VocabularyBottomSheetDialog
 import co.kr.dgsw.searchvoca.view.dialog.WordBottomSheetDialog
+import co.kr.dgsw.searchvoca.viewmodel.dialog.TextBottomSheetDialog
 import co.kr.dgsw.searchvoca.viewmodel.fragment.HomeViewModel
-import co.kr.dgsw.searchvoca.viewmodel.fragment.WordBottomSheetViewModel
+import co.kr.dgsw.searchvoca.viewmodel.dialog.WordBottomSheetViewModel
 import co.kr.dgsw.searchvoca.widget.extension.startActivity
+import co.kr.dgsw.searchvoca.widget.livedata.Event
 import co.kr.dgsw.searchvoca.widget.livedata.EventObserver
 import co.kr.dgsw.searchvoca.widget.view.adapter.WordAdapter
 import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 
 class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>() {
     override val viewModel by sharedViewModel<HomeViewModel>()
-    private val wordBottomSheetViewModel by sharedViewModel<WordBottomSheetViewModel>()
+    private val wordDialogViewModel by sharedViewModel<WordBottomSheetViewModel>()
+    private val vocabularyDialogViewModel by sharedViewModel<TextBottomSheetDialog>()
 
     private val wordAdapter = WordAdapter()
 
@@ -32,11 +37,6 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>() {
 
     override fun observeViewModel() {
         viewModel.apply {
-            vocabularyId.observe(this@HomeFragment, EventObserver {
-                if (it == null) getAllWords()
-                else getWordsByVocabulary(it)
-            })
-
             allWords.observe(this@HomeFragment, EventObserver {
                 wordAdapter.setList(it)
             })
@@ -51,9 +51,20 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>() {
                     binding.tvSearchTitle.text = "검색한 단어가 ${it.size}개가 있어요!"
                 }
             })
+
+            vocabularyDialogViewModel.clickedItem.observe(this@HomeFragment, EventObserver {
+                when (it) {
+                    null ->
+                        getAllWords()
+                    WordAdapter.SHUFFLE, WordAdapter.SORT_EASY, WordAdapter.SORT_DIFFICULT ->
+                        wordAdapter.sort(it)
+                    else ->
+                        getWordsByVocabulary(it)
+                }
+            })
         }
 
-        wordBottomSheetViewModel.deleteEvent.observe(this) {
+        wordDialogViewModel.deleteEvent.observe(this) {
             viewModel.getAllWords()
         }
     }
@@ -80,6 +91,16 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>() {
     private fun setupButton() {
         binding.btnAddWordHome.setOnClickListener {
             requireActivity().startActivity(AddWordActivity::class.java)
+        }
+
+        binding.btnSortHome.setOnClickListener {
+            // todo data class 이름 바꾸기
+            val list = listOf(
+                VocabularyName(WordAdapter.SHUFFLE, "랜덤"),
+                VocabularyName(WordAdapter.SORT_DIFFICULT, "어려운순으로"),
+                VocabularyName(WordAdapter.SORT_EASY, "쉬운순으로"),
+            )
+            VocabularyBottomSheetDialog(list).show(parentFragmentManager, "")
         }
 
         binding.layoutSpinner.setOnClickListener {

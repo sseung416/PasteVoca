@@ -8,6 +8,7 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.fragment.app.Fragment
 import co.kr.dgsw.searchvoca.base.BaseActivity
 import co.kr.dgsw.searchvoca.databinding.ActivityAddWordBinding
+import co.kr.dgsw.searchvoca.datasource.model.dto.Vocabulary
 import co.kr.dgsw.searchvoca.datasource.model.dto.VocabularyName
 import co.kr.dgsw.searchvoca.datasource.model.dto.Word
 import co.kr.dgsw.searchvoca.view.dialog.SearchResultDialog
@@ -60,7 +61,12 @@ class AddWordActivity : BaseActivity<ActivityAddWordBinding, AddWordViewModel>()
                 if (msg != null) {
                     Toast.makeText(this@AddWordActivity, msg, Toast.LENGTH_SHORT).show()
                 } else {
-                    val word = Word(vocabulary?.id ?: 1, et1Add.text.toString(), et2Add.text.toString())
+                    val word = Word(
+                        vocabulary?.id ?: Vocabulary.VOCABULARY_ID_NO_NAMED,
+                        et1Add.text.toString(),
+                        et2Add.text.toString()
+                    )
+
                     if (isInsertType()) {
                         viewModel.insertWord(word)
                     } else {
