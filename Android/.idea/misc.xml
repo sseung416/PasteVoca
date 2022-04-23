@@ -7,19 +7,35 @@
         <entry key="app/src/main/res/drawable/background_bottom_sheet.xml" value="0.139" />
         <entry key="app/src/main/res/drawable/background_bottomsheet.xml" value="0.194" />
         <entry key="app/src/main/res/drawable/background_dialog.xml" value="0.22" />
+        <entry key="app/src/main/res/drawable/bg.xml" value="0.1" />
+        <entry key="app/src/main/res/drawable/ic__111.xml" value="0.108" />
+        <entry key="app/src/main/res/drawable/ic__1111.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/ic_answer_correct.xml" value="0.22" />
         <entry key="app/src/main/res/drawable/ic_answer_wrong.xml" value="0.22" />
         <entry key="app/src/main/res/drawable/ic_arrow_bottom.xml" value="0.2345" />
         <entry key="app/src/main/res/drawable/ic_arrow_left.xml" value="0.22" />
+        <entry key="app/src/main/res/drawable/ic_baseline_settings_24.xml" value="0.108" />
         <entry key="app/src/main/res/drawable/ic_card.xml" value="0.1975" />
         <entry key="app/src/main/res/drawable/ic_circle_sort.xml" value="0.2165" />
+        <entry key="app/src/main/res/drawable/ic_home.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/ic_indicator.xml" value="0.135" />
         <entry key="app/src/main/res/drawable/ic_launcher_background.xml" value="0.2165" />
+        <entry key="app/src/main/res/drawable/ic_launcher_foreground.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/ic_note.xml" value="0.1975" />
         <entry key="app/src/main/res/drawable/ic_rectangle_correct.xml" value="0.138" />
         <entry key="app/src/main/res/drawable/ic_rectangle_incorrect.xml" value="0.138" />
         <entry key="app/src/main/res/drawable/ic_search.xml" value="0.2095" />
+        <entry key="app/src/main/res/drawable/ic_setting.xml" value="0.10042474365234377" />
+        <entry key="app/src/main/res/drawable/ic_sibal.xml" value="0.1" />
+        <entry key="app/src/main/res/drawable/ic_solid_home.xml" value="0.1" />
+        <entry key="app/src/main/res/drawable/ic_solid_setting.xml" value="0.1" />
+        <entry key="app/src/main/res/drawable/ic_solid_test.xml" value="0.1" />
+        <entry key="app/src/main/res/drawable/ic_subtract.xml" value="0.1" />
+        <entry key="app/src/main/res/drawable/ic_test.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/ic_type_difficult.xml" value="0.137" />
+        <entry key="app/src/main/res/drawable/selector_menu_home.xml" value="0.1" />
+        <entry key="app/src/main/res/drawable/selector_menu_setting.xml" value="0.1" />
+        <entry key="app/src/main/res/drawable/selector_menu_test.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/test.xml" value="0.2145" />
         <entry key="app/src/main/res/layout/activity_add_vocabulary.xml" value="0.2028985507246377" />
         <entry key="app/src/main/res/layout/activity_add_word.xml" value="0.2028985507246377" />
@@ -27,7 +43,7 @@
         <entry key="app/src/main/res/layout/activity_clipboard.xml" value="0.18115942028985507" />
         <entry key="app/src/main/res/layout/activity_clipboard_dialog.xml" value="0.18112030029296877" />
         <entry key="app/src/main/res/layout/activity_corrections.xml" value="0.25279083251953127" />
-        <entry key="app/src/main/res/layout/activity_main.xml" value="0.2028985507246377" />
+        <entry key="app/src/main/res/layout/activity_main.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_search_result_dialog.xml" value="0.10234821706578356" />
         <entry key="app/src/main/res/layout/activity_search_word.xml" value="0.21467391304347827" />
         <entry key="app/src/main/res/layout/activity_vocabulary.xml" value="0.21467391304347827" />
