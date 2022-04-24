@@ -3,18 +3,14 @@
     xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item android:id="@+id/menu_home"
-        android:icon="@drawable/ic_baseline_home_24"
+        android:icon="@drawable/selector_menu_home"
         android:title="홈" />
 
     <item android:id="@+id/menu_test"
-        android:icon="@drawable/ic_search"
+        android:icon="@drawable/selector_menu_test"
         android:title="테스트" />
 
-    <item
-        android:icon="@drawable/ic_search"
-        android:title="Item" />
-
     <item android:id="@+id/menu_setting"
-        android:icon="@drawable/ic_baseline_settings_24"
+        android:icon="@drawable/selector_menu_setting"
         android:title="설정" />
 </menu>

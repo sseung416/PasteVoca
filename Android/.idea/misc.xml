@@ -33,6 +33,8 @@
         <entry key="app/src/main/res/drawable/ic_subtract.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/ic_test.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/ic_type_difficult.xml" value="0.137" />
+        <entry key="app/src/main/res/drawable/ic_type_easy.xml" value="0.132" />
+        <entry key="app/src/main/res/drawable/ic_type_middle.xml" value="0.132" />
         <entry key="app/src/main/res/drawable/selector_menu_home.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/selector_menu_setting.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/selector_menu_test.xml" value="0.1" />
@@ -43,7 +45,7 @@
         <entry key="app/src/main/res/layout/activity_clipboard.xml" value="0.18115942028985507" />
         <entry key="app/src/main/res/layout/activity_clipboard_dialog.xml" value="0.18112030029296877" />
         <entry key="app/src/main/res/layout/activity_corrections.xml" value="0.25279083251953127" />
-        <entry key="app/src/main/res/layout/activity_main.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/activity_main.xml" value="0.26072998046875" />
         <entry key="app/src/main/res/layout/activity_search_result_dialog.xml" value="0.10234821706578356" />
         <entry key="app/src/main/res/layout/activity_search_word.xml" value="0.21467391304347827" />
         <entry key="app/src/main/res/layout/activity_vocabulary.xml" value="0.21467391304347827" />
@@ -64,7 +66,7 @@
         <entry key="app/src/main/res/layout/item_vocabulary.xml" value="0.18115942028985507" />
         <entry key="app/src/main/res/layout/item_vocabulary_text.xml" value="0.3332285120867301" />
         <entry key="app/src/main/res/layout/item_widget_word.xml" value="0.21467391304347827" />
-        <entry key="app/src/main/res/layout/item_word.xml" value="0.30248528620444914" />
+        <entry key="app/src/main/res/layout/item_word.xml" value="0.5768356323242188" />
         <entry key="app/src/main/res/layout/item_word_card.xml" value="0.18115942028985507" />
         <entry key="app/src/main/res/layout/item_word_search.xml" value="0.4260600214419158" />
         <entry key="app/src/main/res/layout/layout_add.xml" value="0.40162271805273836" />

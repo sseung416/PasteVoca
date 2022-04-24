@@ -55,7 +55,7 @@
                 android:background="@android:color/transparent"
                 android:minWidth="48dp"
                 android:minHeight="48dp"
-                app:srcCompat="@drawable/ic_sort" />
+                app:srcCompat="@drawable/ic_filter" />
 
             <ImageButton
                 android:id="@+id/btn_add_word_home"
