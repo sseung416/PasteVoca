@@ -8,17 +8,19 @@ import androidx.recyclerview.widget.RecyclerView
 import co.kr.dgsw.searchvoca.databinding.ItemSpinnerVocabularyBinding
 import co.kr.dgsw.searchvoca.datasource.model.dto.VocabularyName
 
-class VocabularySpinnerAdapter(
+class BottomSheetAdapter(
     private val list: List<VocabularyName>
-) : RecyclerView.Adapter<VocabularySpinnerAdapter.ViewHolder>() {
+) : RecyclerView.Adapter<BottomSheetAdapter.ViewHolder>() {
+    var onClickItemListener: ((Int?) -> Unit)? = null
 
     inner class ViewHolder(
-        private val binding: ItemSpinnerVocabularyBinding
+        private val binding: ItemSpinnerVocabularyBinding,
     ) : RecyclerView.ViewHolder(binding.root) {
         fun bind(item: VocabularyName) {
             binding.tvVoca.text = item.name
 
             binding.layoutSpinner.setOnClickListener {
+                onClickItemListener?.invoke(item.id)
             }
         }
     }

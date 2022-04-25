@@ -2,11 +2,10 @@ package co.kr.dgsw.searchvoca.widget.view.adapter
 
 import android.content.Context
 import android.view.LayoutInflater
-import android.view.View.INVISIBLE
-import android.view.View.VISIBLE
+import android.view.View.*
 import android.view.ViewGroup
 import androidx.core.content.ContextCompat
-import androidx.core.view.isInvisible
+import androidx.core.view.isGone
 import androidx.recyclerview.widget.RecyclerView
 import co.kr.dgsw.searchvoca.R
 import co.kr.dgsw.searchvoca.databinding.ItemWordBinding
@@ -25,7 +24,7 @@ class WordAdapter : RecyclerView.Adapter<WordAdapter.ViewHolder>() {
 
             binding.tvWord.setOnClickListener {
                 binding.tvMeaning.apply {
-                    visibility = if (isInvisible) VISIBLE else INVISIBLE
+                    visibility = if (isGone) VISIBLE else GONE
                 }
             }
 
@@ -99,11 +98,11 @@ class WordAdapter : RecyclerView.Adapter<WordAdapter.ViewHolder>() {
         notifyDataSetChanged()
     }
 
-    fun sort(type: Int) {
-        when (type) {
+    fun sort(sortType: Int) {
+        when (sortType) {
             SHUFFLE -> list.shuffle()
-            SORT_DIFFICULT -> list.sortWith(compareBy { type })
-            SORT_EASY -> list.sortWith(compareByDescending { type })
+            SORT_DIFFICULT -> list.sortWith(compareBy { it.type })
+            SORT_EASY -> list.sortWith(compareByDescending { it.type })
         }
         notifyDataSetChanged()
     }

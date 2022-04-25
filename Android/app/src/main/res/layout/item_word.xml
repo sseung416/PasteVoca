@@ -14,53 +14,41 @@
         android:layout_height="wrap_content"
         android:paddingVertical="16dp">
 
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/linearLayout3"
+        <View
+            android:id="@+id/view_difficulty"
+            android:layout_width="0dp"
+            android:layout_height="10dp"
+            app:layout_constraintBottom_toBottomOf="@+id/tv_word"
+            app:layout_constraintEnd_toEndOf="@+id/tv_word"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/tv_word"
+            app:layout_constraintVertical_bias="0.65" />
+
+        <TextView
+            android:id="@+id/tv_word"
+            style="@style/BoldTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/iv_iscorrect"
-            app:layout_constraintTop_toTopOf="parent">
+            android:clickable="true"
+            android:gravity="center_vertical"
+            android:minHeight="48dp"
+            android:paddingHorizontal="4dp"
+            android:text="@{data.word}"
+            app:layout_constraintBottom_toBottomOf="@+id/btn_type"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/btn_type"
+            tools:text="happy" />
 
-            <View
-                android:id="@+id/view_difficulty"
-                android:layout_width="0dp"
-                android:layout_height="10dp"
-                app:layout_constraintBottom_toBottomOf="@id/tv_word"
-                app:layout_constraintEnd_toEndOf="@+id/tv_word"
-                app:layout_constraintStart_toStartOf="@id/tv_word"
-                app:layout_constraintTop_toTopOf="@+id/tv_word"
-                app:layout_constraintVertical_bias="0.7" />
-
-            <TextView
-                android:id="@+id/tv_word"
-                style="@style/BoldTextView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:clickable="true"
-                android:gravity="center_vertical"
-                android:minWidth="48dp"
-                android:minHeight="48dp"
-                android:paddingHorizontal="4dp"
-                android:text="@{data.word}"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                tools:text="happy" />
-
-            <TextView
-                android:id="@+id/tv_meaning"
-                style="@style/RegularTextView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@{data.meaning}"
-                android:visibility="invisible"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tv_word"
-                tools:text="행복한" />
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
+        <TextView
+            android:id="@+id/tv_meaning"
+            style="@style/RegularTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingHorizontal="4dp"
+            android:text="@{data.meaning}"
+            app:layout_constraintStart_toStartOf="@+id/tv_word"
+            app:layout_constraintTop_toBottomOf="@+id/tv_word"
+            tools:text="행복한" />
 
         <TextView
             android:id="@+id/textView5"
@@ -91,17 +79,17 @@
             android:background="@android:color/transparent"
             android:minWidth="48dp"
             android:minHeight="48dp"
-            app:layout_constraintBottom_toTopOf="@+id/textView5"
+            app:layout_constraintBottom_toBottomOf="@+id/btn_sound"
             app:layout_constraintEnd_toStartOf="@+id/btn_sound"
             app:layout_constraintTop_toTopOf="@+id/btn_sound"
             app:srcCompat="@drawable/ic_type_easy" />
 
         <ImageView
             android:id="@+id/iv_iscorrect"
-            android:visibility="gone"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
+            android:visibility="gone"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"

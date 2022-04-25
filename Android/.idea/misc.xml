@@ -3,7 +3,9 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="../../../../../../layout/custom_preview.xml" value="0.225" />
         <entry key="app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.2165" />
+        <entry key="app/src/main/res/drawable/background_bottom_navigation.xml" value="0.143" />
         <entry key="app/src/main/res/drawable/background_bottom_sheet.xml" value="0.139" />
         <entry key="app/src/main/res/drawable/background_bottomsheet.xml" value="0.194" />
         <entry key="app/src/main/res/drawable/background_dialog.xml" value="0.22" />
@@ -27,6 +29,8 @@
         <entry key="app/src/main/res/drawable/ic_search.xml" value="0.2095" />
         <entry key="app/src/main/res/drawable/ic_setting.xml" value="0.10042474365234377" />
         <entry key="app/src/main/res/drawable/ic_sibal.xml" value="0.1" />
+        <entry key="app/src/main/res/drawable/ic_solid_add.xml" value="0.2195" />
+        <entry key="app/src/main/res/drawable/ic_solid_filter.xml" value="0.2195" />
         <entry key="app/src/main/res/drawable/ic_solid_home.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/ic_solid_setting.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/ic_solid_test.xml" value="0.1" />
@@ -35,6 +39,9 @@
         <entry key="app/src/main/res/drawable/ic_type_difficult.xml" value="0.137" />
         <entry key="app/src/main/res/drawable/ic_type_easy.xml" value="0.132" />
         <entry key="app/src/main/res/drawable/ic_type_middle.xml" value="0.132" />
+        <entry key="app/src/main/res/drawable/seelctor_icon_sort.xml" value="0.199" />
+        <entry key="app/src/main/res/drawable/selector_icon_add.xml" value="0.199" />
+        <entry key="app/src/main/res/drawable/selector_icon_filter.xml" value="0.199" />
         <entry key="app/src/main/res/drawable/selector_menu_home.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/selector_menu_setting.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/selector_menu_test.xml" value="0.1" />
@@ -45,11 +52,12 @@
         <entry key="app/src/main/res/layout/activity_clipboard.xml" value="0.18115942028985507" />
         <entry key="app/src/main/res/layout/activity_clipboard_dialog.xml" value="0.18112030029296877" />
         <entry key="app/src/main/res/layout/activity_corrections.xml" value="0.25279083251953127" />
-        <entry key="app/src/main/res/layout/activity_main.xml" value="0.26072998046875" />
+        <entry key="app/src/main/res/layout/activity_main.xml" value="0.22679138183593753" />
         <entry key="app/src/main/res/layout/activity_search_result_dialog.xml" value="0.10234821706578356" />
         <entry key="app/src/main/res/layout/activity_search_word.xml" value="0.21467391304347827" />
         <entry key="app/src/main/res/layout/activity_vocabulary.xml" value="0.21467391304347827" />
         <entry key="app/src/main/res/layout/activity_word_check.xml" value="0.2028985507246377" />
+        <entry key="app/src/main/res/layout/dialog_bottom_sheet_text.xml" value="0.17572463768115942" />
         <entry key="app/src/main/res/layout/dialog_bottom_sheet_vocabulary.xml" value="0.16923076923076924" />
         <entry key="app/src/main/res/layout/dialog_bottom_sheet_word.xml" value="0.20892424652541897" />
         <entry key="app/src/main/res/layout/dialog_word_test.xml" value="0.438829128984092" />
