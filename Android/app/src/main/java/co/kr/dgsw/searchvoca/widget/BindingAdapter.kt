@@ -13,12 +13,12 @@ import co.kr.dgsw.searchvoca.widget.view.decoration.CustomDecoration
     requireAll = false
 )
 fun RecyclerView.setDivider(dividerHeight: Float?, @ColorInt dividerColor: Int?) {
-    CustomDecoration(
+    val decoration = CustomDecoration(
         dividerHeight ?: 0f,
-        dividerColor ?: Color.TRANSPARENT
-    ).apply {
-        addItemDecoration(this)
-    }
+        dividerColor ?: Color.BLACK,
+        0f
+    )
+    addItemDecoration(decoration)
 }
 
 @BindingAdapter("isVisibleSearchDrawable")

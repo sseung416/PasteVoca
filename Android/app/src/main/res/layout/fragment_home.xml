@@ -55,7 +55,7 @@
                 android:background="@android:color/transparent"
                 android:minWidth="48dp"
                 android:minHeight="48dp"
-                app:srcCompat="@drawable/ic_filter" />
+                android:src="@drawable/selector_icon_filter" />
 
             <ImageButton
                 android:id="@+id/btn_add_word_home"
@@ -64,7 +64,7 @@
                 android:background="@android:color/transparent"
                 android:minWidth="48dp"
                 android:minHeight="48dp"
-                android:src="@drawable/ic_add" />
+                android:src="@drawable/selector_icon_add" />
 
         </LinearLayout>
 
@@ -142,7 +142,7 @@
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/rv_home"
                     dividerColor="@{@color/gray1}"
-                    dividerHeight="@{1f}"
+                    dividerHeight="@{2f}"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/cv_word"

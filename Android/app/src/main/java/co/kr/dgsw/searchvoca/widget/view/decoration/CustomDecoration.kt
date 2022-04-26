@@ -2,20 +2,25 @@ package co.kr.dgsw.searchvoca.widget.view.decoration
 
 import android.graphics.Canvas
 import android.graphics.Paint
+import android.graphics.Rect
+import android.view.View
 import androidx.annotation.ColorInt
 import androidx.recyclerview.widget.RecyclerView
 
 class CustomDecoration(
     private val height: Float,
-    @ColorInt private val color: Int
+    @ColorInt private val color: Int,
+    private val padding: Float
 ) : RecyclerView.ItemDecoration() {
     private val paint = Paint()
 
-    override fun onDrawOver(c: Canvas, parent: RecyclerView, state: RecyclerView.State) {
+    init {
         paint.color = color
+    }
 
-        val start = parent.paddingStart.toFloat()
-        val end = parent.paddingEnd.toFloat()
+    override fun onDrawOver(c: Canvas, parent: RecyclerView, state: RecyclerView.State) {
+        val start = parent.paddingStart.toFloat() + padding
+        val end = parent.width - parent.paddingEnd.toFloat() - padding
 
         for (i in 0 until parent.childCount) {
             val child = parent.getChildAt(i)
