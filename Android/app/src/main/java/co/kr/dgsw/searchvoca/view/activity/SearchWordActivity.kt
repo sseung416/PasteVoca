@@ -33,7 +33,7 @@ class SearchWordActivity : BaseActivity<ActivitySearchWordBinding, SearchWordVie
     }
 
     private fun setupButton() {
-        binding.btnSelectAll.setOnClickListener {
+        binding.checkBoxSelectAll.setOnClickListener {
             for (i in 0 until adapter.itemCount) {
                 val holder = binding.rvWord.findViewHolderForAdapterPosition(i) as WordSearchAdapter.ViewHolder
                 holder.setCheckedButton(i)

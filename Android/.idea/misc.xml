@@ -12,6 +12,7 @@
         <entry key="app/src/main/res/drawable/bg.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/ic__111.xml" value="0.108" />
         <entry key="app/src/main/res/drawable/ic__1111.xml" value="0.1" />
+        <entry key="app/src/main/res/drawable/ic_add.xml" value="0.2015" />
         <entry key="app/src/main/res/drawable/ic_answer_correct.xml" value="0.22" />
         <entry key="app/src/main/res/drawable/ic_answer_wrong.xml" value="0.22" />
         <entry key="app/src/main/res/drawable/ic_arrow_bottom.xml" value="0.2345" />
@@ -41,6 +42,7 @@
         <entry key="app/src/main/res/drawable/ic_type_middle.xml" value="0.132" />
         <entry key="app/src/main/res/drawable/seelctor_icon_sort.xml" value="0.199" />
         <entry key="app/src/main/res/drawable/selector_icon_add.xml" value="0.199" />
+        <entry key="app/src/main/res/drawable/selector_icon_check.xml" value="0.132" />
         <entry key="app/src/main/res/drawable/selector_icon_filter.xml" value="0.199" />
         <entry key="app/src/main/res/drawable/selector_menu_home.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/selector_menu_setting.xml" value="0.1" />
@@ -54,7 +56,7 @@
         <entry key="app/src/main/res/layout/activity_corrections.xml" value="0.25279083251953127" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.22679138183593753" />
         <entry key="app/src/main/res/layout/activity_search_result_dialog.xml" value="0.10234821706578356" />
-        <entry key="app/src/main/res/layout/activity_search_word.xml" value="0.21467391304347827" />
+        <entry key="app/src/main/res/layout/activity_search_word.xml" value="0.2933104631217839" />
         <entry key="app/src/main/res/layout/activity_vocabulary.xml" value="0.21467391304347827" />
         <entry key="app/src/main/res/layout/activity_word_check.xml" value="0.2028985507246377" />
         <entry key="app/src/main/res/layout/dialog_bottom_sheet_text.xml" value="0.17572463768115942" />
