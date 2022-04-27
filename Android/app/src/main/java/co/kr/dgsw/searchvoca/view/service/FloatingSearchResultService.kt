@@ -62,12 +62,14 @@ class FloatingSearchResultService : FloatingService(), CoroutineScope, Dispatche
         val keyword = intent?.getStringExtra("word") ?: "대충 인텐트 데이터 값이 제대로 안 왔다는 뜻"
         tvWord.text = keyword
         lottieLoading.visibility = VISIBLE
+
         CoroutineScope(coroutineContext).launch(main) {
             getSearchData(keyword)
             tvMeaning.text = format(searchData)
             lottieLoading.visibility = GONE
             insertSearchData(keyword, format(searchData))
         }
+
         return super.onStartCommand(intent, flags, startId)
     }
 
@@ -94,8 +96,13 @@ class FloatingSearchResultService : FloatingService(), CoroutineScope, Dispatche
         }
 
     private fun format(res: List<SearchWord>) = with (StringBuilder()) {
-        for (i in res.indices) {
-            this.append("${i+1}. ${res[i].definition}\n")
+        if (res.size == 1) {
+            append(res[0].definition)
+        } else {
+            for (i in res.indices) {
+                append("${i+1}. ${res[i].definition}")
+                if (i != res.lastIndex) append("\n")
+            }
         }
         toString()
     }
