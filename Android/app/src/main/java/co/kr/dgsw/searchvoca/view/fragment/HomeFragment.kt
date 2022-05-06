@@ -1,23 +1,32 @@
 package co.kr.dgsw.searchvoca.view.fragment
 
+import android.view.Menu
+import android.view.MenuInflater
+import android.view.MenuItem
+import android.view.View.GONE
 import android.view.View.VISIBLE
+import android.widget.Spinner
+import android.widget.TextView
+import android.widget.Toast
+import co.kr.dgsw.searchvoca.R
 import co.kr.dgsw.searchvoca.base.BaseFragment
 import co.kr.dgsw.searchvoca.databinding.FragmentHomeBinding
-import co.kr.dgsw.searchvoca.datasource.model.dto.VocabularyName
 import co.kr.dgsw.searchvoca.view.activity.AddWordActivity
 import co.kr.dgsw.searchvoca.view.activity.SearchWordActivity
 import co.kr.dgsw.searchvoca.view.dialog.TextBottomSheetDialog
 import co.kr.dgsw.searchvoca.view.dialog.WordBottomSheetDialog
 import co.kr.dgsw.searchvoca.viewmodel.dialog.TextBottomSheetViewModel
 import co.kr.dgsw.searchvoca.viewmodel.fragment.HomeViewModel
-import co.kr.dgsw.searchvoca.viewmodel.dialog.WordBottomSheetViewModel
+import co.kr.dgsw.searchvoca.widget.Test
 import co.kr.dgsw.searchvoca.widget.extension.startActivity
 import co.kr.dgsw.searchvoca.widget.livedata.EventObserver
+import co.kr.dgsw.searchvoca.widget.setOnTouchListenerThrottled
 import co.kr.dgsw.searchvoca.widget.view.adapter.WordAdapter
 import org.koin.androidx.viewmodel.ext.android.sharedViewModel
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>() {
-    override val viewModel by sharedViewModel<HomeViewModel>()
+    override val viewModel by viewModel<HomeViewModel>()
     private val wordDialogViewModel by sharedViewModel<WordBottomSheetViewModel>()
     private val textBottomSheetViewModel by sharedViewModel<TextBottomSheetViewModel>()
 
@@ -28,6 +37,9 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>() {
         viewModel.getAllWords()
         viewModel.getSearchWords()
 
+        setHasOptionsMenu(true)
+
+        setupToolbar()
         setupRecyclerView()
         setupButton()
     }
@@ -69,9 +81,41 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>() {
 
     override fun onStart() {
         super.onStart()
-        viewModel.getAllWords()
-        viewModel.getSearchWords()
+        viewModel.apply {
+            getAllWords()
+            getSearchWords()
+            getVocabularyNames()
+        }
     }
+
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        menu.clear()
+        inflater.inflate(R.menu.toolbar_home, menu)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean =
+        when (item.itemId) {
+            R.id.toolbar_filter_home -> {
+                val list = listOf(
+                    Pair(WordAdapter.SHUFFLE, "랜덤"),
+                    Pair(WordAdapter.SORT_DIFFICULT, "어려운순으로"),
+                    Pair(WordAdapter.SORT_EASY, "쉬운순으로"),
+                )
+
+                DefaultBottomSheetDialog(list) { data ->
+                    // todo 단어 순서 저장
+                    wordAdapter.sort(data.first!!)
+                }.show(parentFragmentManager, "")
+                true
+            }
+
+            R.id.toolbar_add_home -> {
+                requireActivity().startActivity(AddWordActivity::class.java)
+                true
+            }
+            else -> false
+        }
+
 
     private fun setupRecyclerView() {
         binding.rvHome.adapter = wordAdapter.apply {
@@ -87,31 +131,35 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>() {
     }
 
     private fun setupButton() {
-        binding.btnAddWordHome.setOnClickListener {
-            requireActivity().startActivity(AddWordActivity::class.java)
-        }
-
-        binding.btnSortHome.setOnClickListener {
-            // todo data class 이름 바꾸기
-            val list = listOf(
-                VocabularyName(WordAdapter.SHUFFLE, "랜덤"),
-                VocabularyName(WordAdapter.SORT_DIFFICULT, "어려운순으로"),
-                VocabularyName(WordAdapter.SORT_EASY, "쉬운순으로"),
-            )
-            TextBottomSheetDialog(list).show(parentFragmentManager, "")
-        }
-
-        binding.layoutSpinner.setOnClickListener {
-            val list = arrayListOf<VocabularyName>().apply {
-                val vocabularyNames = viewModel.vocabularyNames.value?.peekContent() ?: listOf()
-                add(VocabularyName(null, "전체"))
-                addAll(vocabularyNames)
-            }
-            TextBottomSheetDialog(list).show(parentFragmentManager, "")
-        }
-
         binding.cvWord.setOnClickListener {
             requireActivity().startActivity(SearchWordActivity::class.java)
         }
+    }
+
+    private fun setupToolbar() {
+        requireActivity().findViewById<TextView>(R.id.toolbar_title_main).visibility = GONE
+
+        requireActivity().findViewById<Spinner>(R.id.toolbar_spinner_main).apply {
+            visibility = VISIBLE
+
+            setOnTouchListenerThrottled(object : Test {
+                override fun onClick() {
+                    val list = arrayListOf(Pair<Int?, String>(null, "전체")).apply {
+                        val vocabularyList = viewModel.vocabularyNames.value?.peekContent()
+                            ?.map { Pair(it.id, it.name!!) } ?: listOf()
+                        addAll(vocabularyList)
+                    }
+
+                    DefaultBottomSheetDialog(list) {
+                        if (it.first == null) {
+                            viewModel.getAllWords()
+                        } else {
+                            viewModel.getWordsByVocabulary(it.first!!)
+                        }
+                    }.show(parentFragmentManager, "")
+                }
+            })
+        }
+
     }
 }

@@ -5,7 +5,12 @@ import android.content.Intent
 import android.net.Uri
 import android.os.Build
 import android.provider.Settings
+import android.view.View
+import android.view.View.VISIBLE
+import android.widget.Spinner
+import android.widget.TextView
 import androidx.activity.result.contract.ActivityResultContracts
+import co.kr.dgsw.searchvoca.R
 import co.kr.dgsw.searchvoca.base.BaseFragment
 import co.kr.dgsw.searchvoca.databinding.FragmentSettingBinding
 import co.kr.dgsw.searchvoca.view.service.FloatingSearchButtonService
@@ -25,6 +30,8 @@ class SettingFragment : BaseFragment<FragmentSettingBinding, SettingViewModel>()
         }
 
     override fun init() {
+        setupToolbar()
+
         binding.switchSetting.setOnCheckedChangeListener { _, isChecked ->
             if (isChecked) {
                 if (checkedOverlayPermission()) {
@@ -35,6 +42,14 @@ class SettingFragment : BaseFragment<FragmentSettingBinding, SettingViewModel>()
             } else {
                 stopFloatingService()
             }
+        }
+    }
+
+    private fun setupToolbar() {
+        requireActivity().findViewById<Spinner>(R.id.toolbar_spinner_main).visibility = View.GONE
+        requireActivity().findViewById<TextView>(R.id.toolbar_title_main).apply {
+            visibility = VISIBLE
+            text = "설정"
         }
     }
 
