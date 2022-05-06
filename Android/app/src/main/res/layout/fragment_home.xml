@@ -3,78 +3,26 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <data>
+
+        <variable
+            name="vm"
+            type="co.kr.dgsw.searchvoca.viewmodel.fragment.HomeViewModel" />
+    </data>
+
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:orientation="vertical"
         tools:context=".view.fragment.HomeFragment">
 
-        <LinearLayout
-            android:id="@+id/linearLayout4"
-            android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            android:gravity="center_vertical"
-            android:paddingStart="16dp"
-            android:paddingEnd="8dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
-
-            <LinearLayout
-                android:id="@+id/layout_spinner"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:clickable="true"
-                android:focusable="true"
-                android:gravity="center"
-                android:minWidth="48dp"
-                android:minHeight="48dp">
-
-                <TextView
-                    android:id="@+id/tv_voca"
-                    style="@style/BigTextView"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/all" />
-
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="8dp"
-                    android:src="@drawable/ic_arrow_bottom" />
-            </LinearLayout>
-
-            <Space
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1" />
-
-            <ImageButton
-                android:id="@+id/btn_sort_home"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="@android:color/transparent"
-                android:minWidth="48dp"
-                android:minHeight="48dp"
-                android:src="@drawable/selector_icon_filter" />
-
-            <ImageButton
-                android:id="@+id/btn_add_word_home"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="@android:color/transparent"
-                android:minWidth="48dp"
-                android:minHeight="48dp"
-                android:src="@drawable/selector_icon_add" />
-
-        </LinearLayout>
-
         <ScrollView
-            android:layout_width="0dp"
-            android:layout_height="0dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scrollbars="none"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/linearLayout4">
+            app:layout_constraintStart_toStartOf="parent">
 
             <RelativeLayout
                 android:layout_width="match_parent"
@@ -84,18 +32,18 @@
                 <androidx.cardview.widget.CardView
                     android:id="@+id/cv_word"
                     android:layout_width="match_parent"
-                    android:layout_height="120dp"
+                    android:layout_height="150dp"
                     android:layout_alignParentTop="true"
                     android:layout_centerInParent="true"
                     android:layout_marginHorizontal="24dp"
                     android:layout_marginTop="16dp"
                     android:clickable="true"
                     android:elevation="0dp"
-                    android:visibility="gone"
+                    android:focusable="true"
                     app:cardBackgroundColor="@color/gray1"
                     app:cardCornerRadius="25dp"
+                    visible="@{vm.searchWordsCount}"
                     app:cardElevation="0dp"
-                    app:contentPadding="16dp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent">
 
@@ -107,34 +55,41 @@
                             android:id="@+id/imageView"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:src="@drawable/ic_circle_search"
                             app:layout_constraintBottom_toBottomOf="parent"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toTopOf="parent" />
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:srcCompat="@drawable/drawable_search_word" />
 
                         <LinearLayout
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginStart="11dp"
+                            android:layout_marginStart="24dp"
+                            android:layout_marginTop="24dp"
                             android:orientation="vertical"
-                            app:layout_constraintBottom_toBottomOf="parent"
-                            app:layout_constraintStart_toEndOf="@+id/imageView"
+                            app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toTopOf="parent">
 
                             <TextView
-                                android:id="@+id/tv_search_title"
-                                style="@style/BoldTextView"
-                                android:layout_width="wrap_content"
+                                android:id="@+id/textView3"
+                                style="@style/RegularTextView"
+                                android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:text="검색한 단어가 20개가 있어요!" />
+                                android:text="검색한 단어가" />
 
                             <TextView
-                                android:id="@+id/textView3"
-                                style="@style/SmallTextView.Black"
-                                android:layout_width="wrap_content"
+                                android:id="@+id/textView15"
+                                android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:text="단어를 분류하고 빠르게 암기해봐요." />
+                                android:text="@{@string/count(vm.searchWordsCount)}"
+                                android:textColor="@color/black"
+                                android:textSize="18sp"
+                                android:textStyle="bold" />
 
+                            <TextView
+                                android:id="@+id/textView16"
+                                style="@style/RegularTextView"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="있어요!" />
                         </LinearLayout>
                     </androidx.constraintlayout.widget.ConstraintLayout>
                 </androidx.cardview.widget.CardView>
@@ -142,7 +97,7 @@
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/rv_home"
                     dividerColor="@{@color/gray1}"
-                    dividerHeight="@{2f}"
+                    dividerHeight="@{3f}"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/cv_word"
@@ -154,5 +109,5 @@
 
             </RelativeLayout>
         </ScrollView>
-    </androidx.constraintlayout.widget.ConstraintLayout>
+    </LinearLayout>
 </layout>

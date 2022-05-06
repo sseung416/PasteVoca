@@ -18,9 +18,11 @@ class HomeViewModel(
     val vocabularyNames = MutableLiveData<Event<List<VocabularyName>>>()
     val allWords = MutableLiveData<Event<List<Word>>>()
     val wordsByVoca = MutableLiveData<Event<List<Word>>>()
-    val searchWords = MutableLiveData<Event<List<Word>>>()
+
+    val searchWordsCount = MutableLiveData<Int>()
 
     val vocabularyId = MutableLiveData<Event<Int?>>()
+    val vocabulary = MutableLiveData("전체")
 
     fun getVocabularyNames() = onIO {
         val res = vocabularyRepository.getVocabularyNames()
@@ -39,7 +41,7 @@ class HomeViewModel(
 
     fun getSearchWords() = onIO {
         val res = wordRepository.getWordsByVocabulary(Vocabulary.VOCABULARY_ID_SEARCH)
-        searchWords.postValue(Event(res))
+        searchWordsCount.postValue(res.size)
     }
 
     fun updateWord(word: Word) = onIO {
