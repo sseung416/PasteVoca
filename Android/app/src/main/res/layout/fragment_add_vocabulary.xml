@@ -4,21 +4,21 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+
         <variable
             name="vm"
-            type="co.kr.dgsw.searchvoca.viewmodel.activity.AddVocabularyViewModel" />
+            type="co.kr.dgsw.searchvoca.viewmodel.fragment.UpdateVocabularyViewModel" />
     </data>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".view.activity.AddVocabularyActivity">
+        android:orientation="vertical"
+        tools:context=".view.fragment.AddVocabularyFragment">
 
         <include
-            android:id="@+id/layout_add_vocabulary"
-            layout="@layout/layout_add"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            app:addData="@{vm.addData}" />
+            layout="@layout/layout_update_vocabulary"
+            app:vm="@{vm}" />
+
     </LinearLayout>
 </layout>

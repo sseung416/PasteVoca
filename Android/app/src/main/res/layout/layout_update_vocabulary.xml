@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+
+        <variable
+            name="vm"
+            type="co.kr.dgsw.searchvoca.viewmodel.fragment.UpdateVocabularyViewModel" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:paddingHorizontal="@dimen/update_layout_padding_horizontal"
+        android:paddingTop="@dimen/update_layout_padding_top">
+
+        <EditText
+            android:id="@+id/et_word"
+            style="@style/AddEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:focusable="true"
+            android:hint="@string/vocabulary_name_require"
+            android:text="@={vm.vocabularyName}" />
+
+        <EditText
+            android:id="@+id/et_meaning"
+            style="@style/AddEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/explaining"
+            android:text="@={vm.explaining}" />
+
+        <EditText
+            android:id="@+id/et_choice_vocabulary"
+            style="@style/AddEditText"
+            android:enabled="false"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:drawableEnd="@drawable/ic_arrow_bottom"
+            android:hint="언어 선택" />
+    </LinearLayout>
+</layout>
