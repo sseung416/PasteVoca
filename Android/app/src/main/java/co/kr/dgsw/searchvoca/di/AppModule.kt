@@ -6,11 +6,10 @@ import co.kr.dgsw.searchvoca.datasource.model.repository.WordRepository
 import co.kr.dgsw.searchvoca.datasource.remote.RetrofitInstance
 import co.kr.dgsw.searchvoca.datasource.remote.repository.SearchRepository
 import co.kr.dgsw.searchvoca.viewmodel.activity.*
-import co.kr.dgsw.searchvoca.viewmodel.dialog.TextBottomSheetViewModel
-import co.kr.dgsw.searchvoca.viewmodel.fragment.HomeViewModel
-import co.kr.dgsw.searchvoca.viewmodel.fragment.SettingViewModel
+import co.kr.dgsw.searchvoca.viewmodel.dialog.DefaultBottomSheetViewModel
+import co.kr.dgsw.searchvoca.viewmodel.dialog.VocabularyBottomSheetViewModel
 import co.kr.dgsw.searchvoca.viewmodel.dialog.WordBottomSheetViewModel
-import co.kr.dgsw.searchvoca.viewmodel.fragment.WordTestViewModel
+import co.kr.dgsw.searchvoca.viewmodel.fragment.*
 import co.kr.dgsw.searchvoca.widget.coroutine.DispatcherProviderImpl
 import org.koin.android.ext.koin.androidContext
 import org.koin.androidx.viewmodel.dsl.viewModel
@@ -39,7 +38,7 @@ val dispatcherModule = module {
 val viewModelModule = module {
     // activity
     viewModel { MainViewModel() }
-    viewModel { AddWordViewModel(get(), get(), get()) }
+    viewModel { UpdateWordViewModel(get(), get(), get()) }
     viewModel { AddVocabularyViewModel(get(), get()) }
     viewModel { WordCheckViewModel(get(), get()) }
     viewModel { VocabularyViewModel(get(), get()) }
@@ -49,10 +48,12 @@ val viewModelModule = module {
     viewModel { HomeViewModel(get(), get(), get()) }
     viewModel { SettingViewModel() }
     viewModel { WordTestViewModel() }
+    viewModel { UpdateVocabularyViewModel(get(), get()) }
 
     // dialog
     viewModel { SearchResultViewModel(get(), get()) }
     viewModel { WordBottomSheetViewModel(get(), get()) }
     viewModel { SearchWordViewModel(get(), get()) }
-    viewModel { TextBottomSheetViewModel() }
+    viewModel { VocabularyBottomSheetViewModel(get(), get()) }
+    viewModel { DefaultBottomSheetViewModel() }
 }

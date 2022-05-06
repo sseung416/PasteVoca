@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/nav_add_word"
+    app:startDestination="@id/addWordFragment">
+
+    <fragment
+        android:id="@+id/addWordFragment"
+        android:name="co.kr.dgsw.searchvoca.view.fragment.AddWordFragment"
+        android:label="AddWordFragment" >
+        <action
+            android:id="@+id/action_addWordFragment_to_addVocabularyFragment"
+            app:destination="@id/addVocabularyFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/addVocabularyFragment"
+        android:name="co.kr.dgsw.searchvoca.view.fragment.AddVocabularyFragment"
+        android:label="AddVocabularyFragment" />
+</navigation>
