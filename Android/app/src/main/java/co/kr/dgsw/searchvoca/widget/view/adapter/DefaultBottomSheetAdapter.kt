@@ -5,28 +5,26 @@ import android.view.ViewGroup
 import android.view.ViewGroup.LayoutParams.MATCH_PARENT
 import android.view.ViewGroup.LayoutParams.WRAP_CONTENT
 import androidx.recyclerview.widget.RecyclerView
-import co.kr.dgsw.searchvoca.databinding.ItemSpinnerVocabularyBinding
-import co.kr.dgsw.searchvoca.datasource.model.dto.VocabularyName
+import co.kr.dgsw.searchvoca.databinding.ItemTextBinding
 
-class BottomSheetAdapter(
-    private val list: List<VocabularyName>
-) : RecyclerView.Adapter<BottomSheetAdapter.ViewHolder>() {
-    var onClickItemListener: ((Int?) -> Unit)? = null
+class DefaultBottomSheetAdapter(
+    private val list: List<Pair<Int?, String>>
+) : RecyclerView.Adapter<DefaultBottomSheetAdapter.ViewHolder>() {
+    var onClickItem: ((Pair<Int?, String>) -> Unit)? = null
 
     inner class ViewHolder(
-        private val binding: ItemSpinnerVocabularyBinding,
+        private val binding: ItemTextBinding
     ) : RecyclerView.ViewHolder(binding.root) {
-        fun bind(item: VocabularyName) {
-            binding.tvVoca.text = item.name
-
-            binding.layoutSpinner.setOnClickListener {
-                onClickItemListener?.invoke(item.id)
+        fun bind(data: Pair<Int?, String>) = binding.apply {
+            tv.text = data.second
+            layout.setOnClickListener {
+                onClickItem?.invoke(data)
             }
         }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder =
-        with(ItemSpinnerVocabularyBinding.inflate(LayoutInflater.from(parent.context))) {
+        with (ItemTextBinding.inflate(LayoutInflater.from(parent.context))) {
             root.layoutParams = ViewGroup.LayoutParams(MATCH_PARENT, WRAP_CONTENT)
             ViewHolder(this)
         }

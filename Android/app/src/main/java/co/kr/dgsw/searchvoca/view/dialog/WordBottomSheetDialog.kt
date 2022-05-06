@@ -8,12 +8,12 @@ import co.kr.dgsw.searchvoca.databinding.DialogBottomSheetWordBinding
 import co.kr.dgsw.searchvoca.datasource.model.dto.Word
 import co.kr.dgsw.searchvoca.view.activity.AddWordActivity
 import co.kr.dgsw.searchvoca.viewmodel.dialog.WordBottomSheetViewModel
-import org.koin.android.ext.android.inject
+import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 
 class WordBottomSheetDialog(
     private val word: Word
 ) : BaseBottomSheetDialog<DialogBottomSheetWordBinding>() {
-    override val viewModel by inject<WordBottomSheetViewModel>()
+    override val viewModel by sharedViewModel<WordBottomSheetViewModel>()
 
     override fun init() {
         setupButton()

@@ -13,9 +13,10 @@ import co.kr.dgsw.searchvoca.base.BaseFragment
 import co.kr.dgsw.searchvoca.databinding.FragmentHomeBinding
 import co.kr.dgsw.searchvoca.view.activity.AddWordActivity
 import co.kr.dgsw.searchvoca.view.activity.SearchWordActivity
-import co.kr.dgsw.searchvoca.view.dialog.TextBottomSheetDialog
+import co.kr.dgsw.searchvoca.view.dialog.DefaultBottomSheetDialog
 import co.kr.dgsw.searchvoca.view.dialog.WordBottomSheetDialog
-import co.kr.dgsw.searchvoca.viewmodel.dialog.TextBottomSheetViewModel
+import co.kr.dgsw.searchvoca.viewmodel.dialog.DefaultBottomSheetViewModel
+import co.kr.dgsw.searchvoca.viewmodel.dialog.WordBottomSheetViewModel
 import co.kr.dgsw.searchvoca.viewmodel.fragment.HomeViewModel
 import co.kr.dgsw.searchvoca.widget.Test
 import co.kr.dgsw.searchvoca.widget.extension.startActivity
@@ -28,7 +29,7 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>() {
     override val viewModel by viewModel<HomeViewModel>()
     private val wordDialogViewModel by sharedViewModel<WordBottomSheetViewModel>()
-    private val textBottomSheetViewModel by sharedViewModel<TextBottomSheetViewModel>()
+    private val defaultDialogViewModel by sharedViewModel<DefaultBottomSheetViewModel>()
 
     private val wordAdapter = WordAdapter()
 
@@ -51,32 +52,19 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>() {
             })
 
             wordsByVoca.observe(viewLifecycleOwner, EventObserver {
-                wordAdapter.setList(it)
-            })
-
-            searchWords.observe(viewLifecycleOwner, EventObserver {
-                if (it.isNotEmpty()) {
-                    binding.cvWord.visibility = VISIBLE
-                    binding.tvSearchTitle.text = "검색한 단어가 ${it.size}개가 있어요!"
-                }
-            })
-
-            textBottomSheetViewModel.clickedItem.observe(viewLifecycleOwner, EventObserver {
-                when (it) {
-                    null ->
-                        getAllWords()
-                    WordAdapter.SHUFFLE, WordAdapter.SORT_EASY, WordAdapter.SORT_DIFFICULT ->
-                        // todo 섞인 아이템 룸에 저장
-                        wordAdapter.sort(it)
-                    else ->
-                        getWordsByVocabulary(it)
-                }
+                if (it.isEmpty())
+                    Toast.makeText(requireContext(), "단어가 없어요! 단어를 추가해주세요.", Toast.LENGTH_LONG).show()
+                else wordAdapter.setList(it)
             })
         }
 
         wordDialogViewModel.deleteEvent.observe(viewLifecycleOwner) {
             viewModel.getAllWords()
         }
+
+        defaultDialogViewModel.clickedItem.observe(viewLifecycleOwner, EventObserver {
+            defaultDialogViewModel.callback.invoke(it)
+        })
     }
 
     override fun onStart() {
