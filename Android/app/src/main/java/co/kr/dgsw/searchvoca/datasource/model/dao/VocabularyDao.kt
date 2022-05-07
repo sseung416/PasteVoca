@@ -13,4 +13,7 @@ interface VocabularyDao : BaseDao<Vocabulary> {
 
     @Query("SELECT id, name FROM vocabulary WHERE id <> ${Vocabulary.VOCABULARY_ID_SEARCH}")
     suspend fun getVocabularyNames(): List<VocabularyName>
+
+    @Query("SELECT id, name FROM vocabulary WHERE id = :id")
+    suspend fun getVocabularyNameById(id: Int): VocabularyName
 }

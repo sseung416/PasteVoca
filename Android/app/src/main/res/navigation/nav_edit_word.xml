@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/nav_update_word"
+    xmlns:tools="http://schemas.android.com/tools"
+    app:startDestination="@id/editWordFragment">
+
+    <fragment
+        android:id="@+id/editWordFragment"
+        android:name="co.kr.dgsw.searchvoca.view.fragment.EditWordFragment"
+        tools:layout="@layout/fragment_edit_word"
+        android:label="EditWordFragment" />
+</navigation>

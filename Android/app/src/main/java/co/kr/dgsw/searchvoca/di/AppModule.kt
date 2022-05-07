@@ -38,10 +38,9 @@ val dispatcherModule = module {
 val viewModelModule = module {
     // activity
     viewModel { MainViewModel() }
-    viewModel { UpdateWordViewModel(get(), get(), get()) }
+    viewModel { UpdateWordViewModel(get(), get(), get(), get()) }
     viewModel { AddVocabularyViewModel(get(), get()) }
     viewModel { WordCheckViewModel(get(), get()) }
-    viewModel { VocabularyViewModel(get(), get()) }
     viewModel { CorrectionsViewModel(get()) }
 
     // fragment

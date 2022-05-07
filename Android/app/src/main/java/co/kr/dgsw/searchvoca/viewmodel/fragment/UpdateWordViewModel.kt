@@ -5,6 +5,7 @@ import co.kr.dgsw.searchvoca.base.BaseViewModel
 import co.kr.dgsw.searchvoca.datasource.model.dto.Vocabulary
 import co.kr.dgsw.searchvoca.datasource.model.dto.VocabularyName
 import co.kr.dgsw.searchvoca.datasource.model.dto.Word
+import co.kr.dgsw.searchvoca.datasource.model.repository.VocabularyRepository
 import co.kr.dgsw.searchvoca.datasource.model.repository.WordRepository
 import co.kr.dgsw.searchvoca.datasource.remote.repository.SearchRepository
 import co.kr.dgsw.searchvoca.widget.coroutine.DispatcherProviderImpl
@@ -14,18 +15,19 @@ import co.kr.dgsw.searchvoca.widget.livedata.SingleLiveEvent
 class UpdateWordViewModel(
     dispatcherProvider: DispatcherProviderImpl,
     private val wordRepository: WordRepository,
-    private val searchRepository: SearchRepository
+    private val searchRepository: SearchRepository,
+    private val vocabularyRepository: VocabularyRepository
 ) : BaseViewModel(dispatcherProvider) {
     val word = MutableLiveData<String>()
     val meaning = MutableLiveData<String>()
     val vocabulary = MutableLiveData<VocabularyName>()
 
-    val vocabularyTouchEvent = MutableLiveData<Event<Unit>>()
-
     // 서버 값에서 받은 단어 뜻...
     val definitionList = MutableLiveData<Event<List<String>>>()
 
     val insertEvent = SingleLiveEvent<Unit>()
+    val updateEvent = SingleLiveEvent<Unit>()
+    val vocabularyTouchEvent = MutableLiveData<Event<Unit>>()
 
     val errorMessage = MutableLiveData<Event<String?>>()
 
@@ -48,14 +50,23 @@ class UpdateWordViewModel(
         }
     }
 
-    fun updateWord() = onIO {
-        if (isNotBlankAllData()) wordRepository.update(getWord())
+    fun updateWord(id: Int) {
+        if (isNotBlankAllData()) {
+            onIO { wordRepository.update(getWord(id)) }
+            updateEvent.call()
+        }
     }
 
-    private fun getWord() = Word(
+    fun getVocabularyNameById(id: Int) = onIO {
+        val res = vocabularyRepository.getVocabularyNameById(id)
+        vocabulary.postValue(res)
+    }
+
+    private fun getWord(id: Int? = null) = Word(
         vocabulary.value?.id ?: Vocabulary.VOCABULARY_ID_NO_NAMED,
         word.value!!,
-        meaning.value!!
+        meaning.value!!,
+        id = id
     )
 
     private fun isNotBlankAllData(): Boolean {

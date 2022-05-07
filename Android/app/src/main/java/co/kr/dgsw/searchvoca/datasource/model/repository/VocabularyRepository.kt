@@ -8,6 +8,8 @@ class VocabularyRepository(override val dao: VocabularyDao) : BaseRepository<Voc
 
     suspend fun getVocabularyNames() = dao.getVocabularyNames()
 
+    suspend fun getVocabularyNameById(id: Int) = dao.getVocabularyNameById(id)
+
     override suspend fun insert(obj: Vocabulary) = dao.insert(obj)
 
     override suspend fun update(obj: Vocabulary) = dao.update(obj)
