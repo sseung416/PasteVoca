@@ -19,8 +19,6 @@ class EditWordFragment : BaseFragment<FragmentEditWordBinding, UpdateWordViewMod
     }
 
     override fun init() {
-        setHasOptionsMenu(true)
-
         viewModel.apply {
             this.word.value = data.word
             meaning.value = data.meaning

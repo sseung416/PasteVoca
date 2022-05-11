@@ -18,10 +18,9 @@ import co.kr.dgsw.searchvoca.view.dialog.WordBottomSheetDialog
 import co.kr.dgsw.searchvoca.viewmodel.dialog.DefaultBottomSheetViewModel
 import co.kr.dgsw.searchvoca.viewmodel.dialog.WordBottomSheetViewModel
 import co.kr.dgsw.searchvoca.viewmodel.fragment.HomeViewModel
-import co.kr.dgsw.searchvoca.widget.Test
+import co.kr.dgsw.searchvoca.widget.extension.setOnTouchListenerThrottled
 import co.kr.dgsw.searchvoca.widget.extension.startActivity
 import co.kr.dgsw.searchvoca.widget.livedata.EventObserver
-import co.kr.dgsw.searchvoca.widget.setOnTouchListenerThrottled
 import co.kr.dgsw.searchvoca.widget.view.adapter.WordAdapter
 import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -37,8 +36,6 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>() {
         viewModel.getVocabularyNames()
         viewModel.getAllWords()
         viewModel.getSearchWords()
-
-        setHasOptionsMenu(true)
 
         setupToolbar()
         setupRecyclerView()
@@ -130,22 +127,20 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>() {
         requireActivity().findViewById<Spinner>(R.id.toolbar_spinner_main).apply {
             visibility = VISIBLE
 
-            setOnTouchListenerThrottled(object : Test {
-                override fun onClick() {
-                    val list = arrayListOf(Pair<Int?, String>(null, "전체")).apply {
-                        val vocabularyList = viewModel.vocabularyNames.value?.peekContent()
-                            ?.map { Pair(it.id, it.name!!) } ?: listOf()
-                        addAll(vocabularyList)
-                    }
-
-                    DefaultBottomSheetDialog(list) {
-                        if (it.first == null) {
-                            viewModel.getAllWords()
-                        } else {
-                            viewModel.getWordsByVocabulary(it.first!!)
-                        }
-                    }.show(parentFragmentManager, "")
+            setOnTouchListenerThrottled({
+                val list = arrayListOf(Pair<Int?, String>(null, "전체")).apply {
+                    val vocabularyList = viewModel.vocabularyNames.value?.peekContent()
+                        ?.map { Pair(it.id, it.name!!) } ?: listOf()
+                    addAll(vocabularyList)
                 }
+
+                DefaultBottomSheetDialog(list) {
+                    if (it.first == null) {
+                        viewModel.getAllWords()
+                    } else {
+                        viewModel.getWordsByVocabulary(it.first!!)
+                    }
+                }.show(parentFragmentManager, "")
             })
         }
 

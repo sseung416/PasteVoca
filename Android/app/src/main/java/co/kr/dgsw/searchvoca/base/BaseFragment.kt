@@ -22,6 +22,8 @@ abstract class BaseFragment<B : ViewDataBinding, VM : ViewModel> : Fragment(), B
         performDataBinding(inflater, container)
         observeViewModel()
         init()
+
+        setHasOptionsMenu(true)
         return binding.root
     }
 
