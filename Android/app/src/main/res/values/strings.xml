@@ -26,4 +26,11 @@
     <string name="count">%1$d개</string>
     <string name="vocabulary_name_require">단어장명 (필수)</string>
     <string name="explaining">설명</string>
+    <string name="vocabulary">단어장</string>
+    <string name="difficulty">난이도</string>
+    <string name="problem_count">문제 수</string>
+    <string name="difficult">어려움</string>
+    <string name="middle">보통</string>
+    <string name="easy">쉬움</string>
+    <string name="cancel">취소</string>
 </resources>

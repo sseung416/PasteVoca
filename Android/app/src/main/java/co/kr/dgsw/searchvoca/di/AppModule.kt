@@ -7,6 +7,7 @@ import co.kr.dgsw.searchvoca.datasource.remote.RetrofitInstance
 import co.kr.dgsw.searchvoca.datasource.remote.repository.SearchRepository
 import co.kr.dgsw.searchvoca.viewmodel.activity.*
 import co.kr.dgsw.searchvoca.viewmodel.dialog.DefaultBottomSheetViewModel
+import co.kr.dgsw.searchvoca.viewmodel.dialog.TestSettingViewModel
 import co.kr.dgsw.searchvoca.viewmodel.dialog.VocabularyBottomSheetViewModel
 import co.kr.dgsw.searchvoca.viewmodel.dialog.WordBottomSheetViewModel
 import co.kr.dgsw.searchvoca.viewmodel.fragment.*
@@ -40,7 +41,7 @@ val viewModelModule = module {
     viewModel { MainViewModel() }
     viewModel { UpdateWordViewModel(get(), get(), get(), get()) }
     viewModel { AddVocabularyViewModel(get(), get()) }
-    viewModel { WordCheckViewModel(get(), get()) }
+    viewModel { CardTestViewModel(get(), get()) }
     viewModel { CorrectionsViewModel(get()) }
 
     // fragment
@@ -55,4 +56,5 @@ val viewModelModule = module {
     viewModel { SearchWordViewModel(get(), get()) }
     viewModel { VocabularyBottomSheetViewModel(get(), get()) }
     viewModel { DefaultBottomSheetViewModel() }
+    viewModel { TestSettingViewModel() }
 }

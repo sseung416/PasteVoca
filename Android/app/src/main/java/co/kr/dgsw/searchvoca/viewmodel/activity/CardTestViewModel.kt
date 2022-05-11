@@ -6,12 +6,18 @@ import co.kr.dgsw.searchvoca.datasource.model.dto.Word
 import co.kr.dgsw.searchvoca.datasource.model.repository.WordRepository
 import co.kr.dgsw.searchvoca.widget.coroutine.DispatcherProviderImpl
 import co.kr.dgsw.searchvoca.widget.livedata.Event
+import co.kr.dgsw.searchvoca.widget.view.CardStackAdapter
 
-class WordCheckViewModel(
+class CardTestViewModel(
     dispatcherProvider: DispatcherProviderImpl,
     private val wordRepository: WordRepository
-) : BaseViewModel(dispatcherProvider) {
+) : BaseViewModel(dispatcherProvider), CardStackAdapter {
     val words = MutableLiveData<Event<List<Word>>>()
+
+    fun getAllWords() = onIO {
+        val res = wordRepository.getAllWords()
+        words.postValue(Event(res))
+    }
 
     fun getWordsByVocabulary(vocaId: Int) = onIO {
         val res = wordRepository.getWordsByVocabulary(vocaId)

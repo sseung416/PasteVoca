@@ -67,7 +67,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".view.activity.WordCheckActivity"
+            android:name=".view.activity.CardTestActivity"
             android:exported="false"
             android:label="@string/title_activity_word_check"
             android:theme="@style/Theme.PastVoca.NoActionBar" />

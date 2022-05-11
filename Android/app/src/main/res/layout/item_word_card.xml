@@ -14,11 +14,12 @@
         android:layout_height="match_parent">
 
         <androidx.cardview.widget.CardView
+            android:id="@+id/cv_card"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:clipToPadding="true"
             app:cardCornerRadius="10dp"
             app:cardElevation="10dp"
-            android:clipToPadding="true"
             app:cardUseCompatPadding="true"
             app:layout_constraintTop_toTopOf="parent"
             tools:layout_editor_absoluteX="1dp">
@@ -28,14 +29,14 @@
                 android:layout_height="match_parent">
 
                 <TextView
-                    android:id="@+id/tv_count"
+                    android:id="@+id/tv_count_card"
                     style="@style/SmallTextView.Gray"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginStart="24dp"
+                    android:layout_marginTop="24dp"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    android:layout_marginTop="24dp"
-                    android:layout_marginStart="24dp"
                     tools:text="1/50" />
 
                 <ImageButton
@@ -52,13 +53,14 @@
                     app:srcCompat="@drawable/ic_sound" />
 
                 <TextView
-                    android:id="@+id/textView4"
+                    android:id="@+id/tv_word_card"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@{data.word}"
                     android:textColor="@color/black"
                     android:textSize="20sp"
                     android:textStyle="bold"
+                    android:layout_marginHorizontal="24dp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
