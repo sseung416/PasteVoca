@@ -7,14 +7,18 @@ import android.widget.TextView
 import co.kr.dgsw.searchvoca.R
 import co.kr.dgsw.searchvoca.base.BaseFragment
 import co.kr.dgsw.searchvoca.databinding.FragmentWordTestBinding
-import co.kr.dgsw.searchvoca.view.dialog.WordTestSettingDialog
+import co.kr.dgsw.searchvoca.view.activity.CorrectionsListActivity
+import co.kr.dgsw.searchvoca.view.dialog.TestSettingBottomSheetDialog
 import co.kr.dgsw.searchvoca.viewmodel.fragment.WordTestViewModel
+import co.kr.dgsw.searchvoca.widget.extension.setOnClickListenerThrottled
 import org.koin.androidx.viewmodel.ext.android.viewModel
+import co.kr.dgsw.searchvoca.widget.extension.startActivity
 
 class WordTestFragment : BaseFragment<FragmentWordTestBinding, WordTestViewModel>() {
     override val viewModel by viewModel<WordTestViewModel>()
 
     override fun init() {
+        viewModel.getVocabularyNameList()
         setupToolbar()
         setupButton()
     }
@@ -28,12 +32,13 @@ class WordTestFragment : BaseFragment<FragmentWordTestBinding, WordTestViewModel
     }
 
     private fun setupButton() {
-        binding.cvWordCard.setOnClickListener {
-            WordTestSettingDialog().show(parentFragmentManager, "")
+        binding.cvWordCard.setOnClickListenerThrottled {
+            val list = viewModel.vocabularyNameList.value?.peekContent() ?: listOf()
+            TestSettingBottomSheetDialog(list).show(parentFragmentManager, "")
         }
 
         binding.cvWrongAnswerNote.setOnClickListener {
-
+            requireActivity().startActivity(CorrectionsListActivity::class.java)
         }
     }
 }

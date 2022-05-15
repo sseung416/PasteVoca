@@ -15,6 +15,9 @@
         android:theme="@style/Theme.PastVoca"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".view.activity.CorrectionsListActivity"
+            android:exported="false" />
+        <activity
             android:name=".view.activity.EditWordActivity"
             android:exported="false" />
         <activity

@@ -7,6 +7,7 @@ import android.view.View
 import android.view.View.GONE
 import android.view.View.VISIBLE
 import android.widget.EditText
+import android.widget.TextView
 import androidx.annotation.ColorInt
 import androidx.databinding.BindingAdapter
 import androidx.recyclerview.widget.RecyclerView
@@ -14,7 +15,9 @@ import co.kr.dgsw.searchvoca.widget.extension.OnClickListenerThrottled
 import co.kr.dgsw.searchvoca.widget.extension.setOnClickListenerThrottled
 import co.kr.dgsw.searchvoca.widget.extension.setOnTouchListenerThrottled
 import co.kr.dgsw.searchvoca.widget.view.decoration.CustomDecoration
+import java.text.SimpleDateFormat
 
+// RecyclerView Decoration 추가
 @BindingAdapter(
     value = ["dividerHeight", "dividerColor"],
     requireAll = false
@@ -37,6 +40,12 @@ fun View.setVisible(isVisible: Boolean) {
 @BindingAdapter("visible")
 fun View.setVisible(size: Int) {
     visibility = if (size != 0) VISIBLE else GONE
+}
+
+@BindingAdapter("dateText")
+fun TextView.setDateText(date: Long) {
+    val formatString = SimpleDateFormat("yyyy-MM-dd").format(date)
+    this.text = formatString
 }
 
 @BindingAdapter("onDrawableEndClick")

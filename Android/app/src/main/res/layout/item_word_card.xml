@@ -6,7 +6,7 @@
     <data>
         <variable
             name="data"
-            type="co.kr.dgsw.searchvoca.datasource.model.dto.Word" />
+            type="co.kr.dgsw.searchvoca.datasource.model.dto.CorrectionsWord" />
     </data>
 
     <LinearLayout

@@ -4,10 +4,10 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import co.kr.dgsw.searchvoca.databinding.ItemWordCardBinding
-import co.kr.dgsw.searchvoca.datasource.model.dto.Word
+import co.kr.dgsw.searchvoca.datasource.model.dto.CorrectionsWord
 
 class WordCardStackAdapter : RecyclerView.Adapter<WordCardStackAdapter.ViewHolder>() {
-    private val list = arrayListOf<Word>()
+    private val list = arrayListOf<CorrectionsWord>()
     private var adapterPosition = -1
 
     inner class ViewHolder(
@@ -39,7 +39,7 @@ class WordCardStackAdapter : RecyclerView.Adapter<WordCardStackAdapter.ViewHolde
 
     override fun getItemCount(): Int = list.size
 
-    fun setList(list: List<Word>) {
+    fun setList(list: List<CorrectionsWord>) {
         this.list.clear()
         this.list.addAll(list)
         notifyDataSetChanged()

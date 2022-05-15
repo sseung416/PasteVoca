@@ -5,20 +5,18 @@ import android.view.ViewGroup
 import android.view.ViewGroup.LayoutParams.MATCH_PARENT
 import androidx.recyclerview.widget.RecyclerView
 import co.kr.dgsw.searchvoca.databinding.ItemCorrectionsViewBinding
-import co.kr.dgsw.searchvoca.datasource.model.dto.Word
+import co.kr.dgsw.searchvoca.datasource.model.dto.CorrectionsWord
 
 class CorrectionsAdapter : RecyclerView.Adapter<CorrectionsAdapter.ViewHolder>() {
-    private val allList = arrayListOf<Word>()
-    private val correctList = arrayListOf<Word>()
-    private val wrongList = arrayListOf<Word>()
+    private val allList = arrayListOf<CorrectionsWord>()
+    private val correctList = arrayListOf<CorrectionsWord>()
+    private val wrongList = arrayListOf<CorrectionsWord>()
 
     inner class ViewHolder(
         private val binding: ItemCorrectionsViewBinding
     ) : RecyclerView.ViewHolder(binding.root) {
-        fun bind(list: List<Word>) {
-            binding.rvCorrectionView.adapter = WordAdapter().apply {
-                setList(list)
-            }
+        fun bind(list: List<CorrectionsWord>) {
+            binding.rvCorrectionView.adapter = CorrectionsWordAdapter(list)
         }
     }
 
@@ -40,7 +38,7 @@ class CorrectionsAdapter : RecyclerView.Adapter<CorrectionsAdapter.ViewHolder>()
 
     override fun getItemCount(): Int = 3
 
-    fun setList(triple: Triple<List<Word>, List<Word>, List<Word>>) {
+    fun setList(triple: Triple<List<CorrectionsWord>, List<CorrectionsWord>, List<CorrectionsWord>>) {
         allList.addAll(triple.first)
         wrongList.addAll(triple.second)
         correctList.addAll(triple.third)

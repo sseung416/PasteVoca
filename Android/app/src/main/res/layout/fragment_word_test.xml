@@ -85,41 +85,5 @@
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
         </LinearLayout>
-
-        <!--        <androidx.recyclerview.widget.RecyclerView-->
-        <!--            android:id="@+id/rv_word_test"-->
-        <!--            android:layout_width="match_parent"-->
-        <!--            android:layout_height="match_parent"-->
-        <!--            android:padding="16dp"-->
-        <!--            app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"-->
-        <!--            app:spanCount="2" />-->
-
-
-        <!--        <Button-->
-        <!--            android:id="@+id/button"-->
-        <!--            android:layout_width="wrap_content"-->
-        <!--            android:layout_height="wrap_content"-->
-        <!--            android:text="Button"-->
-        <!--            app:layout_constraintStart_toStartOf="parent"-->
-        <!--            app:layout_constraintTop_toBottomOf="@+id/constraintLayout4" />-->
-
-        <!--        <Button-->
-        <!--            android:id="@+id/button2"-->
-        <!--            android:layout_width="wrap_content"-->
-        <!--            android:layout_height="wrap_content"-->
-        <!--            android:text="시작하기"-->
-        <!--            app:layout_constraintStart_toStartOf="parent"-->
-        <!--            app:layout_constraintTop_toBottomOf="@+id/button" />-->
-
-        <!--        <EditText-->
-        <!--            android:id="@+id/et"-->
-        <!--            android:layout_width="wrap_content"-->
-        <!--            android:layout_height="wrap_content"-->
-        <!--            android:ems="10"-->
-        <!--            android:inputType="textPersonName"-->
-        <!--            android:text="Name"-->
-        <!--            app:layout_constraintStart_toEndOf="@+id/button"-->
-        <!--            app:layout_constraintTop_toTopOf="@+id/button" />-->
-
     </LinearLayout>
 </layout>

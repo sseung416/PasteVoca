@@ -12,8 +12,12 @@ import co.kr.dgsw.searchvoca.widget.livedata.EventObserver
 import co.kr.dgsw.searchvoca.widget.view.CardStackAdapter
 import co.kr.dgsw.searchvoca.widget.view.adapter.WordCardStackAdapter
 import kr.co.dgsw.cardstackview.*
+import co.kr.dgsw.searchvoca.widget.extension.startActivity
 import co.kr.dgsw.searchvoca.R
+import co.kr.dgsw.searchvoca.datasource.model.dto.CorrectionsWord
+import co.kr.dgsw.searchvoca.datasource.model.dto.Vocabulary
 import org.koin.androidx.viewmodel.ext.android.viewModel
+import java.util.*
 
 class CardTestActivity : BaseActivity<ActivityCardTestBinding, CardTestViewModel>(), CardStackAdapter {
     override val viewModel by viewModel<CardTestViewModel>()
@@ -41,7 +45,19 @@ class CardTestActivity : BaseActivity<ActivityCardTestBinding, CardTestViewModel
     override fun observeViewModel() {
         viewModel.words.observe(this, EventObserver {
             val count = if (problemCount == null || problemCount == 0) it.size else problemCount!!
-            val list = it.shuffled().slice(0 until count)
+            val list = it.shuffled().slice(0 until count).map { data ->
+                CorrectionsWord(
+                    data.word,
+                    data.meaning,
+                    0
+                )
+            }
+            adapter.setList(list)
+        })
+
+        viewModel.correctionsVocabularyId.observe(this, EventObserver { id ->
+            val list = adapter.getList()
+            list.forEach { it.vocabularyId = id }
             adapter.setList(list)
         })
     }
@@ -69,9 +85,12 @@ class CardTestActivity : BaseActivity<ActivityCardTestBinding, CardTestViewModel
 
     override fun onCardDisappeared(view: View?, position: Int) {
         if (adapter.itemCount - 1 == position) {
-            val intent = Intent(this, CorrectionsActivity::class.java)
-                .putExtra("list", adapter.getList())
-            startActivity(intent)
+            insertCorrectionsVocabulary()
+
+            adapter.getList().forEach {
+                viewModel.insertCorrectionsWord(it)
+            }
+            startActivity(CorrectionsActivity::class.java)
         }
     }
 
@@ -90,5 +109,12 @@ class CardTestActivity : BaseActivity<ActivityCardTestBinding, CardTestViewModel
             adapter = this@CardTestActivity.adapter
             layoutManager = manager
         }
+    }
+
+    private fun insertCorrectionsVocabulary() {
+        viewModel.insertVocabulary(
+            Vocabulary(vocabulary?.name ?: "", isCorrections = true, date = Date().time)
+        )
+        viewModel.getLastCorrectionsVocabularyId()
     }
 }
