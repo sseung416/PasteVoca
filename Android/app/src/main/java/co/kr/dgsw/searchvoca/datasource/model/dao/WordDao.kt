@@ -2,7 +2,6 @@ package co.kr.dgsw.searchvoca.datasource.model.dao
 
 import androidx.room.Dao
 import androidx.room.Query
-import co.kr.dgsw.searchvoca.base.BaseDao
 import co.kr.dgsw.searchvoca.datasource.model.dto.Vocabulary
 import co.kr.dgsw.searchvoca.datasource.model.dto.Word
 
