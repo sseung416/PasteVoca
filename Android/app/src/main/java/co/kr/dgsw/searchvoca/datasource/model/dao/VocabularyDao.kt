@@ -10,10 +10,10 @@ interface VocabularyDao : BaseDao<Vocabulary> {
     @Query("SELECT * FROM vocabulary WHERE id <> ${Vocabulary.VOCABULARY_ID_SEARCH} AND isCorrections = true")
     suspend fun getVocabularies(): List<Vocabulary>
 
-    @Query("SELECT * FROM vocabulary WHERE isCorrections = true")
+    @Query("SELECT * FROM vocabulary WHERE isCorrections = 1")
     suspend fun getCorrectionsVocabularies(): List<Vocabulary>
 
-    @Query("SELECT COUNT(*) FROM vocabulary WHERE isCorrections = true")
+    @Query("SELECT COUNT(*) FROM vocabulary WHERE isCorrections = 1")
     suspend fun getLastCorrectionsVocabularyId(): Int
 
     @Query("SELECT id, name FROM vocabulary WHERE id <> ${Vocabulary.VOCABULARY_ID_SEARCH} AND isCorrections = false")

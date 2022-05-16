@@ -6,7 +6,7 @@ import co.kr.dgsw.searchvoca.R
 import co.kr.dgsw.searchvoca.base.BaseFragment
 import co.kr.dgsw.searchvoca.databinding.FragmentEditWordBinding
 import co.kr.dgsw.searchvoca.datasource.model.dto.Word
-import co.kr.dgsw.searchvoca.view.dialog.SearchResultDialog
+import co.kr.dgsw.searchvoca.view.dialog.DefaultBottomSheetDialog
 import co.kr.dgsw.searchvoca.view.dialog.VocabularyBottomSheetDialog
 import co.kr.dgsw.searchvoca.viewmodel.fragment.UpdateWordViewModel
 import co.kr.dgsw.searchvoca.widget.livedata.EventObserver
@@ -32,8 +32,10 @@ class EditWordFragment : BaseFragment<FragmentEditWordBinding, UpdateWordViewMod
                 VocabularyBottomSheetDialog().show(parentFragmentManager, "")
             }
 
-            definitionList.observe(viewLifecycleOwner, EventObserver {
-                SearchResultDialog(it).show(parentFragmentManager, "")
+            definitionList.observe(viewLifecycleOwner, EventObserver { list ->
+                DefaultBottomSheetDialog(list.map { Pair(null, it) }, {
+                    viewModel.meaning.value = it.second
+                }, "뜻을 선택해주세요.").show(parentFragmentManager, "")
             })
 
             updateEvent.observe(viewLifecycleOwner) {

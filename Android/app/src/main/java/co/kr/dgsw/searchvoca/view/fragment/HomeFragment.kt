@@ -15,7 +15,6 @@ import co.kr.dgsw.searchvoca.view.activity.AddWordActivity
 import co.kr.dgsw.searchvoca.view.activity.SearchWordActivity
 import co.kr.dgsw.searchvoca.view.dialog.DefaultBottomSheetDialog
 import co.kr.dgsw.searchvoca.view.dialog.WordBottomSheetDialog
-import co.kr.dgsw.searchvoca.viewmodel.dialog.DefaultBottomSheetViewModel
 import co.kr.dgsw.searchvoca.viewmodel.dialog.WordBottomSheetViewModel
 import co.kr.dgsw.searchvoca.viewmodel.fragment.HomeViewModel
 import co.kr.dgsw.searchvoca.widget.extension.setOnTouchListenerThrottled
@@ -28,7 +27,6 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>() {
     override val viewModel by viewModel<HomeViewModel>()
     private val wordDialogViewModel by sharedViewModel<WordBottomSheetViewModel>()
-    private val defaultDialogViewModel by sharedViewModel<DefaultBottomSheetViewModel>()
 
     private val wordAdapter = WordAdapter()
 
@@ -58,10 +56,6 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>() {
         wordDialogViewModel.deleteEvent.observe(viewLifecycleOwner) {
             viewModel.getAllWords()
         }
-
-        defaultDialogViewModel.clickedItem.observe(viewLifecycleOwner, EventObserver {
-            defaultDialogViewModel.callback.invoke(it)
-        })
     }
 
     override fun onStart() {
@@ -87,10 +81,10 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>() {
                     Pair(WordAdapter.SORT_EASY, "쉬운순으로"),
                 )
 
-                DefaultBottomSheetDialog(list) { data ->
+                DefaultBottomSheetDialog(list, { data ->
                     // todo 단어 순서 저장
                     wordAdapter.sort(data.first!!)
-                }.show(parentFragmentManager, "")
+                }).show(parentFragmentManager, "")
                 true
             }
 
@@ -134,13 +128,13 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>() {
                     addAll(vocabularyList)
                 }
 
-                DefaultBottomSheetDialog(list) {
+                DefaultBottomSheetDialog(list, {
                     if (it.first == null) {
                         viewModel.getAllWords()
                     } else {
                         viewModel.getWordsByVocabulary(it.first!!)
                     }
-                }.show(parentFragmentManager, "")
+                }).show(parentFragmentManager, "")
             })
         }
 
