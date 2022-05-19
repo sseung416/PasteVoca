@@ -5,6 +5,7 @@ import android.content.Intent
 import android.net.Uri
 import android.os.Build
 import android.provider.Settings
+import android.util.Log
 import android.view.View
 import android.view.View.VISIBLE
 import android.widget.Spinner
@@ -15,6 +16,8 @@ import co.kr.dgsw.searchvoca.base.BaseFragment
 import co.kr.dgsw.searchvoca.databinding.FragmentSettingBinding
 import co.kr.dgsw.searchvoca.view.service.FloatingSearchButtonService
 import co.kr.dgsw.searchvoca.viewmodel.fragment.SettingViewModel
+import co.kr.dgsw.searchvoca.widget.extension.startService
+import co.kr.dgsw.searchvoca.widget.extension.stopService
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class SettingFragment : BaseFragment<FragmentSettingBinding, SettingViewModel>() {
@@ -31,18 +34,7 @@ class SettingFragment : BaseFragment<FragmentSettingBinding, SettingViewModel>()
 
     override fun init() {
         setupToolbar()
-
-        binding.switchSetting.setOnCheckedChangeListener { _, isChecked ->
-            if (isChecked) {
-                if (checkedOverlayPermission()) {
-                    showDialog()
-                } else {
-                    startFloatingService()
-                }
-            } else {
-                stopFloatingService()
-            }
-        }
+        setupButton()
     }
 
     private fun setupToolbar() {
@@ -53,12 +45,23 @@ class SettingFragment : BaseFragment<FragmentSettingBinding, SettingViewModel>()
         }
     }
 
+    private fun setupButton() {
+        binding.switchSetting.setOnCheckedChangeListener { _, isChecked ->
+            if (isChecked) {
+                if (checkedOverlayPermission()) showDialog()
+                else startFloatingService()
+            } else {
+                stopFloatingService()
+            }
+        }
+    }
+
     private fun startFloatingService() {
-        requireActivity().startService(Intent(requireContext(), FloatingSearchButtonService::class.java))
+        startService(FloatingSearchButtonService::class.java)
     }
 
     private fun stopFloatingService() {
-        requireActivity().stopService(Intent(requireContext(), FloatingSearchButtonService::class.java))
+        stopService(FloatingSearchButtonService::class.java)
     }
 
     private fun showDialog() {
