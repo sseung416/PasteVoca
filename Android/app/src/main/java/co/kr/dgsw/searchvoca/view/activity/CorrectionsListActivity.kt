@@ -3,6 +3,7 @@ package co.kr.dgsw.searchvoca.view.activity
 import android.content.Intent
 import android.view.Menu
 import android.view.MenuItem
+import android.view.View.VISIBLE
 import co.kr.dgsw.searchvoca.R
 import co.kr.dgsw.searchvoca.base.BaseActivity
 import co.kr.dgsw.searchvoca.databinding.ActivityCorrectionsListBinding
@@ -32,7 +33,8 @@ class CorrectionsListActivity : BaseActivity<ActivityCorrectionsListBinding, Cor
 
     override fun observeViewModel() {
         viewModel.correctionsList.observe(this, EventObserver {
-            adapter.setList(it)
+            if (it.isEmpty()) binding.tvEmpty.visibility = VISIBLE
+            else adapter.setList(it)
         })
     }
 

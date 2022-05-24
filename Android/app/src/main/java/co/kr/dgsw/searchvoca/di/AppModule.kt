@@ -50,7 +50,7 @@ val viewModelModule = module {
     // fragment
     viewModel { HomeViewModel(get(), get(), get()) }
     viewModel { SettingViewModel() }
-    viewModel { WordTestViewModel(get(),get()) }
+    viewModel { WordTestViewModel(get(), get()) }
     viewModel { UpdateVocabularyViewModel(get(), get()) }
 
     // dialog
@@ -58,5 +58,5 @@ val viewModelModule = module {
     viewModel { WordBottomSheetViewModel(get(), get()) }
     viewModel { SearchWordViewModel(get(), get()) }
     viewModel { VocabularyBottomSheetViewModel(get(), get()) }
-    viewModel { TestSettingViewModel() }
+    viewModel { TestSettingViewModel(get(), get()) }
 }

@@ -3,12 +3,13 @@ package co.kr.dgsw.searchvoca.view.dialog
 import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import android.widget.Toast
 import co.kr.dgsw.searchvoca.base.BaseBottomSheetDialog
 import co.kr.dgsw.searchvoca.databinding.DialogBottomSheetTestSettingBinding
 import co.kr.dgsw.searchvoca.datasource.model.dto.VocabularyName
 import co.kr.dgsw.searchvoca.view.activity.CardTestActivity
 import co.kr.dgsw.searchvoca.viewmodel.dialog.TestSettingViewModel
-import co.kr.dgsw.searchvoca.widget.extension.setOnClickListenerThrottled
+import co.kr.dgsw.searchvoca.widget.livedata.EventObserver
 import co.kr.dgsw.searchvoca.widget.view.adapter.VocabularyBottomSheetAdapter
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -17,16 +18,30 @@ class TestSettingBottomSheetDialog(
 ) : BaseBottomSheetDialog<DialogBottomSheetTestSettingBinding>() {
     override val viewModel by viewModel<TestSettingViewModel>()
 
-    override fun init() {
-        setupBinding()
-        setupRecyclerView()
-        setupButton()
-    }
-
     override fun getViewBinding(
         inflater: LayoutInflater,
         container: ViewGroup?
     ) = DialogBottomSheetTestSettingBinding.inflate(inflater)
+
+    override fun init() {
+        setupBinding()
+        setupRecyclerView()
+    }
+
+    override fun observeViewModel() {
+        viewModel.clickEventConfirm.observe(viewLifecycleOwner, EventObserver {
+            moveToWordCheck()
+            dismiss()
+        })
+
+        viewModel.clickEventCancel.observe(viewLifecycleOwner, EventObserver {
+            dismiss()
+        })
+
+        viewModel.errorMessage.observe(viewLifecycleOwner, EventObserver {
+            Toast.makeText(requireContext(), it, Toast.LENGTH_SHORT).show()
+        })
+    }
 
     private fun setupBinding() {
         binding.vm = viewModel
@@ -40,17 +55,6 @@ class TestSettingBottomSheetDialog(
             onClickItemListener = {
                 viewModel.select(it)
             }
-        }
-    }
-
-    private fun setupButton() {
-        binding.btnCancel.setOnClickListenerThrottled {
-            dismiss()
-        }
-
-        binding.btnConfirm.setOnClickListenerThrottled {
-            moveToWordCheck()
-            dismiss()
         }
     }
 

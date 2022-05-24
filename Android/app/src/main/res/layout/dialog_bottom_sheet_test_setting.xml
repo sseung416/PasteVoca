@@ -123,6 +123,7 @@
 
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/btn_cancel"
+                onClickThrottled="@{()->vm.cancel()}"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -139,6 +140,7 @@
 
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/btn_confirm"
+                onClickThrottled="@{()->vm.startWordTest()}"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
