@@ -27,6 +27,11 @@ abstract class BaseFragment<B : ViewDataBinding, VM : ViewModel> : Fragment(), B
         return binding.root
     }
 
+    override fun onPause() {
+        super.onPause()
+        requireActivity().overridePendingTransition(0,0)
+    }
+
     override fun observeViewModel() {}
 
     override fun startActivity(intent: Intent?) {
