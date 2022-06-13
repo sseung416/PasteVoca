@@ -5,9 +5,10 @@ import android.view.MenuInflater
 import android.view.MenuItem
 import android.view.View.GONE
 import android.view.View.VISIBLE
-import android.widget.Spinner
+import android.widget.LinearLayout
 import android.widget.TextView
 import android.widget.Toast
+import androidx.core.view.get
 import co.kr.dgsw.searchvoca.R
 import co.kr.dgsw.searchvoca.base.BaseFragment
 import co.kr.dgsw.searchvoca.databinding.FragmentHomeBinding
@@ -17,7 +18,7 @@ import co.kr.dgsw.searchvoca.view.dialog.DefaultBottomSheetDialog
 import co.kr.dgsw.searchvoca.view.dialog.WordBottomSheetDialog
 import co.kr.dgsw.searchvoca.viewmodel.dialog.WordBottomSheetViewModel
 import co.kr.dgsw.searchvoca.viewmodel.fragment.HomeViewModel
-import co.kr.dgsw.searchvoca.widget.extension.setOnTouchListenerThrottled
+import co.kr.dgsw.searchvoca.widget.extension.setOnClickListenerThrottled
 import co.kr.dgsw.searchvoca.widget.extension.startActivity
 import co.kr.dgsw.searchvoca.widget.livedata.EventObserver
 import co.kr.dgsw.searchvoca.widget.view.adapter.WordAdapter
@@ -118,10 +119,11 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>() {
     private fun setupToolbar() {
         requireActivity().findViewById<TextView>(R.id.toolbar_title_main).visibility = GONE
 
-        requireActivity().findViewById<Spinner>(R.id.toolbar_spinner_main).apply {
+        requireActivity().findViewById<LinearLayout>(R.id.toolbar_spinner_main).apply {
             visibility = VISIBLE
+            val spinnerName = this[0] as TextView
 
-            setOnTouchListenerThrottled({
+            setOnClickListenerThrottled {
                 val list = arrayListOf(Pair<Int?, String>(null, "전체")).apply {
                     val vocabularyList = viewModel.vocabularyNames.value?.peekContent()
                         ?.map { Pair(it.id, it.name!!) } ?: listOf()
@@ -129,14 +131,15 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>() {
                 }
 
                 DefaultBottomSheetDialog(list, {
-                    if (it.first == null) {
-                        viewModel.getAllWords()
-                    } else {
-                        viewModel.getWordsByVocabulary(it.first!!)
+                    when {
+                        it.second == spinnerName.text -> {}
+                        it.first == null -> viewModel.getAllWords()
+                        else -> viewModel.getWordsByVocabulary(it.first!!)
                     }
-                }).show(parentFragmentManager, "")
-            })
-        }
 
+                    spinnerName.text = it.second
+                }).show(parentFragmentManager, "")
+            }
+        }
     }
 }

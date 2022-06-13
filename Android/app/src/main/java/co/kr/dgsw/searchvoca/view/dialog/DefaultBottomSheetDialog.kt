@@ -12,7 +12,7 @@ class DefaultBottomSheetDialog(
     list: List<Pair<Int?, String>>,
     private val callback: (Pair<Int?, String>) -> Unit,
     private val title: String? = null
-    ) : BaseBottomSheetDialog<DialogBottomSheetDefaultBinding>() {
+) : BaseBottomSheetDialog<DialogBottomSheetDefaultBinding>() {
     private val adapter = DefaultBottomSheetAdapter(list)
 
     override fun init() {
