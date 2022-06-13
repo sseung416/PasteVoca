@@ -54,14 +54,14 @@
         <entry key="app/src/main/res/drawable/test.xml" value="0.2145" />
         <entry key="app/src/main/res/layout/activity_add_vocabulary.xml" value="0.2028985507246377" />
         <entry key="app/src/main/res/layout/activity_add_word.xml" value="0.2028985507246377" />
-        <entry key="app/src/main/res/layout/activity_card_test.xml" value="0.12777777777777777" />
+        <entry key="app/src/main/res/layout/activity_card_test.xml" value="0.38273688422309027" />
         <entry key="app/src/main/res/layout/activity_choose_language.xml" value="0.2028985507246377" />
         <entry key="app/src/main/res/layout/activity_clipboard.xml" value="0.18115942028985507" />
         <entry key="app/src/main/res/layout/activity_clipboard_dialog.xml" value="0.18112030029296877" />
         <entry key="app/src/main/res/layout/activity_corrections.xml" value="0.25279083251953127" />
         <entry key="app/src/main/res/layout/activity_corrections_list.xml" value="0.23777173913043478" />
         <entry key="app/src/main/res/layout/activity_edit_word.xml" value="0.1890625" />
-        <entry key="app/src/main/res/layout/activity_main.xml" value="0.22679138183593753" />
+        <entry key="app/src/main/res/layout/activity_main.xml" value="0.17647058823529413" />
         <entry key="app/src/main/res/layout/activity_search_result_dialog.xml" value="0.10234821706578356" />
         <entry key="app/src/main/res/layout/activity_search_word.xml" value="0.2933104631217839" />
         <entry key="app/src/main/res/layout/activity_vocabulary.xml" value="0.21467391304347827" />
@@ -129,6 +129,8 @@
         <entry key="app/src/main/res/menu/toolbar_corrections.xml" value="0.20925925925925926" />
         <entry key="app/src/main/res/menu/toolbar_default.xml" value="0.1" />
         <entry key="app/src/main/res/menu/toolbar_home.xml" value="0.5248855590820313" />
+        <entry key="app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.16" />
+        <entry key="app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" value="0.16" />
         <entry key="app/src/main/res/xml/widget_provider.xml" value="0.21467391304347827" />
       </map>
     </option>

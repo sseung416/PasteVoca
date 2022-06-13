@@ -52,7 +52,7 @@ abstract class FloatingService : Service() {
 
     protected fun stopService() {
         stopSelf()
-        (getSystemService(WINDOW_SERVICE) as WindowManager).removeViewImmediate(viewGroup)
+        (getSystemService(WINDOW_SERVICE) as WindowManager).removeView(viewGroup)
     }
 
     override fun onDestroy() {

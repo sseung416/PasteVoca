@@ -57,9 +57,11 @@ class CardTestActivity : BaseActivity<ActivityCardTestBinding, CardTestViewModel
         })
 
         viewModel.correctionsVocabularyId.observe(this, EventObserver { id ->
-            val list = adapter.getList()
-            list.forEach { it.vocabularyId = id }
-            adapter.setList(list)
+            adapter.getList().forEach {
+                it.vocabularyId = id
+                viewModel.insertCorrectionsWord(it)
+            }
+            startActivity(CorrectionsActivity::class.java)
         })
     }
 
@@ -75,12 +77,9 @@ class CardTestActivity : BaseActivity<ActivityCardTestBinding, CardTestViewModel
 
     override fun onCardDisappeared(view: View?, position: Int) {
         if (adapter.itemCount - 1 == position) {
-            insertCorrectionsVocabulary()
-
-            adapter.getList().forEach {
-                viewModel.insertCorrectionsWord(it)
-            }
-            startActivity(CorrectionsActivity::class.java)
+            viewModel.insertVocabulary(
+                Vocabulary(vocabulary?.name ?: "", isCorrections = true, date = Date().time)
+            )
         }
     }
 
@@ -108,12 +107,5 @@ class CardTestActivity : BaseActivity<ActivityCardTestBinding, CardTestViewModel
             adapter = this@CardTestActivity.adapter
             layoutManager = manager
         }
-    }
-
-    private fun insertCorrectionsVocabulary() {
-        viewModel.insertVocabulary(
-            Vocabulary(vocabulary?.name ?: "", isCorrections = true, date = Date().time)
-        )
-        viewModel.getLastCorrectionsVocabularyId()
     }
 }

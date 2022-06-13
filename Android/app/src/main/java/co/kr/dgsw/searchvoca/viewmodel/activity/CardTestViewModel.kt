@@ -33,14 +33,11 @@ class CardTestViewModel(
 
     fun insertVocabulary(data: Vocabulary) = onIO {
         vocabularyRepository.insert(data)
+        val id = vocabularyRepository.getLastCorrectionsVocabularyId()
+        correctionsVocabularyId.postValue(Event(id))
     }
 
     fun insertCorrectionsWord(data: CorrectionsWord) = onIO {
         correctionsWordRepository.insert(data)
-    }
-
-    fun getLastCorrectionsVocabularyId() = onIO {
-        val id = vocabularyRepository.getLastCorrectionsVocabularyId()
-        correctionsVocabularyId.postValue(Event(id))
     }
 }
