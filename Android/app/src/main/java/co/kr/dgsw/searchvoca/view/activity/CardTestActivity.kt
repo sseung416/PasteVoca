@@ -1,21 +1,22 @@
 package co.kr.dgsw.searchvoca.view.activity
 
-import android.content.Intent
 import android.view.Menu
-import android.view.MenuItem
 import android.view.View
+import androidx.appcompat.app.AlertDialog
+import co.kr.dgsw.searchvoca.R
 import co.kr.dgsw.searchvoca.base.BaseActivity
 import co.kr.dgsw.searchvoca.databinding.ActivityCardTestBinding
+import co.kr.dgsw.searchvoca.datasource.model.dto.CorrectionsWord
+import co.kr.dgsw.searchvoca.datasource.model.dto.Vocabulary
 import co.kr.dgsw.searchvoca.datasource.model.dto.VocabularyName
 import co.kr.dgsw.searchvoca.viewmodel.activity.CardTestViewModel
+import co.kr.dgsw.searchvoca.widget.extension.startActivity
 import co.kr.dgsw.searchvoca.widget.livedata.EventObserver
 import co.kr.dgsw.searchvoca.widget.view.CardStackAdapter
 import co.kr.dgsw.searchvoca.widget.view.adapter.WordCardStackAdapter
-import kr.co.dgsw.cardstackview.*
-import co.kr.dgsw.searchvoca.widget.extension.startActivity
-import co.kr.dgsw.searchvoca.R
-import co.kr.dgsw.searchvoca.datasource.model.dto.CorrectionsWord
-import co.kr.dgsw.searchvoca.datasource.model.dto.Vocabulary
+import kr.co.dgsw.cardstackview.CardStackLayoutManager
+import kr.co.dgsw.cardstackview.Direction
+import kr.co.dgsw.cardstackview.SwipeableMethod
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import java.util.*
 
@@ -67,17 +68,6 @@ class CardTestActivity : BaseActivity<ActivityCardTestBinding, CardTestViewModel
         return true
     }
 
-    override fun onContextItemSelected(item: MenuItem): Boolean {
-        return when (item.itemId) {
-            android.R.id.home -> {
-                // todo 재차 확인
-                finish()
-                true
-            }
-            else -> false
-        }
-    }
-
     override fun onCardSwiped(direction: Direction?) {
         // 왼쪽으로 스와이프되면 정답을 체크했으므로, isCorrect 를 true 로 설정
         adapter.setCorrect(direction == Direction.Left)
@@ -100,6 +90,15 @@ class CardTestActivity : BaseActivity<ActivityCardTestBinding, CardTestViewModel
             setDisplayShowTitleEnabled(false)
             setDisplayShowHomeEnabled(true)
             setDisplayHomeAsUpEnabled(true)
+        }
+
+        binding.toolbarCardTest.setNavigationOnClickListener {
+            AlertDialog.Builder(this)
+                .setMessage(R.string.message_quit_test)
+                .setPositiveButton(getString(R.string.yes)) { _, _ -> finish() }
+                .setNegativeButton(getString(R.string.no)) { dialog, _ -> dialog.dismiss() }
+                .create()
+                .show()
         }
     }
 

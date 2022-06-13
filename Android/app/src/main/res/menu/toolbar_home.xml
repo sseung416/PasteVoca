@@ -4,13 +4,13 @@
 
     <item
         android:id="@+id/toolbar_filter_home"
-        android:icon="@drawable/ic_filter"
+        android:icon="@drawable/selector_icon_filter"
         android:title=""
         app:showAsAction="ifRoom"/>
 
     <item
         android:id="@+id/toolbar_add_home"
-        android:icon="@drawable/ic_add2"
+        android:icon="@drawable/selector_icon_add"
         android:title=""
         app:showAsAction="always"/>
 </menu>

@@ -39,7 +39,7 @@ class TestSettingBottomSheetDialog(
         })
 
         viewModel.errorMessage.observe(viewLifecycleOwner, EventObserver {
-            Toast.makeText(requireContext(), it, Toast.LENGTH_SHORT).show()
+            Toast.makeText(requireContext(), it, Toast.LENGTH_LONG).show()
         })
     }
 

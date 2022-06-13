@@ -15,7 +15,6 @@ import org.koin.android.ext.android.inject
 
 class CorrectionsActivity : BaseActivity<ActivityCorrectionsBinding, CorrectionsViewModel>() {
     override val viewModel by inject<CorrectionsViewModel>()
-
     private val adapter = CorrectionsAdapter()
 
     override fun init() {

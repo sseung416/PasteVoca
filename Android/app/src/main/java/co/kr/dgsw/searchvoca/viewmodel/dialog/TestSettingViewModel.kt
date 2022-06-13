@@ -1,7 +1,9 @@
 package co.kr.dgsw.searchvoca.viewmodel.dialog
 
+import androidx.annotation.StringRes
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
+import co.kr.dgsw.searchvoca.R
 import co.kr.dgsw.searchvoca.base.BaseViewModel
 import co.kr.dgsw.searchvoca.datasource.model.dto.VocabularyName
 import co.kr.dgsw.searchvoca.datasource.model.repository.WordRepository
@@ -23,7 +25,7 @@ class TestSettingViewModel(
     val clickEventCancel = MutableLiveData<Event<Unit>>()
     val clickEventConfirm = MutableLiveData<Event<Unit>>()
 
-    val errorMessage = MutableLiveData<Event<String>>()
+    val errorMessage = MutableLiveData<Event<@StringRes Int>>()
 
     fun setVisibleRecyclerView() {
         recyclerViewVisible.value = true
@@ -41,16 +43,11 @@ class TestSettingViewModel(
     fun startWordTest() {
         viewModelScope.launch(io) {
             val vocabularyId = selectVocabularyName.value?.id
-            val selectedCount = problemCount.value?.toInt()
+            val wordCount = wordRepository.getWordCount(vocabularyId)
+            val selectedWordCount = problemCount.value?.toInt()
 
-            val count = if (vocabularyId == null) {
-                wordRepository.getWordCount()
-            } else {
-                wordRepository.getWordCount(vocabularyId)
-            }
-
-            if (selectedCount == null || selectedCount > count) {
-                errorMessage.postValue(Event("단어 갯수가 느무 많아염;;"))
+            if (selectedWordCount != null && selectedWordCount > wordCount) {
+                errorMessage.postValue(Event(R.string.error_message_overflow_word_count))
             } else {
                 clickEventConfirm.postValue(Event(Unit))
             }

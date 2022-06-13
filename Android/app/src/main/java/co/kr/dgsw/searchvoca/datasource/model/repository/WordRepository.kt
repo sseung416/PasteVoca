@@ -8,9 +8,9 @@ class WordRepository(override val dao: WordDao) : BaseRepository<WordDao, Word>(
 
     suspend fun getWordsByVocabulary(vocabularyId: Int) = dao.getWordsByVocabulary(vocabularyId)
 
-    suspend fun getWordCount() = dao.getWordCount()
-
-    suspend fun getWordCount(vocabularyId: Int) = dao.getWordCount(vocabularyId)
+    suspend fun getWordCount(vocabularyId: Int?) =
+        if (vocabularyId == null) dao.getWordCount()
+        else dao.getWordCount(vocabularyId)
 
     suspend fun updateWordVocabulary(ids: List<Int>, vocabularyId: Int) = dao.updateWordVocabulary(ids, vocabularyId)
 
