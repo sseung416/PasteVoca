@@ -4,18 +4,28 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import co.kr.dgsw.searchvoca.databinding.ItemWordCardBinding
-import co.kr.dgsw.searchvoca.datasource.model.dto.Word
+import co.kr.dgsw.searchvoca.datasource.model.dto.CorrectionsWord
 
 class WordCardStackAdapter : RecyclerView.Adapter<WordCardStackAdapter.ViewHolder>() {
-    private val list = arrayListOf<Word>()
+    private val list = arrayListOf<CorrectionsWord>()
     private var adapterPosition = -1
 
     inner class ViewHolder(
         private val binding: ItemWordCardBinding
     ) : RecyclerView.ViewHolder(binding.root) {
+        // 현재 단어뜻이 나와있는지 단어가 나와있는지 확인하는 값
+        private var isShowMeaning = false
+
         fun bind(position: Int) {
-            binding.tvCount.text = "${position + 1}/${list.size}"
-            binding.data = list[position]
+            val data = list[position]
+
+            binding.cvCard.setOnClickListener {
+                binding.tvWordCard.text = if (isShowMeaning) data.word else data.meaning
+                isShowMeaning = !isShowMeaning
+            }
+
+            binding.tvCountCard.text = "${position + 1}/${list.size}"
+            binding.data = data
             binding.executePendingBindings()
         }
     }
@@ -29,7 +39,7 @@ class WordCardStackAdapter : RecyclerView.Adapter<WordCardStackAdapter.ViewHolde
 
     override fun getItemCount(): Int = list.size
 
-    fun setList(list: List<Word>) {
+    fun setList(list: List<CorrectionsWord>) {
         this.list.clear()
         this.list.addAll(list)
         notifyDataSetChanged()

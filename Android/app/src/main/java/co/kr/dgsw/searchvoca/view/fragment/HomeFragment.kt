@@ -5,9 +5,10 @@ import android.view.MenuInflater
 import android.view.MenuItem
 import android.view.View.GONE
 import android.view.View.VISIBLE
-import android.widget.Spinner
+import android.widget.LinearLayout
 import android.widget.TextView
 import android.widget.Toast
+import androidx.core.view.get
 import co.kr.dgsw.searchvoca.R
 import co.kr.dgsw.searchvoca.base.BaseFragment
 import co.kr.dgsw.searchvoca.databinding.FragmentHomeBinding
@@ -15,13 +16,11 @@ import co.kr.dgsw.searchvoca.view.activity.AddWordActivity
 import co.kr.dgsw.searchvoca.view.activity.SearchWordActivity
 import co.kr.dgsw.searchvoca.view.dialog.DefaultBottomSheetDialog
 import co.kr.dgsw.searchvoca.view.dialog.WordBottomSheetDialog
-import co.kr.dgsw.searchvoca.viewmodel.dialog.DefaultBottomSheetViewModel
 import co.kr.dgsw.searchvoca.viewmodel.dialog.WordBottomSheetViewModel
 import co.kr.dgsw.searchvoca.viewmodel.fragment.HomeViewModel
-import co.kr.dgsw.searchvoca.widget.Test
+import co.kr.dgsw.searchvoca.widget.extension.setOnClickListenerThrottled
 import co.kr.dgsw.searchvoca.widget.extension.startActivity
 import co.kr.dgsw.searchvoca.widget.livedata.EventObserver
-import co.kr.dgsw.searchvoca.widget.setOnTouchListenerThrottled
 import co.kr.dgsw.searchvoca.widget.view.adapter.WordAdapter
 import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -29,7 +28,6 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>() {
     override val viewModel by viewModel<HomeViewModel>()
     private val wordDialogViewModel by sharedViewModel<WordBottomSheetViewModel>()
-    private val defaultDialogViewModel by sharedViewModel<DefaultBottomSheetViewModel>()
 
     private val wordAdapter = WordAdapter()
 
@@ -37,8 +35,6 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>() {
         viewModel.getVocabularyNames()
         viewModel.getAllWords()
         viewModel.getSearchWords()
-
-        setHasOptionsMenu(true)
 
         setupToolbar()
         setupRecyclerView()
@@ -61,10 +57,6 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>() {
         wordDialogViewModel.deleteEvent.observe(viewLifecycleOwner) {
             viewModel.getAllWords()
         }
-
-        defaultDialogViewModel.clickedItem.observe(viewLifecycleOwner, EventObserver {
-            defaultDialogViewModel.callback.invoke(it)
-        })
     }
 
     override fun onStart() {
@@ -90,10 +82,10 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>() {
                     Pair(WordAdapter.SORT_EASY, "쉬운순으로"),
                 )
 
-                DefaultBottomSheetDialog(list) { data ->
+                DefaultBottomSheetDialog(list, { data ->
                     // todo 단어 순서 저장
                     wordAdapter.sort(data.first!!)
-                }.show(parentFragmentManager, "")
+                }).show(parentFragmentManager, "")
                 true
             }
 
@@ -127,27 +119,27 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>() {
     private fun setupToolbar() {
         requireActivity().findViewById<TextView>(R.id.toolbar_title_main).visibility = GONE
 
-        requireActivity().findViewById<Spinner>(R.id.toolbar_spinner_main).apply {
+        requireActivity().findViewById<LinearLayout>(R.id.toolbar_spinner_main).apply {
             visibility = VISIBLE
+            val spinnerName = this[0] as TextView
 
-            setOnTouchListenerThrottled(object : Test {
-                override fun onClick() {
-                    val list = arrayListOf(Pair<Int?, String>(null, "전체")).apply {
-                        val vocabularyList = viewModel.vocabularyNames.value?.peekContent()
-                            ?.map { Pair(it.id, it.name!!) } ?: listOf()
-                        addAll(vocabularyList)
+            setOnClickListenerThrottled {
+                val list = arrayListOf(Pair<Int?, String>(null, "전체")).apply {
+                    val vocabularyList = viewModel.vocabularyNames.value?.peekContent()
+                        ?.map { Pair(it.id, it.name!!) } ?: listOf()
+                    addAll(vocabularyList)
+                }
+
+                DefaultBottomSheetDialog(list, {
+                    when {
+                        it.second == spinnerName.text -> {}
+                        it.first == null -> viewModel.getAllWords()
+                        else -> viewModel.getWordsByVocabulary(it.first!!)
                     }
 
-                    DefaultBottomSheetDialog(list) {
-                        if (it.first == null) {
-                            viewModel.getAllWords()
-                        } else {
-                            viewModel.getWordsByVocabulary(it.first!!)
-                        }
-                    }.show(parentFragmentManager, "")
-                }
-            })
+                    spinnerName.text = it.second
+                }).show(parentFragmentManager, "")
+            }
         }
-
     }
 }

@@ -7,7 +7,7 @@ import android.os.Build
 import android.provider.Settings
 import android.view.View
 import android.view.View.VISIBLE
-import android.widget.Spinner
+import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.activity.result.contract.ActivityResultContracts
 import co.kr.dgsw.searchvoca.R
@@ -15,6 +15,8 @@ import co.kr.dgsw.searchvoca.base.BaseFragment
 import co.kr.dgsw.searchvoca.databinding.FragmentSettingBinding
 import co.kr.dgsw.searchvoca.view.service.FloatingSearchButtonService
 import co.kr.dgsw.searchvoca.viewmodel.fragment.SettingViewModel
+import co.kr.dgsw.searchvoca.widget.extension.startService
+import co.kr.dgsw.searchvoca.widget.extension.stopService
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class SettingFragment : BaseFragment<FragmentSettingBinding, SettingViewModel>() {
@@ -25,40 +27,46 @@ class SettingFragment : BaseFragment<FragmentSettingBinding, SettingViewModel>()
             if (checkedOverlayPermission()) {
                 startFloatingService()
             } else {
-                binding.switchSetting.isSelected = false
+                binding.switchBackgroundSearch.isSelected = false
             }
         }
 
     override fun init() {
         setupToolbar()
+        setupSwitch()
+    }
 
-        binding.switchSetting.setOnCheckedChangeListener { _, isChecked ->
-            if (isChecked) {
-                if (checkedOverlayPermission()) {
-                    showDialog()
-                } else {
-                    startFloatingService()
-                }
-            } else {
-                stopFloatingService()
-            }
+    override fun observeViewModel() {
+        viewModel.apply {
+
         }
     }
 
     private fun setupToolbar() {
-        requireActivity().findViewById<Spinner>(R.id.toolbar_spinner_main).visibility = View.GONE
+        requireActivity().findViewById<LinearLayout>(R.id.toolbar_spinner_main).visibility = View.GONE
         requireActivity().findViewById<TextView>(R.id.toolbar_title_main).apply {
             visibility = VISIBLE
             text = "설정"
         }
     }
 
+    private fun setupSwitch() {
+        binding.switchBackgroundSearch.setOnCheckedChangeListener { _, isChecked ->
+            if (isChecked) {
+                if (checkedOverlayPermission()) showDialog()
+                else startFloatingService()
+            } else {
+                stopFloatingService()
+            }
+        }
+    }
+
     private fun startFloatingService() {
-        requireActivity().startService(Intent(requireContext(), FloatingSearchButtonService::class.java))
+        startService(FloatingSearchButtonService::class.java)
     }
 
     private fun stopFloatingService() {
-        requireActivity().stopService(Intent(requireContext(), FloatingSearchButtonService::class.java))
+        stopService(FloatingSearchButtonService::class.java)
     }
 
     private fun showDialog() {

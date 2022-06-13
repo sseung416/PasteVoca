@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="vm"
+            type="co.kr.dgsw.searchvoca.viewmodel.dialog.TestSettingViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:context=".view.dialog.TestSettingBottomSheetDialog">
+
+        <TextView
+            android:id="@+id/textView17"
+            style="@style/RegularTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/vocabulary"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@+id/tv_voca"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/tv_voca" />
+
+        <TextView
+            android:id="@+id/tv_voca"
+            style="@style/RegularTextView"
+            onClickThrottled="@{()->vm.setVisibleRecyclerView()}"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:clickable="true"
+            android:drawablePadding="8dp"
+            android:focusable="true"
+            android:gravity="center_vertical"
+            android:minHeight="48dp"
+            android:text="@{vm.selectVocabularyName.name}"
+            app:drawableEndCompat="@drawable/ic_arrow_right"
+            app:drawableTint="@color/black"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <EditText
+            android:id="@+id/tv_problem_count"
+            style="@style/RegularTextView"
+            android:layout_marginTop="8dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:gravity="center"
+            android:hint="@string/all"
+            android:includeFontPadding="true"
+            android:inputType="number"
+            android:minWidth="48dp"
+            android:minHeight="48dp"
+            android:text="@={vm.problemCount}"
+            app:layout_constraintEnd_toStartOf="@+id/textView18"
+            app:layout_constraintTop_toBottomOf="@+id/tv_voca" />
+
+        <TextView
+            android:id="@+id/textView21"
+            style="@style/RegularTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/problem_count"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@+id/tv_problem_count"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/tv_problem_count" />
+
+        <TextView
+            android:id="@+id/textView22"
+            style="@style/RegularTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/difficulty"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@+id/cb_difficult"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/cb_difficult" />
+
+        <CheckBox
+            android:id="@+id/cb_difficult"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
+            android:checked="@={vm.difficult}"
+            android:text="@string/difficult"
+            app:layout_constraintEnd_toStartOf="@+id/cb_middle"
+            app:layout_constraintTop_toTopOf="@+id/cb_middle" />
+
+        <CheckBox
+            android:id="@+id/cb_middle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
+            android:checked="@{vm.middle}"
+            android:text="@string/middle"
+            app:layout_constraintEnd_toStartOf="@+id/cb_easy"
+            app:layout_constraintTop_toTopOf="@+id/cb_easy" />
+
+        <CheckBox
+            android:id="@+id/cb_easy"
+            android:layout_marginTop="16dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:checked="@{vm.easy}"
+            android:text="@string/easy"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_problem_count" />
+
+        <LinearLayout
+            android:id="@+id/linearLayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="24dp"
+            android:orientation="horizontal"
+            app:layout_constraintTop_toBottomOf="@+id/cb_difficult"
+            tools:layout_editor_absoluteX="1dp">
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btn_cancel"
+                onClickThrottled="@{()->vm.cancel()}"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@color/white"
+                android:text="@string/cancel" />
+
+            <View
+                android:id="@+id/view3"
+                android:layout_width="1dp"
+                android:layout_height="20dp"
+                android:layout_gravity="center"
+                android:background="@color/gray3"
+                android:visibility="invisible" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btn_confirm"
+                onClickThrottled="@{()->vm.startWordTest()}"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@color/white"
+                android:text="@string/confirm" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/textView18"
+            style="@style/RegularTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="개"
+            app:layout_constraintBottom_toBottomOf="@+id/tv_problem_count"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/tv_problem_count" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:background="@color/white"
+            android:id="@+id/rv_voca"
+            visible="@{vm.recyclerViewVisible}"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:orientation="vertical"
+            android:visibility="gone"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

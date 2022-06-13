@@ -8,7 +8,9 @@ data class Vocabulary(
     val name: String,
     @PrimaryKey(autoGenerate = true) val id: Int? = null,
     val explanation: String? = null,
-    val language: String? = null
+    val language: String? = null,
+    val isCorrections: Boolean = false,
+    val date: Long? = null
 ) {
     companion object {
         const val VOCABULARY_ID_SEARCH = 1

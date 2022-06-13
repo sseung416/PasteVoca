@@ -15,6 +15,9 @@
         android:theme="@style/Theme.PastVoca"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".view.activity.CorrectionsListActivity"
+            android:exported="false" />
+        <activity
             android:name=".view.activity.EditWordActivity"
             android:exported="false" />
         <activity
@@ -67,7 +70,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".view.activity.WordCheckActivity"
+            android:name=".view.activity.CardTestActivity"
             android:exported="false"
             android:label="@string/title_activity_word_check"
             android:theme="@style/Theme.PastVoca.NoActionBar" />

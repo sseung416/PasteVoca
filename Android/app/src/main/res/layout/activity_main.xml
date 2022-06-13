@@ -38,26 +38,40 @@
         app:layout_constraintTop_toTopOf="parent"
         app:menu="@menu/toolbar_default">
 
-        <Spinner
+        <LinearLayout
             android:id="@+id/toolbar_spinner_main"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentTop="true"
-            android:layout_alignParentBottom="true"
-            android:background="@drawable/selector_spinner_icon"
-            android:visibility="gone"
-            android:spinnerMode="@null" />
+            android:clickable="true"
+            android:focusable="true"
+            android:gravity="center_vertical"
+            android:minWidth="48dp"
+            android:minHeight="48dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/toolbar_tv_spinner"
+                style="@style/RegularTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:text="@string/all" />
+
+            <ImageView
+                android:layout_width="8dp"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_arrow_bottom" />
+        </LinearLayout>
 
         <TextView
             android:id="@+id/toolbar_title_main"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:text="asdfdsf"
             android:textColor="@color/black"
             android:textSize="18sp"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            tools:text="asdfdsf" />
     </androidx.appcompat.widget.Toolbar>
 
     <com.google.android.material.bottomnavigation.BottomNavigationView

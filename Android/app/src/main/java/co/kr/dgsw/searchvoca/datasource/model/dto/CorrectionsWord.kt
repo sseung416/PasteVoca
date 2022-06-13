@@ -4,26 +4,19 @@ import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.ForeignKey
 import androidx.room.PrimaryKey
-import java.io.Serializable
 
 @Entity(
-    tableName = "word",
+    tableName = "correctionsWord",
     foreignKeys = [ForeignKey(
         entity = Vocabulary::class,
         parentColumns = arrayOf("id"),
         childColumns = arrayOf("voca_id")
     )]
 )
-data class Word(
-    @ColumnInfo(name = "voca_id") val vocabularyId: Int,
+data class CorrectionsWord(
     val word: String,
     val meaning: String,
-    var type: Int = EASY,
-    @PrimaryKey(autoGenerate = true) var id: Int? = null
-) : Serializable {
-    companion object {
-        const val DIFFICULT = 1
-        const val MIDDLE = 2
-        const val EASY = 3
-    }
-}
+    @ColumnInfo(name = "voca_id") var vocabularyId: Int,
+    var isCorrect: Boolean = false,
+    @PrimaryKey(autoGenerate = true) val id: Int? = null
+)

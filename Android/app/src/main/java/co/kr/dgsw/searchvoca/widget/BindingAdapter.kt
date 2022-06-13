@@ -2,17 +2,22 @@ package co.kr.dgsw.searchvoca.widget
 
 import android.annotation.SuppressLint
 import android.graphics.Color
-import android.os.SystemClock
 import android.view.MotionEvent
 import android.view.View
 import android.view.View.GONE
 import android.view.View.VISIBLE
 import android.widget.EditText
+import android.widget.TextView
 import androidx.annotation.ColorInt
 import androidx.databinding.BindingAdapter
 import androidx.recyclerview.widget.RecyclerView
+import co.kr.dgsw.searchvoca.widget.extension.OnClickListenerThrottled
+import co.kr.dgsw.searchvoca.widget.extension.setOnClickListenerThrottled
+import co.kr.dgsw.searchvoca.widget.extension.setOnTouchListenerThrottled
 import co.kr.dgsw.searchvoca.widget.view.decoration.CustomDecoration
+import java.text.SimpleDateFormat
 
+// RecyclerView Decoration 추가
 @BindingAdapter(
     value = ["dividerHeight", "dividerColor"],
     requireAll = false
@@ -37,6 +42,12 @@ fun View.setVisible(size: Int) {
     visibility = if (size != 0) VISIBLE else GONE
 }
 
+@BindingAdapter("dateText")
+fun TextView.setDateText(date: Long) {
+    val formatString = SimpleDateFormat("yyyy-MM-dd").format(date)
+    this.text = formatString
+}
+
 @BindingAdapter("onDrawableEndClick")
 @SuppressLint("ClickableViewAccessibility")
 fun EditText.setOnDrawableEndClickListener(listener: () -> Unit) {
@@ -53,47 +64,16 @@ fun EditText.setOnDrawableEndClickListener(listener: () -> Unit) {
     }
 }
 
-@BindingAdapter("onTouch")
-@SuppressLint("ClickableViewAccessibility")
-fun setOnTouchListener(view: View, listener: View.OnTouchListener) {
-    view.setOnTouchListener { v, motionEvent ->
-        listener.onTouch(v, motionEvent)
-    }
-}
-
-var lastClickTime = 0L
-
-// 중복 클릭을 막기위함
 @BindingAdapter(
     value = ["onClickThrottled", "throttleInterval"],
     requireAll = false
 )
-fun setOnClickListenerThrottled(view: View, listener: View.OnClickListener, interval: Long = 1000) {
-    view.setOnClickListener {
-        if (SystemClock.elapsedRealtime() - lastClickTime < interval) {
-            return@setOnClickListener
-        }
-
-        lastClickTime = SystemClock.elapsedRealtime()
-        listener.onClick(view)
-    }
+fun setOnClickListenerThrottled(v: View, listener: OnClickListenerThrottled, interval: Long = 1000) {
+    v.setOnClickListenerThrottled(listener)
 }
 
 // 중복 클릭을 막기위함
 @BindingAdapter("onTouchThrottled")
-@SuppressLint("ClickableViewAccessibility")
-fun View.setOnTouchListenerThrottled(listener: Test) {
-    setOnTouchListener { _, _ ->
-        if (SystemClock.elapsedRealtime() - lastClickTime < 1000) {
-            return@setOnTouchListener false
-        }
-
-        lastClickTime = SystemClock.elapsedRealtime()
-        listener.onClick()
-        return@setOnTouchListener true
-    }
-}
-
-interface Test {
-    fun onClick()
+fun setOnTouchListenerThrottled(v: View, listener: OnClickListenerThrottled) {
+    v.setOnTouchListenerThrottled(listener)
 }

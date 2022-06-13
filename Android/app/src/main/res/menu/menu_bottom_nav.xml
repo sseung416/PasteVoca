@@ -1,16 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:android="http://schemas.android.com/apk/res/android">
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item android:id="@+id/menu_home"
         android:icon="@drawable/selector_menu_home"
-        android:title="홈" />
+        android:title="" />
 
     <item android:id="@+id/menu_test"
         android:icon="@drawable/selector_menu_test"
-        android:title="테스트" />
+        android:title="" />
 
     <item android:id="@+id/menu_setting"
         android:icon="@drawable/selector_menu_setting"
-        android:title="설정" />
+        android:title="" />
 </menu>

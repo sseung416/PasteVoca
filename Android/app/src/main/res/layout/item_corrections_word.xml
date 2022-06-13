@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="data"
+            type="co.kr.dgsw.searchvoca.datasource.model.dto.CorrectionsWord" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="16dp">
+
+        <TextView
+            android:id="@+id/tv_word"
+            style="@style/BoldTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{data.word}"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:layout_editor_absoluteY="23dp" />
+
+        <TextView
+            android:id="@+id/tv_meaning"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{data.meaning}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@id/tv_word"
+            tools:layout_editor_absoluteX="318dp"
+            tools:layout_editor_absoluteY="29dp" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

@@ -1,28 +1,33 @@
 package co.kr.dgsw.searchvoca.view.dialog
 
 import android.view.LayoutInflater
+import android.view.View.GONE
+import android.view.View.VISIBLE
 import android.view.ViewGroup
 import co.kr.dgsw.searchvoca.base.BaseBottomSheetDialog
 import co.kr.dgsw.searchvoca.databinding.DialogBottomSheetDefaultBinding
-import co.kr.dgsw.searchvoca.viewmodel.dialog.DefaultBottomSheetViewModel
-import co.kr.dgsw.searchvoca.widget.livedata.Event
 import co.kr.dgsw.searchvoca.widget.view.adapter.DefaultBottomSheetAdapter
-import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 
 class DefaultBottomSheetDialog(
     list: List<Pair<Int?, String>>,
-    private val callback: (Pair<Int?, String>) -> Unit
+    private val callback: (Pair<Int?, String>) -> Unit,
+    private val title: String? = null
 ) : BaseBottomSheetDialog<DialogBottomSheetDefaultBinding>() {
-
-    override val viewModel by sharedViewModel<DefaultBottomSheetViewModel>()
     private val adapter = DefaultBottomSheetAdapter(list)
 
     override fun init() {
-        viewModel.callback = callback
+        binding.tvTitle.apply {
+            if (title == null) {
+                visibility = GONE
+            } else {
+                visibility = VISIBLE
+                text = title
+            }
+        }
 
         binding.rvDefault.adapter = adapter.apply {
             onClickItem = {
-                viewModel.clickedItem.value = Event(it)
+                callback.invoke(it)
                 dismiss()
             }
         }

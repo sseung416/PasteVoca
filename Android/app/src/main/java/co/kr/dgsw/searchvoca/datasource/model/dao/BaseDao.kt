@@ -1,4 +1,4 @@
-package co.kr.dgsw.searchvoca.base
+package co.kr.dgsw.searchvoca.datasource.model.dao
 
 import androidx.room.*
 

@@ -7,7 +7,7 @@ import android.view.ViewGroup.LayoutParams.WRAP_CONTENT
 import co.kr.dgsw.searchvoca.R
 import co.kr.dgsw.searchvoca.base.BaseDialog
 import co.kr.dgsw.searchvoca.databinding.DialogWordTestBinding
-import co.kr.dgsw.searchvoca.view.activity.WordCheckActivity
+import co.kr.dgsw.searchvoca.view.activity.CardTestActivity
 import co.kr.dgsw.searchvoca.viewmodel.activity.CorrectionsViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -31,8 +31,8 @@ class WordTestDialog : BaseDialog<DialogWordTestBinding>() {
             val (all, wrong, _) = viewModel.getList()
             val list = if (binding.radioAll.isChecked) all else wrong
 
-            val intent = Intent(requireActivity(), WordCheckActivity::class.java)
-                .putExtra("list", list)
+            val intent = Intent(requireActivity(), CardTestActivity::class.java)
+//                .putExtra("list", list)
             requireActivity().startActivity(intent)
             dismiss()
         }

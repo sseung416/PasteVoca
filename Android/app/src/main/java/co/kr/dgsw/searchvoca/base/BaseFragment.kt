@@ -22,7 +22,14 @@ abstract class BaseFragment<B : ViewDataBinding, VM : ViewModel> : Fragment(), B
         performDataBinding(inflater, container)
         observeViewModel()
         init()
+
+        setHasOptionsMenu(true)
         return binding.root
+    }
+
+    override fun onPause() {
+        super.onPause()
+        requireActivity().overridePendingTransition(0,0)
     }
 
     override fun observeViewModel() {}

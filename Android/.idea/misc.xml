@@ -5,6 +5,7 @@
       <map>
         <entry key="../../../../../../layout/custom_preview.xml" value="0.225" />
         <entry key="app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.2165" />
+        <entry key="app/src/main/res/drawable/background.xml" value="0.2265" />
         <entry key="app/src/main/res/drawable/background_bottom_navigation.xml" value="0.143" />
         <entry key="app/src/main/res/drawable/background_bottom_sheet.xml" value="0.139" />
         <entry key="app/src/main/res/drawable/background_bottomsheet.xml" value="0.194" />
@@ -18,6 +19,7 @@
         <entry key="app/src/main/res/drawable/ic_answer_wrong.xml" value="0.22" />
         <entry key="app/src/main/res/drawable/ic_arrow_bottom.xml" value="0.2345" />
         <entry key="app/src/main/res/drawable/ic_arrow_left.xml" value="0.22" />
+        <entry key="app/src/main/res/drawable/ic_arrow_right.xml" value="0.234" />
         <entry key="app/src/main/res/drawable/ic_baseline_settings_24.xml" value="0.108" />
         <entry key="app/src/main/res/drawable/ic_card.xml" value="0.1975" />
         <entry key="app/src/main/res/drawable/ic_circle_sort.xml" value="0.2165" />
@@ -25,6 +27,7 @@
         <entry key="app/src/main/res/drawable/ic_indicator.xml" value="0.135" />
         <entry key="app/src/main/res/drawable/ic_launcher_background.xml" value="0.2165" />
         <entry key="app/src/main/res/drawable/ic_launcher_foreground.xml" value="0.1" />
+        <entry key="app/src/main/res/drawable/ic_menu.xml" value="0.1685" />
         <entry key="app/src/main/res/drawable/ic_note.xml" value="0.1975" />
         <entry key="app/src/main/res/drawable/ic_rectangle_correct.xml" value="0.138" />
         <entry key="app/src/main/res/drawable/ic_rectangle_incorrect.xml" value="0.138" />
@@ -51,17 +54,21 @@
         <entry key="app/src/main/res/drawable/test.xml" value="0.2145" />
         <entry key="app/src/main/res/layout/activity_add_vocabulary.xml" value="0.2028985507246377" />
         <entry key="app/src/main/res/layout/activity_add_word.xml" value="0.2028985507246377" />
+        <entry key="app/src/main/res/layout/activity_card_test.xml" value="0.38273688422309027" />
         <entry key="app/src/main/res/layout/activity_choose_language.xml" value="0.2028985507246377" />
         <entry key="app/src/main/res/layout/activity_clipboard.xml" value="0.18115942028985507" />
         <entry key="app/src/main/res/layout/activity_clipboard_dialog.xml" value="0.18112030029296877" />
         <entry key="app/src/main/res/layout/activity_corrections.xml" value="0.25279083251953127" />
+        <entry key="app/src/main/res/layout/activity_corrections_list.xml" value="0.23777173913043478" />
         <entry key="app/src/main/res/layout/activity_edit_word.xml" value="0.1890625" />
-        <entry key="app/src/main/res/layout/activity_main.xml" value="0.22679138183593753" />
+        <entry key="app/src/main/res/layout/activity_main.xml" value="0.17647058823529413" />
         <entry key="app/src/main/res/layout/activity_search_result_dialog.xml" value="0.10234821706578356" />
         <entry key="app/src/main/res/layout/activity_search_word.xml" value="0.2933104631217839" />
         <entry key="app/src/main/res/layout/activity_vocabulary.xml" value="0.21467391304347827" />
-        <entry key="app/src/main/res/layout/activity_word_check.xml" value="0.2028985507246377" />
+        <entry key="app/src/main/res/layout/activity_word_check.xml" value="0.31450805664062503" />
         <entry key="app/src/main/res/layout/dialog_bottom_sheet_default.xml" value="0.21875" />
+        <entry key="app/src/main/res/layout/dialog_bottom_sheet_search_result.xml" value="0.19479166666666667" />
+        <entry key="app/src/main/res/layout/dialog_bottom_sheet_test_setting.xml" value="0.3325301204819277" />
         <entry key="app/src/main/res/layout/dialog_bottom_sheet_text.xml" value="0.17572463768115942" />
         <entry key="app/src/main/res/layout/dialog_bottom_sheet_vocabulary.xml" value="0.16923076923076924" />
         <entry key="app/src/main/res/layout/dialog_bottom_sheet_word.xml" value="0.20892424652541897" />
@@ -70,18 +77,22 @@
         <entry key="app/src/main/res/layout/dialog_word_test.xml" value="0.438829128984092" />
         <entry key="app/src/main/res/layout/dialog_word_test_setting.xml" value="0.27221434220023777" />
         <entry key="app/src/main/res/layout/fragment_add_vocabulary.xml" value="0.16077898550724637" />
-        <entry key="app/src/main/res/layout/fragment_add_word.xml" value="0.40670623779296877" />
-        <entry key="app/src/main/res/layout/fragment_corrections.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/fragment_add_word.xml" value="0.13427429199218752" />
+        <entry key="app/src/main/res/layout/fragment_card_test.xml" value="0.2296875" />
+        <entry key="app/src/main/res/layout/fragment_corrections.xml" value="0.37969970703125" />
         <entry key="app/src/main/res/layout/fragment_edit_word.xml" value="0.1890625" />
-        <entry key="app/src/main/res/layout/fragment_home.xml" value="0.1289198606271777" />
+        <entry key="app/src/main/res/layout/fragment_home.xml" value="0.2505643340857788" />
         <entry key="app/src/main/res/layout/fragment_search_result_dialog2.xml" value="0.2028985507246377" />
         <entry key="app/src/main/res/layout/fragment_select_word.xml" value="0.2105978260869565" />
-        <entry key="app/src/main/res/layout/fragment_setting.xml" value="0.2028985507246377" />
+        <entry key="app/src/main/res/layout/fragment_setting.xml" value="0.29615416595901267" />
         <entry key="app/src/main/res/layout/fragment_update_word.xml" value="0.23777173913043478" />
         <entry key="app/src/main/res/layout/fragment_vocabulary.xml" value="0.14074074074074075" />
-        <entry key="app/src/main/res/layout/fragment_word_test.xml" value="0.3608847497089639" />
+        <entry key="app/src/main/res/layout/fragment_word_test.xml" value="0.2853470437017995" />
+        <entry key="app/src/main/res/layout/item_corrections.xml" value="0.23777173913043478" />
+        <entry key="app/src/main/res/layout/item_corrections_title.xml" value="0.3156487883423731" />
         <entry key="app/src/main/res/layout/item_corrections_view.xml" value="0.10536980749746708" />
-        <entry key="app/src/main/res/layout/item_search_result.xml" value="0.21467391304347827" />
+        <entry key="app/src/main/res/layout/item_corrections_word.xml" value="0.1852355072463768" />
+        <entry key="app/src/main/res/layout/item_search_result.xml" value="0.6084925775942596" />
         <entry key="app/src/main/res/layout/item_spinner_vocabulary.xml" value="0.17617753623188406" />
         <entry key="app/src/main/res/layout/item_text.xml" value="0.21875" />
         <entry key="app/src/main/res/layout/item_vocabulary.xml" value="0.18115942028985507" />
@@ -114,8 +125,12 @@
         <entry key="app/src/main/res/menu/menu_toolbar.xml" value="0.29869689941406247" />
         <entry key="app/src/main/res/menu/toolbar_.xml" value="0.21875" />
         <entry key="app/src/main/res/menu/toolbar_add.xml" value="0.47839790626808454" />
+        <entry key="app/src/main/res/menu/toolbar_card_test.xml" value="0.2296875" />
+        <entry key="app/src/main/res/menu/toolbar_corrections.xml" value="0.20925925925925926" />
         <entry key="app/src/main/res/menu/toolbar_default.xml" value="0.1" />
         <entry key="app/src/main/res/menu/toolbar_home.xml" value="0.5248855590820313" />
+        <entry key="app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.16" />
+        <entry key="app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" value="0.16" />
         <entry key="app/src/main/res/xml/widget_provider.xml" value="0.21467391304347827" />
       </map>
     </option>

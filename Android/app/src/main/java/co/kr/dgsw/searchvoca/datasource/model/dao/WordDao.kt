@@ -2,7 +2,6 @@ package co.kr.dgsw.searchvoca.datasource.model.dao
 
 import androidx.room.Dao
 import androidx.room.Query
-import co.kr.dgsw.searchvoca.base.BaseDao
 import co.kr.dgsw.searchvoca.datasource.model.dto.Vocabulary
 import co.kr.dgsw.searchvoca.datasource.model.dto.Word
 
@@ -13,6 +12,12 @@ interface WordDao : BaseDao<Word> {
 
     @Query("SELECT * FROM word WHERE voca_id = :vocabularyId")
     suspend fun getWordsByVocabulary(vocabularyId: Int): List<Word>
+
+    @Query("SELECT count(*) FROM word")
+    suspend fun getWordCount(): Int
+
+    @Query("SELECT count(*) FROM word WHERE voca_id = :vocabularyId")
+    suspend fun getWordCount(vocabularyId: Int): Int
 
     @Query("UPDATE word SET voca_id = :vocabularyId WHERE id IN(:ids)")
     suspend fun updateWordVocabulary(ids: List<Int>, vocabularyId: Int)
