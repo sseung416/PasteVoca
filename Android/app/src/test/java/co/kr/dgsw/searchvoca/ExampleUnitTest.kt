@@ -1,14 +1,24 @@
 package co.kr.dgsw.searchvoca
 
+import com.google.cloud.texttospeech.v1.*
 import org.junit.Test
+import java.io.FileOutputStream
 
-/**
- * Example local unit test, which will execute on the development machine (host).
- *
- * See [testing documentation](http://d.android.com/tools/testing).
- */
 class ExampleUnitTest {
     @Test
-    fun addition_isCorrect() {
+    fun ttsTest() {
+        val client = TextToSpeechClient.create()
+        val input = SynthesisInput.newBuilder().setText("앙녕").build()
+        val voice = VoiceSelectionParams.newBuilder()
+            .setLanguageCode("en-US")
+            .setSsmlGender(SsmlVoiceGender.NEUTRAL)
+            .build()
+        val audioConfig = AudioConfig.newBuilder().setAudioEncoding(AudioEncoding.MP3).build()
+
+        val response = client.synthesizeSpeech(input, voice, audioConfig)
+
+        val audioContents = response.audioContent
+        val out = FileOutputStream("output.mp3")
+        out.write(audioContents.toByteArray())
     }
 }

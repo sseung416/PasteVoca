@@ -2,7 +2,8 @@ package co.kr.dgsw.searchvoca.widget.view.adapter
 
 import android.content.Context
 import android.view.LayoutInflater
-import android.view.View.*
+import android.view.View.GONE
+import android.view.View.VISIBLE
 import android.view.ViewGroup
 import androidx.core.content.ContextCompat
 import androidx.core.view.isGone
@@ -10,11 +11,13 @@ import androidx.recyclerview.widget.RecyclerView
 import co.kr.dgsw.searchvoca.R
 import co.kr.dgsw.searchvoca.databinding.ItemWordBinding
 import co.kr.dgsw.searchvoca.datasource.model.dto.Word
+import co.kr.dgsw.searchvoca.widget.extension.setOnClickListenerThrottled
 
 class WordAdapter : RecyclerView.Adapter<WordAdapter.ViewHolder>() {
     private val list = arrayListOf<Word>()
     var onLongClickWordListener: ((Word) -> Boolean)? = null
     var onClickTypeListener: ((Word) -> Unit)? = null
+    var onClickSoundListener: ((String) -> Unit)? = null
 
     inner class ViewHolder(
         private val binding: ItemWordBinding
@@ -46,6 +49,10 @@ class WordAdapter : RecyclerView.Adapter<WordAdapter.ViewHolder>() {
 
                 setDifficultyView(it.context, resource, color)
                 onClickTypeListener?.invoke(item)
+            }
+
+            binding.btnSound.setOnClickListenerThrottled {
+                onClickSoundListener?.invoke(item.word)
             }
         }
 

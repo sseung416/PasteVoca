@@ -5,6 +5,7 @@ import co.kr.dgsw.searchvoca.datasource.model.repository.CorrectionsWordReposito
 import co.kr.dgsw.searchvoca.datasource.model.repository.VocabularyRepository
 import co.kr.dgsw.searchvoca.datasource.model.repository.WordRepository
 import co.kr.dgsw.searchvoca.datasource.remote.RetrofitInstance
+import co.kr.dgsw.searchvoca.datasource.remote.repository.DetectiveRepository
 import co.kr.dgsw.searchvoca.datasource.remote.repository.SearchRepository
 import co.kr.dgsw.searchvoca.viewmodel.activity.*
 import co.kr.dgsw.searchvoca.viewmodel.dialog.TestSettingViewModel
@@ -32,6 +33,7 @@ val repositoryModule = module {
     single { WordRepository(get()) }
     single { SearchRepository(get()) }
     single { CorrectionsWordRepository(get()) }
+    single { DetectiveRepository() }
 }
 
 val dispatcherModule = module {
@@ -48,7 +50,7 @@ val viewModelModule = module {
     viewModel { CorrectionsListViewModel(get(), get()) }
 
     // fragment
-    viewModel { HomeViewModel(get(), get(), get()) }
+    viewModel { HomeViewModel(get(), get(), get(), get()) }
     viewModel { SettingViewModel() }
     viewModel { WordTestViewModel(get(), get()) }
     viewModel { UpdateVocabularyViewModel(get(), get()) }

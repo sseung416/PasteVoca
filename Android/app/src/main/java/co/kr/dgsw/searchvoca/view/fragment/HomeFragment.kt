@@ -18,6 +18,7 @@ import co.kr.dgsw.searchvoca.view.dialog.DefaultBottomSheetDialog
 import co.kr.dgsw.searchvoca.view.dialog.WordBottomSheetDialog
 import co.kr.dgsw.searchvoca.viewmodel.dialog.WordBottomSheetViewModel
 import co.kr.dgsw.searchvoca.viewmodel.fragment.HomeViewModel
+import co.kr.dgsw.searchvoca.widget.extension.playToMP3
 import co.kr.dgsw.searchvoca.widget.extension.setOnClickListenerThrottled
 import co.kr.dgsw.searchvoca.widget.extension.startActivity
 import co.kr.dgsw.searchvoca.widget.livedata.EventObserver
@@ -51,6 +52,10 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>() {
                 if (it.isEmpty())
                     Toast.makeText(requireContext(), "단어가 없어요! 단어를 추가해주세요.", Toast.LENGTH_LONG).show()
                 else wordAdapter.setList(it)
+            })
+
+            mp3ByteString.observe(viewLifecycleOwner, EventObserver {
+                it.playToMP3(requireContext())
             })
         }
 
@@ -106,6 +111,10 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>() {
 
             onClickTypeListener = {
                 viewModel.updateWord(it)
+            }
+
+            onClickSoundListener = { word ->
+                viewModel.detectWord(word)
             }
         }
     }
