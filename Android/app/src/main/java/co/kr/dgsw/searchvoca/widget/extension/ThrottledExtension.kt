@@ -13,7 +13,7 @@ fun View.setOnClickListenerThrottled(listener: OnClickListenerThrottled) {
         }
 
         lastClickTime = SystemClock.elapsedRealtime()
-        listener.onClickThrottled()
+        listener.onClickThrottled(this)
     }
 }
 
@@ -25,7 +25,7 @@ fun View.setOnTouchListenerThrottled(listener: OnClickListenerThrottled, interva
         }
 
         lastClickTime = SystemClock.elapsedRealtime()
-        listener.onClickThrottled()
+        listener.onClickThrottled(this)
         return@setOnTouchListener true
     }
 }

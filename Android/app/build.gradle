@@ -96,6 +96,9 @@ dependencies {
     implementation 'com.google.cloud:google-cloud-texttospeech'
     implementation 'com.google.cloud:google-cloud-storage'
 
+    // google translate
+    implementation 'com.google.cloud:google-cloud-translate:2.2.0'
+
     // lottie
     implementation 'com.airbnb.android:lottie:4.1.0'
 
