@@ -1,5 +1,6 @@
 package co.kr.dgsw.searchvoca.viewmodel.fragment
 
+import android.content.res.Resources
 import androidx.lifecycle.MutableLiveData
 import co.kr.dgsw.searchvoca.base.BaseViewModel
 import co.kr.dgsw.searchvoca.datasource.model.dto.Vocabulary
@@ -8,10 +9,10 @@ import co.kr.dgsw.searchvoca.datasource.model.dto.Word
 import co.kr.dgsw.searchvoca.datasource.model.repository.VocabularyRepository
 import co.kr.dgsw.searchvoca.datasource.model.repository.WordRepository
 import co.kr.dgsw.searchvoca.datasource.remote.repository.DetectiveRepository
-import co.kr.dgsw.searchvoca.widget.TextToSpeechUtil
 import co.kr.dgsw.searchvoca.widget.coroutine.DispatcherProviderImpl
+import co.kr.dgsw.searchvoca.widget.extension.formatToTTSLanguageCode
 import co.kr.dgsw.searchvoca.widget.livedata.Event
-import com.google.protobuf.ByteString
+import java.util.*
 
 class HomeViewModel(
     dispatcherProvider: DispatcherProviderImpl,
@@ -22,7 +23,7 @@ class HomeViewModel(
     val vocabularyNames = MutableLiveData<Event<List<VocabularyName>>>()
     val allWords = MutableLiveData<Event<List<Word>>>()
     val wordsByVoca = MutableLiveData<Event<List<Word>>>()
-    val mp3ByteString = MutableLiveData<Event<ByteString>>()
+    val ttsWord = MutableLiveData<Event<Pair<Locale, String>>>()
 
     val searchWordsCount = MutableLiveData<Int>()
 
@@ -50,10 +51,9 @@ class HomeViewModel(
         wordRepository.update(word)
     }
 
-    fun detectWord(word: String) = onIO {
-        val translateLanCode = detectiveRepository.detectLanguage(word)
-        val ttsLangCode = TextToSpeechUtil.formatToTTSLanguageCode(translateLanCode)
-        val byteString = TextToSpeechUtil.getSpeechByteString(word, ttsLangCode)
-        mp3ByteString.postValue(Event(byteString))
+    fun detectWord(resources: Resources, word: String) = onIO {
+        val translateLanCode = detectiveRepository.detectLanguage(resources, word)
+        val langCode = translateLanCode.formatToTTSLanguageCode()
+        ttsWord.postValue(Event(Pair(langCode, word)))
     }
 }

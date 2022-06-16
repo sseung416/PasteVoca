@@ -1,5 +1,6 @@
 package co.kr.dgsw.searchvoca.view.fragment
 
+import android.speech.tts.TextToSpeech
 import android.view.Menu
 import android.view.MenuInflater
 import android.view.MenuItem
@@ -18,19 +19,20 @@ import co.kr.dgsw.searchvoca.view.dialog.DefaultBottomSheetDialog
 import co.kr.dgsw.searchvoca.view.dialog.WordBottomSheetDialog
 import co.kr.dgsw.searchvoca.viewmodel.dialog.WordBottomSheetViewModel
 import co.kr.dgsw.searchvoca.viewmodel.fragment.HomeViewModel
-import co.kr.dgsw.searchvoca.widget.extension.playToMP3
 import co.kr.dgsw.searchvoca.widget.extension.setOnClickListenerThrottled
 import co.kr.dgsw.searchvoca.widget.extension.startActivity
 import co.kr.dgsw.searchvoca.widget.livedata.EventObserver
 import co.kr.dgsw.searchvoca.widget.view.adapter.WordAdapter
 import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
+import java.util.*
 
 class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>() {
     override val viewModel by viewModel<HomeViewModel>()
     private val wordDialogViewModel by sharedViewModel<WordBottomSheetViewModel>()
 
     private val wordAdapter = WordAdapter()
+    private lateinit var tts: TextToSpeech
 
     override fun init() {
         viewModel.getVocabularyNames()
@@ -40,6 +42,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>() {
         setupToolbar()
         setupRecyclerView()
         setupButton()
+        setupTTS()
     }
 
     override fun observeViewModel() {
@@ -54,8 +57,9 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>() {
                 else wordAdapter.setList(it)
             })
 
-            mp3ByteString.observe(viewLifecycleOwner, EventObserver {
-                it.playToMP3(requireContext())
+            ttsWord.observe(viewLifecycleOwner, EventObserver { (langCode, word) ->
+                tts.language = langCode
+                speak(word)
             })
         }
 
@@ -101,6 +105,13 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>() {
             else -> false
         }
 
+    override fun onDestroy() {
+        if (this::tts.isInitialized) {
+            tts.stop()
+            tts.shutdown()
+        }
+        super.onDestroy()
+    }
 
     private fun setupRecyclerView() {
         binding.rvHome.adapter = wordAdapter.apply {
@@ -114,7 +125,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>() {
             }
 
             onClickSoundListener = { word ->
-                viewModel.detectWord(word)
+                viewModel.detectWord(resources, word)
             }
         }
     }
@@ -150,5 +161,21 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>() {
                 }).show(parentFragmentManager, "")
             }
         }
+    }
+
+    private fun setupTTS() {
+        tts = TextToSpeech(requireContext()) { state ->
+            if (state == TextToSpeech.SUCCESS) {
+                val result = tts.setLanguage(Locale.US)
+
+//                if (result == TextToSpeech.LANG_NOT_SUPPORTED || result == TextToSpeech.LANG_MISSING_DATA) {
+//                    Toast.makeText(requireContext(), "아직 지원되지 않은 언어입니다.", Toast.LENGTH_LONG).show()
+//                }
+            }
+        }
+    }
+
+    private fun speak(text: String?) {
+        tts.speak(text, TextToSpeech.QUEUE_FLUSH, null, "id1")
     }
 }
