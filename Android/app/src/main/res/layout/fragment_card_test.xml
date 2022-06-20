@@ -6,7 +6,7 @@
     <data>
         <variable
             name="vm"
-            type="co.kr.dgsw.searchvoca.viewmodel.activity.CardTestViewModel" />
+            type="co.kr.dgsw.searchvoca.viewmodel.fragment.CardTestViewModel" />
 
     </data>
 
@@ -14,7 +14,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/gray1"
-        tools:context=".view.fragment.CardTestFragment">
+        tools:context=".view.fragment.CardStackFragment">
 
         <kr.co.dgsw.cardstackview.CardStackView
             android:id="@+id/stack_word_check"

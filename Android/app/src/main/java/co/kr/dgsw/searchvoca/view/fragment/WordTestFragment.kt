@@ -3,17 +3,15 @@ package co.kr.dgsw.searchvoca.view.fragment
 import android.view.View.GONE
 import android.view.View.VISIBLE
 import android.widget.LinearLayout
-import android.widget.Spinner
 import android.widget.TextView
 import co.kr.dgsw.searchvoca.R
 import co.kr.dgsw.searchvoca.base.BaseFragment
 import co.kr.dgsw.searchvoca.databinding.FragmentWordTestBinding
-import co.kr.dgsw.searchvoca.view.activity.CorrectionsListActivity
+import co.kr.dgsw.searchvoca.view.activity.CardTestActivity
+import co.kr.dgsw.searchvoca.view.activity.ListeningTestActivity
 import co.kr.dgsw.searchvoca.view.dialog.TestSettingBottomSheetDialog
 import co.kr.dgsw.searchvoca.viewmodel.fragment.WordTestViewModel
-import co.kr.dgsw.searchvoca.widget.extension.setOnClickListenerThrottled
 import org.koin.androidx.viewmodel.ext.android.viewModel
-import co.kr.dgsw.searchvoca.widget.extension.startActivity
 
 class WordTestFragment : BaseFragment<FragmentWordTestBinding, WordTestViewModel>() {
     override val viewModel by viewModel<WordTestViewModel>()
@@ -21,7 +19,18 @@ class WordTestFragment : BaseFragment<FragmentWordTestBinding, WordTestViewModel
     override fun init() {
         viewModel.getVocabularyNameList()
         setupToolbar()
-        setupButton()
+    }
+
+    override fun observeViewModel() {
+        viewModel.apply {
+            cardStackClickEvent.observe(viewLifecycleOwner) {
+                showSettingBottomSheetDialog(CardTestActivity::class.java)
+            }
+
+            listeningTestClickEvent.observe(viewLifecycleOwner) {
+                showSettingBottomSheetDialog(ListeningTestActivity::class.java)
+            }
+        }
     }
 
     private fun setupToolbar() {
@@ -32,14 +41,7 @@ class WordTestFragment : BaseFragment<FragmentWordTestBinding, WordTestViewModel
         }
     }
 
-    private fun setupButton() {
-        binding.cvWordCard.setOnClickListenerThrottled {
-            val list = viewModel.vocabularyNameList.value?.peekContent() ?: listOf()
-            TestSettingBottomSheetDialog(list).show(parentFragmentManager, "")
-        }
-
-        binding.cvWrongAnswerNote.setOnClickListener {
-            requireActivity().startActivity(CorrectionsListActivity::class.java)
-        }
+    private fun showSettingBottomSheetDialog(toActivity: Class<*>) {
+        TestSettingBottomSheetDialog(viewModel.vocabularyList, toActivity).show(parentFragmentManager, "")
     }
 }

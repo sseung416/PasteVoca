@@ -42,6 +42,11 @@ fun View.setVisible(size: Int) {
     visibility = if (size != 0) VISIBLE else GONE
 }
 
+@BindingAdapter("enabledNotEmpty")
+fun View.setEnabledNotEmpty(string: String?) {
+    isEnabled = !(string.isNullOrBlank())
+}
+
 @BindingAdapter("dateText")
 fun TextView.setDateText(date: Long) {
     val formatString = SimpleDateFormat("yyyy-MM-dd").format(date)
@@ -68,7 +73,11 @@ fun EditText.setOnDrawableEndClickListener(listener: () -> Unit) {
     value = ["onClickThrottled", "throttleInterval"],
     requireAll = false
 )
-fun setOnClickListenerThrottled(v: View, listener: OnClickListenerThrottled, interval: Long = 1000) {
+fun setOnClickListenerThrottled(
+    v: View,
+    listener: OnClickListenerThrottled,
+    interval: Long = 1000
+) {
     v.setOnClickListenerThrottled(listener)
 }
 

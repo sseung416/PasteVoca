@@ -4,10 +4,10 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import co.kr.dgsw.searchvoca.databinding.ItemWordCardBinding
-import co.kr.dgsw.searchvoca.datasource.model.dto.CorrectionsWord
+import co.kr.dgsw.searchvoca.view.data.TestWord
 
 class WordCardStackAdapter : RecyclerView.Adapter<WordCardStackAdapter.ViewHolder>() {
-    private val list = arrayListOf<CorrectionsWord>()
+    private val corrections = arrayListOf<TestWord>()
     private var adapterPosition = -1
 
     inner class ViewHolder(
@@ -17,14 +17,14 @@ class WordCardStackAdapter : RecyclerView.Adapter<WordCardStackAdapter.ViewHolde
         private var isShowMeaning = false
 
         fun bind(position: Int) {
-            val data = list[position]
+            val data = corrections[position]
 
             binding.cvCard.setOnClickListener {
                 binding.tvWordCard.text = if (isShowMeaning) data.word else data.meaning
                 isShowMeaning = !isShowMeaning
             }
 
-            binding.tvCountCard.text = "${position + 1}/${list.size}"
+            binding.tvCountCard.text = "${position + 1}/${itemCount}"
             binding.data = data
             binding.executePendingBindings()
         }
@@ -37,18 +37,18 @@ class WordCardStackAdapter : RecyclerView.Adapter<WordCardStackAdapter.ViewHolde
         holder.bind(position)
     }
 
-    override fun getItemCount(): Int = list.size
+    override fun getItemCount(): Int = corrections.size
 
-    fun setList(list: List<CorrectionsWord>) {
-        this.list.clear()
-        this.list.addAll(list)
+    fun setList(list: List<TestWord>) {
+        this.corrections.clear()
+        this.corrections.addAll(list)
         notifyDataSetChanged()
     }
 
-    fun getList() = list
+    fun getList() = corrections
 
     fun setCorrect(boolean: Boolean) {
-        list[getAdapterPosition()].isCorrect = boolean
+        corrections[getAdapterPosition()].isCorrect = boolean
     }
 
     private fun getAdapterPosition() = ++adapterPosition

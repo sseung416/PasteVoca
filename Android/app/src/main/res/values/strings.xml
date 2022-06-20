@@ -5,7 +5,7 @@
     <!-- Strings used for fragments for navigation -->
     <string name="first_fragment_label">First Fragment</string>
     <string name="second_fragment_label">Second Fragment</string>
-    <string name="next">Next</string>
+    <string name="next">다음</string>
     <string name="previous">Previous</string>
 
     <string name="hello_first_fragment">Hello first fragment</string>
@@ -37,4 +37,9 @@
     <string name="cancel">취소</string>
     <string name="yes">예</string>
     <string name="no">아니요</string>
+    <string name="word_card">단어 카드</string>
+    <string name="wrong_answer_note">오답노트</string>
+    <string name="input_your_answer">정답을 입력하세요.</string>
+    <string name="listening_test">듣기 테스트</string>
+    <string name="do_not_know">잘 모르겠어요.</string>
 </resources>

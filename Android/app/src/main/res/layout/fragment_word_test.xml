@@ -3,6 +3,13 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <data>
+
+        <variable
+            name="vm"
+            type="co.kr.dgsw.searchvoca.viewmodel.fragment.WordTestViewModel" />
+    </data>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -17,15 +24,8 @@
 
             <androidx.cardview.widget.CardView
                 android:id="@+id/cv_word_card"
-                android:layout_width="@dimen/word_test_cardview_size"
-                android:layout_height="@dimen/word_test_cardview_size"
-                android:layout_margin="8dp"
-                android:clickable="true"
-                app:cardBackgroundColor="@color/gray1"
-                android:focusable="true"
-                app:cardElevation="0dp"
-                app:cardCornerRadius="16dp"
-                app:cardUseCompatPadding="true"
+                style="@style/WordTestListCardView"
+                onClickThrottled="@{()->vm.navigateCardStack()}"
                 tools:layout_editor_absoluteX="1dp"
                 tools:layout_editor_absoluteY="104dp">
 
@@ -47,21 +47,13 @@
                         style="@style/RegularTextView"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="단어 카드" />
+                        android:text="@string/word_card" />
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
 
             <androidx.cardview.widget.CardView
                 android:id="@+id/cv_wrong_answer_note"
-                android:layout_width="@dimen/word_test_cardview_size"
-                android:layout_height="@dimen/word_test_cardview_size"
-                android:layout_margin="8dp"
-                android:clickable="true"
-                app:cardElevation="0dp"
-                android:focusable="true"
-                app:cardCornerRadius="16dp"
-                app:cardBackgroundColor="@color/gray1"
-                app:cardUseCompatPadding="true"
+                style="@style/WordTestListCardView"
                 tools:layout_editor_absoluteX="1dp"
                 tools:layout_editor_absoluteY="104dp">
 
@@ -81,9 +73,47 @@
                         style="@style/RegularTextView"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="오답노트" />
+                        android:text="@string/wrong_answer_note" />
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cv_listening_test"
+                style="@style/WordTestListCardView"
+                onClickThrottled="@{()->vm.navigateListeningTest()}">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:id="@+id/imageView6"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:srcCompat="@drawable/ic_close" />
+
+                    <TextView
+                        android:id="@+id/textView11"
+                        style="@style/RegularTextView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/listening_test" />
+                </LinearLayout>
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                style="@style/WordTestListCardView"
+                android:visibility="invisible" />
         </LinearLayout>
     </LinearLayout>
 </layout>

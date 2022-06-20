@@ -79,6 +79,19 @@
         <item name="useCompatPadding">true</item>
     </style>
 
+    <style name="WordTestListCardView" parent="CardView">
+        <item name="android:layout_width">@dimen/word_test_cardview_size</item>
+        <item name="android:layout_height">@dimen/word_test_cardview_size</item>
+        <item name="android:layout_margin">8dp</item>
+        <item name="android:clickable">true</item>
+        <item name="android:focusable">true</item>
+        <item name="cardElevation">0dp</item>
+        <item name="android:elevation">0dp</item>
+        <item name="cardBackgroundColor">@color/gray1</item>
+        <item name="cardCornerRadius">16dp</item>
+        <item name="cardUseCompatPadding">true</item>
+    </style>
+
     <style name="Theme.PastVoca.NoActionBar">
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>

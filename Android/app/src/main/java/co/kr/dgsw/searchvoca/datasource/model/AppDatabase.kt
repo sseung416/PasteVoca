@@ -5,20 +5,17 @@ import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 import androidx.sqlite.db.SupportSQLiteDatabase
-import co.kr.dgsw.searchvoca.datasource.model.dao.CorrectionsWordDao
 import kotlinx.coroutines.runBlocking
 import co.kr.dgsw.searchvoca.datasource.model.dao.VocabularyDao
 import co.kr.dgsw.searchvoca.datasource.model.dao.WordDao
-import co.kr.dgsw.searchvoca.datasource.model.dto.CorrectionsWord
 import co.kr.dgsw.searchvoca.datasource.model.dto.Vocabulary
 import co.kr.dgsw.searchvoca.datasource.model.dto.Word
 import java.util.concurrent.Executors
 
-@Database(entities = [Word::class, Vocabulary::class, CorrectionsWord::class], version = 1, exportSchema = false)
+@Database(entities = [Word::class, Vocabulary::class], version = 1, exportSchema = false)
 abstract class AppDatabase : RoomDatabase() {
     abstract fun wordDao(): WordDao
     abstract fun vocabularyDao(): VocabularyDao
-    abstract fun correctionsWordDao(): CorrectionsWordDao
 
     companion object {
         private var INSTANCE: AppDatabase? = null
