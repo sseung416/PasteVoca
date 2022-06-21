@@ -1,10 +1,13 @@
 package co.kr.dgsw.searchvoca.widget.view.adapter
 
 import android.content.Context
+import android.graphics.PorterDuff
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View.GONE
 import android.view.View.VISIBLE
 import android.view.ViewGroup
+import androidx.annotation.ColorRes
 import androidx.core.content.ContextCompat
 import androidx.core.view.isGone
 import androidx.recyclerview.widget.RecyclerView
@@ -17,12 +20,12 @@ class WordAdapter : RecyclerView.Adapter<WordAdapter.ViewHolder>() {
     private val list = arrayListOf<Word>()
     var onLongClickWordListener: ((Word) -> Boolean)? = null
     var onClickTypeListener: ((Word) -> Unit)? = null
-    var onClickSoundListener: ((String) -> Unit)? = null
+    var onClickSoundListener: ((String, Int) -> Unit)? = null
 
     inner class ViewHolder(
         private val binding: ItemWordBinding
     ) : RecyclerView.ViewHolder(binding.root) {
-        fun bind(item: Word) {
+        fun bind(item: Word, position: Int) {
             init(item, binding.root.context)
 
             binding.tvWord.setOnClickListener {
@@ -52,8 +55,20 @@ class WordAdapter : RecyclerView.Adapter<WordAdapter.ViewHolder>() {
             }
 
             binding.btnSound.setOnClickListenerThrottled {
-                onClickSoundListener?.invoke(item.word)
+                onClickSoundListener?.invoke(item.word, position)
             }
+        }
+
+        fun setSoundButtonEnabled(boolean: Boolean) {
+            Log.e("TAG", "setSoundButtonEnabled: $boolean")
+            binding.btnSound.isEnabled = boolean
+        }
+
+        fun setSoundButtonHighlight(context: Context, @ColorRes colorRes: Int) {
+            binding.btnSound.setColorFilter(
+                ContextCompat.getColor(context, colorRes),
+                PorterDuff.Mode.SRC_ATOP
+            )
         }
 
         private fun init(item: Word, context: Context) {
@@ -94,7 +109,7 @@ class WordAdapter : RecyclerView.Adapter<WordAdapter.ViewHolder>() {
         }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.bind(list[position])
+        holder.bind(list[position], position)
     }
 
     override fun getItemCount(): Int = list.size

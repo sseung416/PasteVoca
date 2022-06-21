@@ -1,7 +1,6 @@
 package co.kr.dgsw.searchvoca.di
 
 import co.kr.dgsw.searchvoca.datasource.model.AppDatabase
-import co.kr.dgsw.searchvoca.datasource.model.repository.CorrectionsWordRepository
 import co.kr.dgsw.searchvoca.datasource.model.repository.VocabularyRepository
 import co.kr.dgsw.searchvoca.datasource.model.repository.WordRepository
 import co.kr.dgsw.searchvoca.datasource.remote.RetrofitInstance
@@ -21,7 +20,6 @@ val databaseModule = module {
     single { AppDatabase.getInstance(androidContext()) }
     single { get<AppDatabase>().vocabularyDao() }
     single { get<AppDatabase>().wordDao() }
-    single { get<AppDatabase>().correctionsWordDao() }
 }
 
 val apiModule = module {
@@ -32,7 +30,6 @@ val repositoryModule = module {
     single { VocabularyRepository(get()) }
     single { WordRepository(get()) }
     single { SearchRepository(get()) }
-    single { CorrectionsWordRepository(get()) }
     single { DetectiveRepository() }
 }
 
@@ -45,8 +42,8 @@ val viewModelModule = module {
     viewModel { MainViewModel() }
     viewModel { UpdateWordViewModel(get(), get(), get(), get()) }
     viewModel { AddVocabularyViewModel(get(), get()) }
-    viewModel { CardTestViewModel(get(), get(), get(), get()) }
-    viewModel { CorrectionsViewModel(get(), get()) }
+    viewModel { CardTestViewModel() }
+    viewModel { CorrectionsViewModel() }
     viewModel { CorrectionsListViewModel(get(), get()) }
 
     // fragment
