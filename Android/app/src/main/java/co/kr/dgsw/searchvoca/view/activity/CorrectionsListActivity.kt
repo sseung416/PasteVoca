@@ -60,8 +60,8 @@ class CorrectionsListActivity : BaseActivity<ActivityCorrectionsListBinding, Cor
 
     // 오답노트로 이동
     private fun moveToCorrections(id: Int) {
-        val intent = Intent(this, CorrectionsActivity::class.java)
-            .putExtra("vocabularyId", id)
-        startActivity(intent)
+//        val intent = Intent(this, CorrectionsActivity::class.java)
+//            .putExtra("vocabularyId", id)
+//        startActivity(intent)
     }
 }

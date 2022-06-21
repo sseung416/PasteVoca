@@ -3,44 +3,37 @@ package co.kr.dgsw.searchvoca.widget.view.adapter
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.view.ViewGroup.LayoutParams.MATCH_PARENT
+import android.view.ViewGroup.LayoutParams.WRAP_CONTENT
 import androidx.recyclerview.widget.RecyclerView
-import co.kr.dgsw.searchvoca.databinding.ItemCorrectionsViewBinding
-import co.kr.dgsw.searchvoca.datasource.model.dto.CorrectionsWord
+import co.kr.dgsw.searchvoca.databinding.ItemCorrectionsWordBinding
+import co.kr.dgsw.searchvoca.view.data.TestWord
 
 class CorrectionsAdapter : RecyclerView.Adapter<CorrectionsAdapter.ViewHolder>() {
-    private val allList = arrayListOf<CorrectionsWord>()
-    private val correctList = arrayListOf<CorrectionsWord>()
-    private val wrongList = arrayListOf<CorrectionsWord>()
+    private val list = arrayListOf<TestWord>()
 
     inner class ViewHolder(
-        private val binding: ItemCorrectionsViewBinding
+        private val binding: ItemCorrectionsWordBinding
     ) : RecyclerView.ViewHolder(binding.root) {
-        fun bind(list: List<CorrectionsWord>) {
-            binding.rvCorrectionView.adapter = CorrectionsWordAdapter(list)
+        fun bind(item: TestWord) {
+            binding.data = item
+            binding.executePendingBindings()
         }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder =
-        with (ItemCorrectionsViewBinding.inflate(LayoutInflater.from(parent.context))) {
-            root.layoutParams = ViewGroup.LayoutParams(MATCH_PARENT, MATCH_PARENT)
+        with (ItemCorrectionsWordBinding.inflate(LayoutInflater.from(parent.context))) {
+            root.layoutParams = ViewGroup.LayoutParams(MATCH_PARENT, WRAP_CONTENT)
             ViewHolder(this)
         }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        val list = when (position) {
-            0 -> wrongList
-            1 -> correctList
-            2 -> allList
-            else -> null
-        }
-        holder.bind(list!!)
+        holder.bind(list[position])
     }
 
-    override fun getItemCount(): Int = 3
+    override fun getItemCount(): Int = list.size
 
-    fun setList(triple: Triple<List<CorrectionsWord>, List<CorrectionsWord>, List<CorrectionsWord>>) {
-        allList.addAll(triple.first)
-        wrongList.addAll(triple.second)
-        correctList.addAll(triple.third)
+    fun setList(list: List<TestWord>) {
+        this.list.addAll(list)
+        notifyDataSetChanged()
     }
 }

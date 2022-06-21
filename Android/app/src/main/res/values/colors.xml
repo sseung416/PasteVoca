@@ -15,4 +15,9 @@
     <color name="type_middle">#F6EF97</color>
 
     <color name="white_alpha50">#8CFFFFFF</color>
+    <color name="wrong_answer">#FB4848</color>
+    <color name="correct_answer">#2196F3</color>
+
+    <color name="sound_highlight">@color/black</color>
+    <color name="sound_none">#BBBBBB</color>
 </resources>

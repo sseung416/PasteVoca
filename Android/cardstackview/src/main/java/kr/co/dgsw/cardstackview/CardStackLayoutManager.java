@@ -279,9 +279,9 @@ public class CardStackLayoutManager
 
             /* Handlerを経由してイベント通知を行っているのは、以下のエラーを回避するため
              *
-             * 2019-03-31 18:44:29.744 8496-8496/sample E/AndroidRuntime: FATAL EXCEPTION: main
-             *     Process: sample, PID: 8496
-             *     java.lang.IllegalStateException: Cannot call this method while RecyclerView is computing a layout or scrolling CardStackView{9d8ff78 VFED..... .F....ID 0,0-1080,1353 #7f080027 app:id/card_stack_view}, adapter:sample.CardStackAdapter@e0b8651, layout:CardStackLayoutManager@17b0eb6, context:sample.MainActivity@fe550ca
+             * 2019-03-31 18:44:29.744 8496-8496/com.yuyakaido.android.cardstackview.sample E/AndroidRuntime: FATAL EXCEPTION: main
+             *     Process: com.yuyakaido.android.cardstackview.sample, PID: 8496
+             *     java.lang.IllegalStateException: Cannot call this method while RecyclerView is computing a layout or scrolling com.yuyakaido.android.cardstackview.CardStackView{9d8ff78 VFED..... .F....ID 0,0-1080,1353 #7f080027 app:id/card_stack_view}, adapter:com.yuyakaido.android.cardstackview.sample.CardStackAdapter@e0b8651, layout:com.yuyakaido.android.cardstackview.CardStackLayoutManager@17b0eb6, context:com.yuyakaido.android.cardstackview.sample.MainActivity@fe550ca
              *         at android.support.v7.widget.RecyclerView.assertNotInLayoutOrScroll(RecyclerView.java:2880)
              *         at android.support.v7.widget.RecyclerView$RecyclerViewDataObserver.onItemRangeInserted(RecyclerView.java:5300)
              *         at android.support.v7.widget.RecyclerView$AdapterDataObservable.notifyItemRangeInserted(RecyclerView.java:12022)
@@ -290,10 +290,10 @@ public class CardStackLayoutManager
              *         at android.support.v7.util.BatchingListUpdateCallback.dispatchLastEvent(BatchingListUpdateCallback.java:61)
              *         at android.support.v7.util.DiffUtil$DiffResult.dispatchUpdatesTo(DiffUtil.java:852)
              *         at android.support.v7.util.DiffUtil$DiffResult.dispatchUpdatesTo(DiffUtil.java:802)
-             *         at sample.MainActivity.paginate(MainActivity.kt:164)
-             *         at sample.MainActivity.onCardSwiped(MainActivity.kt:50)
-             *         at CardStackLayoutManager.update(CardStackLayoutManager.java:277)
-             *         at CardStackLayoutManager.scrollHorizontallyBy(CardStackLayoutManager.java:92)
+             *         at com.yuyakaido.android.cardstackview.sample.MainActivity.paginate(MainActivity.kt:164)
+             *         at com.yuyakaido.android.cardstackview.sample.MainActivity.onCardSwiped(MainActivity.kt:50)
+             *         at com.yuyakaido.android.cardstackview.CardStackLayoutManager.update(CardStackLayoutManager.java:277)
+             *         at com.yuyakaido.android.cardstackview.CardStackLayoutManager.scrollHorizontallyBy(CardStackLayoutManager.java:92)
              *         at android.support.v7.widget.RecyclerView.scrollStep(RecyclerView.java:1829)
              *         at android.support.v7.widget.RecyclerView$ViewFlinger.run(RecyclerView.java:5067)
              *         at android.view.Choreographer$CallbackRecord.run(Choreographer.java:911)

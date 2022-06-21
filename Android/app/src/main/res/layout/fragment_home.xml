@@ -82,7 +82,8 @@
                                 android:text="@{@string/count(vm.searchWordsCount)}"
                                 android:textColor="@color/black"
                                 android:textSize="18sp"
-                                android:textStyle="bold" />
+                                android:textStyle="bold"
+                                tools:text="20개"/>
 
                             <TextView
                                 android:id="@+id/textView16"

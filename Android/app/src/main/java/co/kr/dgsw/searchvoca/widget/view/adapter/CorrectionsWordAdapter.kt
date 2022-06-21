@@ -6,15 +6,15 @@ import android.view.ViewGroup.LayoutParams.MATCH_PARENT
 import android.view.ViewGroup.LayoutParams.WRAP_CONTENT
 import androidx.recyclerview.widget.RecyclerView
 import co.kr.dgsw.searchvoca.databinding.ItemCorrectionsWordBinding
-import co.kr.dgsw.searchvoca.datasource.model.dto.CorrectionsWord
+import co.kr.dgsw.searchvoca.view.data.TestWord
 
 class CorrectionsWordAdapter(
-    private val list: List<CorrectionsWord>
+    private val list: List<TestWord>
 ) : RecyclerView.Adapter<CorrectionsWordAdapter.ViewHolder>() {
     class ViewHolder(
         private val binding: ItemCorrectionsWordBinding
     ) : RecyclerView.ViewHolder(binding.root) {
-        fun bind(item: CorrectionsWord) {
+        fun bind(item: TestWord) {
             binding.data = item
             binding.executePendingBindings()
         }

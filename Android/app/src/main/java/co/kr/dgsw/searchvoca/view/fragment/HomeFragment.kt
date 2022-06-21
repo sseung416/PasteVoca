@@ -1,6 +1,7 @@
 package co.kr.dgsw.searchvoca.view.fragment
 
 import android.speech.tts.TextToSpeech
+import android.speech.tts.UtteranceProgressListener
 import android.view.Menu
 import android.view.MenuInflater
 import android.view.MenuItem
@@ -23,6 +24,9 @@ import co.kr.dgsw.searchvoca.widget.extension.setOnClickListenerThrottled
 import co.kr.dgsw.searchvoca.widget.extension.startActivity
 import co.kr.dgsw.searchvoca.widget.livedata.EventObserver
 import co.kr.dgsw.searchvoca.widget.view.adapter.WordAdapter
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import java.util.*
@@ -33,6 +37,8 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>() {
 
     private val wordAdapter = WordAdapter()
     private lateinit var tts: TextToSpeech
+
+    private var currentPos: Int = 0
 
     override fun init() {
         viewModel.getVocabularyNames()
@@ -124,8 +130,14 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>() {
                 viewModel.updateWord(it)
             }
 
-            onClickSoundListener = { word ->
+            onClickSoundListener = { word, pos ->
                 viewModel.detectWord(resources, word)
+                currentPos = pos
+
+                findWordViewHolderForAdapterPosition(pos).apply {
+                    setSoundButtonEnabled(false)
+                    setSoundButtonHighlight(requireContext(), R.color.sound_highlight)
+                }
             }
         }
     }
@@ -168,9 +180,24 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>() {
             if (state == TextToSpeech.SUCCESS) {
                 val result = tts.setLanguage(Locale.US)
 
-//                if (result == TextToSpeech.LANG_NOT_SUPPORTED || result == TextToSpeech.LANG_MISSING_DATA) {
-//                    Toast.makeText(requireContext(), "아직 지원되지 않은 언어입니다.", Toast.LENGTH_LONG).show()
-//                }
+                if (result == TextToSpeech.LANG_NOT_SUPPORTED || result == TextToSpeech.LANG_MISSING_DATA) {
+                    Toast.makeText(requireContext(), "아직 지원되지 않은 언어입니다.", Toast.LENGTH_LONG).show()
+                } else {
+                    tts.setOnUtteranceProgressListener(object : UtteranceProgressListener() {
+                        override fun onStart(p0: String?) {}
+
+                        override fun onDone(p0: String?) {
+                            CoroutineScope(Dispatchers.Main).launch {
+                                findWordViewHolderForAdapterPosition(currentPos).apply {
+                                    setSoundButtonEnabled(true)
+                                    setSoundButtonHighlight(requireContext(), R.color.sound_none)
+                                }
+                            }
+                        }
+
+                        override fun onError(p0: String?) {}
+                    })
+                }
             }
         }
     }
@@ -178,4 +205,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>() {
     private fun speak(text: String?) {
         tts.speak(text, TextToSpeech.QUEUE_FLUSH, null, "id1")
     }
+
+    private fun findWordViewHolderForAdapterPosition(position: Int) =
+        binding.rvHome.findViewHolderForAdapterPosition(position) as WordAdapter.ViewHolder
 }

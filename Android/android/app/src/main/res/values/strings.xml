@@ -1,7 +1,0 @@
-<?xml version='1.0' encoding='utf-8'?>
-<resources>
-    <string name="app_name">SearchVoca</string>
-    <string name="title_activity_main">SearchVoca</string>
-    <string name="package_name">co.kr.dgsw.searchvoca</string>
-    <string name="custom_url_scheme">co.kr.dgsw.searchvoca</string>
-</resources>

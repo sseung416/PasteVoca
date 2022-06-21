@@ -21,3 +21,5 @@ Server/src/main/java/co/kr/dgsw/searchvoca/Key.java
 Server/.idea/libraries/*.xml
 Android/app/google-services.json
 intense-acrobat-347711-61f4151c8b5f.json
+Android/app/src/main/res/raw/credential.json
+google-service-account.json

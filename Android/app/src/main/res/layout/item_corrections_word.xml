@@ -6,7 +6,7 @@
     <data>
         <variable
             name="data"
-            type="co.kr.dgsw.searchvoca.datasource.model.dto.CorrectionsWord" />
+            type="co.kr.dgsw.searchvoca.view.data.TestWord" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -19,19 +19,35 @@
             style="@style/BoldTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
             android:text="@{data.word}"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/cardView"
             app:layout_constraintTop_toTopOf="parent"
-            tools:layout_editor_absoluteY="23dp" />
+            tools:text="단어" />
 
         <TextView
             android:id="@+id/tv_meaning"
+            style="@style/RegularTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@{data.meaning}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="@id/tv_word"
             tools:layout_editor_absoluteX="318dp"
-            tools:layout_editor_absoluteY="29dp" />
+            tools:layout_editor_absoluteY="29dp"
+            tools:text="뜻" />
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardView"
+            android:layout_width="7dp"
+            android:layout_height="7dp"
+            android:elevation="0dp"
+            app:cardBackgroundColor="@{data.isCorrect == true ? @color/correct_answer : @color/wrong_answer}"
+            app:cardCornerRadius="20dp"
+            app:cardElevation="0dp"
+            app:layout_constraintBottom_toBottomOf="@+id/tv_word"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/tv_word" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
