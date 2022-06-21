@@ -44,6 +44,14 @@
         <item name="android:textSize">12sp</item>
     </style>
 
+    <style name="NextWordTextView" parent="Widget.AppCompat.TextView">
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:paddingHorizontal" tools:targetApi="o">32dp</item>
+        <item name="android:paddingVertical" tools:targetApi="o">8dp</item>
+        <item name="android:background">@drawable/selector_next_word_text_view</item>
+    </style>
+
     <!--  EditText  -->
     <style name="AddEditText" parent="Widget.AppCompat.EditText">
         <item name="android:textColor">@color/black</item>

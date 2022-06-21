@@ -97,9 +97,11 @@
 
                     <ImageView
                         android:id="@+id/imageView6"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        app:srcCompat="@drawable/ic_close" />
+                        android:layout_width="34dp"
+                        android:layout_height="31dp"
+                        android:layout_marginBottom="16dp"
+                        app:srcCompat="@drawable/ic_sound"
+                        app:tint="@color/black" />
 
                     <TextView
                         android:id="@+id/textView11"

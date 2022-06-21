@@ -1,5 +1,6 @@
 package co.kr.dgsw.searchvoca.widget.extension
 
+import co.kr.dgsw.searchvoca.view.data.Translate
 import java.util.*
 
 fun String.formatToTTSLanguageCode(): Locale =

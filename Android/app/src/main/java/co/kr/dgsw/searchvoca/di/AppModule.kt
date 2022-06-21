@@ -51,6 +51,7 @@ val viewModelModule = module {
     viewModel { SettingViewModel() }
     viewModel { WordTestViewModel(get(), get()) }
     viewModel { UpdateVocabularyViewModel(get(), get()) }
+    viewModel { ListeningTestViewModel() }
 
     // dialog
     viewModel { SearchResultViewModel(get(), get()) }

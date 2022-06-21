@@ -1,14 +1,12 @@
 package co.kr.dgsw.searchvoca.view.dialog
 
-import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.view.ViewGroup.LayoutParams.WRAP_CONTENT
 import co.kr.dgsw.searchvoca.R
 import co.kr.dgsw.searchvoca.base.BaseDialog
 import co.kr.dgsw.searchvoca.databinding.DialogWordTestBinding
-import co.kr.dgsw.searchvoca.view.activity.CardTestActivity
-import co.kr.dgsw.searchvoca.viewmodel.activity.CorrectionsViewModel
+import co.kr.dgsw.searchvoca.viewmodel.fragment.CorrectionsViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class WordTestDialog : BaseDialog<DialogWordTestBinding>() {
@@ -31,9 +29,9 @@ class WordTestDialog : BaseDialog<DialogWordTestBinding>() {
             val (all, wrong, _) = viewModel.getList()
             val list = if (binding.radioAll.isChecked) all else wrong
 
-            val intent = Intent(requireActivity(), CardTestActivity::class.java)
+//            val intent = Intent(requireActivity(), WordCheckActivity::class.java)
 //                .putExtra("list", list)
-            requireActivity().startActivity(intent)
+//            requireActivity().startActivity(intent)
             dismiss()
         }
     }

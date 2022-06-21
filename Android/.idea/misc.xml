@@ -39,6 +39,7 @@
         <entry key="app/src/main/res/drawable/ic_solid_home.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/ic_solid_setting.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/ic_solid_test.xml" value="0.1" />
+        <entry key="app/src/main/res/drawable/ic_sound.xml" value="0.1005" />
         <entry key="app/src/main/res/drawable/ic_subtract.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/ic_test.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/ic_type_difficult.xml" value="0.137" />
@@ -105,7 +106,7 @@
         <entry key="app/src/main/res/layout/item_vocabulary_add.xml" value="0.23777173913043478" />
         <entry key="app/src/main/res/layout/item_vocabulary_text.xml" value="0.3332285120867301" />
         <entry key="app/src/main/res/layout/item_widget_word.xml" value="0.21467391304347827" />
-        <entry key="app/src/main/res/layout/item_word.xml" value="0.4678456591639871" />
+        <entry key="app/src/main/res/layout/item_word.xml" value="0.3108910891089109" />
         <entry key="app/src/main/res/layout/item_word_card.xml" value="0.18115942028985507" />
         <entry key="app/src/main/res/layout/item_word_search.xml" value="0.4260600214419158" />
         <entry key="app/src/main/res/layout/layout_add.xml" value="0.3724845344589883" />
@@ -146,5 +147,12 @@
   </component>
   <component name="ProjectType">
     <option name="id" value="Android" />
+  </component>
+  <component name="VisualizationToolProject">
+    <option name="state">
+      <ProjectState>
+        <option name="scale" value="0.2853470437017995" />
+      </ProjectState>
+    </option>
   </component>
 </project>

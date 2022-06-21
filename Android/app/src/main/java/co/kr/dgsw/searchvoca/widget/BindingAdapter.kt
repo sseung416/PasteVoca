@@ -7,15 +7,27 @@ import android.view.View
 import android.view.View.GONE
 import android.view.View.VISIBLE
 import android.widget.EditText
-import android.widget.TextView
 import androidx.annotation.ColorInt
 import androidx.databinding.BindingAdapter
+import androidx.databinding.BindingConversion
+import androidx.databinding.BindingMethod
+import androidx.databinding.BindingMethods
 import androidx.recyclerview.widget.RecyclerView
 import co.kr.dgsw.searchvoca.widget.extension.OnClickListenerThrottled
 import co.kr.dgsw.searchvoca.widget.extension.setOnClickListenerThrottled
 import co.kr.dgsw.searchvoca.widget.extension.setOnTouchListenerThrottled
 import co.kr.dgsw.searchvoca.widget.view.decoration.CustomDecoration
 import java.text.SimpleDateFormat
+
+@BindingMethods(
+    value = [
+        BindingMethod(
+            type = android.widget.ImageView::class,
+            attribute = "app:tint",
+            method = "setImageTintList"
+        )]
+)
+object BindingAdapter
 
 // RecyclerView Decoration 추가
 @BindingAdapter(
@@ -45,12 +57,6 @@ fun View.setVisible(size: Int) {
 @BindingAdapter("enabledNotEmpty")
 fun View.setEnabledNotEmpty(string: String?) {
     isEnabled = !(string.isNullOrBlank())
-}
-
-@BindingAdapter("dateText")
-fun TextView.setDateText(date: Long) {
-    val formatString = SimpleDateFormat("yyyy-MM-dd").format(date)
-    this.text = formatString
 }
 
 @BindingAdapter("onDrawableEndClick")
@@ -86,3 +92,6 @@ fun setOnClickListenerThrottled(
 fun setOnTouchListenerThrottled(v: View, listener: OnClickListenerThrottled) {
     v.setOnTouchListenerThrottled(listener)
 }
+
+@BindingConversion
+fun convertLongToDateString(date: Long): String = SimpleDateFormat("yyyy-MM-dd").format(date)

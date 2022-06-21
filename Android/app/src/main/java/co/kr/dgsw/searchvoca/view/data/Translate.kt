@@ -1,4 +1,4 @@
-package co.kr.dgsw.searchvoca.widget.extension
+package co.kr.dgsw.searchvoca.view.data
 
 enum class Translate(val langCode: String) {
     KOREAN("ko"),

@@ -10,4 +10,5 @@
     <dimen name="bottom_sheet_dialog_height">150dp</dimen>
     <dimen name="update_layout_padding_horizontal">24dp</dimen>
     <dimen name="update_layout_padding_top">8dp</dimen>
+    <dimen name="next_word_text_view_padding">8dp</dimen>
 </resources>

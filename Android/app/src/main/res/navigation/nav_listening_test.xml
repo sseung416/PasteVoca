@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/nav_listening_test"
+    app:startDestination="@id/listeningTestFragment">
+
+    <fragment
+        android:id="@+id/listeningTestFragment"
+        android:name="co.kr.dgsw.searchvoca.view.fragment.ListeningTestFragment"
+        android:label="ListeningTestFragment" >
+        <action
+            android:id="@+id/action_to_correctionsFragment"
+            app:destination="@id/correctionsFragment2" />
+    </fragment>
+    <fragment
+        android:id="@+id/correctionsFragment2"
+        android:name="co.kr.dgsw.searchvoca.view.fragment.CorrectionsFragment"
+        android:label="CorrectionsFragment">
+        <argument
+            android:name="correctionsList"
+            app:argType="co.kr.dgsw.searchvoca.view.data.TestWord[]" />
+    </fragment>
+</navigation>
