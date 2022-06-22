@@ -46,7 +46,8 @@ class ListeningTestFragment : BaseFragment<FragmentListeningTestBinding, Listeni
     override fun observeViewModel() {
         viewModel.apply {
             currentWord.observe(viewLifecycleOwner, EventObserver { (isCorrect, idx) ->
-                Log.e("observeViewModel", "currentWord: correct=$isCorrect, index=$idx")
+                Log.d("observeViewModel", "currentWord: correct=$isCorrect, index=$idx")
+
                 wordList[idx - 1].isCorrect = isCorrect
 
                 if (idx > wordListLastIndex) {
@@ -88,6 +89,7 @@ class ListeningTestFragment : BaseFragment<FragmentListeningTestBinding, Listeni
                         viewModel.soundEnabled.postValue(true)
                     }
 
+                    @Deprecated("Deprecated in Java")
                     override fun onError(p0: String?) {}
                 })
             }
