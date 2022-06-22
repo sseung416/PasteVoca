@@ -3,6 +3,7 @@ package co.kr.dgsw.searchvoca.widget.extension
 import android.content.Intent
 import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.Lifecycle
 import co.kr.dgsw.searchvoca.R
 
 fun Fragment.startService(serviceClass: Class<*>) {
@@ -21,3 +22,6 @@ fun Fragment.showQuitTestDialog() {
         .create()
         .show()
 }
+
+fun Fragment.checkCurrentState(state: Lifecycle.State) =
+    this.lifecycle.currentState.isAtLeast(state)

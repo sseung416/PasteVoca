@@ -22,6 +22,7 @@ import co.kr.dgsw.searchvoca.view.dialog.DefaultBottomSheetDialog
 import co.kr.dgsw.searchvoca.view.dialog.WordBottomSheetDialog
 import co.kr.dgsw.searchvoca.viewmodel.dialog.WordBottomSheetViewModel
 import co.kr.dgsw.searchvoca.viewmodel.fragment.HomeViewModel
+import co.kr.dgsw.searchvoca.widget.extension.checkCurrentState
 import co.kr.dgsw.searchvoca.widget.extension.setOnClickListenerThrottled
 import co.kr.dgsw.searchvoca.widget.extension.startActivity
 import co.kr.dgsw.searchvoca.widget.livedata.EventObserver
@@ -194,7 +195,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>() {
             override fun onStart(p0: String?) {}
 
             override fun onDone(p0: String?) {
-                if (isCurrentStateResume()) {
+                if (checkCurrentState(Lifecycle.State.RESUMED)) {
                     CoroutineScope(Dispatchers.Main).launch {
                         findWordViewHolderForAdapterPosition(currentPos).apply {
                             setSoundButtonEnabled(true)
@@ -212,8 +213,6 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>() {
     private fun speak(text: String?) {
         tts.speak(text, TextToSpeech.QUEUE_FLUSH, null, "id1")
     }
-
-    private fun isCurrentStateResume() = this.lifecycle.currentState.isAtLeast(Lifecycle.State.RESUMED)
 
     private fun findWordViewHolderForAdapterPosition(position: Int) =
         binding.rvHome.findViewHolderForAdapterPosition(position) as WordAdapter.ViewHolder
