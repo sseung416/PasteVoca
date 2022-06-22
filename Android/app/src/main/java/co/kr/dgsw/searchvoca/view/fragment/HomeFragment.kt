@@ -2,6 +2,7 @@ package co.kr.dgsw.searchvoca.view.fragment
 
 import android.speech.tts.TextToSpeech
 import android.speech.tts.UtteranceProgressListener
+import android.util.Log
 import android.view.Menu
 import android.view.MenuInflater
 import android.view.MenuItem
@@ -198,6 +199,8 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>() {
                         override fun onError(p0: String?) {}
                     })
                 }
+            } else {
+                Log.e("TextToSpeech", "setupTextToSpeech: failed.")
             }
         }
     }
@@ -205,6 +208,8 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>() {
     private fun speak(text: String?) {
         tts.speak(text, TextToSpeech.QUEUE_FLUSH, null, "id1")
     }
+
+    private fun isCurrentStateResume() = this.lifecycle.currentState.isAtLeast(Lifecycle.State.RESUMED)
 
     private fun findWordViewHolderForAdapterPosition(position: Int) =
         binding.rvHome.findViewHolderForAdapterPosition(position) as WordAdapter.ViewHolder
