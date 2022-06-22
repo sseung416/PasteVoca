@@ -2,6 +2,7 @@ package co.kr.dgsw.searchvoca.view.fragment
 
 import android.speech.tts.TextToSpeech
 import android.speech.tts.UtteranceProgressListener
+import android.util.Log
 import android.view.Menu
 import android.view.MenuInflater
 import android.view.MenuItem
@@ -11,6 +12,7 @@ import android.widget.LinearLayout
 import android.widget.TextView
 import android.widget.Toast
 import androidx.core.view.get
+import androidx.lifecycle.Lifecycle
 import co.kr.dgsw.searchvoca.R
 import co.kr.dgsw.searchvoca.base.BaseFragment
 import co.kr.dgsw.searchvoca.databinding.FragmentHomeBinding
@@ -20,6 +22,7 @@ import co.kr.dgsw.searchvoca.view.dialog.DefaultBottomSheetDialog
 import co.kr.dgsw.searchvoca.view.dialog.WordBottomSheetDialog
 import co.kr.dgsw.searchvoca.viewmodel.dialog.WordBottomSheetViewModel
 import co.kr.dgsw.searchvoca.viewmodel.fragment.HomeViewModel
+import co.kr.dgsw.searchvoca.widget.extension.checkCurrentState
 import co.kr.dgsw.searchvoca.widget.extension.setOnClickListenerThrottled
 import co.kr.dgsw.searchvoca.widget.extension.startActivity
 import co.kr.dgsw.searchvoca.widget.livedata.EventObserver
@@ -182,24 +185,29 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>() {
 
                 if (result == TextToSpeech.LANG_NOT_SUPPORTED || result == TextToSpeech.LANG_MISSING_DATA) {
                     Toast.makeText(requireContext(), "아직 지원되지 않은 언어입니다.", Toast.LENGTH_LONG).show()
-                } else {
-                    tts.setOnUtteranceProgressListener(object : UtteranceProgressListener() {
-                        override fun onStart(p0: String?) {}
-
-                        override fun onDone(p0: String?) {
-                            CoroutineScope(Dispatchers.Main).launch {
-                                findWordViewHolderForAdapterPosition(currentPos).apply {
-                                    setSoundButtonEnabled(true)
-                                    setSoundButtonHighlight(requireContext(), R.color.sound_none)
-                                }
-                            }
-                        }
-
-                        override fun onError(p0: String?) {}
-                    })
                 }
+            } else {
+                Log.e("TextToSpeech", "setupTextToSpeech: failed.")
             }
         }
+
+        tts.setOnUtteranceProgressListener(object : UtteranceProgressListener() {
+            override fun onStart(p0: String?) {}
+
+            override fun onDone(p0: String?) {
+                if (checkCurrentState(Lifecycle.State.RESUMED)) {
+                    CoroutineScope(Dispatchers.Main).launch {
+                        findWordViewHolderForAdapterPosition(currentPos).apply {
+                            setSoundButtonEnabled(true)
+                            setSoundButtonHighlight(requireContext(), R.color.sound_none)
+                        }
+                    }
+                }
+            }
+
+            @Deprecated("Deprecated in Java")
+            override fun onError(p0: String?) {}
+        })
     }
 
     private fun speak(text: String?) {
