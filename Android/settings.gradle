@@ -15,3 +15,4 @@ dependencyResolutionManagement {
 rootProject.name = "PastVoca"
 include ':app'
 include ':cardStackView'
+include ':domain'
