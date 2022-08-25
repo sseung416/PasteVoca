@@ -1,4 +1,4 @@
-package co.kr.dgsw.searchvoca.datasource.model.dto
+package co.kr.searchvoca.local.entity
 
 import java.io.Serializable
 
