@@ -1,6 +1,6 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
-    <style name="Theme.PastVoca" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+    <style name="Theme.SearchVOCA" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <!-- Primary brand color. -->
         <item name="colorPrimary">#252525</item>
         <item name="colorPrimaryVariant">@color/purple_700</item>
@@ -18,20 +18,10 @@
     </style>
 
     <!--  TextView  -->
-    <style name="BoldTextView" parent="Widget.AppCompat.TextView">
-        <item name="android:textColor">@color/black</item>
-        <item name="android:textSize">16sp</item>
-        <item name="android:textStyle">bold</item>
-    </style>
 
     <style name="BigTextView" parent="Widget.AppCompat.TextView">
         <item name="android:textColor">@color/black</item>
         <item name="android:textSize">16sp</item>
-    </style>
-
-    <style name="RegularTextView" parent="Widget.AppCompat.TextView">
-        <item name="android:textColor">@color/black</item>
-        <item name="android:textSize">14sp</item>
     </style>
 
     <style name="SmallTextView.Black" parent="Widget.AppCompat.TextView">
@@ -55,7 +45,6 @@
     <!--  EditText  -->
     <style name="AddEditText" parent="Widget.AppCompat.EditText">
         <item name="android:textColor">@color/black</item>
-        <item name="android:layout_marginVertical" tools:targetApi="o">8dp</item>
         <item name="android:textSize">14sp</item>
         <item name="android:backgroundTint">@color/gray2</item>
         <item name="hintTextColor">@color/gray3</item>
@@ -63,6 +52,8 @@
         <item name="android:includeFontPadding">true</item>
         <item name="android:paddingBottom">16dp</item>
         <item name="android:paddingHorizontal" tools:targetApi="o">16dp</item>
+        <item name="android:layout_marginVertical" tools:targetApi="o">8dp</item>
+        <item name="android:layout_marginHorizontal" tools:targetApi="o">24dp</item>
     </style>
 
     <style name="WordTestSettingEditText" parent="Widget.AppCompat.EditText">
@@ -80,24 +71,12 @@
     <!--  CardView  -->
     <style name="SettingsCardView" parent="CardView">
         <item name="android:elevation">0dp</item>
+        <item name="android:layout_marginHorizontal" tools:targetApi="o">16dp</item>
         <item name="cardElevation">0dp</item>
-        <item name="contentPaddingRight">8dp</item>
         <item name="contentPaddingLeft">16dp</item>
+        <item name="contentPaddingRight">16dp</item>
         <item name="cardCornerRadius">16dp</item>
         <item name="useCompatPadding">true</item>
-    </style>
-
-    <style name="WordTestListCardView" parent="CardView">
-        <item name="android:layout_width">@dimen/word_test_cardview_size</item>
-        <item name="android:layout_height">@dimen/word_test_cardview_size</item>
-        <item name="android:layout_margin">8dp</item>
-        <item name="android:clickable">true</item>
-        <item name="android:focusable">true</item>
-        <item name="cardElevation">0dp</item>
-        <item name="android:elevation">0dp</item>
-        <item name="cardBackgroundColor">@color/gray1</item>
-        <item name="cardCornerRadius">16dp</item>
-        <item name="cardUseCompatPadding">true</item>
     </style>
 
     <style name="Theme.PastVoca.NoActionBar">

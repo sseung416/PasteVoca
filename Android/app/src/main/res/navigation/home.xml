@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/home"
+    app:startDestination="@id/homeFragment">
+
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="co.kr.dgsw.searchvoca.ui.home.HomeFragment"
+        android:label="HomeFragment"
+        tools:layout="@layout/fragment_home">
+        <action
+            android:id="@+id/action_to_updateWord"
+            app:destination="@id/updateWordFragment" />
+        <action
+            android:id="@+id/action_to_searchHistory"
+            app:destination="@id/searchHistoryFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/updateWordFragment"
+        android:name="co.kr.dgsw.searchvoca.ui.word.UpdateWordFragment"
+        android:label="UpdateWordFragment"
+        tools:layout="@layout/fragment_update_word" >
+        <argument
+            android:name="type"
+            app:argType="co.kr.dgsw.searchvoca.ui.word.UpdateTabType"
+            android:defaultValue="CREATE" />
+        <action
+            android:id="@+id/action_updateVocabulary"
+            app:destination="@id/updateVocabularyFragment" />
+        <argument
+            android:name="word"
+            app:argType="co.kr.searchvoca.domain.model.Word"
+            app:nullable="true"
+            android:defaultValue="@null" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/searchHistoryFragment"
+        android:name="co.kr.dgsw.searchvoca.ui.history.SearchHistoryFragment"
+        android:label="SearchHistoryFragment"
+        tools:layout="@layout/fragment_search_history"/>
+
+    <fragment
+        android:id="@+id/updateVocabularyFragment"
+        android:name="co.kr.dgsw.searchvoca.ui.vocabulary.UpdateVocabularyFragment"
+        android:label="UpdateVocabularyFragment"
+        tools:layout="@layout/fragment_update_vocabulary">
+        <argument
+            android:name="type"
+            app:argType="co.kr.dgsw.searchvoca.ui.word.UpdateTabType"
+            android:defaultValue="CREATE" />
+    </fragment>
+
+</navigation>

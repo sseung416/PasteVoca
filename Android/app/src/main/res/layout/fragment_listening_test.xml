@@ -5,30 +5,44 @@
 
     <data>
 
+        <import type="kotlin.text.StringsKt" />
+
+        <import type="co.kr.searchvoca.shared.android.extension.StringExtensionKt" />
+
         <variable
             name="vm"
-            type="co.kr.dgsw.searchvoca.viewmodel.fragment.ListeningTestViewModel" />
+            type="co.kr.dgsw.searchvoca.ui.quiz.listening.ListeningTestViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".view.fragment.ListeningTestFragment">
+        tools:context=".ui.quiz.listening.ListeningTestFragment">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:minHeight="?attr/actionBarSize"
+            android:theme="?attr/actionBarTheme"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:navigationIcon="@drawable/ic_close" />
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btn_next"
-            enabledNotEmpty="@{vm.userAnswer}"
-            onClickThrottled="@{()->vm.checkAnswer()}"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:enabled="@{StringsKt.isBlank(vm.userAnswer)}"
             android:text="@string/confirm"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:onClickThrottled="@{() -> vm.checkAnswer()}" />
 
         <com.google.android.material.card.MaterialCardView
             android:id="@+id/cv_sound"
-            onClickThrottled="@{()->vm.playTTS()}"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="24dp"
@@ -41,18 +55,19 @@
             app:strokeColor="@color/gray1"
             app:strokeWidth="1dp">
 
-            <ImageView
-                android:id="@+id/imageView7"
+            <co.kr.searchvoca.shared.android.component.TextToSpeechButton
+                android:id="@+id/tts"
                 android:layout_width="30dp"
                 android:layout_height="30dp"
-                android:src="@drawable/ic_sound"
-                app:tint="@{vm.soundEnabled ? @color/sound_none : @color/sound_highlight}" />
+                app:language="@{vm.language}"
+                app:speechText="@{StringExtensionKt.removeSpecialSymbol(vm.currentWord.word)}" />
+
         </com.google.android.material.card.MaterialCardView>
 
         <androidx.cardview.widget.CardView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="24dp"
+            android:layout_marginTop="@dimen/margin_large"
             app:cardBackgroundColor="@color/gray1"
             app:cardCornerRadius="8dp"
             app:cardElevation="0dp"
@@ -72,40 +87,37 @@
                 android:gravity="center"
                 android:hint="@string/input_your_answer"
                 android:inputType="textPersonName"
-                android:minWidth="48dp"
-                android:minHeight="48dp"
+                android:minWidth="@dimen/size_click_minimum"
+                android:minHeight="@dimen/size_click_minimum"
                 android:paddingHorizontal="3dp"
-                android:paddingBottom="16dp"
-                android:text="@={vm.userAnswer}"
-                tools:layout_editor_absoluteX="101dp" />
+                android:paddingBottom="@dimen/margin_normal"
+                android:text="@={vm.userAnswer}" />
 
         </androidx.cardview.widget.CardView>
 
         <TextView
             android:id="@+id/textView13"
             style="@style/NextWordTextView"
-            onClickThrottled="@{()->vm.showNextWord(false)}"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="16dp"
+            android:layout_marginBottom="@dimen/margin_normal"
             android:clickable="true"
             android:focusable="true"
             android:text="@string/do_not_know"
             app:layout_constraintBottom_toTopOf="@+id/btn_next"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:onClickThrottled="@{() -> vm.showNextWord(false)}" />
 
         <TextView
             android:id="@+id/textView12"
             style="@style/BoldTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:text="단어를 듣고 단어의 음을 입력해주세요!"
+            android:layout_marginTop="@dimen/margin_normal"
+            android:text="@string/message_listening_test"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-
+            app:layout_constraintTop_toBottomOf="@+id/toolbar" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

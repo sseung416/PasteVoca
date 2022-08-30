@@ -3,13 +3,6 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
-    <data>
-
-        <variable
-            name="data"
-            type="co.kr.dgsw.searchvoca.datasource.model.dto.Vocabulary" />
-    </data>
-
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/layout_corrections"
         android:layout_width="match_parent"
@@ -35,7 +28,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
-            android:text="@{data.date}"
             android:textColor="@color/gray3"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toEndOf="@+id/tv_vocabulary_name"
@@ -45,7 +37,6 @@
         <TextView
             android:id="@+id/tv_vocabulary_name"
             style="@style/RegularTextView"
-            android:text="@{data.name}"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"

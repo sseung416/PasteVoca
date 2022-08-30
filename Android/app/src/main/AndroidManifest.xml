@@ -12,62 +12,50 @@
     </queries>
 
     <application
-        android:name=".di.App"
+        android:name="co.kr.dgsw.searchvoca.SearchVOCAAplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.PastVoca"
+        android:theme="@style/Theme.SearchVOCA"
         android:usesCleartextTraffic="true">
-        <activity
-            android:name=".view.activity.ListeningTestActivity"
-            android:exported="false" />
-        <activity
-            android:name=".view.activity.CorrectionsListActivity"
-            android:exported="false" />
-        <activity
-            android:name=".view.activity.EditWordActivity"
-            android:exported="false" />
-        <activity
-            android:name=".view.activity.SearchWordActivity"
-            android:exported="false" />
 
-        <receiver
-            android:name=".view.widget.WordWidgetProvider"
-            android:exported="true">
-            <intent-filter>
-                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
-            </intent-filter>
+<!--        <receiver-->
+<!--            android:name=".widget.WordWidgetProvider"-->
+<!--            android:exported="true">-->
+<!--            <intent-filter>-->
+<!--                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />-->
+<!--            </intent-filter>-->
 
-            <meta-data
-                android:name="android.appwidget.provider"
-                android:resource="@xml/widget_provider" />
-        </receiver>
+<!--            <meta-data-->
+<!--                android:name="android.appwidget.provider"-->
+<!--                android:resource="@xml/widget_provider" />-->
+<!--        </receiver>-->
 
         <service
-            android:name=".view.service.FloatingSearchButtonService"
+            android:name=".ui.setting.service.FloatingSearchButtonService"
             android:enabled="true"
             android:exported="true" />
+
         <service
-            android:name=".view.service.FloatingSearchResultService"
+            android:name=".ui.setting.service.FloatingSearchResultService"
             android:enabled="true"
             android:exported="true" />
+
         <service
-            android:name=".view.service.FloatingSearchService"
+            android:name=".ui.setting.service.FloatingSearchService"
             android:enabled="true"
             android:exported="true" />
-        <service
-            android:name=".view.widget.WordWidgetAdapter"
-            android:enabled="true"
-            android:exported="false"
-            android:permission="android.permission.BIND_REMOTEVIEWS" />
+
+<!--        <service-->
+<!--            android:name=".widget.WordWidgetAdapter"-->
+<!--            android:enabled="true"-->
+<!--            android:exported="false"-->
+<!--            android:permission="android.permission.BIND_REMOTEVIEWS" />-->
 
         <activity
-            android:name=".view.activity.ChooseLanguageActivity"
-            android:exported="false" />
-        <activity
-            android:name=".view.activity.PermissionActivity"
+            android:name=".ui.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -75,17 +63,5 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name=".view.activity.CardTestActivity"
-            android:exported="false"
-            android:label="@string/title_activity_word_check"
-            android:theme="@style/Theme.PastVoca.NoActionBar" />
-        <activity
-            android:name=".view.activity.AddWordActivity"
-            android:exported="false" />
-        <activity
-            android:name=".view.activity.MainActivity"
-            android:exported="true" />
     </application>
-
 </manifest>
