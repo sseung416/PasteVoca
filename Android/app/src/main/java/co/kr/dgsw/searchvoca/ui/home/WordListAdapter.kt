@@ -8,11 +8,11 @@ import android.view.ViewGroup.LayoutParams.WRAP_CONTENT
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import co.kr.dgsw.searchvoca.R
 import co.kr.dgsw.searchvoca.databinding.ItemSearchHistoryBinding
 import co.kr.dgsw.searchvoca.databinding.ItemWordBinding
 import co.kr.dgsw.searchvoca.ui.executeAfter
 import co.kr.searchvoca.domain.model.Word
-import co.kr.searchvoca.shared.android.R
 import co.kr.searchvoca.shared.android.extension.setOnClickListenerThrottled
 import co.kr.searchvoca.shared.android.next
 
@@ -24,14 +24,14 @@ class WordListAdapter(
 
     override fun getItemViewType(position: Int): Int =
         when (getItem(position)) {
-            is WordListItem.SearchHistory -> R.layout.view_search_history
+            is WordListItem.SearchHistory -> R.layout.item_search_history
 
-            is WordListItem.WordItem -> R.layout.view_word_item
+            is WordListItem.WordItem -> R.layout.item_word
         }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): WordListViewHolder =
         when (viewType) {
-            R.layout.view_search_history ->
+            R.layout.item_search_history ->
                 WordListViewHolder.SearchHistoryViewHolder(
                     ItemSearchHistoryBinding.inflate(LayoutInflater.from(parent.context)),
                     onClickSearchHistory

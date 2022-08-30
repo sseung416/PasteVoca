@@ -1,6 +1,6 @@
 package co.kr.dgsw.searchvoca.di.module
 
-import co.kr.dgsw.searchvoca.ui.dialog.VocabularyBottomSheetViewModel
+import co.kr.dgsw.searchvoca.ui.dialog.vocabulary.VocabularyBottomSheetViewModel
 import co.kr.dgsw.searchvoca.ui.history.SearchHistoryViewModel
 import co.kr.dgsw.searchvoca.ui.home.HomeViewModel
 import co.kr.dgsw.searchvoca.ui.quiz.QuizViewModel

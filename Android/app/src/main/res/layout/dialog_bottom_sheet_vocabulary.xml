@@ -7,11 +7,11 @@
 
         <variable
             name="vm"
-            type="co.kr.dgsw.searchvoca.ui.dialog.VocabularyBottomSheetViewModel" />
+            type="co.kr.dgsw.searchvoca.ui.dialog.vocabulary.VocabularyBottomSheetViewModel" />
 
         <variable
             name="adapter"
-            type="co.kr.dgsw.searchvoca.ui.dialog.VocabularyListAdapter" />
+            type="co.kr.dgsw.searchvoca.ui.dialog.vocabulary.VocabularyListAdapter" />
 
     </data>
 
@@ -19,7 +19,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:minHeight="@dimen/bottom_sheet_dialog_height"
-        tools:context=".ui.dialog.VocabularyBottomSheetDialog">
+        tools:context=".ui.dialog.vocabulary.VocabularyBottomSheetDialog">
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rv_voca"

@@ -41,5 +41,6 @@ val wordUseCaseModule = module {
 
 val historyUseCase = module {
     single { GetSearchHistoryCountUseCase(get(), get()) }
+
     single { LoadSearchHistoryUseCase(get(), get()) }
 }

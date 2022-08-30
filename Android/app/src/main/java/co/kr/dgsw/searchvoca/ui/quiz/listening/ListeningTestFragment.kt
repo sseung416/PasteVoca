@@ -11,9 +11,8 @@ import co.kr.dgsw.searchvoca.ui.BindingFragment
 import co.kr.dgsw.searchvoca.ui.bind
 import co.kr.dgsw.searchvoca.ui.launchAndRepeatWithViewLifecycle
 import co.kr.dgsw.searchvoca.ui.quiz.listening.ListeningTestNavigationAction.*
-import co.kr.searchvoca.shared.android.extension.showQuitTestDialog
+import co.kr.dgsw.searchvoca.ui.quiz.showQuitTestDialog
 import org.koin.androidx.viewmodel.ext.android.viewModel
-import java.util.*
 
 class ListeningTestFragment :
     BindingFragment<FragmentListeningTestBinding>(R.layout.fragment_listening_test) {

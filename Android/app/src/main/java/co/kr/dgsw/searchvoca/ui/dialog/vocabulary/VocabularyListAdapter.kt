@@ -1,4 +1,4 @@
-package co.kr.dgsw.searchvoca.ui.dialog
+package co.kr.dgsw.searchvoca.ui.dialog.vocabulary
 
 import android.view.LayoutInflater
 import android.view.View
@@ -9,7 +9,6 @@ import androidx.recyclerview.widget.RecyclerView
 import co.kr.dgsw.searchvoca.databinding.ItemTextBinding
 import co.kr.dgsw.searchvoca.databinding.ItemVocabularyAddBinding
 import co.kr.searchvoca.domain.model.Vocabulary
-import co.kr.searchvoca.domain.model.default
 
 class VocabularyListAdapter(
     private val onClickItemListener: ((Vocabulary) -> Unit),

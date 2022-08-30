@@ -140,12 +140,12 @@
 
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/btn_confirm"
-                onClickThrottled="@{() -> vm.onConfirmClicked()}"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:background="@color/white"
-                android:text="@string/confirm" />
+                android:text="@string/confirm"
+                app:onClickThrottled="@{() -> vm.onConfirmClicked()}" />
         </LinearLayout>
 
         <TextView

@@ -9,7 +9,6 @@ import co.kr.searchvoca.local.datasource.WordDataSourceImpl
 import co.kr.searchvoca.remote.datasource.SearchDataSourceImpl
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.SupervisorJob
-import org.koin.android.ext.koin.androidApplication
 import org.koin.android.ext.koin.androidContext
 import org.koin.dsl.module
 

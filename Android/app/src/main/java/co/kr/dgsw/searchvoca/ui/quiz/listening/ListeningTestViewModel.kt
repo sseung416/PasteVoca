@@ -4,9 +4,9 @@ import androidx.lifecycle.ViewModel
 import co.kr.dgsw.searchvoca.R
 import co.kr.dgsw.searchvoca.ui.quiz.TestWord
 import co.kr.dgsw.searchvoca.ui.quiz.listening.ListeningTestNavigationAction.*
+import co.kr.dgsw.searchvoca.ui.quiz.removeSpecialSymbol
+import co.kr.dgsw.searchvoca.ui.quiz.removeWhiteSpaces
 import co.kr.dgsw.searchvoca.ui.tryOffer
-import co.kr.searchvoca.shared.android.extension.removeSpecialSymbol
-import co.kr.searchvoca.shared.android.extension.removeWhiteSpaces
 import co.kr.searchvoca.shared.domain.Translate
 import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.flow.MutableStateFlow

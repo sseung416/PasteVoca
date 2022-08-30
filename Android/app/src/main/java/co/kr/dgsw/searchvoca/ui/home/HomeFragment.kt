@@ -7,7 +7,7 @@ import co.kr.dgsw.searchvoca.R
 import co.kr.dgsw.searchvoca.databinding.FragmentHomeBinding
 import co.kr.dgsw.searchvoca.ui.BindingFragment
 import co.kr.dgsw.searchvoca.ui.bind
-import co.kr.dgsw.searchvoca.ui.dialog.VocabularyBottomSheetDialog
+import co.kr.dgsw.searchvoca.ui.dialog.vocabulary.VocabularyBottomSheetDialog
 import co.kr.dgsw.searchvoca.ui.word.UpdateTabType
 import co.kr.searchvoca.domain.model.Word
 import co.kr.searchvoca.shared.android.extension.setOnClickListenerThrottled

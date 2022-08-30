@@ -9,8 +9,8 @@ import co.kr.dgsw.searchvoca.R
 import co.kr.dgsw.searchvoca.databinding.FragmentCardTestBinding
 import co.kr.dgsw.searchvoca.ui.BindingFragment
 import co.kr.dgsw.searchvoca.ui.bind
+import co.kr.dgsw.searchvoca.ui.quiz.showQuitTestDialog
 import co.kr.dgsw.searchvoca.widget.view.CardStackAdapter
-import co.kr.searchvoca.shared.android.extension.showQuitTestDialog
 import kr.co.dgsw.cardstackview.CardStackLayoutManager
 import kr.co.dgsw.cardstackview.Direction
 import kr.co.dgsw.cardstackview.StackFrom

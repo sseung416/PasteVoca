@@ -56,14 +56,14 @@
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rv_home"
-            dividerColor="@{@color/gray1}"
-            dividerHeight="@{3f}"
-            dividerPadding="@{32f}"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical"
             android:paddingHorizontal="@dimen/margin_normal"
             app:adapter="@{adapter}"
+            app:dividerColor="@{@color/gray1}"
+            app:dividerHeight="@{3f}"
+            app:dividerPadding="@{32f}"
             app:historyCount="@{vm.searchHistoryCount}"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             app:wordItems="@{vm.words}" />

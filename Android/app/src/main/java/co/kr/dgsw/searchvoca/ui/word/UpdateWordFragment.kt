@@ -12,10 +12,9 @@ import co.kr.dgsw.searchvoca.ui.bind
 import co.kr.dgsw.searchvoca.ui.launchAndRepeatWithViewLifecycle
 import co.kr.dgsw.searchvoca.ui.word.UpdateWordNavigationAction.*
 import co.kr.dgsw.searchvoca.ui.dialog.DefaultBottomSheetDialog
-import co.kr.dgsw.searchvoca.ui.dialog.VocabularyBottomSheetDialog
+import co.kr.dgsw.searchvoca.ui.dialog.vocabulary.VocabularyBottomSheetDialog
 import co.kr.searchvoca.domain.model.Definition
 import co.kr.searchvoca.domain.model.Word
-import kotlinx.coroutines.flow.collect
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class UpdateWordFragment :

@@ -11,12 +11,10 @@ import co.kr.dgsw.searchvoca.R
 import co.kr.dgsw.searchvoca.databinding.FragmentSettingBinding
 import co.kr.dgsw.searchvoca.ui.BindingFragment
 import co.kr.dgsw.searchvoca.ui.bind
-import co.kr.dgsw.searchvoca.ui.dialog.VocabularyBottomSheetDialog
+import co.kr.dgsw.searchvoca.ui.dialog.vocabulary.VocabularyBottomSheetDialog
 import co.kr.dgsw.searchvoca.ui.launchAndRepeatWithViewLifecycle
 import co.kr.dgsw.searchvoca.ui.setting.SettingNavigationAction.*
 import co.kr.dgsw.searchvoca.ui.setting.service.FloatingSearchButtonService
-import co.kr.searchvoca.shared.android.extension.startService
-import co.kr.searchvoca.shared.android.extension.stopService
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import org.koin.androidx.viewmodel.ext.android.viewModel
 

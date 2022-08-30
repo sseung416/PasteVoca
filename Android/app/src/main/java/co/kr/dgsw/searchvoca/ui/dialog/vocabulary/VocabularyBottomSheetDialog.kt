@@ -1,4 +1,4 @@
-package co.kr.dgsw.searchvoca.ui.dialog
+package co.kr.dgsw.searchvoca.ui.dialog.vocabulary
 
 import android.os.Bundle
 import android.view.View
@@ -6,6 +6,7 @@ import androidx.navigation.fragment.findNavController
 import co.kr.dgsw.searchvoca.R
 import co.kr.dgsw.searchvoca.databinding.DialogBottomSheetVocabularyBinding
 import co.kr.dgsw.searchvoca.ui.bind
+import co.kr.dgsw.searchvoca.ui.dialog.BaseBottomSheetDialog
 import co.kr.dgsw.searchvoca.ui.word.UpdateTabType
 import co.kr.dgsw.searchvoca.ui.word.UpdateWordFragmentDirections
 import co.kr.searchvoca.domain.model.Vocabulary

@@ -9,8 +9,7 @@ import co.kr.dgsw.searchvoca.ui.bind
 import co.kr.dgsw.searchvoca.ui.quiz.TestWord
 import co.kr.dgsw.searchvoca.ui.launchAndRepeatWithViewLifecycle
 import co.kr.dgsw.searchvoca.ui.quiz.setting.QuizSettingNavigationAction.*
-import co.kr.dgsw.searchvoca.ui.dialog.VocabularyBottomSheetDialog
-import co.kr.searchvoca.domain.model.Vocabulary
+import co.kr.dgsw.searchvoca.ui.dialog.vocabulary.VocabularyBottomSheetDialog
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class QuizSettingDialog(

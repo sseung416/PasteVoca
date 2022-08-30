@@ -1,9 +1,7 @@
-package co.kr.dgsw.searchvoca.ui.dialog
+package co.kr.dgsw.searchvoca.ui.dialog.vocabulary
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import co.kr.searchvoca.domain.model.Result
-import co.kr.searchvoca.domain.model.Vocabulary
 import co.kr.searchvoca.domain.model.default
 import co.kr.searchvoca.domain.model.successOr
 import co.kr.searchvoca.domain.usecase.vocabulary.LoadVocabulariesUseCase

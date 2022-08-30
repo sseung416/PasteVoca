@@ -7,7 +7,7 @@
 
         <import type="kotlin.text.StringsKt" />
 
-        <import type="co.kr.searchvoca.shared.android.extension.StringExtensionKt" />
+        <import type="co.kr.dgsw.searchvoca.ui.quiz.QuizExtKt" />
 
         <variable
             name="vm"
@@ -45,7 +45,7 @@
             android:id="@+id/cv_sound"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="24dp"
+            android:layout_marginTop="@dimen/margin_large"
             app:cardCornerRadius="20dp"
             app:cardElevation="5dp"
             app:contentPadding="30dp"
@@ -60,7 +60,7 @@
                 android:layout_width="30dp"
                 android:layout_height="30dp"
                 app:language="@{vm.language}"
-                app:speechText="@{StringExtensionKt.removeSpecialSymbol(vm.currentWord.word)}" />
+                app:speechText="@{QuizExtKt.removeSpecialSymbol(vm.currentWord.word)}" />
 
         </com.google.android.material.card.MaterialCardView>
 
