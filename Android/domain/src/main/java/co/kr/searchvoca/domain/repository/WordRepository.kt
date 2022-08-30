@@ -19,6 +19,13 @@ interface WordRepository {
     suspend fun getSearchHistoryCount(): Int
 
     /**
+     * 해당하는 단어장의 단어 갯수 조회
+     *
+     * @param vocabularyId 단어장 id
+     * */
+    suspend fun getWordCount(vocabularyId: Int): Int
+
+    /**
      * 해당되는 단어장의 단어를 조회
      *
      * @param vocabularyId 단어장 id
@@ -36,16 +43,24 @@ interface WordRepository {
     suspend fun editWord(word: Word)
 
     /**
-     * 단어 여러 개 수정
+     * 단어의 단어장(그룹)을 변경
      *
-     * @param ids 수정할 단어들의 id 리스트
+     * @param ids 수정할 단어의 id 리스트
+     * @param vocabularyId 변경할 단어장의 id
      * */
-    suspend fun editWords(ids: List<Int>)
+    suspend fun changeWordVocabulary(ids: List<Int>, vocabularyId: Int)
 
     /**
      * 단어 삭제
      * */
     suspend fun deleteWord(word: Word)
+
+    /**
+     * 단어 삭제
+     *
+     * @param id 삭제할 단어의 id
+     * */
+    suspend fun deleteWord(id: Int)
 
     /**
      * 단어 여러 개 삭제

@@ -8,7 +8,7 @@ interface SearchRepository {
      * 언어를 감지
      * @return 파라미터 값의 언어
      * */
-    suspend fun detectLanguage(word: String): Translate
+    suspend fun detectLanguage(word: String): Translate?
 
     /**
      * 한국어 사전 검색

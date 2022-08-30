@@ -1,23 +1,35 @@
 package co.kr.searchvoca.domain.usecase.word
 
-import co.kr.searchvoca.domain.model.UiState
+import co.kr.searchvoca.domain.model.ErrorHandler
+import co.kr.searchvoca.domain.model.Result
 import co.kr.searchvoca.domain.model.Word
 import co.kr.searchvoca.domain.repository.WordRepository
 import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.flow
 
-class DeleteWordUseCase(private val repo: WordRepository) {
-    operator fun invoke(word: Word) = flow<UiState<Unit>> {
+class DeleteWordUseCase(
+    private val repo: WordRepository,
+    private val handler: ErrorHandler
+) {
+
+    operator fun invoke(word: Word) = flow<Result<Unit>> {
         val res = repo.deleteWord(word)
-        emit(UiState.Success(res))
+        emit(Result.Success(res))
     }.catch {
-        emit(UiState.Failure(it))
+        emit(Result.Failure(handler.getError(it)))
     }
 
-    operator fun invoke(ids: List<Int>) = flow<UiState<Unit>> {
-        val res = repo.deleteWords(ids)
-        emit(UiState.Success(res))
+    operator fun invoke(id: Int) = flow<Result<Unit>> {
+        val res = repo.deleteWord(id)
+        emit(Result.Success(res))
     }.catch {
-        emit(UiState.Failure(it))
+        emit(Result.Failure(handler.getError(it)))
+    }
+
+    operator fun invoke(ids: List<Int>) = flow<Result<Unit>> {
+        val res = repo.deleteWords(ids)
+        emit(Result.Success(res))
+    }.catch {
+        emit(Result.Failure(handler.getError(it)))
     }
 }

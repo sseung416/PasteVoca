@@ -9,5 +9,10 @@ import co.kr.searchvoca.shared.domain.VocabularyId
 interface VocabularyDao : BaseDao<VocabularyEntity> {
 
     @Query("SELECT * FROM vocabulary WHERE id <> :historyId")
-    suspend fun loadVocabularies(historyId: Int = VocabularyId.SEARCH_HISTORY.ordinal): List<VocabularyEntity>
+    suspend fun loadVocabularies(
+        historyId: Int = VocabularyId.SEARCH_HISTORY.ordinal
+    ): List<VocabularyEntity>
+
+    @Query("SELECT * FROM vocabulary WHERE id = :id")
+    suspend fun loadVocabularyById(id: Int): VocabularyEntity
 }

@@ -11,6 +11,9 @@ class VocabularyRepositoryImpl(private val dataSource: VocabularyDataSource): Vo
     override suspend fun loadVocabularies(): List<Vocabulary> =
         dataSource.loadVocabularies().map(VocabularyResult::toDomain)
 
+    override suspend fun loadVocabularyById(id: Int): Vocabulary =
+        dataSource.loadVocabularyById(id).toDomain()
+
     override suspend fun createVocabulary(vocabulary: Vocabulary) =
         dataSource.createVocabulary(vocabulary.toModel())
 

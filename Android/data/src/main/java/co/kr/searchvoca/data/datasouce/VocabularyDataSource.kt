@@ -5,6 +5,8 @@ import co.kr.searchvoca.data.model.VocabularyResult
 interface VocabularyDataSource {
     suspend fun loadVocabularies(): List<VocabularyResult>
 
+    suspend fun loadVocabularyById(id: Int): VocabularyResult
+
     suspend fun createVocabulary(vocabularyResult: VocabularyResult)
 
     suspend fun editVocabulary(vocabularyResult: VocabularyResult)

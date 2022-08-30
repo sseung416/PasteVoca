@@ -3,6 +3,7 @@ package co.kr.searchvoca.local.datasource
 import co.kr.searchvoca.data.datasouce.VocabularyDataSource
 import co.kr.searchvoca.data.model.VocabularyResult
 import co.kr.searchvoca.local.SearchVOCADatabase
+import co.kr.searchvoca.local.entity.VocabularyEntity
 import co.kr.searchvoca.local.entity.toEntity
 import co.kr.searchvoca.local.entity.toModel
 
@@ -11,7 +12,10 @@ class VocabularyDataSourceImpl(db: SearchVOCADatabase) : VocabularyDataSource {
     private val dao = db.vocabularyDao()
 
     override suspend fun loadVocabularies(): List<VocabularyResult> =
-        dao.loadVocabularies().map { it.toModel() }
+        dao.loadVocabularies().map(VocabularyEntity::toModel)
+
+    override suspend fun loadVocabularyById(id: Int): VocabularyResult =
+        dao.loadVocabularyById(id).toModel()
 
     override suspend fun createVocabulary(vocabularyResult: VocabularyResult) {
         dao.insert(vocabularyResult.toEntity())

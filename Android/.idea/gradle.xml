@@ -12,6 +12,13 @@
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/app" />
             <option value="$PROJECT_DIR$/cardStackView" />
+            <option value="$PROJECT_DIR$/data" />
+            <option value="$PROJECT_DIR$/domain" />
+            <option value="$PROJECT_DIR$/local" />
+            <option value="$PROJECT_DIR$/remote" />
+            <option value="$PROJECT_DIR$/shared" />
+            <option value="$PROJECT_DIR$/shared/android" />
+            <option value="$PROJECT_DIR$/shared/domain" />
           </set>
         </option>
       </GradleProjectSettings>

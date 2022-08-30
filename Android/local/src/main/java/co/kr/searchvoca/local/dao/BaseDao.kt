@@ -14,4 +14,7 @@ interface BaseDao<T> {
 
     @Delete
     suspend fun delete(obj: T)
+
+    @Query("DELETE FROM word WHERE id IN (:id)")
+    suspend fun delete(id: Int)
 }

@@ -21,5 +21,7 @@ interface WordDataSource {
 
     suspend fun deleteWord(wordResult: WordResult)
 
+    suspend fun deleteWord(id: Int)
+
     suspend fun deleteWords(ids: List<Int>)
 }

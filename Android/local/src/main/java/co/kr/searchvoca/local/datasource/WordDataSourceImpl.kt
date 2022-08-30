@@ -6,6 +6,7 @@ import co.kr.searchvoca.local.SearchVOCADatabase
 import co.kr.searchvoca.local.entity.WordEntity
 import co.kr.searchvoca.local.entity.toEntity
 import co.kr.searchvoca.local.entity.toModel
+import co.kr.searchvoca.shared.domain.VocabularyId
 
 class WordDataSourceImpl(db: SearchVOCADatabase) : WordDataSource {
 
@@ -15,13 +16,13 @@ class WordDataSourceImpl(db: SearchVOCADatabase) : WordDataSource {
         dao.loadWords().map(WordEntity::toModel)
 
     override suspend fun loadSearchHistory(): List<WordResult> =
-        dao.loadWordsByVocabulary(co.kr.searchvoca.shared.domain.VocabularyId.SEARCH_HISTORY.ordinal).map(WordEntity::toModel)
+        dao.loadWordsByVocabulary(VocabularyId.SEARCH_HISTORY.ordinal).map(WordEntity::toModel)
 
     override suspend fun loadWordsByVocabulary(vocabularyId: Int): List<WordResult> =
         dao.loadWordsByVocabulary(vocabularyId).map(WordEntity::toModel)
 
     override suspend fun getSearchHistoryCount(): Int =
-        dao.getWordCountByVocabulary(co.kr.searchvoca.shared.domain.VocabularyId.SEARCH_HISTORY.ordinal)
+        dao.getWordCountByVocabulary(VocabularyId.SEARCH_HISTORY.ordinal)
 
     override suspend fun getWordCount(vocabularyId: Int): Int =
         dao.getWordCountByVocabulary(vocabularyId)
@@ -40,6 +41,10 @@ class WordDataSourceImpl(db: SearchVOCADatabase) : WordDataSource {
 
     override suspend fun deleteWord(wordResult: WordResult) {
         dao.delete(wordResult.toEntity())
+    }
+
+    override suspend fun deleteWord(id: Int) {
+        dao.delete(id)
     }
 
     override suspend fun deleteWords(ids: List<Int>) {

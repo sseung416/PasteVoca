@@ -8,6 +8,7 @@ import co.kr.searchvoca.domain.model.Word
 import co.kr.searchvoca.domain.repository.WordRepository
 
 class WordRepositoryImpl(private val dataSource: WordDataSource): WordRepository {
+
     override suspend fun loadWords(): List<Word> =
         dataSource.loadWords().map(WordResult::toDomain)
 
@@ -35,6 +36,9 @@ class WordRepositoryImpl(private val dataSource: WordDataSource): WordRepository
 
     override suspend fun deleteWord(word: Word) =
         dataSource.deleteWord(word.toModel())
+
+    override suspend fun deleteWord(id: Int) =
+        dataSource.deleteWord(id)
 
     override suspend fun deleteWords(ids: List<Int>) =
         dataSource.deleteWords(ids)

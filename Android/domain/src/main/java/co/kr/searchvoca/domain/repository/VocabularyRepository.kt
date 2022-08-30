@@ -9,6 +9,13 @@ interface VocabularyRepository {
     suspend fun loadVocabularies(): List<Vocabulary>
 
     /**
+     * 단어장 조회
+     *
+     * @param id 조회할 단어장 id
+     * */
+    suspend fun loadVocabularyById(id: Int): Vocabulary
+
+    /**
      * 단어장 생성
      * */
     suspend fun createVocabulary(vocabulary: Vocabulary)

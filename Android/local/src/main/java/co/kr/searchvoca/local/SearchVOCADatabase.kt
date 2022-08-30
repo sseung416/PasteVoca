@@ -41,7 +41,6 @@ abstract class SearchVOCADatabase : RoomDatabase() {
         }
     }
 
-    // todo 잘 초기화되는 지 확인
     private class ItemCallback(private val scope: CoroutineScope) : RoomDatabase.Callback() {
         override fun onCreate(db: SupportSQLiteDatabase) {
             super.onCreate(db)
@@ -53,7 +52,6 @@ abstract class SearchVOCADatabase : RoomDatabase() {
                         insert(VocabularyEntity(NO_NAMED.ordinal, NO_NAMED.title))
                     }
                     database.wordDao().apply {
-                        // todo 상수화
                         insert(WordEntity(NO_NAMED.ordinal, "Click This!", "클릭하면 뜻이 나와요!"))
                         insert(WordEntity(NO_NAMED.ordinal, "Long Click This ~", "길게 눌러보세요!"))
                     }
