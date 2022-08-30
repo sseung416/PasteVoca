@@ -1,8 +1,12 @@
-package co.kr.dgsw.searchvoca.widget.extension
+package co.kr.searchvoca.shared.android.extension
 
 import android.annotation.SuppressLint
 import android.os.SystemClock
 import android.view.View
+
+fun interface OnClickListenerThrottled {
+    fun onClickThrottled(view: View)
+}
 
 private var lastClickTime = 0L
 
@@ -29,6 +33,5 @@ fun View.setOnTouchListenerThrottled(listener: OnClickListenerThrottled, interva
         return@setOnTouchListener true
     }
 }
-
 
 private fun isTimePassedByInterval(interval: Long) = SystemClock.elapsedRealtime() - lastClickTime < interval
