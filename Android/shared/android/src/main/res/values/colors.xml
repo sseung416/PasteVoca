@@ -1,0 +1,12 @@
+<resources>
+    <color name="level_easy">@android:color/transparent</color>
+    <color name="level_middle">#F6EF97</color>
+    <color name="level_difficult">#DE937A</color>
+
+    <color name="sound_highlight">@android:color/black</color>
+    <color name="sound_none">#BBBBBB</color>
+
+    <color name="gray1">#F4F4F4</color>
+    <color name="gray2">#F0F0F0</color>
+    <color name="gray3">#BBBBBB</color>
+</resources>
