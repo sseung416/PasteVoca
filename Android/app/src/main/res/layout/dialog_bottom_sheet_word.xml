@@ -1,32 +1,38 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:orientation="vertical"
-    tools:context=".view.dialog.WordBottomSheetDialog">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <TextView
-        android:id="@+id/tv_edit"
-        style="@style/BigTextView"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:clickable="true"
-        android:drawableStart="@drawable/ic_edit"
-        android:drawablePadding="16dp"
-        android:gravity="center_vertical"
-        android:minHeight="48dp"
-        android:text="편집" />
+        android:orientation="vertical"
+        tools:context=".ui.home.WordSettingDialog">
 
-    <TextView
-        android:id="@+id/tv_delete"
-        style="@style/BigTextView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:clickable="true"
-        android:drawableStart="@drawable/ic_delete"
-        android:drawablePadding="16dp"
-        android:gravity="center_vertical"
-        android:minHeight="48dp"
-        android:text="삭제" />
-</LinearLayout>
+        <TextView
+            android:id="@+id/tv_edit"
+            style="@style/BigTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:clickable="true"
+            android:drawablePadding="@dimen/margin_small"
+            android:focusable="true"
+            android:gravity="center_vertical"
+            android:minHeight="@dimen/size_click_minimum"
+            android:text="@string/edit"
+            app:drawableStartCompat="@drawable/ic_edit" />
+
+        <TextView
+            android:id="@+id/tv_delete"
+            style="@style/BigTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:clickable="true"
+            android:drawablePadding="@dimen/margin_small"
+            android:focusable="true"
+            android:gravity="center_vertical"
+            android:minHeight="@dimen/size_click_minimum"
+            android:text="@string/delete"
+            app:drawableStartCompat="@drawable/ic_delete" />
+    </LinearLayout>
+</layout>

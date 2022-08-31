@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/quiz"
+    app:startDestination="@id/quizFragment">
+
+    <fragment
+        android:id="@+id/quizFragment"
+        android:name="co.kr.dgsw.searchvoca.ui.quiz.QuizFragment"
+        android:label="QuizFragment"
+        tools:layout="@layout/fragment_quiz">
+        <action
+            android:id="@+id/action_to_cardStackFragment"
+            app:destination="@id/cardStackFragment" />
+        <action
+            android:id="@+id/action_to_listeningTest"
+            app:destination="@id/listeningTestFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/cardStackFragment"
+        android:name="co.kr.dgsw.searchvoca.ui.quiz.card.CardStackFragment"
+        android:label="CardStackFragment"
+        tools:layout="@layout/fragment_card_test" >
+        <argument
+            android:name="wordList"
+            app:argType="co.kr.dgsw.searchvoca.ui.quiz.TestWord[]" />
+        <action
+            android:id="@+id/action_to_quizResultFragment"
+            app:destination="@id/quizResultFragment" />
+    </fragment>
+
+
+
+    <fragment
+        android:id="@+id/listeningTestFragment"
+        android:name="co.kr.dgsw.searchvoca.ui.quiz.listening.ListeningTestFragment"
+        android:label="ListeningTestFragment"
+        tools:layout="@layout/fragment_listening_test">
+        <action
+            android:id="@+id/action_to_quizResultFragment"
+            app:destination="@id/quizResultFragment" />
+        <argument
+            android:name="wordList"
+            app:argType="co.kr.dgsw.searchvoca.ui.quiz.TestWord[]" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/quizResultFragment"
+        android:name="co.kr.dgsw.searchvoca.ui.quiz.result.QuizResultFragment"
+        android:label="CorrectionsFragment"
+        tools:layout="@layout/fragment_quiz_result">
+        <argument
+            android:name="wordList"
+            app:argType="co.kr.dgsw.searchvoca.ui.quiz.TestWord[]" />
+        <action
+            android:id="@+id/action_to_quizFragment"
+            app:destination="@id/quizFragment"
+            app:launchSingleTop="true"
+            app:popUpTo="@navigation/quiz"
+            app:popUpToInclusive="true" />
+    </fragment>
+
+</navigation>

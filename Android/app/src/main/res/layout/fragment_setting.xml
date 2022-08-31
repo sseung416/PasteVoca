@@ -7,7 +7,7 @@
 
         <variable
             name="vm"
-            type="co.kr.dgsw.searchvoca.viewmodel.fragment.SettingViewModel" />
+            type="co.kr.dgsw.searchvoca.ui.setting.SettingViewModel" />
     </data>
 
     <LinearLayout
@@ -15,43 +15,32 @@
         android:layout_height="match_parent"
         android:background="@color/gray1"
         android:orientation="vertical"
-        android:paddingHorizontal="16dp"
-        tools:context=".view.fragment.SettingFragment">
+        tools:context=".ui.setting.SettingFragment">
 
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:minHeight="?attr/actionBarSize"
+            android:theme="?attr/actionBarTheme"
+            app:title="@string/setting" />
 
         <androidx.cardview.widget.CardView
             android:id="@+id/cv_settings"
             style="@style/SettingsCardView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
+            android:layout_marginHorizontal="@dimen/margin_normal"
+            android:layout_marginTop="@dimen/margin_normal"
             android:background="@color/white">
 
-            <androidx.constraintlayout.widget.ConstraintLayout
+            <com.google.android.material.switchmaterial.SwitchMaterial
+                android:id="@+id/switch_search"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
-
-                <TextView
-                    android:id="@+id/textView4"
-                    style="@style/RegularTextView"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="백그라운 사전 검색"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-                <Switch
-                    android:id="@+id/switch_background_search"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:minWidth="48dp"
-                    android:minHeight="48dp"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    tools:ignore="UseSwitchCompatOrMaterialXml" />
-            </androidx.constraintlayout.widget.ConstraintLayout>
+                android:layout_height="wrap_content"
+                android:onCheckedChanged="@{(compoundButton, isChecked) -> vm.onBackgroundSearchSwitched(isChecked)}"
+                android:text="@string/background_dictionary_search" />
         </androidx.cardview.widget.CardView>
 
         <TextView
@@ -59,10 +48,10 @@
             style="@style/SmallTextView.Gray"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="16dp"
-            android:layout_marginBottom="8dp"
-            android:text="알림" />
+            android:layout_marginStart="@dimen/margin_normal"
+            android:layout_marginTop="@dimen/margin_normal"
+            android:layout_marginBottom="@dimen/margin_small"
+            android:text="@string/notification" />
 
         <androidx.cardview.widget.CardView
             android:id="@+id/cv_notify_settings"
@@ -75,43 +64,23 @@
                 android:layout_height="match_parent"
                 android:orientation="vertical">
 
+                <com.google.android.material.switchmaterial.SwitchMaterial
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:onCheckedChanged="@{(compoundButton, isChecked) -> vm.onNotificationSwitched(isChecked)}"
+                    android:text="@string/notification_setting" />
+
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent">
-
-                    <TextView
-                        android:id="@+id/textView20"
-                        style="@style/RegularTextView"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="알림 설정"
-                        app:layout_constraintBottom_toBottomOf="@+id/switch_notification"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="@+id/switch_notification" />
-
-                    <Switch
-                        android:id="@+id/switch_notification"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:minWidth="48dp"
-                        android:minHeight="48dp"
-                        android:onCheckedChanged="@{(compoundButton, check)->vm.setVisibleNotificationDetails(check)}"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"
-                        tools:ignore="UseSwitchCompatOrMaterialXml" />
-                </androidx.constraintlayout.widget.ConstraintLayout>
-
-                <androidx.constraintlayout.widget.ConstraintLayout
-                    visible="@{vm.notificationDetailsVisible}"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent">
+                    android:layout_height="match_parent"
+                    app:visible="@{vm.notificationDetailsVisible}">
 
                     <TextView
                         android:id="@+id/textView29"
                         style="@style/RegularTextView"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="보통"
+                        android:text="@string/notification_frequency"
                         app:layout_constraintBottom_toBottomOf="@+id/tv_notification_frequency"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="@+id/tv_notification_frequency" />
@@ -121,7 +90,7 @@
                         style="@style/RegularTextView"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="단어장 선택"
+                        android:text="@string/select_vocabulary"
                         app:layout_constraintBottom_toBottomOf="@+id/tv_notification_vocabulary"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/tv_notification_frequency" />
@@ -130,7 +99,6 @@
                         android:id="@+id/tv_notification_frequency"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginEnd="8dp"
                         android:clickable="true"
                         android:drawablePadding="8dp"
                         android:focusable="true"
@@ -140,23 +108,24 @@
                         app:drawableEndCompat="@drawable/ic_arrow_right"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
+                        app:onClickThrottled="@{() -> vm.onFrequencySelected()}"
                         tools:text="보통" />
 
                     <TextView
                         android:id="@+id/tv_notification_vocabulary"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginEnd="8dp"
                         android:clickable="true"
-                        android:drawablePadding="8dp"
+                        android:drawablePadding="@dimen/margin_small"
                         android:focusable="true"
                         android:gravity="center_vertical|end"
-                        android:minWidth="48dp"
-                        android:minHeight="48dp"
-                        android:text="전체"
+                        android:minWidth="@dimen/size_click_minimum"
+                        android:minHeight="@dimen/size_click_minimum"
+                        android:text="@string/all"
                         app:drawableEndCompat="@drawable/ic_arrow_right"
                         app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/tv_notification_frequency" />
+                        app:layout_constraintTop_toBottomOf="@+id/tv_notification_frequency"
+                        app:onClickThrottled="@{() -> vm.onVocabularySelected()}" />
                 </androidx.constraintlayout.widget.ConstraintLayout>
             </LinearLayout>
         </androidx.cardview.widget.CardView>

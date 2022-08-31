@@ -1,16 +1,34 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:minHeight="@dimen/bottom_sheet_dialog_height"
-    tools:context=".view.dialog.VocabularyBottomSheetDialog">
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rv_voca"
+    <data>
+
+        <variable
+            name="vm"
+            type="co.kr.dgsw.searchvoca.ui.dialog.vocabulary.VocabularyBottomSheetViewModel" />
+
+        <variable
+            name="adapter"
+            type="co.kr.dgsw.searchvoca.ui.dialog.vocabulary.VocabularyListAdapter" />
+
+    </data>
+
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
-</LinearLayout>
+        android:layout_height="wrap_content"
+        android:minHeight="@dimen/bottom_sheet_dialog_height"
+        tools:context=".ui.dialog.vocabulary.VocabularyBottomSheetDialog">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_voca"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            app:adapter="@{adapter}"
+            app:vocabularyItems="@{vm.vocabularies}"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
+
+    </LinearLayout>
+</layout>

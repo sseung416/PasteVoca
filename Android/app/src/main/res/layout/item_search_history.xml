@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="count"
+            type="Integer" />
+    </data>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cv_search_history"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/width_search_history_card_view"
+        android:layout_marginHorizontal="@dimen/margin_large"
+        android:layout_marginTop="@dimen/margin_normal"
+        android:clickable="true"
+        android:elevation="0dp"
+        android:focusable="true"
+        app:cardBackgroundColor="@color/gray1"
+        app:cardCornerRadius="24dp"
+        app:cardElevation="0dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:id="@+id/imageView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/drawable_search_word" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin_large"
+                android:layout_marginTop="@dimen/margin_large"
+                android:orientation="vertical"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <TextView
+                    android:id="@+id/textView3"
+                    style="@style/RegularTextView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="검색한 단어가" />
+
+                <TextView
+                    android:id="@+id/tv_count"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@{@string/count(count)}"
+                    android:textColor="@android:color/black"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    tools:text="20개" />
+
+                <TextView
+                    android:id="@+id/textView16"
+                    style="@style/RegularTextView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="있어요!" />
+            </LinearLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
+</layout>

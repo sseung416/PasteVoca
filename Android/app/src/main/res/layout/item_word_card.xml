@@ -4,78 +4,77 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+
         <variable
             name="data"
-            type="co.kr.dgsw.searchvoca.view.data.TestWord" />
+            type="co.kr.dgsw.searchvoca.ui.quiz.TestWord" />
+
+        <variable
+            name="currentPosition"
+            type="Integer" />
+
+        <variable
+            name="size"
+            type="Integer" />
     </data>
 
-    <LinearLayout
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cv_card"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:clipToPadding="true"
+        app:cardCornerRadius="10dp"
+        app:cardElevation="10dp"
+        app:cardUseCompatPadding="true"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:layout_editor_absoluteX="1dp">
 
-        <androidx.cardview.widget.CardView
-            android:id="@+id/cv_card"
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:clipToPadding="true"
-            app:cardCornerRadius="10dp"
-            app:cardElevation="10dp"
-            app:cardUseCompatPadding="true"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:layout_editor_absoluteX="1dp">
+            android:layout_height="match_parent">
 
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
+            <TextView
+                android:id="@+id/tv_count_card"
+                style="@style/SmallTextView.Gray"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="24dp"
+                android:text="@{@string/format_card_count(currentPosition, size)}"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
-                <TextView
-                    android:id="@+id/tv_count_card"
-                    style="@style/SmallTextView.Gray"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="24dp"
-                    android:layout_marginTop="24dp"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    tools:text="1/50" />
+            <co.kr.searchvoca.shared.android.component.TextToSpeechButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
-                <ImageButton
-                    android:id="@+id/imageButton"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
-                    android:layout_marginEnd="8dp"
-                    android:background="@android:color/transparent"
-                    android:minWidth="48dp"
-                    android:minHeight="48dp"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:srcCompat="@drawable/ic_sound" />
+            <co.kr.searchvoca.shared.android.component.WordTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:minWidth="@dimen/size_click_minimum"
+                android:minHeight="@dimen/size_click_minimum"
+                android:textColor="@color/black"
+                android:gravity="center"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                app:definition="@{data.definition}"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:word="@{data.word}" />
 
-                <TextView
-                    android:id="@+id/tv_word_card"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@{data.word}"
-                    android:textColor="@color/black"
-                    android:textSize="20sp"
-                    android:textStyle="bold"
-                    android:layout_marginHorizontal="24dp"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-                <TextView
-                    android:id="@+id/textView6"
-                    style="@style/SmallTextView.Black"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="24dp"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent" />
-            </androidx.constraintlayout.widget.ConstraintLayout>
-        </androidx.cardview.widget.CardView>
-    </LinearLayout>
+            <TextView
+                android:id="@+id/textView6"
+                style="@style/SmallTextView.Black"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="24dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
 </layout>

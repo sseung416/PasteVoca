@@ -1,6 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="CompilerConfiguration">
-    <bytecodeTargetLevel target="11" />
+    <bytecodeTargetLevel target="1.8">
+      <module name="Android.PastVoca.domain.main" target="11" />
+      <module name="Android.PastVoca.domian.main" target="11" />
+      <module name="PastVoca.app" target="11" />
+      <module name="PastVoca.cardStackView" target="11" />
+      <module name="PastVoca.data" target="11" />
+      <module name="PastVoca.di" target="11" />
+      <module name="PastVoca.local" target="11" />
+      <module name="PastVoca.remote" target="11" />
+      <module name="PastVoca.shared" target="11" />
+      <module name="PastVoca.shared.android" target="11" />
+      <module name="SearchVOCA.app" target="11" />
+      <module name="SearchVOCA.cardStackView" target="11" />
+      <module name="SearchVOCA.data" target="11" />
+      <module name="SearchVOCA.di" target="11" />
+      <module name="SearchVOCA.local" target="11" />
+      <module name="SearchVOCA.remote" target="11" />
+      <module name="SearchVOCA.shared.android" target="11" />
+    </bytecodeTargetLevel>
   </component>
 </project>

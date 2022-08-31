@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="co.kr.searchvoca.domain.model.ResultKt" />
+
+        <variable
+            name="vm"
+            type="co.kr.dgsw.searchvoca.ui.word.UpdateWordViewModel" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        tools:context=".ui.word.UpdateWordFragment">
+<!--   app:dialog="@{UiStateKt.throwableOrNull(vm.uiState)}"     -->
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:minHeight="?attr/actionBarSize"
+            app:menu="@menu/toolbar_add"
+            app:navigationIcon="@drawable/ic_arrow_left"
+            android:theme="?attr/actionBarTheme" />
+
+        <EditText
+            android:id="@+id/et_word"
+            style="@style/AddEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:drawableEnd="@drawable/ic_search"
+            android:focusable="true"
+            android:hint="@string/word"
+            android:text="@={vm.word}"
+            app:onDrawableEndClick="@{()->vm.wordSearch()}" />
+
+        <EditText
+            android:id="@+id/et_meaning"
+            style="@style/AddEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/meaning"
+            android:text="@={vm.definition}" />
+
+        <EditText
+            android:id="@+id/et_choice_vocabulary"
+            style="@style/AddEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:drawableEnd="@drawable/ic_arrow_bottom"
+            android:hint="@string/choice_vocabulary"
+            android:focusable="false"
+            android:clickable="false"
+            app:onDrawableEndClick="@{() -> vm.onVocabularyChoiceClicked()}"
+            android:text="@{vm.vocabulary.name}" />
+    </LinearLayout>
+</layout>

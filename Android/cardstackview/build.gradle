@@ -3,13 +3,13 @@ plugins {
 }
 
 android {
-    compileSdk 32
+    compileSdk rootProject.compileSdk
 
     defaultConfig {
-        minSdk 24
-        targetSdk 30
-        versionCode 1
-        versionName "1.0"
+        minSdk rootProject.minSdk
+        targetSdk rootProject.targetSdk
+        versionCode rootProject.versionCode
+        versionName rootProject.versionName
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
