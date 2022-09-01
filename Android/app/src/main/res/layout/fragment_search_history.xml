@@ -8,11 +8,11 @@
 
         <variable
             name="vm"
-            type="co.kr.dgsw.searchvoca.ui.history.SearchHistoryViewModel" />
+            type="co.kr.searchvoca.ui.history.SearchHistoryViewModel" />
 
         <variable
             name="adapter"
-            type="co.kr.dgsw.searchvoca.ui.history.SearchHistoryListAdapter" />
+            type="co.kr.searchvoca.ui.history.SearchHistoryListAdapter" />
     </data>
 
     <LinearLayout

@@ -7,7 +7,7 @@
 
         <variable
             name="vm"
-            type="co.kr.dgsw.searchvoca.ui.vocabulary.UpdateVocabularyViewModel" />
+            type="co.kr.searchvoca.ui.vocabulary.UpdateVocabularyViewModel" />
     </data>
 
     <LinearLayout

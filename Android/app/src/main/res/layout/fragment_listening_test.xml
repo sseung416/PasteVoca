@@ -7,11 +7,11 @@
 
         <import type="kotlin.text.StringsKt" />
 
-        <import type="co.kr.dgsw.searchvoca.ui.quiz.QuizExtKt" />
+        <import type="co.kr.searchvoca.ui.quiz.QuizExtKt" />
 
         <variable
             name="vm"
-            type="co.kr.dgsw.searchvoca.ui.quiz.listening.ListeningTestViewModel" />
+            type="co.kr.searchvoca.ui.quiz.listening.ListeningTestViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

@@ -13,7 +13,7 @@
 
         <variable
             name="adapter"
-            type="co.kr.dgsw.searchvoca.ui.dialog.DefaultBottomSheetAdapter" />
+            type="co.kr.searchvoca.ui.dialog.DefaultBottomSheetAdapter" />
     </data>
 
     <LinearLayout

@@ -7,11 +7,11 @@
 
         <variable
             name="vm"
-            type="co.kr.dgsw.searchvoca.ui.dialog.vocabulary.VocabularyBottomSheetViewModel" />
+            type="co.kr.searchvoca.ui.dialog.vocabulary.VocabularyBottomSheetViewModel" />
 
         <variable
             name="adapter"
-            type="co.kr.dgsw.searchvoca.ui.dialog.vocabulary.VocabularyListAdapter" />
+            type="co.kr.searchvoca.ui.dialog.vocabulary.VocabularyListAdapter" />
 
     </data>
 

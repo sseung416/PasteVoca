@@ -7,7 +7,7 @@
 
         <variable
             name="adapter"
-            type="co.kr.dgsw.searchvoca.ui.quiz.result.QuizResultAdapter" />
+            type="co.kr.searchvoca.ui.quiz.result.QuizResultAdapter" />
     </data>
 
     <LinearLayout

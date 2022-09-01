@@ -11,7 +11,7 @@ android {
     compileSdk = AppConfig.COMPILE_SDK
 
     defaultConfig {
-        applicationId = "co.kr.dgsw.searchvoca"
+        applicationId = AppConfig.APPLICATION_ID
         minSdk = AppConfig.MIN_SDK
         targetSdk = AppConfig.TARGET_SDK
         versionCode = AppConfig.VERSION_CODE
