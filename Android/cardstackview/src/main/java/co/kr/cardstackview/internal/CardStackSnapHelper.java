@@ -1,4 +1,4 @@
-package kr.co.dgsw.cardstackview.internal;
+package co.kr.cardstackview.internal;
 
 import android.view.View;
 
@@ -7,9 +7,9 @@ import androidx.annotation.Nullable;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.SnapHelper;
 
-import kr.co.dgsw.cardstackview.CardStackLayoutManager;
-import kr.co.dgsw.cardstackview.Duration;
-import kr.co.dgsw.cardstackview.SwipeAnimationSetting;
+import co.kr.cardstackview.CardStackLayoutManager;
+import co.kr.cardstackview.Duration;
+import co.kr.cardstackview.SwipeAnimationSetting;
 
 public class CardStackSnapHelper extends SnapHelper {
 

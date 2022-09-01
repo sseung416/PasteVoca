@@ -1,8 +1,8 @@
-package kr.co.dgsw.cardstackview.internal;
+package co.kr.cardstackview.internal;
 
 import androidx.recyclerview.widget.RecyclerView;
 
-import kr.co.dgsw.cardstackview.Direction;
+import co.kr.cardstackview.Direction;
 
 public class CardStackState {
     public Status status = Status.Idle;

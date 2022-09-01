@@ -1,17 +1,17 @@
-package kr.co.dgsw.cardstackview;
+package co.kr.cardstackview;
 
-import android.view.animation.DecelerateInterpolator;
+import android.view.animation.AccelerateInterpolator;
 import android.view.animation.Interpolator;
 
-import kr.co.dgsw.cardstackview.internal.AnimationSetting;
+import co.kr.cardstackview.internal.AnimationSetting;
 
-public class RewindAnimationSetting implements AnimationSetting {
+public class SwipeAnimationSetting implements AnimationSetting {
 
     private final Direction direction;
     private final int duration;
     private final Interpolator interpolator;
 
-    private RewindAnimationSetting(
+    private SwipeAnimationSetting(
             Direction direction,
             int duration,
             Interpolator interpolator
@@ -37,9 +37,9 @@ public class RewindAnimationSetting implements AnimationSetting {
     }
 
     public static class Builder {
-        private Direction direction = Direction.Bottom;
+        private Direction direction = Direction.Right;
         private int duration = Duration.Normal.duration;
-        private Interpolator interpolator = new DecelerateInterpolator();
+        private Interpolator interpolator = new AccelerateInterpolator();
 
         public Builder setDirection(Direction direction) {
             this.direction = direction;
@@ -56,8 +56,8 @@ public class RewindAnimationSetting implements AnimationSetting {
             return this;
         }
 
-        public RewindAnimationSetting build() {
-            return new RewindAnimationSetting(
+        public SwipeAnimationSetting build() {
+            return new SwipeAnimationSetting(
                     direction,
                     duration,
                     interpolator

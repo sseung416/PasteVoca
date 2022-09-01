@@ -1,4 +1,4 @@
-package kr.co.dgsw.cardstackview;
+package co.kr.cardstackview;
 
 import android.content.Context;
 import android.graphics.PointF;
@@ -14,10 +14,11 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
 
-import kr.co.dgsw.cardstackview.internal.CardStackSetting;
-import kr.co.dgsw.cardstackview.internal.CardStackSmoothScroller;
-import kr.co.dgsw.cardstackview.internal.CardStackState;
-import kr.co.dgsw.cardstackview.internal.DisplayUtil;
+import co.kr.cardstackview.internal.CardStackSetting;
+import co.kr.cardstackview.internal.CardStackSmoothScroller;
+import co.kr.cardstackview.internal.CardStackState;
+import co.kr.cardstackview.internal.DisplayUtil;
+import kr.co.dgsw.cardstackview.R;
 
 public class CardStackLayoutManager
         extends RecyclerView.LayoutManager

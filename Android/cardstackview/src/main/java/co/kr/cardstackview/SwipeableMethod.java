@@ -1,4 +1,4 @@
-package kr.co.dgsw.cardstackview;
+package co.kr.cardstackview;
 
 public enum SwipeableMethod {
     AutomaticAndManual,

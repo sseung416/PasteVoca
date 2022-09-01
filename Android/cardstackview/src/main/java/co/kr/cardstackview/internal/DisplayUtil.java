@@ -1,4 +1,4 @@
-package kr.co.dgsw.cardstackview.internal;
+package co.kr.cardstackview.internal;
 
 import android.content.Context;
 

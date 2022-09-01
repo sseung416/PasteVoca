@@ -1,13 +1,13 @@
-package kr.co.dgsw.cardstackview.internal;
+package co.kr.cardstackview.internal;
 
 import android.view.View;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import kr.co.dgsw.cardstackview.CardStackLayoutManager;
-import kr.co.dgsw.cardstackview.CardStackListener;
-import kr.co.dgsw.cardstackview.RewindAnimationSetting;
+import co.kr.cardstackview.CardStackLayoutManager;
+import co.kr.cardstackview.CardStackListener;
+import co.kr.cardstackview.RewindAnimationSetting;
 
 public class CardStackSmoothScroller extends RecyclerView.SmoothScroller {
 

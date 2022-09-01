@@ -1,4 +1,4 @@
-package kr.co.dgsw.cardstackview;
+package co.kr.cardstackview;
 
 import android.content.Context;
 import android.util.AttributeSet;
@@ -7,8 +7,8 @@ import android.view.MotionEvent;
 import androidx.annotation.Nullable;
 import androidx.recyclerview.widget.RecyclerView;
 
-import kr.co.dgsw.cardstackview.internal.CardStackDataObserver;
-import kr.co.dgsw.cardstackview.internal.CardStackSnapHelper;
+import co.kr.cardstackview.internal.CardStackDataObserver;
+import co.kr.cardstackview.internal.CardStackSnapHelper;
 
 public class CardStackView extends RecyclerView {
 

@@ -1,15 +1,15 @@
-package kr.co.dgsw.cardstackview.internal;
+package co.kr.cardstackview.internal;
 
 import android.view.animation.Interpolator;
 import android.view.animation.LinearInterpolator;
 
 import java.util.List;
 
-import kr.co.dgsw.cardstackview.Direction;
-import kr.co.dgsw.cardstackview.RewindAnimationSetting;
-import kr.co.dgsw.cardstackview.StackFrom;
-import kr.co.dgsw.cardstackview.SwipeAnimationSetting;
-import kr.co.dgsw.cardstackview.SwipeableMethod;
+import co.kr.cardstackview.Direction;
+import co.kr.cardstackview.RewindAnimationSetting;
+import co.kr.cardstackview.StackFrom;
+import co.kr.cardstackview.SwipeAnimationSetting;
+import co.kr.cardstackview.SwipeableMethod;
 
 public class CardStackSetting {
     public StackFrom stackFrom = StackFrom.None;

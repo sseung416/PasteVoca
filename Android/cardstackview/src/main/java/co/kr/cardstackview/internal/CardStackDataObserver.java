@@ -1,9 +1,9 @@
-package kr.co.dgsw.cardstackview.internal;
+package co.kr.cardstackview.internal;
 
 import androidx.annotation.Nullable;
 import androidx.recyclerview.widget.RecyclerView;
 
-import kr.co.dgsw.cardstackview.CardStackLayoutManager;
+import co.kr.cardstackview.CardStackLayoutManager;
 
 public class CardStackDataObserver extends RecyclerView.AdapterDataObserver {
 
