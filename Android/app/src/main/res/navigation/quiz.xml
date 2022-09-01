@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/quizFragment"
-        android:name="co.kr.dgsw.searchvoca.ui.quiz.QuizFragment"
+        android:name="co.kr.searchvoca.ui.quiz.QuizFragment"
         android:label="QuizFragment"
         tools:layout="@layout/fragment_quiz">
         <action
@@ -20,12 +20,12 @@
 
     <fragment
         android:id="@+id/cardStackFragment"
-        android:name="co.kr.dgsw.searchvoca.ui.quiz.card.CardStackFragment"
+        android:name="co.kr.searchvoca.ui.quiz.card.CardStackFragment"
         android:label="CardStackFragment"
         tools:layout="@layout/fragment_card_test" >
         <argument
             android:name="wordList"
-            app:argType="co.kr.dgsw.searchvoca.ui.quiz.TestWord[]" />
+            app:argType="co.kr.searchvoca.ui.quiz.TestWord[]" />
         <action
             android:id="@+id/action_to_quizResultFragment"
             app:destination="@id/quizResultFragment" />
@@ -35,7 +35,7 @@
 
     <fragment
         android:id="@+id/listeningTestFragment"
-        android:name="co.kr.dgsw.searchvoca.ui.quiz.listening.ListeningTestFragment"
+        android:name="co.kr.searchvoca.ui.quiz.listening.ListeningTestFragment"
         android:label="ListeningTestFragment"
         tools:layout="@layout/fragment_listening_test">
         <action
@@ -43,17 +43,17 @@
             app:destination="@id/quizResultFragment" />
         <argument
             android:name="wordList"
-            app:argType="co.kr.dgsw.searchvoca.ui.quiz.TestWord[]" />
+            app:argType="co.kr.searchvoca.ui.quiz.TestWord[]" />
     </fragment>
 
     <fragment
         android:id="@+id/quizResultFragment"
-        android:name="co.kr.dgsw.searchvoca.ui.quiz.result.QuizResultFragment"
+        android:name="co.kr.searchvoca.ui.quiz.result.QuizResultFragment"
         android:label="CorrectionsFragment"
         tools:layout="@layout/fragment_quiz_result">
         <argument
             android:name="wordList"
-            app:argType="co.kr.dgsw.searchvoca.ui.quiz.TestWord[]" />
+            app:argType="co.kr.searchvoca.ui.quiz.TestWord[]" />
         <action
             android:id="@+id/action_to_quizFragment"
             app:destination="@id/quizFragment"

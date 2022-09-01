@@ -7,7 +7,7 @@
 
         <variable
             name="data"
-            type="co.kr.dgsw.searchvoca.ui.quiz.TestWord" />
+            type="co.kr.searchvoca.ui.quiz.TestWord" />
 
         <variable
             name="currentPosition"

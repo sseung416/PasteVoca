@@ -7,7 +7,7 @@
 
         <variable
             name="vm"
-            type="co.kr.dgsw.searchvoca.ui.setting.SettingViewModel" />
+            type="co.kr.searchvoca.ui.setting.SettingViewModel" />
     </data>
 
     <LinearLayout

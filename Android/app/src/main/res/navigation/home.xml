@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/homeFragment"
-        android:name="co.kr.dgsw.searchvoca.ui.home.HomeFragment"
+        android:name="co.kr.searchvoca.ui.home.HomeFragment"
         android:label="HomeFragment"
         tools:layout="@layout/fragment_home">
         <action
@@ -20,12 +20,12 @@
 
     <fragment
         android:id="@+id/updateWordFragment"
-        android:name="co.kr.dgsw.searchvoca.ui.word.UpdateWordFragment"
+        android:name="co.kr.searchvoca.ui.word.UpdateWordFragment"
         android:label="UpdateWordFragment"
         tools:layout="@layout/fragment_update_word" >
         <argument
             android:name="type"
-            app:argType="co.kr.dgsw.searchvoca.ui.word.UpdateTabType"
+            app:argType="co.kr.searchvoca.ui.word.UpdateTabType"
             android:defaultValue="CREATE" />
         <action
             android:id="@+id/action_updateVocabulary"
@@ -39,18 +39,18 @@
 
     <fragment
         android:id="@+id/searchHistoryFragment"
-        android:name="co.kr.dgsw.searchvoca.ui.history.SearchHistoryFragment"
+        android:name="co.kr.searchvoca.ui.history.SearchHistoryFragment"
         android:label="SearchHistoryFragment"
         tools:layout="@layout/fragment_search_history"/>
 
     <fragment
         android:id="@+id/updateVocabularyFragment"
-        android:name="co.kr.dgsw.searchvoca.ui.vocabulary.UpdateVocabularyFragment"
+        android:name="co.kr.searchvoca.ui.vocabulary.UpdateVocabularyFragment"
         android:label="UpdateVocabularyFragment"
         tools:layout="@layout/fragment_update_vocabulary">
         <argument
             android:name="type"
-            app:argType="co.kr.dgsw.searchvoca.ui.word.UpdateTabType"
+            app:argType="co.kr.searchvoca.ui.word.UpdateTabType"
             android:defaultValue="CREATE" />
     </fragment>
 

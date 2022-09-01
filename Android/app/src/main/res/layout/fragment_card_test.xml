@@ -7,11 +7,11 @@
 
         <variable
             name="adapter"
-            type="co.kr.dgsw.searchvoca.ui.quiz.card.WordCardStackAdapter" />
+            type="co.kr.searchvoca.ui.quiz.card.WordCardStackAdapter" />
 
         <variable
             name="manager"
-            type="kr.co.dgsw.cardstackview.CardStackLayoutManager" />
+            type="co.kr.cardstackview.CardStackLayoutManager" />
     </data>
 
     <LinearLayout
@@ -30,7 +30,7 @@
             android:theme="?attr/actionBarTheme"
             app:navigationIcon="@drawable/ic_close" />
 
-        <kr.co.dgsw.cardstackview.CardStackView
+        <co.kr.cardstackview.CardStackView
             android:id="@+id/stack_word_check"
             android:layout_width="match_parent"
             android:layout_height="match_parent"

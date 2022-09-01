@@ -7,11 +7,11 @@
 
         <variable
             name="vm"
-            type="co.kr.dgsw.searchvoca.ui.home.HomeViewModel" />
+            type="co.kr.searchvoca.ui.home.HomeViewModel" />
 
         <variable
             name="adapter"
-            type="co.kr.dgsw.searchvoca.ui.home.WordListAdapter" />
+            type="co.kr.searchvoca.ui.home.WordListAdapter" />
     </data>
 
     <LinearLayout

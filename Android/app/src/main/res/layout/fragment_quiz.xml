@@ -7,7 +7,7 @@
 
         <variable
             name="vm"
-            type="co.kr.dgsw.searchvoca.ui.quiz.QuizViewModel" />
+            type="co.kr.searchvoca.ui.quiz.QuizViewModel" />
     </data>
 
     <LinearLayout
