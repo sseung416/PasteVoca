@@ -2,11 +2,11 @@ package co.kr.dgsw.searchvoca.ui.home
 
 import androidx.databinding.BindingAdapter
 import androidx.recyclerview.widget.RecyclerView
-import co.kr.searchvoca.domain.model.Level
 import co.kr.searchvoca.domain.model.Result
 import co.kr.searchvoca.domain.model.Word
 import co.kr.searchvoca.domain.model.successOr
 import co.kr.searchvoca.shared.android.component.LevelView
+import co.kr.searchvoca.shared.domain.Level
 
 @BindingAdapter(value = ["wordItems", "historyCount"])
 fun RecyclerView.bindWordItems(

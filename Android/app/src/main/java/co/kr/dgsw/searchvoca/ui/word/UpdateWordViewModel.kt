@@ -10,6 +10,7 @@ import co.kr.searchvoca.domain.usecase.search.SearchWordUseCase
 import co.kr.searchvoca.domain.usecase.vocabulary.LoadVocabulariesUseCase
 import co.kr.searchvoca.domain.usecase.word.CreateWordUseCase
 import co.kr.searchvoca.domain.usecase.word.EditWordUseCase
+import co.kr.searchvoca.shared.domain.Level
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.flow.*
