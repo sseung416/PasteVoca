@@ -13,12 +13,12 @@ dependencyResolutionManagement {
     }
 }
 rootProject.name = "SearchVOCA"
-include ':app'
-include ':cardStackView'
-include ':data'
-include ':remote'
-include ':local'
-include ':shared'
-include ':domain'
-include ':shared:android'
-include ':shared:domain'
+include(":app")
+include(":cardStackView")
+include(":data")
+include(":remote")
+include(":local")
+include(":domain")
+include(":shared")
+include(":shared:android")
+include(":shared:domain")

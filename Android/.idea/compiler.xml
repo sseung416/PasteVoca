@@ -13,8 +13,10 @@
       <module name="PastVoca.shared" target="11" />
       <module name="PastVoca.shared.android" target="11" />
       <module name="SearchVOCA.app" target="11" />
+      <module name="SearchVOCA.buildSrc" target="11" />
+      <module name="SearchVOCA.buildSrc.main" target="11" />
+      <module name="SearchVOCA.buildSrc.test" target="11" />
       <module name="SearchVOCA.cardStackView" target="11" />
-      <module name="SearchVOCA.data" target="11" />
       <module name="SearchVOCA.di" target="11" />
       <module name="SearchVOCA.local" target="11" />
       <module name="SearchVOCA.remote" target="11" />

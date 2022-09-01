@@ -13,7 +13,7 @@
     <androidx.cardview.widget.CardView
         android:id="@+id/cv_search_history"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/width_search_history_card_view"
+        android:layout_height="@dimen/search_history_view_height"
         android:layout_marginHorizontal="@dimen/margin_large"
         android:layout_marginTop="@dimen/margin_normal"
         android:clickable="true"
