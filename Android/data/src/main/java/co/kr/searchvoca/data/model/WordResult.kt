@@ -1,7 +1,7 @@
 package co.kr.searchvoca.data.model
 
-import co.kr.searchvoca.domain.model.Level
 import co.kr.searchvoca.domain.model.Word
+import co.kr.searchvoca.shared.domain.Level
 
 data class WordResult(
     val vocabularyId: Int,

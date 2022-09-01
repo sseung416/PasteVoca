@@ -5,8 +5,8 @@ import androidx.room.Entity
 import androidx.room.ForeignKey
 import androidx.room.PrimaryKey
 import co.kr.searchvoca.data.model.WordResult
-import co.kr.searchvoca.shared.android.Level
 import java.io.Serializable
+import co.kr.searchvoca.shared.domain.Level
 
 @Entity(
     tableName = "word",

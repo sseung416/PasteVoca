@@ -13,7 +13,7 @@ import android.widget.TextView
 import androidx.lifecycle.lifecycleScope
 import co.kr.dgsw.searchvoca.R
 import co.kr.searchvoca.domain.model.Definition
-import co.kr.searchvoca.domain.model.Level
+import co.kr.searchvoca.shared.domain.Level
 import co.kr.searchvoca.domain.model.Result
 import co.kr.searchvoca.domain.model.Word
 import co.kr.searchvoca.domain.usecase.search.SearchWordUseCase

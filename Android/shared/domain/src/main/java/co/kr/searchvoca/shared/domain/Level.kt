@@ -1,4 +1,4 @@
-package co.kr.searchvoca.domain.model
+package co.kr.searchvoca.shared.domain
 
 enum class Level {
     EASY,

@@ -5,7 +5,7 @@ import androidx.lifecycle.viewModelScope
 import co.kr.dgsw.searchvoca.ui.quiz.TestWord
 import co.kr.dgsw.searchvoca.ui.quiz.setting.QuizSettingNavigationAction.*
 import co.kr.dgsw.searchvoca.ui.tryOffer
-import co.kr.searchvoca.domain.model.Level
+import co.kr.searchvoca.shared.domain.Level
 import co.kr.searchvoca.domain.model.Result
 import co.kr.searchvoca.domain.model.Vocabulary
 import co.kr.searchvoca.domain.model.successOr
