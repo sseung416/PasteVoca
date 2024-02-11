@@ -18,7 +18,6 @@ import co.kr.cardstackview.internal.CardStackSetting;
 import co.kr.cardstackview.internal.CardStackSmoothScroller;
 import co.kr.cardstackview.internal.CardStackState;
 import co.kr.cardstackview.internal.DisplayUtil;
-import kr.co.dgsw.cardstackview.R;
 
 public class CardStackLayoutManager
         extends RecyclerView.LayoutManager
