@@ -109,6 +109,8 @@ dependencies {
     androidTestImplementation(Libs.JUNIT_ANDROID)
     androidTestImplementation(Libs.ESPRESSO_CORE)
 
+    implementation("com.jakewharton.timber:timber:5.0.1")
+
 //    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
 //    implementation 'io.grpc:grpc-okhttp:1.45.1'
 }
