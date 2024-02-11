@@ -2,7 +2,6 @@ package co.kr.searchvoca.ui.setting
 
 import android.content.Intent
 import android.net.Uri
-import android.os.Build
 import android.os.Bundle
 import android.provider.Settings
 import android.view.View
@@ -17,6 +16,7 @@ import co.kr.searchvoca.ui.setting.SettingNavigationAction.*
 import co.kr.searchvoca.ui.setting.service.FloatingSearchButtonService
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import org.koin.androidx.viewmodel.ext.android.viewModel
+import timber.log.Timber
 
 class SettingFragment : BindingFragment<FragmentSettingBinding>(R.layout.fragment_setting) {
 
@@ -24,10 +24,14 @@ class SettingFragment : BindingFragment<FragmentSettingBinding>(R.layout.fragmen
 
     private val result =
         registerForActivityResult(ActivityResultContracts.StartActivityForResult()) {
-            binding.switchSearch.isSelected = false
+            binding.switchSearch.isChecked = false
 
-            if (checkedOverlayPermission()) {
+            if (checkOverlayPermission()) {
+                Timber.d("Overlay permission is granted. Start FloatingSearchButtonService.")
+                binding.switchSearch.isChecked = true
                 startService(FloatingSearchButtonService::class.java)
+            } else {
+                Timber.w("Overlay permission is denied.")
             }
         }
 
@@ -43,39 +47,50 @@ class SettingFragment : BindingFragment<FragmentSettingBinding>(R.layout.fragmen
 
     private fun observeState() {
         launchAndRepeatWithViewLifecycle {
-            viewModel.navigationAction.collect {
-                when (it) {
+            viewModel.navigationAction.collect { action ->
+                when (action) {
                     ShowFrequencyListAction -> {}
 
                     ShowVocabularyListAction ->
-                        VocabularyBottomSheetDialog({
-                            viewModel.vocabulary.value = it
+                        VocabularyBottomSheetDialog({ vocabulary ->
+                            viewModel.vocabulary.value = vocabulary
                         }).show(parentFragmentManager, "")
 
                     StartBackgroundSearchAction ->
-                        if (checkedOverlayPermission()) showDialog()
-                        else startService(FloatingSearchButtonService::class.java)
+                        if (checkOverlayPermission()) {
+                            Timber.d("Overlay permission is granted. Start the FloatingSearchButtonService.")
+                            startService(FloatingSearchButtonService::class.java)
+                        } else {
+                            Timber.d("Overlay permission is denied. Show the overlay permission request dialog.")
+                            showOverlayPermissionRequestDialog()
+                        }
 
-                    StopBackgroundSearchAction ->
+                    StopBackgroundSearchAction -> {
+                        Timber.d("Stop the FloatingSearchButtonService.")
                         stopService(FloatingSearchButtonService::class.java)
+                    }
                 }
             }
         }
     }
 
-    private fun showDialog() {
+    private fun showOverlayPermissionRequestDialog() {
         MaterialAlertDialogBuilder(requireContext())
             .setMessage(getString(R.string.message_permission))
             .setPositiveButton(getString(R.string.confirm)) { _, _ ->
-                Intent(
+                // 세팅으로 이동
+                val intent = Intent(
                     Settings.ACTION_MANAGE_OVERLAY_PERMISSION,
                     Uri.parse("package:${requireContext().packageName}")
-                ).apply { result.launch(this) }
+                )
+                result.launch(intent)
             }.create()
             .show()
     }
 
-    private fun checkedOverlayPermission() =
-        if (Build.VERSION.SDK_INT > Build.VERSION_CODES.M) !Settings.canDrawOverlays(requireContext())
-        else false
+    private fun checkOverlayPermission(): Boolean {
+        val isGrantedOverlayPermission = Settings.canDrawOverlays(requireContext())
+        Timber.d("isGrantedOverlayPermission=$isGrantedOverlayPermission")
+        return isGrantedOverlayPermission
+    }
 }

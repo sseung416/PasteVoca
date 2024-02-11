@@ -1,10 +1,12 @@
 package co.kr.searchvoca.shared.android.component
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.util.AttributeSet
 import android.widget.Toast
 import androidx.appcompat.widget.AppCompatTextView
 import co.kr.searchvoca.shared.android.R
+import co.kr.searchvoca.shared.android.useWith
 
 class WordTextView @JvmOverloads constructor(
     context: Context,
@@ -35,12 +37,11 @@ class WordTextView @JvmOverloads constructor(
         setupTyped()
     }
 
+    @SuppressLint("Recycle")
     private fun setupTyped() {
-        val typedArray = context.obtainStyledAttributes(attrs, R.styleable.WordTextView)
-
-        word = typedArray.getString(R.styleable.WordTextView_word).toString()
-        definition = typedArray.getString(R.styleable.WordTextView_definition).toString()
-
-        typedArray.recycle()
+        context.obtainStyledAttributes(attrs, R.styleable.WordTextView).useWith {
+            word = getString(R.styleable.WordTextView_word).toString()
+            definition = getString(R.styleable.WordTextView_definition).toString()
+        }
     }
 }
