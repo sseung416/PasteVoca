@@ -3,6 +3,7 @@ package co.kr.searchvoca.shared.android.component
 import android.annotation.SuppressLint
 import android.content.Context
 import android.util.AttributeSet
+import android.view.View
 import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
@@ -16,20 +17,27 @@ import co.kr.searchvoca.shared.android.useWith
 class QuizCardView @JvmOverloads constructor(
     context: Context,
     private val attrs: AttributeSet? = null,
-    defStyle: Int = 0
+    defStyle: Int = 0,
 ) : LinearLayout(context, attrs, defStyle) {
 
     private val ivIcon: ImageView
     private val tvTitle: TextView
 
     @DrawableRes
-    var iconRes = R.drawable.ic_card
+    var iconRes: Int = R.drawable.ic_card
         set(value) {
             field = value
-            ivIcon.setImageResource(value)
+            ivIcon.apply {
+                if (value == -1) {
+                    visibility = View.GONE
+                } else {
+                    visibility = View.VISIBLE
+                    setImageResource(value)
+                }
+            }
         }
 
-    var title = ""
+    var title: String = ""
         set(value) {
             field = value
             tvTitle.text = value
@@ -48,7 +56,7 @@ class QuizCardView @JvmOverloads constructor(
     private fun setupTyped() {
         context.obtainStyledAttributes(attrs, R.styleable.QuizCardView).useWith {
             title = getString(R.styleable.QuizCardView_title).toString()
-            iconRes = getInteger(R.styleable.QuizCardView_cardIcon, R.drawable.ic_card)
+            iconRes = getResourceId(R.styleable.QuizCardView_cardIcon, -1)
         }
     }
 }
